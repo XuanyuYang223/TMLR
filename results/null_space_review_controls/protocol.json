@@ -1,0 +1,55 @@
+{
+  "registered_utc": "2026-10-08T07:45:47.984055+00:00",
+  "parent_test_outcomes_observed": true,
+  "new_diagnostic_predictions_observed": false,
+  "signature": {
+    "config": {
+      "parent": "results/final_mechanism_confirmation",
+      "output": "results/null_space_review_controls",
+      "data_seed": 261008731,
+      "control_seed": 261008811,
+      "fresh_iid_count": 64,
+      "fresh_collision_pairs": 32,
+      "random_draws": 32,
+      "covariance_shrinkage": 0.05,
+      "matched_relative_calipers": [
+        0.1,
+        0.25
+      ],
+      "probe_ridges": [
+        0.0001,
+        0.001,
+        0.01,
+        0.1,
+        1.0,
+        10.0
+      ],
+      "bootstrap_samples": 5000,
+      "bootstrap_seed": 261008991,
+      "scope": "Reviewer-requested post-confirmation diagnostics on frozen models. Previously inspected test outcomes are exploratory; fresh orbits are fixed before diagnostic predictions. Oracle norm/error calibration is a diagnostic, not a learned or deployable relation. Error-conditioned subsets are descriptive and condition on a possible mediator. Probes may use compound labels for diagnostics only; no encoder/operator/readout is updated. No evidence of output independence or a natural causal mathematical-relation mechanism is presumed."
+    },
+    "code_sha256": "3659f67270b20dbae9c1221e194210b8764a0736b3721c30a97694463313b636",
+    "config_sha256": "bfde209a8fc9010bed44ed4525476676936fc5a2a615a1cacba5621d9d553a9f",
+    "parent_delivery_sha256": "29ea4ad7d22616c6d49b31de876ab7fca9bc7c188c6700c2766066fe0616a6bd",
+    "dependencies_sha256": {
+      "experiments/final_mechanism_evaluate.py": "c3c0394fece79f7d23b7fb7ba18735ec34fb5530183a2122a13446bbc95a5915",
+      "experiments/relation_error_localization.py": "52a62468e76ceb6d499724028c93018b335c3789d4f82c7ea3ef3eae20aca9ff",
+      "experiments/operator_capacity_confirmation.py": "5161e4e74846a81738435909dd4833b48af059085502043533b32f8b9071f65b"
+    }
+  },
+  "claims": [
+    "scalar norm/error explanation",
+    "marginal state distribution explanation",
+    "fixed linear-readout invisibility, not output independence"
+  ],
+  "controls": [
+    "wrong donor covariance transported using known validation",
+    "wrong donor oracle-calibrated to correct norm/error per input",
+    "isotropic random donor oracle-calibrated to correct norm/error",
+    "validation-fitted Gaussian covariance random donor",
+    "same-input correct/wrong error-and-norm overlap subsets"
+  ],
+  "matching_uses_possible_mediators": true,
+  "oracle_calibration_is_diagnostic_only": true,
+  "fresh_split_disjoint_from_all_five_sources_and_known_prior_tests": true
+}

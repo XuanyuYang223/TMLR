@@ -23,8 +23,12 @@ All project implementations, fixed configurations, and tests are in `experiments
 | `mechanism-confirmations.tar.gz` | Final five-source confirmation, preceding three-source activation confirmation, reused-source mechanism diagnostics, and historical test shards needed by the final split audit | 131 MB |
 | `directional-loss-confirmation.tar.gz` | Full/null-only correct/incorrect confirmation in matrix and permutation domains | 1.94 GB |
 | `initial-cross-domain.tar.gz` | Initial joint affine matrix and polynomial experiments | 249 MB |
+| `historical-inputs.tar.gz` | Inputs referenced by historical dataset aliases; completes the cross-domain matrix inputs | 212 MB |
+| `reviewer-controls.tar.gz` | Frozen-model reviewer controls, new held-out inputs, probes, and independent numerical replay | 3.9 MB |
 
 Each archive has a per-file SHA-256 inventory. Absolute workspace symlinks are stored as regular files for portability. Early exploratory bulk caches and legacy permutation transformer weights from the 133 GB local workspace are not included in these assets; their code, protocols, and readable results remain available. Downloaded third-party full-text papers are excluded.
+
+Reviewer-requested frozen-model controls are in `results/null_space_review_controls`, with the readable [report](results/null_space_review_reporting/report.html) and independent reconstruction in `results/null_space_review_audit`. They are post-confirmation diagnostics. Fresh correct-null versus incorrect-null transfer replicates (15.31% versus 7.19%), but answer probes and state-distribution controls do not establish natural relation-specific encoding. Oracle error-calibrated controls use true intermediate states and are not learned predictors.
 
 ## Install and reproduce
 
@@ -41,7 +45,7 @@ python -m pytest -q
 
 The pinned upstream checkout supplies PermWorld definitions and transformer code. It is not vendored or modified.
 
-To restore the three archived groups and independently replay the final confirmation:
+To restore the archived groups and independently replay the final confirmation:
 
 ```bash
 gh release download experiment-snapshot-2026-10-07 --repo XuanyuYang223/ICML --dir downloads

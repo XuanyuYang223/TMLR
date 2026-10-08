@@ -2,6 +2,8 @@
 import argparse
 from hashlib import sha256
 import json
+import os
+import subprocess
 from pathlib import Path
 import tarfile
 
@@ -18,16 +20,29 @@ def build(destination):
             'results/final_mechanism_confirmation'],
         'directional-loss-confirmation': ['results/readout_null_confirmation'],
         'initial-cross-domain': ['results/algebra_relation_v3'],
+        'reviewer-controls': ['results/null_space_review_controls',
+                             'results/null_space_review_audit',
+                             'results/null_space_review_reporting'],
     }
+    # Dataset aliases must be followed even when their targets are outside a
+    # study's own directory. Keep them portable and preserve logical paths.
+    tracked = subprocess.check_output(['git', 'ls-files', '--stage'], text=True)
+    groups['historical-inputs'] = [line.split('\t', 1)[1]
+        for line in tracked.splitlines() if line.startswith('120000 ')
+        and Path(line.split('\t', 1)[1]).is_dir()]
     # The six historical test shards are necessary for the final split audit.
     config = json.loads(Path('configs/final_mechanism_confirmation.json').read_text())
     extra = [Path(p) for p in config['excluded_test_datasets']]
     inventories = []
     for name, folders in groups.items():
-        entries = {p for folder in folders for p in Path(folder).rglob('*')
-                   if p.is_file() and '__pycache__' not in p.parts}
+        entries = {Path(directory) / name for folder in folders
+                   for directory, _, names in os.walk(folder, followlinks=True)
+                   for name in names if (Path(directory) / name).is_file()
+                   and '__pycache__' not in Path(directory).parts}
         if name == 'mechanism-confirmations':
             entries.update(extra)
+        if name == 'historical-inputs':
+            entries = {p for p in entries if p.suffix in ['.npz', '.json']}
         entries = sorted(entries)
         archive = destination / (name + '.tar.gz')
         with tarfile.open(archive, 'w:gz', compresslevel=3, dereference=True) as tf:
