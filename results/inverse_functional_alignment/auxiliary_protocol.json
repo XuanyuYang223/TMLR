@@ -1,0 +1,20 @@
+{
+  "registered_utc": "2026-10-07T00:30:38.717067+00:00",
+  "rules": {
+    "scope": "Secondary measurements; no checkpoint, loss or task selection from CKA.",
+    "subset": "First 128 saved test rows of each length, identical for every condition and initialization.",
+    "feature": "Target and frozen inverse-input teacher final_norm at task-free ONE_END.",
+    "aggregation": "Compute within each length and average the five lengths equally.",
+    "matched_control": "Keep answer strata with at least three rows; cyclic shift each stratum by one row, preserving length and true target answer. Use identical kept rows in correct and wrong scores.",
+    "answer_residual": "Subtract each true-answer stratum mean from both hidden matrices on the same kept rows. This removes linear answer means, not all output information.",
+    "initialization": "Replay the exact stored target initialization for each replicate, with the same teacher and test subset.",
+    "endpoints": [
+      "selected",
+      "latest",
+      "initialization"
+    ]
+  },
+  "code_sha256": "2be514e17ab2f0142c8e98ccf05da0dbc603b4410d094d221375d92705c07623",
+  "primary_training_has_started": true,
+  "new_test_outcomes_observed": false
+}

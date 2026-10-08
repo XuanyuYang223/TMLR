@@ -1,0 +1,32 @@
+{
+  "output": "results/algebra_structure",
+  "native_source": "results/native_confirmation",
+  "native_base_config": "configs/permworld_combinations.json",
+  "native_seeds": [1009, 2027, 3037],
+  "data_seed": 2026100623,
+  "lengths": [10, 30],
+  "orbits_per_length": {"fit": 16, "validation": 4, "test": 8},
+  "excluded_datasets": [
+    "results/six_hour_session/dataset/data.npz",
+    "results/native_target_repeat/dataset/data.npz",
+    "results/native_confirmation/dataset/data.npz",
+    "results/native_ablation/dataset/data.npz"
+  ],
+  "pca_dimension": 64,
+  "ridge_grid": [0.000001, 0.0001, 0.01, 1.0],
+  "batch_size": 96,
+  "native_landmarks": ["ONE_END", "source_query_concat"],
+  "native_layers": [1, 2, 3, 4],
+  "native_generators": ["complement", "reverse", "inverse"],
+  "primary_endpoint": "Final-layer orbit-centered generator and unfitted-composition prediction errors, with trained versus matched random initialization; both landmarks reported.",
+  "primary_scope": "Prospective structural assay of previously trained ordinary models; fresh complete orbits withheld from all recorded source/target data. No new architecture or equivariance training.",
+  "secondary_native_views": ["final_numeric_contrast", "final_numeric_null", "exact_source_numeric", "exact_source_onehot"],
+  "field_source": "results/field_matched_support",
+  "field_config": "configs/field_matched_support.json",
+  "field_split_seed": 2026100624,
+  "field_fit_fraction": 0.6,
+  "field_validation_fraction": 0.2,
+  "field_probe_dimension": 32,
+  "field_scope": "C4 rotations, D4 rotations/reflections, and irreversible idempotent projection on F5^4; probe-held-out inputs only, because source models previously saw all 625 inputs.",
+  "interpretation": "Fit generators independently. No group laws or projection idempotence enforced during fitting. Orbit residuals remove invariant energy. Consistency alone is insufficient without held-out prediction and controls. Repeats are source seeds/worlds, not activation rows or action pairs."
+}

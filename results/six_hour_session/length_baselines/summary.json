@@ -1,0 +1,206 @@
+{
+  "status": "complete",
+  "protocol": {
+    "code_sha256": "818e69666f2150fb86db7e9870c17872bce19b4c5d3ba18db4147df64f69da55",
+    "data_sha256": "ea63f0bb7dd843c40217574755e30f3f65a476b68bd8cf1d90fedc1791d47535",
+    "scope": "post hoc after partial native test results; practical support-only length reference; source-training target labels never supplied",
+    "bandwidths": [
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      8.0,
+      16.0
+    ],
+    "selection": "one bandwidth selected by mean target-validation accuracy over all four targets and two budgets; smaller bandwidth breaks ties",
+    "controls": [
+      "support global majority",
+      "support exact-length majority with global fallback",
+      "Gaussian-smoothed support length category counts"
+    ],
+    "no_test_based_rule_selection": true
+  },
+  "selected": {
+    "bandwidth": 2.0,
+    "validation_macro": 0.33511904761904765
+  },
+  "deterministic_baseline_not_independent_seed_replications": true,
+  "endpoints": [
+    {
+      "target": "descents",
+      "budget": 64,
+      "mode": "global_majority",
+      "test_accuracy": 0.08571428571428572
+    },
+    {
+      "target": "descents",
+      "budget": 64,
+      "mode": "exact_length_majority",
+      "test_accuracy": 0.22047619047619046
+    },
+    {
+      "target": "descents",
+      "budget": 64,
+      "mode": "smooth_length",
+      "test_accuracy": 0.22142857142857142
+    },
+    {
+      "target": "descents",
+      "budget": 256,
+      "mode": "global_majority",
+      "test_accuracy": 0.09476190476190476
+    },
+    {
+      "target": "descents",
+      "budget": 256,
+      "mode": "exact_length_majority",
+      "test_accuracy": 0.25
+    },
+    {
+      "target": "descents",
+      "budget": 256,
+      "mode": "smooth_length",
+      "test_accuracy": 0.26857142857142857
+    },
+    {
+      "target": "recoils",
+      "budget": 64,
+      "mode": "global_majority",
+      "test_accuracy": 0.09476190476190476
+    },
+    {
+      "target": "recoils",
+      "budget": 64,
+      "mode": "exact_length_majority",
+      "test_accuracy": 0.2276190476190476
+    },
+    {
+      "target": "recoils",
+      "budget": 64,
+      "mode": "smooth_length",
+      "test_accuracy": 0.26095238095238094
+    },
+    {
+      "target": "recoils",
+      "budget": 256,
+      "mode": "global_majority",
+      "test_accuracy": 0.09476190476190476
+    },
+    {
+      "target": "recoils",
+      "budget": 256,
+      "mode": "exact_length_majority",
+      "test_accuracy": 0.2438095238095238
+    },
+    {
+      "target": "recoils",
+      "budget": 256,
+      "mode": "smooth_length",
+      "test_accuracy": 0.27666666666666667
+    },
+    {
+      "target": "lis_length",
+      "budget": 64,
+      "mode": "global_majority",
+      "test_accuracy": 0.2195238095238095
+    },
+    {
+      "target": "lis_length",
+      "budget": 64,
+      "mode": "exact_length_majority",
+      "test_accuracy": 0.2619047619047619
+    },
+    {
+      "target": "lis_length",
+      "budget": 64,
+      "mode": "smooth_length",
+      "test_accuracy": 0.31285714285714283
+    },
+    {
+      "target": "lis_length",
+      "budget": 256,
+      "mode": "global_majority",
+      "test_accuracy": 0.2195238095238095
+    },
+    {
+      "target": "lis_length",
+      "budget": 256,
+      "mode": "exact_length_majority",
+      "test_accuracy": 0.30952380952380953
+    },
+    {
+      "target": "lis_length",
+      "budget": 256,
+      "mode": "smooth_length",
+      "test_accuracy": 0.3138095238095238
+    },
+    {
+      "target": "longest_increasing_run",
+      "budget": 64,
+      "mode": "global_majority",
+      "test_accuracy": 0.4714285714285714
+    },
+    {
+      "target": "longest_increasing_run",
+      "budget": 64,
+      "mode": "exact_length_majority",
+      "test_accuracy": 0.3852380952380952
+    },
+    {
+      "target": "longest_increasing_run",
+      "budget": 64,
+      "mode": "smooth_length",
+      "test_accuracy": 0.44571428571428573
+    },
+    {
+      "target": "longest_increasing_run",
+      "budget": 256,
+      "mode": "global_majority",
+      "test_accuracy": 0.4714285714285714
+    },
+    {
+      "target": "longest_increasing_run",
+      "budget": 256,
+      "mode": "exact_length_majority",
+      "test_accuracy": 0.4676190476190476
+    },
+    {
+      "target": "longest_increasing_run",
+      "budget": 256,
+      "mode": "smooth_length",
+      "test_accuracy": 0.49047619047619045
+    }
+  ],
+  "macro": [
+    {
+      "budget": 64,
+      "mode": "global_majority",
+      "test_macro": 0.21785714285714286
+    },
+    {
+      "budget": 64,
+      "mode": "exact_length_majority",
+      "test_macro": 0.2738095238095238
+    },
+    {
+      "budget": 64,
+      "mode": "smooth_length",
+      "test_macro": 0.3102380952380952
+    },
+    {
+      "budget": 256,
+      "mode": "global_majority",
+      "test_macro": 0.2201190476190476
+    },
+    {
+      "budget": 256,
+      "mode": "exact_length_majority",
+      "test_macro": 0.31773809523809526
+    },
+    {
+      "budget": 256,
+      "mode": "smooth_length",
+      "test_macro": 0.3373809523809524
+    }
+  ]
+}

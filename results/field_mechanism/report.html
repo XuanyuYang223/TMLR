@@ -1,0 +1,14 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>有限域：状态留出与读出机制</title>
+<style>body{max-width:1100px;margin:40px auto;padding:0 20px;font:16px/1.7 system-ui;color:#18202b}img{max-width:100%}table{border-collapse:collapse}td,th{padding:8px 18px;border-bottom:1px solid #ddd;text-align:left}aside{background:#f2f4f7;padding:16px}</style>
+<h1>有限域：结构如何限制一种明确的读出方式</h1>
+<p>这项探索性诊断使用先前已训练的 72 个编码器，共 2,880 个目标读出端点。源四任务的输出可以被准确解码；但平均 49.71% 的隐藏表征方差来自相同三维潜在状态内部的输入变化。源任务全正确并不保证整个隐藏几何只保留任务需要的信息。</p>
+<img src="mechanism.png">
+<h2>读出规则与数学预测分开</h2>
+<p>通用类别读出仅接收已解码的源任务答案和少量目标标签：枚举源答案列的子集，选择最小的、在支持集上没有标签冲突的子集；同大小时优先选择支持样本中重复较多的子集。之后查表，未见键回退到支持集多数类。它没有收到有限域系数、运算规则或目标所需的最小子集数。</p>
+<p>数学分析在模型外部给出预测：部分目标能由两列源答案确定，其他目标至少需要三列。两列共有 25 种输入状态，三列共有 125 种。因此同样标签预算下，两列查表有机会在未见完整状态上复用答案；三列查表会遇到从未出现的键。</p>
+<table><tr><th>数学预测的最小子集</th><th>目标标签</th><th>通用类别读出</th><th>部分键已见比例</th><th>端点数</th></tr><tr><td>2</td><td>10</td><td>37.30%</td><td>28.29%</td><td>369</td></tr><tr><td>2</td><td>25</td><td>70.70%</td><td>63.61%</td><td>369</td></tr><tr><td>2</td><td>50</td><td>91.93%</td><td>89.33%</td><td>369</td></tr><tr><td>2</td><td>100</td><td>100.00%</td><td>100.00%</td><td>369</td></tr><tr><td>3</td><td>10</td><td>16.31%</td><td>21.13%</td><td>351</td></tr><tr><td>3</td><td>25</td><td>20.00%</td><td>0.00%</td><td>351</td></tr><tr><td>3</td><td>50</td><td>20.00%</td><td>0.00%</td><td>351</td></tr><tr><td>3</td><td>100</td><td>20.00%</td><td>0.00%</td><td>351</td></tr></table>
+<aside>这些端点共享模型、输入世界和目标，并不是 2,880 个独立重复。上述差异与查表规则及条件依赖结构直接相关，不能当成新的训练算法，也不能替代普通神经网络迁移结果。</aside>
+<h2>留出范围</h2>
+<p>每个目标留出 25 个完整潜在状态，测试包括每状态的 5 个输入变体；目标支持集包含另外的状态，每状态最多一个输入。每类测试与支持标签平衡，支持预算 10、25、50、100 嵌套。源预训练已经见过所有输入与所有潜在状态，因此这里只留出了目标标签对应的状态，不是新实体源泛化。</p>
+<p>完整四列答案查表始终为 20%。另列的有限域仿射拟合可以达到 100%，但它明确具有 F5 仿射假设这一数学先验，应与通用类别读出分开理解。原有线性和 MLP 神经读出迁移结果见 <a href="../readout_followup/report.html">读出跟进</a>，不能用这里的查表成绩替换。</p>
+<p><a href="summary.json">完整汇总</a> · <a href="spectral_models.csv">逐模型频谱与冗余方差</a> · <a href="state_holdout_endpoints.csv">全部目标端点</a> · <a href="mechanism.pdf">PDF 图</a></p></html>

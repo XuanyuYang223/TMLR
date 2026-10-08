@@ -1,0 +1,117 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>两步关系实验：结果与解释边界</title><style>body{font:16px/1.65 system-ui;max-width:1100px;margin:40px auto;padding:0 24px;color:#17212b}table{border-collapse:collapse;width:100%;margin:20px 0}th,td{border:1px solid #d7dce2;padding:9px;text-align:left}th{background:#edf3f8}pre{background:#f4f6f8;padding:16px;overflow:auto;font-size:13px}a{color:#075baf}</style><h1>两步关系实验：结果与解释边界</h1><p><strong>已完成四组关系正确性实验。原定的整套正结果判据尚未全部通过，分别报告单步学习、隐藏答案推断和关系正确性的效果。</strong></p><p>主目标是先补排列再取逆（CI）。取逆再补排列在当前统计量上与一个可见答案相同，只作次要诊断。训练和预测使用的步骤顺序由实验提供，不声称自行发现关系或推导程序。</p><p>四组共享正确的单步输出监督、训练输入边际、预算与来源，只改变几何对应。错配按长度及三个可见答案分层；离散错配排除了两步恰好回到同一样本。测试预测只接收原输入的表征和学到的算子。</p><p>碰撞配对的50%准确率上限仅适用于只使用三个真实可见答案码的确定性预测器，不是所有输出概率或所有模型的理论上限。配对双正确大于零在对照中也出现，不能单独证明正确关系的特异作用。</p><h2>冻结编码器</h2><table><thead><tr><th>条件</th><th>IID CI准确率</th><th>碰撞 CI准确率</th><th>碰撞配对双正确</th><th>碰撞 CI CKA</th></tr></thead><tbody><tr><td>双正确</td><td>23.021%</td><td>23.464%</td><td>0.859%</td><td>0.0428</td></tr><tr><td>仅补排列正确</td><td>22.995%</td><td>23.424%</td><td>0.859%</td><td>0.0426</td></tr><tr><td>仅取逆正确</td><td>23.021%</td><td>23.451%</td><td>0.911%</td><td>0.0435</td></tr><tr><td>双错配</td><td>23.047%</td><td>23.464%</td><td>0.885%</td><td>0.0433</td></tr></tbody></table><p>冻结编码器上的正确单步映射也没有可靠泛化。这一轮主要定位仿射可读性的限制；四组复合成绩接近，不能单独否定关系组合假设。</p><p><a href="../two_step_relation_factorial/report.html">完整报告</a> · <a href="../two_step_relation_factorial/summary.json">原始汇总</a> · <a href="../two_step_relation_factorial/verification.json">独立验证</a></p><h2>编码器与算子联合学习</h2><table><thead><tr><th>条件</th><th>IID CI准确率</th><th>碰撞 CI准确率</th><th>碰撞配对双正确</th><th>碰撞 CI CKA</th></tr></thead><tbody><tr><td>双正确</td><td>26.641%</td><td>27.018%</td><td>2.474%</td><td>0.1443</td></tr><tr><td>仅补排列正确</td><td>26.276%</td><td>26.745%</td><td>2.448%</td><td>0.1402</td></tr><tr><td>仅取逆正确</td><td>26.237%</td><td>25.781%</td><td>1.953%</td><td>0.1295</td></tr><tr><td>双错配</td><td>25.638%</td><td>25.690%</td><td>1.849%</td><td>0.1264</td></tr></tbody></table><p>双正确减双错配的碰撞准确率差为1.328个百分点，六次配对差均为正；按三个来源聚合的bootstrap区间为[1.044,1.626]个百分点。两个关系正确性的交互项为0.182个百分点，区间跨零，尚不能声称两条关系产生超加性收益。少量来源的bootstrap区间不能代表广泛外推。</p><p>预设的单步解释门槛未通过。三个来源的双正确验证成绩（补排列／取逆）如下；因此复合失败不能归因于仅有组合误差。</p><table><thead><tr><th>来源</th><th>补排列</th><th>取逆</th></tr></thead><tbody><tr><td>5081</td><td>58.75%</td><td>33.28%</td></tr><tr><td>6091</td><td>62.50%</td><td>52.50%</td></tr><tr><td>7103</td><td>67.34%</td><td>58.28%</td></tr></tbody></table><p>各条件已教过的任务与算子验证成绩，避免把基本映射学习差异直接称为组合能力差异：</p><table><thead><tr><th>条件</th><th>原输入任务</th><th>补排列后任务</th><th>取逆后任务</th><th>补排列算子</th><th>取逆算子</th></tr></thead><tbody><tr><td>双正确</td><td>98.96%</td><td>99.11%</td><td>98.85%</td><td>62.86%</td><td>48.02%</td></tr><tr><td>仅补排列正确</td><td>98.91%</td><td>98.85%</td><td>98.96%</td><td>63.12%</td><td>48.18%</td></tr><tr><td>仅取逆正确</td><td>99.06%</td><td>98.96%</td><td>98.75%</td><td>63.39%</td><td>48.33%</td></tr><tr><td>双错配</td><td>99.01%</td><td>98.91%</td><td>98.85%</td><td>62.24%</td><td>47.86%</td></tr></tbody></table><p><a href="../two_step_relation_joint/report.html">完整报告</a> · <a href="../two_step_relation_joint/summary.json">原始汇总</a> · <a href="../two_step_relation_joint/verification.json">独立验证</a></p><h2>扩大输入覆盖后的新四组复核</h2><table><thead><tr><th>条件</th><th>IID CI准确率</th><th>碰撞 CI准确率</th><th>碰撞配对双正确</th><th>碰撞 CI CKA</th></tr></thead><tbody><tr><td>双正确</td><td>33.424%</td><td>32.357%</td><td>6.667%</td><td>0.1750</td></tr><tr><td>仅补排列正确</td><td>33.294%</td><td>31.654%</td><td>4.922%</td><td>0.1568</td></tr><tr><td>仅取逆正确</td><td>31.458%</td><td>29.531%</td><td>3.307%</td><td>0.1359</td></tr><tr><td>双错配</td><td>30.872%</td><td>29.062%</td><td>2.656%</td><td>0.1287</td></tr></tbody></table><p>各条件已教过的任务与算子验证成绩，避免把基本映射学习差异直接称为组合能力差异：</p><table><thead><tr><th>条件</th><th>原输入任务</th><th>补排列后任务</th><th>取逆后任务</th><th>补排列算子</th><th>取逆算子</th></tr></thead><tbody><tr><td>双正确</td><td>99.88%</td><td>99.80%</td><td>99.89%</td><td>98.93%</td><td>89.83%</td></tr><tr><td>仅补排列正确</td><td>99.80%</td><td>99.79%</td><td>99.82%</td><td>99.00%</td><td>90.34%</td></tr><tr><td>仅取逆正确</td><td>99.86%</td><td>99.78%</td><td>99.84%</td><td>98.48%</td><td>90.60%</td></tr><tr><td>双错配</td><td>99.84%</td><td>99.74%</td><td>99.82%</td><td>98.43%</td><td>88.72%</td></tr></tbody></table><p>单步解释门槛：未通过。固定复合预测门槛：<code>{&quot;both_correct_collision_above_half_in_all3_sources&quot;: false, &quot;both_correct_pair_both_correct_positive_in_all3_sources&quot;: true, &quot;both_correct_beats_all3_controls_in_each_source_iid&quot;: false, &quot;both_correct_beats_all3_controls_in_each_source_collisions&quot;: false}</code>。</p><p>本轮训练只提供e/C/I。预测由原输入表征依次经过学到的补排列和取逆算子得到；不输入正确复合终点。所有24次固定预算训练完成后才打开新复合测试。覆盖检查与旧配置还存在批量和曝光差异，跨轮变化不能单独归因于输入覆盖；四组内的预算与监督保持匹配。</p><h3>双正确组在相同碰撞输入上的单步诊断</h3><table><thead><tr><th>已教过的关系</th><th>该步答案准确率</th><th>对应变换的隐藏CKA</th></tr></thead><tbody><tr><td>单步补排列C</td><td>99.688%</td><td>0.9767</td></tr><tr><td>单步取逆I</td><td>91.497%</td><td>0.8647</td></tr></tbody></table><h3>中间状态诊断：仅作定位，不计入复合成功</h3><table><thead><tr><th>预测方式</th><th>碰撞CI准确率</th></tr></thead><tbody><tr><td>学到的C算子，再接学到的I算子</td><td>32.357%</td></tr><tr><td>提供真实C输入的表征，再接学到的I算子</td><td>90.352%</td></tr><tr><td>直接提供真实CI输入给原任务读出</td><td>99.909%</td></tr></tbody></table><p>后两行使用了主预测没有获得的正确变换输入，不能作为隐藏关系推断成绩。真实C状态与预测C状态的差距定位了组合中的限制，但不能单独证明限制只来自算子范数、误差积累或某一种信息缺失。</p><table><thead><tr><th>碰撞准确率对比</th><th>差值（百分点）</th><th>正配对次数</th><th>三个来源bootstrap区间</th></tr></thead><tbody><tr><td>both_correct-c_correct_i_wrong</td><td>0.703</td><td>4/6</td><td>[-0.122, 1.775]</td></tr><tr><td>both_correct-c_wrong_i_correct</td><td>2.826</td><td>6/6</td><td>[1.499, 4.498]</td></tr><tr><td>both_correct-both_wrong</td><td>3.294</td><td>6/6</td><td>[2.739, 3.840]</td></tr><tr><td>interaction</td><td>0.234</td><td>4/6</td><td>[-2.059, 3.020]</td></tr></tbody></table><h3>同时重采样来源和测试输入的不确定性</h3><table><thead><tr><th>对比／主效应</th><th>碰撞准确率差（百分点）</th><th>95% bootstrap区间</th></tr></thead><tbody><tr><td>both_correct-c_correct_i_wrong</td><td>0.703</td><td>[-0.977, 2.422]</td></tr><tr><td>both_correct-c_wrong_i_correct</td><td>2.826</td><td>[0.703, 5.182]</td></tr><tr><td>both_correct-both_wrong</td><td>3.294</td><td>[1.914, 4.688]</td></tr><tr><td>interaction</td><td>0.234</td><td>[-3.008, 3.789]</td></tr></tbody></table><h3>预先登记的关系类型主效应</h3><table><thead><tr><th>对比／主效应</th><th>碰撞准确率差（百分点）</th><th>95% bootstrap区间</th></tr></thead><tbody><tr><td>C</td><td>2.708</td><td>[2.208, 3.111]</td></tr><tr><td>I</td><td>0.586</td><td>[0.265, 0.907]</td></tr><tr><td>interaction</td><td>0.234</td><td>[-2.059, 3.020]</td></tr></tbody></table><p>主效应分析承接先前登记的精确四统计量作用：补排列将缺失的第四个统计量带入前三个统计量的空间，取逆保持前三个的空间。它预期两类关系可能发挥不对称的作用，而非预设两步都正确一定优于单正确。此补充预测没有替换原主检验。</p><h3>次要诊断：改变顺序，仍按同一个CI真值计分</h3><table><thead><tr><th>条件</th><th>正确CI顺序</th><th>反向IC顺序按CI计分</th><th>差值（百分点）</th></tr></thead><tbody><tr><td>双正确</td><td>32.357%</td><td>23.633%</td><td>8.724</td></tr><tr><td>仅补排列正确</td><td>31.654%</td><td>23.620%</td><td>8.034</td></tr><tr><td>仅取逆正确</td><td>29.531%</td><td>23.659%</td><td>5.872</td></tr><tr><td>双错配</td><td>29.062%</td><td>23.633%</td><td>5.430</td></tr></tbody></table><p>四组均有顺序差异；顺序敏感本身不证明正确几何监督的特异作用。程序提供组合顺序，模型并未自行选择推理步骤。</p><p><a href="../two_step_relation_coverage_confirmation/report.html">完整报告</a> · <a href="../two_step_relation_coverage_confirmation/summary.json">原始汇总</a> · <a href="../two_step_relation_coverage_confirmation/verification.json">独立验证</a></p><h2>10轮主实验的仅输出监督基线</h2><table><thead><tr><th>测试集</th><th>CI准确率</th><th>配对双正确</th><th>CI CKA</th></tr></thead><tbody><tr><td>IID</td><td>17.552%</td><td>—</td><td>0.0753</td></tr><tr><td>碰撞配对</td><td>21.628%</td><td>0.677%</td><td>0.0687</td></tr></tbody></table><table><thead><tr><th>条件减仅输出监督</th><th>准确率差（百分点）</th><th>三个来源bootstrap区间</th></tr></thead><tbody><tr><td>双正确</td><td>10.729</td><td>[10.282, 11.322]</td></tr><tr><td>仅补排列正确</td><td>10.026</td><td>[8.541, 11.356]</td></tr><tr><td>仅取逆正确</td><td>7.904</td><td>[5.784, 9.823]</td></tr><tr><td>双错配</td><td>7.435</td><td>[6.464, 8.575]</td></tr></tbody></table><p>该基线在10轮复合结果打开前登记，与10轮四组使用相同来源、输入、正确输出监督和训练预算，几何损失权重为零。它在10轮结果打开后完成训练，使用同一固定测试集。四组相对该基线的收益说明几何约束的一般作用；正确与错配的差值才检验对应关系的特异性。三个来源的区间仅重采样来源，不能代表测试输入的不确定性或广泛外推。</p><p>这组基线仅与10轮主实验匹配，不能用来估计20轮几何约束的额外收益。<a href="../two_step_relation_output_only/results.json">基线原始结果与预算核对</a></p><h2>学习速率可见任务检查</h2><pre>{
+  &quot;completed_utc&quot;: &quot;2026-10-07T13:15:20.543976+00:00&quot;,
+  &quot;records&quot;: [
+    {
+      &quot;source_learning_rate&quot;: 0.0001,
+      &quot;epochs&quot;: 100,
+      &quot;visible_grade&quot;: {
+        &quot;epoch&quot;: 100,
+        &quot;step&quot;: 6200,
+        &quot;native_e_C_I_accuracy&quot;: [
+          0.971875,
+          0.965625,
+          0.96875
+        ],
+        &quot;generator_C_I_accuracy&quot;: [
+          0.740625,
+          0.540625
+        ],
+        &quot;native_ce&quot;: 0.00016435042198281735,
+        &quot;native_kd&quot;: 0.021567143499851227,
+        &quot;operator_kd&quot;: 0.1508069932460785,
+        &quot;geometry_loss&quot;: 0.5741004943847656
+      },
+      &quot;feasible&quot;: false,
+      &quot;fit_record_sha256&quot;: &quot;0d79e61763b6fb719d373b60b6aa6d95f07d053dd66f576f69896c2b49c9b302&quot;,
+      &quot;compound_test_loaded&quot;: false
+    },
+    {
+      &quot;source_learning_rate&quot;: 0.0003,
+      &quot;epochs&quot;: 100,
+      &quot;visible_grade&quot;: {
+        &quot;epoch&quot;: 100,
+        &quot;step&quot;: 6200,
+        &quot;native_e_C_I_accuracy&quot;: [
+          0.984375,
+          0.984375,
+          0.971875
+        ],
+        &quot;generator_C_I_accuracy&quot;: [
+          0.91875,
+          0.7125
+        ],
+        &quot;native_ce&quot;: 6.141240191936959e-06,
+        &quot;native_kd&quot;: 0.001523701474070549,
+        &quot;operator_kd&quot;: 0.006651585455983877,
+        &quot;geometry_loss&quot;: 0.05953552573919296
+      },
+      &quot;feasible&quot;: false,
+      &quot;fit_record_sha256&quot;: &quot;9a33424c51ac1f0e5ed4f83d30a21d73178c7e0496e2505e542adb5d7edbfa50&quot;,
+      &quot;compound_test_loaded&quot;: false
+    }
+  ],
+  &quot;selected_source_learning_rate&quot;: null,
+  &quot;selected_epochs&quot;: 100,
+  &quot;compound_test_used_for_selection&quot;: false
+}</pre><h2>增加输入覆盖的可见任务检查</h2><pre>{
+  &quot;completed_utc&quot;: &quot;2026-10-07T13:42:05.861032+00:00&quot;,
+  &quot;feasible&quot;: true,
+  &quot;fixed_epochs&quot;: 10,
+  &quot;source_seed&quot;: 5081,
+  &quot;visible_validation&quot;: {
+    &quot;native_e_C_I_accuracy&quot;: [
+      0.99921875,
+      0.9984375,
+      0.99765625
+    ],
+    &quot;generator_C_I_accuracy&quot;: [
+      0.99375,
+      0.932421875
+    ]
+  },
+  &quot;fixed_training_subset_grade&quot;: {
+    &quot;native_e_C_I_accuracy&quot;: [
+      1.0,
+      0.99921875,
+      0.999609375
+    ],
+    &quot;generator_C_I_accuracy&quot;: [
+      0.99765625,
+      0.95625
+    ]
+  },
+  &quot;training_subset_examples&quot;: 2560,
+  &quot;validation_examples&quot;: 2560,
+  &quot;fit_record_sha256&quot;: &quot;798f709bf34b4f34af54d6a8703656e5fcfe294861ed8025c86688ae45c9e0b3&quot;,
+  &quot;checkpoint_sha256&quot;: &quot;82ae821fa5e9253205c5dad250f8490a7e2df3cf79a2512f9da65bf87d63afc5&quot;,
+  &quot;unaccelerated_validation_replayed&quot;: true,
+  &quot;numeric_readout_preserved&quot;: true,
+  &quot;compound_predictions_generated&quot;: false,
+  &quot;compound_test_used_for_selection&quot;: false,
+  &quot;limitation&quot;: &quot;One visible-only pilot source. A pass is feasibility, not a replicated structural result.&quot;
+}</pre><h2>第三个来源的可见任务延长检查</h2><pre>{
+  &quot;completed_utc&quot;: &quot;2026-10-07T14:25:01.192188+00:00&quot;,
+  &quot;feasible&quot;: true,
+  &quot;source_seed&quot;: 7103,
+  &quot;visible_validation&quot;: {
+    &quot;native_e_C_I_accuracy&quot;: [
+      0.997265625,
+      0.9984375,
+      0.998828125
+    ],
+    &quot;generator_C_I_accuracy&quot;: [
+      0.9828125,
+      0.918359375
+    ]
+  },
+  &quot;cumulative_epochs&quot;: 20,
+  &quot;additional_epochs&quot;: 10,
+  &quot;prefix_updates&quot;: 6310,
+  &quot;additional_updates&quot;: 6310,
+  &quot;original_model_validation_replayed&quot;: true,
+  &quot;numeric_readout_preserved&quot;: true,
+  &quot;compound_test_used_for_selection&quot;: false,
+  &quot;compound_predictions_generated&quot;: false,
+  &quot;fit_record_sha256&quot;: &quot;97726d9a58bff25d80b76eb9f646a14e2818b3627981594deaf859f4dfe27951&quot;,
+  &quot;limitation&quot;: &quot;One visible-only continuation, not an independent source replication.&quot;
+}</pre><p>生成时间：2026-10-07T16:21:18.259019+00:00</p></html>

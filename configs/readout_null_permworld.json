@@ -1,0 +1,73 @@
+{
+  "output": "results/readout_null_confirmation/permworld",
+  "parent": "results/readout_null_confirmation/permworld_sources",
+  "source_condition": "ordinary",
+  "source_seeds": [
+    8123,
+    9133,
+    10151
+  ],
+  "support_seeds": [
+    261080101,
+    261080103,
+    261080107
+  ],
+  "test_seed": 261080201,
+  "lengths": [
+    12,
+    15,
+    20,
+    25,
+    30
+  ],
+  "fit_per_length": 8192,
+  "validation_per_length": 512,
+  "iid_per_length": 256,
+  "collision_pairs_per_length": 128,
+  "conditions": [
+    "full_correct",
+    "full_wrong",
+    "null_correct",
+    "null_wrong"
+  ],
+  "views": [
+    "hidden"
+  ],
+  "epochs": 20,
+  "checkpoint_epochs": [
+    5,
+    10,
+    15,
+    20
+  ],
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "warmup_updates": 100,
+  "minimum_learning_rate_ratio": 0.2,
+  "weight_decay": 0.0001,
+  "geometry_weight": 0.25,
+  "distillation_temperature": 2.0,
+  "minimum_pairing_stratum": 3,
+  "primary_word": "ci",
+  "words": [
+    "c",
+    "i",
+    "ci",
+    "ic",
+    "cc",
+    "ii"
+  ],
+  "primary_epoch": 20,
+  "fixed_predictions": [
+    "Primary: matrix correct-minus-wrong collision compound-accuracy advantage is larger under nullspace than fullspace geometry.",
+    "Supporting: null emphasis reduces actual null-only margin-crossing errors for correct pairing more than wrong pairing.",
+    "PermWorld is a second domain confirmation; no positive cross-domain outcome assumed. Report each source and failed single-generator gates."
+  ],
+  "scope": "Prospective directional-loss intervention after old-model diagnostics. New source seeds and tests; fixed architecture, output labels/KD, input marginals, schedules, and budget across four arms. Only geometric direction and matched correspondence vary. Three independent source clusters; architecture and involution assumptions differ between legacy domains.",
+  "source_learning_rate": 0.0003,
+  "operator_learning_rate": 0.001,
+  "native_ce_weight": 1.0,
+  "native_distillation_weight": 1.0,
+  "operator_distillation_weight": 1.0,
+  "interpretation_gate": "Before interpreting hidden-composition failure, both correct single-generator validation accuracies must exceed0.90 in each of the three source means; report failure if unmet. Source native observed-state accuracy and each control operator accuracy are reported separately."
+}

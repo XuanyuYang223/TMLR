@@ -1,0 +1,141 @@
+{
+  "registered_unix": 1791209092.3871195,
+  "status": "registered before either new rank-four source cohort or its target behavior exists",
+  "source_config": {
+    "p": 5,
+    "dimension": 4,
+    "world_seeds": [
+      271,
+      314,
+      593
+    ],
+    "model_seeds": [
+      17,
+      42,
+      101
+    ],
+    "hidden": 192,
+    "features": 64,
+    "steps": 6000,
+    "milestones": [
+      0,
+      1200,
+      3000,
+      6000
+    ],
+    "learning_rate": 0.003,
+    "weight_decay": 0.001,
+    "source_accuracy_gate": 0.98,
+    "groups": [
+      "P",
+      "M1",
+      "M2"
+    ],
+    "input_transform": "swap the third and fourth latent coordinates; involution",
+    "source_P": [
+      "z1",
+      "z2",
+      "z3",
+      "z4"
+    ],
+    "source_Mk": [
+      "z1",
+      "z2",
+      "z3",
+      "z3+k*z4"
+    ],
+    "exact_controls": [
+      "four source tasks",
+      "rank four",
+      "uniform marginal labels",
+      "zero pairwise mutual information",
+      "uniform full joint distribution on F5^4",
+      "same inputs/exposure/initialization/update count"
+    ],
+    "prospective_prediction": "source one-hot character-kernel CKA under the involution is exactly 1 for P, 3/4 for M1/M4, and 1/2 for M2/M3; test whether learned hidden representations follow this ordering as fitting improves",
+    "status": "exploratory prospective secondary experiment; registered before any model or transformation CKA from this protocol",
+    "scope": "representation experiment with all source-domain inputs exposed; no new-entity generalization claim",
+    "output": "results/field_matched_support",
+    "deadline_utc": "2026-10-05T17:51:45+00:00",
+    "analysis_reserve_seconds": 5400,
+    "world_provider_sha256": "1b5e60de453e91787b50750b538557a8e92af8b59a8cf9cee61ecfa1094939a4",
+    "world_basis_policy": "all four physical source coefficients are nonzero for every source task in all three groups; all individual tasks are modular four-input sums up to per-coordinate category permutations"
+  },
+  "transfer_config": {
+    "source_config": "configs/field_matched_support.json",
+    "output": "results/field_matched_support_transfer",
+    "targets": [
+      [
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        0,
+        1,
+        3
+      ],
+      [
+        1,
+        0,
+        1,
+        4
+      ],
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        2
+      ]
+    ],
+    "budgets": [
+      25,
+      50
+    ],
+    "test_per_class": 25,
+    "head_steps": 200,
+    "head_learning_rate": 0.01,
+    "deadline_utc": "2026-10-05T17:51:45+00:00",
+    "analysis_reserve_seconds": 5400,
+    "maximum_runtime_seconds": 900,
+    "prediction": "For a categorical subset lookup, lower algebraic target composition order should yield higher target accuracy at equal label budget. Neural linear and MLP heads are reported separately without assuming the same ordering.",
+    "target_policy": "all eight common targets exclude every scalar-equivalent source direction; all source conditions share each world-target input split and nested balanced support",
+    "generalization_scope": "target labels on input rows absent from target support, but every row was exposed in source pretraining; transductive new-task transfer",
+    "selection_policy": "fixed 200-step learning-rate-0.01 heads, no target-test selection; preserve all targets, conditions and budgets"
+  },
+  "purpose": "independent geometry/behavior replication with exactly matched individual affine-task physical support complexity",
+  "predicted_ideal_code_cka": {
+    "P": 1,
+    "M1": 0.75,
+    "M2": 0.5
+  },
+  "hidden_prediction": "P > M1 > M2, assessed in all nine paired settings",
+  "source_wrapper_sha256": "1b5e60de453e91787b50750b538557a8e92af8b59a8cf9cee61ecfa1094939a4",
+  "transfer_wrapper_sha256": "cc98f470dc7e010b1c06c9713ff870f890a992262852547f501a7b2ccc09336b"
+}

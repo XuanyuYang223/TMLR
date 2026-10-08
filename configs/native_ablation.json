@@ -1,0 +1,32 @@
+{
+  "output": "results/native_ablation",
+  "source_root": "results/native_confirmation",
+  "base_config": "configs/permworld_combinations.json",
+  "seeds": [1009, 2027, 3037],
+  "target_data_seed": 202610061,
+  "source_steps": 20000,
+  "record_every": 1000,
+  "architecture": {"id": "d256_l4", "d_model": 256, "layers": 4, "heads": 8},
+  "source_learning_rate": 0.0003,
+  "warmup_steps": 500,
+  "minimum_learning_rate_ratio": 0.1,
+  "candidate_tasks": ["peaks", "valleys", "left_to_right_maxima", "right_to_left_maxima"],
+  "novel_groups": [
+    {"id": "novel_records", "tasks": ["left_to_right_maxima", "right_to_left_maxima", "left_to_right_minima", "right_to_left_minima"]},
+    {"id": "novel_minima_pair", "tasks": ["peaks", "valleys", "left_to_right_minima", "right_to_left_minima"]},
+    {"id": "novel_peak_mixed", "tasks": ["peaks", "left_to_right_maxima", "left_to_right_minima", "right_to_left_maxima"]},
+    {"id": "novel_valley_mixed", "tasks": ["valleys", "left_to_right_maxima", "right_to_left_maxima", "right_to_left_minima"]}
+  ],
+  "budgets": [64, 256],
+  "adaptation": {"candidate_shared": {"learning_rate": 0.0003, "steps": 100}, "shared": {"learning_rate": 0.0001, "steps": 100}},
+  "length_bandwidth": 2.0,
+  "bootstrap_repetitions": 20000,
+  "inference_seed": 202610062,
+  "primary_ablation": "LIS/256, candidate_shared; full_b96 minus each drop-one_b96; three paired source seeds",
+  "primary_supervision_control": "full_b96 minus each single_b96; secondary full_b32 minus single_b32; same total labels and optimizer updates",
+  "secondary_removal_control": "full_b128 minus drop-one_b96 retains per-task exposure but changes total labels",
+  "primary_novel_prediction": "LIS/256 shared; four frozen variants from native_confirmation weights; all four previously untrained task sets retained",
+  "qualitative_novel_hypothesis": "mean paired-random gain of novel_records and novel_minima_pair exceeds novel_peak_mixed and novel_valley_mixed; exploratory, fixed before new training",
+  "sampling": "every step advances the previous 32-index sampler; smaller batches use its prefix; larger batches append draws from a separate RNG; same length sequence and core indices across all conditions",
+  "limitations": ["Three paired seeds conditional on the same source-data world; exploratory follow-up selected using earlier outcomes.", "Total labels and optimizer updates are matched, but tasks allocate these labels across different numbers of permutation inputs per update.", "The source pool is reused for causal-comparison control; the common support and target-test pools are globally new.", "Four novel task sets do not establish cross-domain or broad task-set generalization; unknown audited actions are not proof of absent relations."]
+}

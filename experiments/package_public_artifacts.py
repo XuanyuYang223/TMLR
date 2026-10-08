@@ -1,0 +1,51 @@
+"""Create downloadable core artifacts, dereferencing historical absolute links."""
+import argparse
+from hashlib import sha256
+import json
+from pathlib import Path
+import tarfile
+
+from .longrun_engine import atomic_json
+from .permworld_combinations import sha
+
+
+def build(destination):
+    destination.mkdir(parents=True, exist_ok=True)
+    groups = {
+        'mechanism-confirmations': [
+            'results/operator_capacity_confirmation',
+            'results/operator_mechanism_diagnostic',
+            'results/final_mechanism_confirmation'],
+        'directional-loss-confirmation': ['results/readout_null_confirmation'],
+        'initial-cross-domain': ['results/algebra_relation_v3'],
+    }
+    # The six historical test shards are necessary for the final split audit.
+    config = json.loads(Path('configs/final_mechanism_confirmation.json').read_text())
+    extra = [Path(p) for p in config['excluded_test_datasets']]
+    inventories = []
+    for name, folders in groups.items():
+        entries = {p for folder in folders for p in Path(folder).rglob('*')
+                   if p.is_file() and '__pycache__' not in p.parts}
+        if name == 'mechanism-confirmations':
+            entries.update(extra)
+        entries = sorted(entries)
+        archive = destination / (name + '.tar.gz')
+        with tarfile.open(archive, 'w:gz', compresslevel=3, dereference=True) as tf:
+            for p in entries:
+                tf.add(p, arcname=str(p), recursive=False)
+        inventory = {'asset': archive.name, 'sha256': sha(archive),
+                     'bytes': archive.stat().st_size,
+                     'files': {str(p): sha(p) for p in entries},
+                     'absolute_symlinks_dereferenced': True}
+        assert inventory['bytes'] < 2 * 1024**3
+        atomic_json(destination / (name + '.inventory.json'), inventory)
+        inventories.append({k: v for k, v in inventory.items() if k != 'files'})
+        print(json.dumps({'archive_created': archive.name,
+                          'bytes': inventory['bytes'], 'files': len(entries)}), flush=True)
+    atomic_json(destination / 'release_assets.json', {'assets': inventories})
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--output', type=Path, default=Path('.publication/releases'))
+    build(parser.parse_args().output)

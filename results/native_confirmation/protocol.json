@@ -1,0 +1,206 @@
+{
+  "registered_utc": "2026-10-05T20:58:29.403796+00:00",
+  "signature": {
+    "plan": {
+      "base_config": "configs/permworld_combinations.json",
+      "output": "results/native_confirmation",
+      "data_seed": 202610057,
+      "examples_per_length": {
+        "train": 2000,
+        "validation": 100,
+        "representation": 40,
+        "support_pool": 100,
+        "target_validation": 50,
+        "target_test": 200,
+        "source_audit": 100
+      },
+      "calibration_groups": [
+        "position_three",
+        "cycle_four",
+        "interior_four"
+      ],
+      "calibration_seed": 17,
+      "architectures": [
+        {
+          "id": "d128_l2",
+          "d_model": 128,
+          "layers": 2,
+          "heads": 4
+        },
+        {
+          "id": "d192_l4",
+          "d_model": 192,
+          "layers": 4,
+          "heads": 6
+        },
+        {
+          "id": "d256_l4",
+          "d_model": 256,
+          "layers": 4,
+          "heads": 8
+        }
+      ],
+      "calibration_steps": 20000,
+      "source_steps": 20000,
+      "source_learning_rate": 0.0003,
+      "warmup_steps": 500,
+      "minimum_learning_rate_ratio": 0.1,
+      "examples_per_task_per_step": 32,
+      "record_every": 1000,
+      "precision": "bf16",
+      "model_seeds": [
+        1009,
+        2027,
+        3037,
+        4051,
+        5059
+      ],
+      "architecture_selection": "highest mean final source-validation accuracy over three preselected groups; target labels/results not consulted",
+      "source_endpoint": "fixed final update count, no per-group test or validation checkpoint selection",
+      "target_adaptation_lrs": [
+        0.0001,
+        0.0003,
+        0.001
+      ],
+      "target_adaptation_steps": [
+        100,
+        300,
+        1000
+      ],
+      "target_tuning_policy": "equal validation search for every source condition and random initialization, separately for task-free linear, query linear, task-free MLP and fine-tuning, using seed17 and averaging all targets/support budgets; condition-specific selected policies apply to all three seeds; also report the shared random-selected fine-tuning policy",
+      "final_eval_policy": "new target-test data untouched until source protocol and adaptation settings are fixed; report all groups and seeds; exploratory follow-up to prior pilot",
+      "limitations": [
+        "Only one new source training data world; source seeds are conditional replications, not five independent data worlds.",
+        "Same eight source task sets and four targets as before; new training and target inputs, not new mathematical domains.",
+        "Single and multi-task source losses have different gradient objectives; per-task exposure, sample schedule, initialization and optimizer are held fixed.",
+        "Five seed confidence intervals are descriptive and sensitive to few replications.",
+        "Incremental relation prediction is conditional on the eight selected groups, not a causal test of relation structure."
+      ],
+      "prediction_seeds": [
+        1009,
+        2027,
+        3037
+      ],
+      "candidate_group": "interior_none",
+      "single_tasks": [
+        "peaks",
+        "valleys",
+        "left_to_right_maxima",
+        "right_to_left_maxima"
+      ],
+      "architecture": {
+        "id": "d256_l4",
+        "d_model": 256,
+        "layers": 4,
+        "heads": 8
+      },
+      "excluded_datasets": [
+        "results/six_hour_session/dataset/data.npz",
+        "results/native_target_repeat/dataset/data.npz",
+        "results/permworld_combinations/data.npz"
+      ],
+      "adaptation_policies": {
+        "candidate_shared": {
+          "learning_rate": 0.0003,
+          "steps": 100
+        },
+        "shared": {
+          "learning_rate": 0.0001,
+          "steps": 100
+        }
+      },
+      "condition_policies": {
+        "random": {
+          "learning_rate": 0.0001,
+          "steps": 100
+        },
+        "cycle_none": {
+          "learning_rate": 0.001,
+          "steps": 100
+        },
+        "cycle_three": {
+          "learning_rate": 0.001,
+          "steps": 100
+        },
+        "cycle_four": {
+          "learning_rate": 0.001,
+          "steps": 100
+        },
+        "interior_none": {
+          "learning_rate": 0.0003,
+          "steps": 100
+        },
+        "interior_four": {
+          "learning_rate": 0.0001,
+          "steps": 100
+        },
+        "position_none": {
+          "learning_rate": 0.0003,
+          "steps": 100
+        },
+        "position_three": {
+          "learning_rate": 0.001,
+          "steps": 1000
+        },
+        "position_four": {
+          "learning_rate": 0.001,
+          "steps": 100
+        }
+      },
+      "length_baseline_bandwidth": 2.0,
+      "ridge_alpha": 1.0,
+      "bootstrap_repetitions": 20000,
+      "inference_seed": 202610058,
+      "primary_effect": {
+        "group": "interior_none",
+        "target": "lis_length",
+        "budget": 256,
+        "mode": "candidate_shared",
+        "comparison": "same-policy paired random initialization",
+        "unit": "source model seed, five seeds, conditional on one new data world"
+      },
+      "single_task_question": "compare candidate with each of its four single-task encoders under the same adaptation policy; report all four, no selection of a best single model",
+      "primary_prediction": {
+        "mode": "shared",
+        "budget": 256,
+        "targets": "all four",
+        "seeds": "first three specified new seeds per group",
+        "variants": [
+          "source_learning",
+          "source_learning_plus_relations",
+          "source_learning_and_label_stats",
+          "source_learning_label_stats_plus_relations"
+        ],
+        "outcome": "paired gain over same-seed random model",
+        "primary_increment": "source_learning_plus_relations versus source_learning",
+        "robustness_increment": "source_learning_label_stats_plus_relations versus source_learning_and_label_stats",
+        "weights_fit": "average the two old target-pool gains per old group/seed/target; alpha=1; no old initialization dummy features",
+        "uncertainty_unit": "task group, descriptive cluster bootstrap over eight specified groups",
+        "heldout_scope": "new source-data world and source-model seeds; same eight task sets; not unseen task combinations"
+      },
+      "protocol_scope": "follow-up selected from old outcomes; candidate, seeds, tasks, budgets, policies and prediction analysis frozen before fresh data or retraining"
+    },
+    "config_sha256": "b6836bb7b6caa302d926cd6bfc3e60446fa0b236a16ce823021718a9fae25c16",
+    "core_sha256": {
+      "experiments/native_confirmation.py": "8de4f779865bbb6907e27b31824f3fe63d5d917840583292d0bff37b8dbfbf87",
+      "experiments/longrun_engine.py": "c40cede331cb3a92e61a3a501421c067db2ce862ad1a5934dd31ec28b6802bca",
+      "experiments/native_confirmation_analysis.py": "452e271748bbbd78b11cdd467fbd7ad7352645bac3f9e7204b514d3139a3703b",
+      "experiments/longrun_transfer.py": "e3fcc098e21ca9c7566b97fcdcc277200ba6a774627ab46f1a314b8e671fa8c2",
+      "experiments/longrun_attention.py": "5035f58453ddee5c5d5b05878491dfcc81764e172f2ebada437dc9e325048918",
+      "experiments/permworld_combinations.py": "b14ac19b0be4c5695998d04782f43220f4b05a4634435f1715d6d1cdf3b0cdc0",
+      "experiments/native_target_repeat.py": "7c18ee82bab500418a96f1bea0d9178294e3727e9f901464289b4cbbe4a04a1d",
+      "experiments/native_transfer_prediction.py": "862e0ed54e86c5e6ece7341b47a830dc277e359c7904dfdd594777c53c03ae2a",
+      "experiments/native_transform_audit.py": "0111120bdc032cbd0701f4a827a70f06db749aa2c9975c5a618ad0bcd8c9bab6",
+      "experiments/native_prediction_sensitivity.py": "cde0c5362e532ee03333c55a33163cb7914379adacd035465a1f06a988641184",
+      "experiments/native_length_baseline.py": "818e69666f2150fb86db7e9870c17872bce19b4c5d3ba18db4147df64f69da55"
+    },
+    "upstream_sha256": {
+      "models.py": "286a01f794f627c1f0db5dd6dd31adbdb7f58f235e47203163eda6fc8a8baab6",
+      "math_ops.py": "968e7580c01289e5ffeab9f07c52beb334be40d95c0e61d7a7f9e2cab694c62c",
+      "passage.py": "d200ffe6f5f6cff717c1b6ed6698a5a6af42bb6580fa4e8729a2fd84b79babd6"
+    },
+    "target_tuning_sha256": "018811e9fc3e44d4e7fa561684b41809ea3cc3fa23b732e20a2b8f51984a5fd2"
+  },
+  "new_source_records_at_freeze": 0,
+  "new_target_records_at_freeze": 0
+}

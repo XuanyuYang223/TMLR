@@ -1,0 +1,87 @@
+{
+  "logical_source": 1,
+  "actual_independent_seed": 18401,
+  "local_fit_index": 0,
+  "plan": {
+    "version": 3,
+    "field_prime": 13,
+    "domains": [
+      "matrix",
+      "polynomial"
+    ],
+    "input_width": 4,
+    "hidden_width": 128,
+    "source_seeds": [
+      18401,
+      18401,
+      18401
+    ],
+    "fit_repeats": 6,
+    "fit_anchors": 1024,
+    "source_anchors": 512,
+    "validation_anchors": 128,
+    "iid_examples": 256,
+    "collision_pairs": 128,
+    "source_epochs": 500,
+    "joint_epochs": 900,
+    "batch_size": 64,
+    "source_batch_size": 128,
+    "source_pretrain_lr": 0.003,
+    "source_learning_rate": 0.0008,
+    "operator_learning_rate": 0.002,
+    "geometry_weight": 0.25,
+    "native_ce_weight": 1.0,
+    "native_kd_weight": 1.0,
+    "operator_kd_weight": 1.0,
+    "temperature": 2.0,
+    "conditions": [
+      "both_correct",
+      "a_correct_b_wrong",
+      "a_wrong_b_correct",
+      "both_wrong",
+      "no_geometry",
+      "output_space"
+    ],
+    "pilot_known_gate": {
+      "native": 0.95,
+      "generators": 0.9
+    },
+    "primary_word": "ab",
+    "primary_metrics": [
+      "compound_accuracy",
+      "collision_pair_both_correct",
+      "hidden_prediction_nmse"
+    ],
+    "auxiliary_metrics": [
+      "cka",
+      "true_intermediate_accuracy",
+      "same_target_wrong_order_accuracy"
+    ],
+    "words": [
+      "",
+      "a",
+      "b",
+      "ab",
+      "ba",
+      "aa",
+      "bb",
+      "bbb",
+      "aba",
+      "bbbb"
+    ],
+    "supervision": "Common forward-only e\u2192a/e\u2192b supervision; no inverse assumption for irreversible differentiation. All conditions share correct native CE/KD and generator-output KD, exact1024 anchors each epoch, and five native state queries. Only geometric pairing or geometry-space choice differs.",
+    "output_space_scope": "Information diagnostic; same encoder/native supervision/input exposures/epochs, smaller operators on full logits; operator parameter counts differ. It is not a capacity-matched causal control.",
+    "legacy_permworld_scope": "Completed PermWorld studies use bidirectional involution supervision and a transformer. They are version1, preserved as-is; not described as identical architecture/loss to new forward-only noninvertible-compatible version3.",
+    "test_opening": "After fixed900-epoch pilot passes known native/gen thresholds, finish all36 formal fits before evaluating compound test. No use of compound results for tuning or early stopping. Fixed900 epoch shared across both new domains.",
+    "matrix_actions": "A=[[0,1],[1,0]], B=[[0,-1],[1,-1]] inGL(2,F13); generated group has6 elements, A\u00b2=B\u00b3=e andABA=B\u00b2. Ordinary task trace.",
+    "polynomial_actions": "Exact degree3 polynomials overF13; A translates by+1, B differentiates. AB=BA. Base/readout f(0), observed f(0),f(1),f\u2032(0), missing f\u2032(1).",
+    "polynomial_splitting": "Blocks by(c3, derivative discriminant) retain translation closure and one derivative. Audit all actually observed known paths against all test paths. Full semigroup-closure disjointness is impossible because D\u2074 sends all cubics tozero. Collision/uncertainty block dependence must be reported.",
+    "source_replication": "Three independently pretrained sources per domain, reused in six adaptation repeats. Supports may overlap; source/train/validation/test path separation is audited.",
+    "registered_before_new_domain_models": false,
+    "scope": "Intervention study of specified mathematical relations; not spontaneous discovery, full group representation proof, or established output-independent mechanism.",
+    "encoding": "numeric_gelu: four centered/scaled scalar field coordinates, generic GELU MLP; no one-hot features and no group operations in the model.",
+    "known_only_selection": "Version2 one-hot/numeric encoding failed generator generalization (train99.8%, heldout7.8%). Scalar GELU selected before compound tests using separately reserved known pilot64 and confirmation128. No compound outcomes used for architecture selection. Polynomial shares matrix-selected architecture.",
+    "execution": "Two independent seeded fit processes; every36 fixed900-epoch fit completes before compound test opens.",
+    "registration_scope": "Registered after known-only source0/pilot architecture feasibility, before every new compound test and before all36 formal intervention fits. Source0/pilot reused exactly; three ordinary source seeds, six adaptations."
+  }
+}

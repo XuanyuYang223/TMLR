@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>代数关系与迁移：第一轮试验</title>
+<style>body{max-width:1000px;margin:40px auto;padding:0 20px;font:16px/1.7 system-ui;color:#20242b}img{max-width:100%}table{border-collapse:collapse;width:100%}td,th{padding:8px;border-bottom:1px solid #ddd;text-align:left}code{background:#eee;padding:2px 4px}</style>
+<h1>代数关系与迁移：第一轮受控试验</h1>
+<p>完成 72 个源模型、8 种组合、3 套随机输入基与 10 个共同未见目标。源任务最低训练准确率 100.00%；98% 拟合程度门槛：通过。门槛不检验未见输入上的源任务泛化。</p>
+<p>A 的最小依赖涉及三个任务，B 涉及四个任务。两组均有四任务、秩三、均匀边际、两两独立标签和相同联合熵。每个源任务训练曝光为 750,000 次。</p>
+<p><strong>范围：</strong>源训练覆盖所有输入，支持集与测试集只在目标标签上隔离。本轮检验同实体的新任务迁移，不是新实体或分布外泛化。</p>
+<p>主结果为 25 个目标标签下的完整微调收益。按整个源任务组合留出所有种子与目标行；基线控制源学习曲线、单任务学习曲线、目标和输入基效应。加入结构后 ΔR²=+0.0039，MAE 减少=+0.025 个百分点，4/8 折 MAE 改善。</p>
+<p>两组在所有标签预算与普通读出设定下的平均迁移收益均为负。 结构特征的改善很小；当前证据不足以支持稳定的增量预测能力。</p><p>事后诊断：已训练的 u/v/w 输出经外部已知数学公式组合，目标测试准确率为 100.00%。这证明目标信息在这些已见输入的表征中可恢复；普通读出差不等于信息缺失。该 oracle 使用外部公式，不是模型自发学会组合。<a href='symbolic_oracle.json'>诊断与每个端点</a>。</p><img src="figures/transfer.png"><img src="figures/prediction.png">
+<table><tr><th>评估</th><th>标签数</th><th>组</th><th>准确率</th><th>相对随机初始化收益</th></tr><tr><td>probe</td><td>10</td><td>A</td><td>19.41%</td><td>-4.03 pp</td></tr><tr><td>probe</td><td>10</td><td>B</td><td>19.94%</td><td>-3.50 pp</td></tr><tr><td>probe</td><td>25</td><td>A</td><td>19.44%</td><td>-6.40 pp</td></tr><tr><td>probe</td><td>25</td><td>B</td><td>21.36%</td><td>-4.48 pp</td></tr><tr><td>probe</td><td>50</td><td>A</td><td>19.26%</td><td>-7.43 pp</td></tr><tr><td>probe</td><td>50</td><td>B</td><td>22.72%</td><td>-3.96 pp</td></tr><tr><td>finetune</td><td>10</td><td>A</td><td>20.39%</td><td>-3.79 pp</td></tr><tr><td>finetune</td><td>10</td><td>B</td><td>21.08%</td><td>-3.10 pp</td></tr><tr><td>finetune</td><td>25</td><td>A</td><td>21.30%</td><td>-4.94 pp</td></tr><tr><td>finetune</td><td>25</td><td>B</td><td>21.91%</td><td>-4.33 pp</td></tr><tr><td>finetune</td><td>50</td><td>A</td><td>22.34%</td><td>-3.95 pp</td></tr><tr><td>finetune</td><td>50</td><td>B</td><td>23.17%</td><td>-3.12 pp</td></tr></table>
+<img src="figures/source_learning.png"><img src="figures/cka.png">
+<p>误差条是随机输入基之间的样本标准差。4320 个目标端点不构成 4320 个独立重复。单一 MLP 与有限域不足以证明跨领域普适性；留出的是系数组合，训练仍包含两种依赖模板。</p>
+<p>原始数据：<a href="metrics.csv">metrics.csv</a>；<a href="prediction_scores.json">分组预测与各折结果</a>；<a href="algebra_audit.json">精确代数审计</a>；<a href="metadata.json">配置与环境</a>。</p>
+</html>

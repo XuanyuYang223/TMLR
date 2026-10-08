@@ -1,0 +1,115 @@
+{
+  "registered_utc": "2026-10-06T11:47:23.611499+00:00",
+  "signature": {
+    "plan_sha256": "50b68100db17ecc26b6b653c6631eb071bdf51f1d74f79898b63542995985ad1",
+    "core_sha256": {
+      "experiments/hidden_relation_train.py": "43115c61592d34ac7a53cb2c4a4ccaad83d97c21b893ec2d87824867123a9cf3",
+      "experiments/longrun_transfer.py": "e3fcc098e21ca9c7566b97fcdcc277200ba6a774627ab46f1a314b8e671fa8c2",
+      "experiments/longrun_attention.py": "5035f58453ddee5c5d5b05878491dfcc81764e172f2ebada437dc9e325048918",
+      "experiments/permworld_combinations.py": "b14ac19b0be4c5695998d04782f43220f4b05a4634435f1715d6d1cdf3b0cdc0",
+      "experiments/permutation_audit.py": "d02b667d8d1951c547ad4a4a6a84875535f6ee59255db96bb6abef241b5b267e",
+      "experiments/representation_algebra.py": "0f520644029ffc2b3bd32ddbea1f3d522f6335dee9ea4b2ae72ca4bdd96a7eae"
+    },
+    "previous_protocol_sha256": "36cf4182f9d34a3dbf39865d0440eacb6d1828922e220d6e351e3a049cea5e3f",
+    "upstream_sha256": {
+      "models.py": "286a01f794f627c1f0db5dd6dd31adbdb7f58f235e47203163eda6fc8a8baab6",
+      "math_ops.py": "968e7580c01289e5ffeab9f07c52beb334be40d95c0e61d7a7f9e2cab694c62c",
+      "passage.py": "d200ffe6f5f6cff717c1b6ed6698a5a6af42bb6580fa4e8729a2fd84b79babd6"
+    },
+    "plan": {
+      "output": "results/algebra_hidden_relations",
+      "base_config": "configs/permworld_combinations.json",
+      "previous_replication": "results/algebra_structure_replication",
+      "architecture": {
+        "id": "d256_l4",
+        "d_model": 256,
+        "layers": 4,
+        "heads": 8
+      },
+      "source_seeds": [
+        5081,
+        6091,
+        7103
+      ],
+      "conditions": [
+        "ordinary",
+        "correct_relations",
+        "shuffled_relations"
+      ],
+      "data_seed": 2026100661,
+      "lengths": [
+        10,
+        30
+      ],
+      "training_orbits_per_length": 256,
+      "probe_orbits_per_length": {
+        "fit": 16,
+        "validation": 4,
+        "iid_test": 8
+      },
+      "collision_pairs_per_length": 64,
+      "source_task": "left_to_right_maxima",
+      "observed_actions": [
+        0,
+        1,
+        4
+      ],
+      "known_edges": [
+        [
+          0,
+          1,
+          "c"
+        ],
+        [
+          1,
+          0,
+          "c"
+        ],
+        [
+          0,
+          4,
+          "i"
+        ],
+        [
+          4,
+          0,
+          "i"
+        ]
+      ],
+      "heldout_primary_words": [
+        "ci",
+        "ici"
+      ],
+      "wrong_order_word": "ic",
+      "source_steps": 20000,
+      "anchors_per_update": 32,
+      "record_every": 1000,
+      "source_learning_rate": 0.0003,
+      "warmup_steps": 500,
+      "minimum_learning_rate_ratio": 0.1,
+      "weight_decay": 0.01,
+      "relation_loss_weight": 0.25,
+      "relation_loss_ramp_steps": 500,
+      "batch_size": 128,
+      "ridge_grid": [
+        1e-06,
+        0.0001,
+        0.01,
+        1.0
+      ],
+      "answer_baseline_seeds": [
+        10017,
+        10042,
+        10101
+      ],
+      "fixed_predictions": [
+        "Answer plus task codes can reproduce the previous four-record group geometry; those probes alone cannot exclude answer coding.",
+        "On collision pairs, correct-relation models predict CI and ICI above the answer-only accuracy ceiling of 0.5 across new source seeds.",
+        "Correct-relation CI predictions include pairs with both different hidden answers correct; any deterministic predictor using only the three observed answers, length and task has pair success zero.",
+        "Correct-relation composition has higher mean hidden-answer accuracy than shuffled-relation and ordinary identity-operator controls; source learning grades are reported alongside all outcomes."
+      ],
+      "scope": "New relation-supervised assay, distinct from spontaneous geometry in ordinary multitask training. All source labels are LR-max counts at e/C/I states. Other orbit states and edges are withheld. Predictions compose learned affine operators on base hidden states and use the frozen numeric readout without forwarding the hidden transformed input. Ordinary models additionally receive generator-only posthoc affine probes, separately labeled. Collision selection defines a conditional test, not an iid population estimate."
+    }
+  },
+  "new_source_models": 0
+}

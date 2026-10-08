@@ -1,0 +1,104 @@
+{
+  "registered_utc": "2026-10-07T14:53:57.982707+00:00",
+  "primary_test_opened_at_registration": false,
+  "signature": {
+    "code_sha256": "27de92c7f244add615c8c54bb0e4f59baefbec99adfd944215b1969df2da3698",
+    "joint_code_sha256": "7c94bed401f09f0ae7c934c35a66102e00e636c82008287982020fc1be3fac18",
+    "plan": {
+      "output": "results/two_step_relation_output_only",
+      "parent": "results/algebra_hidden_relations",
+      "source_condition": "ordinary",
+      "source_seeds": [
+        5081,
+        6091,
+        7103
+      ],
+      "support_seeds": [
+        261073101,
+        261073103,
+        261073107,
+        261073109,
+        261073113,
+        261073127
+      ],
+      "test_seed": 261073201,
+      "lengths": [
+        12,
+        15,
+        20,
+        25,
+        30
+      ],
+      "fit_per_length": 8192,
+      "validation_per_length": 512,
+      "iid_per_length": 256,
+      "collision_pairs_per_length": 128,
+      "conditions": [
+        "both_correct"
+      ],
+      "views": [
+        "hidden"
+      ],
+      "epochs": 10,
+      "checkpoint_epochs": [
+        5,
+        10
+      ],
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "warmup_updates": 100,
+      "minimum_learning_rate_ratio": 0.2,
+      "weight_decay": 0.0001,
+      "geometry_weight": 0,
+      "distillation_temperature": 2.0,
+      "minimum_pairing_stratum": 3,
+      "primary_word": "ci",
+      "words": [
+        "c",
+        "i",
+        "ci",
+        "ic",
+        "cc",
+        "ii"
+      ],
+      "primary_epoch": 10,
+      "fixed_predictions": [
+        "Both-correct hidden operators have higher heldout-ci accuracy than each of the other three conditions; compare paired outcomes without imposing a single-correct ordering.",
+        "Both-correct collision-ci accuracy exceeds the visible-answer-only0.5 ceiling in each of the three frozen-source means.",
+        "Both-correct collision-ci pair-both-correct is positive in each source mean.",
+        "Output-space operators, true-intermediate diagnostics, all single-step scores and all failures are reported; none are used to select fitting settings."
+      ],
+      "deadline_utc": "2026-10-07T17:00:00+00:00",
+      "scope": "Fixed output-only baseline: same six supports, three source initializations, frozen numeric readouts, exact10-epoch schedules, native CE/KD and correct operator-output KD as the four-condition coverage primary; geometric loss coefficient is0. The both_correct file naming only selects identity partner indices and does not add geometric supervision. Evaluate after all six fits finish on the immutable primary test. Registration occurs before any primary compound outcome; no tuning or replacement of the original factorial.",
+      "source_learning_rate": 0.0003,
+      "operator_learning_rate": 0.001,
+      "native_ce_weight": 1.0,
+      "native_distillation_weight": 1.0,
+      "operator_distillation_weight": 1.0,
+      "interpretation_gate": "Before interpreting hidden-composition failure, both correct single-generator validation accuracies must exceed0.90 in each of the three source means; report failure if unmet. Source native observed-state accuracy and each control operator accuracy are reported separately."
+    },
+    "shared_support_and_teacher_sha256": {
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/dataset/n0/support/dataset.npz": "87456c5f13c5a2afb2356a6d05d47d1f2c9d22bc8d80a56f2e809b9d7c6dbe91",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/dataset/n0/support/pairings.npz": "552945d4deeae113ffadf7889c0a24baf0f46f442c8554a4a505069666f04d76",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/dataset/n1/support/dataset.npz": "bd00ff455254e22017fb9704fcc121cf0a8e4abee8de55f163cee0053c23a419",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/dataset/n1/support/pairings.npz": "ce0e97a19bf27b29add50f73475d1560c030f6cd589bc617cbdc49ab4b58e917",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/dataset/n2/support/dataset.npz": "c00f59b346b62bb4cd00045b5f0dfe3d343b24821b4cf02e50e8236c75f51a07",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/dataset/n2/support/pairings.npz": "fc5a1c016922cb2452208e2102785230da32e22ba50a4d4a6c21e29858c69383",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/dataset/n3/support/dataset.npz": "91cb10b502e274ed1a6481a515f6e22440e74a3cfb517528a2f7e34485a1392f",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/dataset/n3/support/pairings.npz": "efd670c3d375c6612a29c0b69bde8676338b7c19bc72aef7c802b3a6779253d2",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/dataset/n4/support/dataset.npz": "25e8e420499557a7e2c258fc48216b46e5599bf1bd0cf1f9e6bf8b2c355ca92a",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/dataset/n4/support/pairings.npz": "c8fefaddac47a6349a012984b87fd93b247bc1fbd095aedf7ff621389b6d1a8c",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/dataset/n5/support/dataset.npz": "d364a11eafe13caed9e247ef1acc5b3c6fd839610817106e32f26e89a9943182",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/dataset/n5/support/pairings.npz": "33f9677ad314059ad28d5be423f1a4ebbd45e85063e315a7a05d717d389afe4f",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/features/n0_support.npz": "43afb70f6bbfb814121d97effa1413fbb71606d5362427edd851ede9f0e7c5b2",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/features/n1_support.npz": "48689f98ba3ca85d94cd7a9e97e3c005e4c7a377f7b092f7cdf4371856bd062d",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/features/n2_support.npz": "d2430eb7e99b85179f6021f2f0746f6e37ace6d2efc4578b4b56ecdf40315505",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/features/n3_support.npz": "a0dc1216eca9b5947fbae135c6a56f66d7680043018dbba56755f1adb17941ae",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/features/n4_support.npz": "2ada3119bcb4a7c54086a59439052e5d4e2edeebeff3ba8c9f4a6e4ec2bff3f3",
+      "/home/yangx/ICML/results/two_step_relation_coverage_confirmation/features/n5_support.npz": "bba9a42dd567fbaee80c7e97fed0010533d61b8aadf06938a1a014ca7e901fd3"
+    },
+    "difference": "Geometry weight0 instead of0.25; keep original source, frozen readout, native CE/KD, operator-output KD, five-query computation, eligible anchors and exact10-epoch schedule.",
+    "reason": "Both-wrong applies incorrect geometry and cannot stand for ordinary output-only training. Separate benefit of correct geometry from harm of wrong geometry.",
+    "evaluation": "Only after all six fixed-budget fits finish, evaluate on the exact immutable10-epoch primary test. Compare all four main conditions with this baseline. Registration precedes any new primary compound grade; no result-based tuning."
+  }
+}

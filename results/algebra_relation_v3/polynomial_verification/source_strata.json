@@ -1,0 +1,130 @@
+{
+  "status": "complete",
+  "completed_utc": "2026-10-07T19:45:44.447023+00:00",
+  "sources": [
+    {
+      "source_index": 0,
+      "known_native": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "known_generators": [
+        0.91796875,
+        1.0
+      ],
+      "passed_known_gate": true,
+      "collision_means": {
+        "accuracy": 0.07421875,
+        "pair_both_correct": 0.0,
+        "prediction_nmse": 1.4567002179991273,
+        "true_intermediate_accuracy": 1.0
+      }
+    },
+    {
+      "source_index": 1,
+      "known_native": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "known_generators": [
+        0.87109375,
+        1.0
+      ],
+      "passed_known_gate": false,
+      "collision_means": {
+        "accuracy": 0.095703125,
+        "pair_both_correct": 0.0078125,
+        "prediction_nmse": 1.2663498118815903,
+        "true_intermediate_accuracy": 0.998046875
+      }
+    },
+    {
+      "source_index": 2,
+      "known_native": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "known_generators": [
+        0.875,
+        1.0
+      ],
+      "passed_known_gate": false,
+      "collision_means": {
+        "accuracy": 0.078125,
+        "pair_both_correct": 0.00390625,
+        "prediction_nmse": 1.1024294122925467,
+        "true_intermediate_accuracy": 0.998046875
+      }
+    }
+  ],
+  "passed_source_indices": [
+    0
+  ],
+  "known_gate_conditioned_means": [
+    {
+      "condition": "both_correct",
+      "accuracy": 0.07421875,
+      "pair_both_correct": 0.0,
+      "prediction_nmse": 1.4567002179991273,
+      "true_intermediate_accuracy": 1.0
+    },
+    {
+      "condition": "a_correct_b_wrong",
+      "accuracy": 0.07421875,
+      "pair_both_correct": 0.00390625,
+      "prediction_nmse": 1.437178165683122,
+      "true_intermediate_accuracy": 1.0
+    },
+    {
+      "condition": "a_wrong_b_correct",
+      "accuracy": 0.064453125,
+      "pair_both_correct": 0.00390625,
+      "prediction_nmse": 1.4832748239430997,
+      "true_intermediate_accuracy": 1.0
+    },
+    {
+      "condition": "both_wrong",
+      "accuracy": 0.0625,
+      "pair_both_correct": 0.00390625,
+      "prediction_nmse": 1.4444322683285291,
+      "true_intermediate_accuracy": 1.0
+    },
+    {
+      "condition": "no_geometry",
+      "accuracy": 0.083984375,
+      "pair_both_correct": 0.0,
+      "prediction_nmse": 38.10790222829599,
+      "true_intermediate_accuracy": 1.0
+    },
+    {
+      "condition": "output_space",
+      "accuracy": 0.060546875,
+      "pair_both_correct": 0.0,
+      "prediction_nmse": 0.5926259870610726,
+      "true_intermediate_accuracy": 0.958984375
+    }
+  ],
+  "source_label_prior_baselines": [
+    {
+      "split": "iid",
+      "source_native_label_mode": 12,
+      "source_mode_accuracy": 0.07421875,
+      "source_mode_pair_both_correct": null,
+      "uniform_guess_expected_accuracy": 0.07692307692307693,
+      "independent_uniform_guess_expected_pair_double_correct": null
+    },
+    {
+      "split": "collisions",
+      "source_native_label_mode": 12,
+      "source_mode_accuracy": 0.05859375,
+      "source_mode_pair_both_correct": 0.0,
+      "uniform_guess_expected_accuracy": 0.07692307692307693,
+      "independent_uniform_guess_expected_pair_double_correct": 0.005917159763313609
+    }
+  ],
+  "code_sha256": "5ae6feeb3bb6bdb5381aca4f059d603d90e7fff41087ae5ed3081cca4e59f29f",
+  "scope": "Supplement defined after matrix outcomes and before polynomial compound outcomes; thresholds95% native/90% generators were already fixed. Source-level generator means over two fitting pools determine strata. No source removed from primary means, no checkpoint or hyperparameter selection. Source-mode baseline uses only native source labels; no compound source labels."
+}

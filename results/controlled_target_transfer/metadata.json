@@ -1,0 +1,78 @@
+{
+  "config": {
+    "source_config": "configs/field_matched_support.json",
+    "output": "results/controlled_target_transfer",
+    "targets": [
+      [
+        1,
+        0,
+        2,
+        2
+      ],
+      [
+        0,
+        1,
+        1,
+        2
+      ],
+      [
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        4,
+        3
+      ],
+      [
+        1,
+        3,
+        3,
+        1
+      ],
+      [
+        1,
+        2,
+        0,
+        4
+      ],
+      [
+        1,
+        4,
+        0,
+        1
+      ],
+      [
+        1,
+        2,
+        0,
+        3
+      ]
+    ],
+    "budgets": [
+      25,
+      50
+    ],
+    "test_per_class": 25,
+    "head_steps": 200,
+    "head_learning_rate": 0.01,
+    "deadline_utc": "2026-10-05T17:51:45+00:00",
+    "analysis_reserve_seconds": 600,
+    "maximum_runtime_seconds": 1800,
+    "prediction": "For a categorical subset lookup, lower algebraic target composition order should yield higher target accuracy at equal label budget. Neural linear and MLP heads are reported separately without assuming the same ordering.",
+    "target_policy": "all eight common targets exclude every scalar-equivalent source direction; all source conditions share each world-target input split and nested balanced support",
+    "generalization_scope": "target labels on input rows absent from target support, but every row was exposed in source pretraining; transductive new-task transfer",
+    "selection_policy": "fixed 200-step learning-rate-0.01 heads, no target-test selection; preserve all targets, conditions and budgets",
+    "runtime_device": "CPU readouts of the same frozen GPU-trained encoders",
+    "target_selection": "new scalar directions; physical support >=3 in every basis; four minimum-order-2 and four minimum-order-3 targets; only mathematical selection",
+    "followup_wrapper_sha256": "1a9143021a30b2538c09363b88883e4d324b104d9b905c3f75a14973e7dd4683"
+  },
+  "source_fingerprint": "2a944ae1b79d66ce34abc2e63342aed2f89e9b27e7011565bf83f9ce81a892e2",
+  "code_sha256": "22483b4c025302498d599a508962aae87c3714108c07e42aa2e4cc69c8c7d4b5",
+  "head_code_sha256": "e3fcc098e21ca9c7566b97fcdcc277200ba6a774627ab46f1a314b8e671fa8c2",
+  "categorical_code_sha256": "81780eb0a18732ce1e0a3ce81cc7cb861a1769ebb76ab55fa305ec524a85055d",
+  "fingerprint": "6adf3251c3a7ff3bd5d32d3e0d2fbf085409ea748a44aace7a37e896b2d04cb5"
+}

@@ -1,0 +1,130 @@
+{
+  "registered_utc": "2026-10-08T01:10:35.348714+00:00",
+  "new_source_training_started": false,
+  "new_test_predictions_observed": false,
+  "signature": {
+    "config": {
+      "output": "results/final_mechanism_confirmation",
+      "domain": "matrix",
+      "source_seeds": [
+        17291,
+        18401,
+        19507,
+        20611,
+        21713
+      ],
+      "data_seed": 261084001,
+      "pairing_seed": 261084501,
+      "predictor_seed": 261084701,
+      "schedule_seed": 261084801,
+      "bootstrap_seed": 261084901,
+      "bootstrap_samples": 10000,
+      "conditions": [
+        "linear_correct",
+        "linear_wrong",
+        "nonlinear_correct",
+        "nonlinear_wrong"
+      ],
+      "source_anchors": 512,
+      "fit_anchors": 1024,
+      "validation_anchors": 128,
+      "pilot_validation_anchors": 64,
+      "iid_examples": 256,
+      "collision_pairs": 128,
+      "hidden_width": 128,
+      "predictor_hidden_width": 256,
+      "predictor_parameters": 65920,
+      "steps": 2000,
+      "batch_size": 128,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "output_kd_weight": 1.0,
+      "geometry_weight": 0.25,
+      "temperature": 2.0,
+      "source_preparation": "Five independently initialized ordinary sources, 500 epochs each, followed by 900 epochs of correct forward-only single-generator preparation per source. Fresh shared source corpus and a separate paired support pool per source. Freeze encoder, both original operator maps and readout before all four first-operator arms. Only new checkpoints, never reuse previous source weights.",
+      "protocol_harmonization": "Declared before training: all four first-operator arms use zero weight decay, so same-budget factorized training and direct affine convergence solve the same unregularized KD+normalized-MSE data objective. Source preparation retains its historical optimizer. Previous nonzero-decay studies are immutable and separately described.",
+      "loss": "Correct fixed first-generator teacher logits for every arm; only correct versus matched-wrong first-state geometric target changes. Geometry uses fixed correct-target population variance. No composite supervision or compound-based checkpoint/hyperparameter selection.",
+      "excluded_test_datasets": [
+        "results/algebra_relation_v3/matrix/dataset/test.npz",
+        "results/readout_null_confirmation/matrix/dataset/test.npz",
+        "results/operator_capacity_confirmation/dataset/test.npz",
+        "results/operator_mechanism_diagnostic/datasets/s0_fresh.npz",
+        "results/operator_mechanism_diagnostic/datasets/s1_fresh.npz",
+        "results/operator_mechanism_diagnostic/datasets/s2_fresh.npz"
+      ],
+      "test_novelty": "New common test excludes every historical examined test orbit above. All new source, validation, fit and test whole-group orbits disjoint within this study. New training may reuse historical test/training orbits under entirely new initialized models, because the finite world cannot exclude all prior test orbits from every partition while retaining the fixed sample sizes. No all-history never-seen-training claim.",
+      "hybrids": [
+        [
+          "linear_correct",
+          "nonlinear_correct"
+        ],
+        [
+          "linear_correct",
+          "nonlinear_wrong"
+        ],
+        [
+          "nonlinear_correct",
+          "linear_correct"
+        ]
+      ],
+      "linear_solvers": [
+        "ols_initialization",
+        "budget_linear_initialization"
+      ],
+      "solver": {
+        "max_iterations": 2000,
+        "gradient_tolerance": 1e-09,
+        "change_tolerance": 1e-14,
+        "gap_bound_tolerance": 1e-08,
+        "svd_relative_rank_threshold": 1e-12
+      },
+      "solver_policy": "Float64 SVD-whitened affine function family. Its readout-null component has the exact least-squares solution, and the readout-row component solves exactly the shared correct-teacher KD+0.25 normalized MSE objective. Both starting points are fixed before new training. Original 2000-step Identity arms retain exactly the same data loss and no decay. No ridge or new objective selected. Certify each of twenty fits using strong convexity and independent analytic gradients; report convergence failures without seed replacement.",
+      "precision_checks": "For each affine solution compare float64 and float32 inference with the same frozen second map/readout; compare independent solver starting points, coefficient norms, condition numbers, objective values and heldout state predictions. Every calculation uses the same affine function family and fixed loss.",
+      "primary_metrics": [
+        "gelu_correct_minus_wrong_collision_accuracy",
+        "same_budget_activation_by_correctness_interaction",
+        "correct_null_donor_swap_gain",
+        "correct_vs_wrong_null_donor_gain",
+        "remaining_activation_by_correctness_interaction_after_affine_convergence"
+      ],
+      "secondary_metrics": [
+        "collision_pair_both_correct",
+        "iid_accuracy",
+        "heldout_first_state_nmse",
+        "downstream_null_score_error",
+        "first_generator_accuracy",
+        "true_intermediate_diagnostic"
+      ],
+      "source_gate": {
+        "native": 0.95,
+        "generators": 0.9
+      },
+      "test_policy": "Finish all five source preparations, all twenty fixed-budget arms and all twenty convex solves before any compound inference. No early stopping or compound-based tuning. Failed primitive gates are retained and disclosed.",
+      "uncertainty": "Paired crossed bootstrap of five source clusters and 128 common collision pairs. Report every source and distinguish individual hypotheses; no replicate count inflated by models, steps or endpoints. Intervals descriptive; no equivalence claim from crossing zero.",
+      "ending_rule": "After this fixed five-source confirmation and the declared convergence/precision checks complete, close experimental scope regardless of significance. Integrate supported findings into the manuscript and unresolved optimization/numerical/expressivity explanations into limitations. No new domains, seeds, coefficients or mechanistic training interventions in this round.",
+      "scope": "Correctness interventions and predicted null-component transfer conditional on relation-prepared encoders. Not spontaneous algebra discovery, no universal output-independent mechanism, no exact percentage attribution to optimization versus expressivity."
+    },
+    "code_sha256": {
+      "configs/final_mechanism_confirmation.json": "18ddeb9fdb5a8936227e07ef90d12d2483cea8caebb40bb9ccc7331fff788947",
+      "/home/yangx/ICML/experiments/final_mechanism_train.py": "84439671a2c6f286609ed9321cb17365fcca07e53a1d43362881619b890d9b9f",
+      "experiments/final_mechanism_solver.py": "1f193bc1cde2e3ffe4b77076a69417637f63b7c4904df710a0be81c6d376ccb0",
+      "/home/yangx/ICML/experiments/algebra_relation_campaign.py": "d995d2b663f815b2a38ecde7239585b82a64792f47a1f70c06c99b5aa7824644",
+      "/home/yangx/ICML/experiments/algebra_relation_worlds.py": "8be5b9a76648ae94528de00a4ff78a76af25d312e801c3ce0f39957c68a48eb0",
+      "experiments/operator_capacity_confirmation.py": "5161e4e74846a81738435909dd4833b48af059085502043533b32f8b9071f65b",
+      "experiments/algebra_relation_feasibility.py": "57b36fc55d36670adabfa43e9e49819d66d020dcdc93ad6eff05b5ad0121471d",
+      "experiments/two_step_relation_factorial.py": "3579578ed29649fd2be314e3e73eb6fbb258335202b00aa9bb8bcda323520ecc"
+    },
+    "historical_test_sha256": {
+      "results/algebra_relation_v3/matrix/dataset/test.npz": "7cb6e636a92bc8f9106eb424703bcab7f75bd7a4f90fd5016a5bebc5d32bf6b1",
+      "results/readout_null_confirmation/matrix/dataset/test.npz": "b4b11b3916e57993af0108f3f2068e3b956b13e6fe0aec251ed043c8d5cc0623",
+      "results/operator_capacity_confirmation/dataset/test.npz": "02715349f784a96dca5470c44279a4d06467276047c4372f63e94cd83b603796",
+      "results/operator_mechanism_diagnostic/datasets/s0_fresh.npz": "2925b7578883dc97770050d0b0a60785abbbf26b8387ac06b24f7eb2495fe457",
+      "results/operator_mechanism_diagnostic/datasets/s1_fresh.npz": "6a607dbb823e0633d7537cfb6476e4068bf561c52d204833bc78ebc6426d4581",
+      "results/operator_mechanism_diagnostic/datasets/s2_fresh.npz": "59e1a4dcbd5d9705533d58de442c0cc62de15d1d6bf6e420abd50314e52cc9ba"
+    },
+    "previous_delivery_sha256": {
+      "results/operator_capacity_confirmation/delivery.json": "c8f8e05a607e9736e83c1152f445083c0b4d288c953c282819dc98fc7d6a753a",
+      "results/operator_mechanism_diagnostic/delivery.json": "e50d669a3b1778bea3a23bb66e09748997b330daf2b4ae9a0f3f85e2149c050d"
+    }
+  }
+}

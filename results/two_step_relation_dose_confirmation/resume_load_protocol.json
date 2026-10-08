@@ -1,0 +1,11 @@
+{
+  "registered_utc": "2026-10-07T15:11:32.732181+00:00",
+  "compound_test_opened_at_registration": false,
+  "signature": {
+    "code_sha256": "14d7f03ef3aecb3881c5efc3b95bd83a205fe4dd9476d83af8cdcad3120681da",
+    "dose_runner_sha256": "b11ae035ff64006c12a87aa770aeffb2bb3065102b00a54c10fcbb795e0dc411",
+    "compatibility_verification_sha256": "bcf4f5cfa2b5390d752e17a252fdd481499a579e3d71b61bbc1e06a3c3007438",
+    "change": "For dose maps/*_resume.pt only, load the checkpoint onCPU. Model.load_state_dict copies parameters toCUDA; optimizer.load_state_dict moves moments to their parameter devices while scalar step counters stay onCPU. All other torch.load calls retain their original options.",
+    "scope": "Performance correction only. Optimizer settings, tensors, schedules, exact exposures, source data and model endpoints are unchanged. The independent optimizer compatibility case gives bitwise-identical parameters/moments for10 updates."
+  }
+}

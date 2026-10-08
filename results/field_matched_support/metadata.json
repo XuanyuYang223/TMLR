@@ -1,0 +1,177 @@
+{
+  "config": {
+    "p": 5,
+    "dimension": 4,
+    "world_seeds": [
+      271,
+      314,
+      593
+    ],
+    "model_seeds": [
+      17,
+      42,
+      101
+    ],
+    "hidden": 192,
+    "features": 64,
+    "steps": 6000,
+    "milestones": [
+      0,
+      1200,
+      3000,
+      6000
+    ],
+    "learning_rate": 0.003,
+    "weight_decay": 0.001,
+    "source_accuracy_gate": 0.98,
+    "groups": [
+      "P",
+      "M1",
+      "M2"
+    ],
+    "input_transform": "swap the third and fourth latent coordinates; involution",
+    "source_P": [
+      "z1",
+      "z2",
+      "z3",
+      "z4"
+    ],
+    "source_Mk": [
+      "z1",
+      "z2",
+      "z3",
+      "z3+k*z4"
+    ],
+    "exact_controls": [
+      "four source tasks",
+      "rank four",
+      "uniform marginal labels",
+      "zero pairwise mutual information",
+      "uniform full joint distribution on F5^4",
+      "same inputs/exposure/initialization/update count"
+    ],
+    "prospective_prediction": "source one-hot character-kernel CKA under the involution is exactly 1 for P, 3/4 for M1/M4, and 1/2 for M2/M3; test whether learned hidden representations follow this ordering as fitting improves",
+    "status": "exploratory prospective secondary experiment; registered before any model or transformation CKA from this protocol",
+    "scope": "representation experiment with all source-domain inputs exposed; no new-entity generalization claim",
+    "output": "results/field_matched_support",
+    "deadline_utc": "2026-10-05T17:51:45+00:00",
+    "analysis_reserve_seconds": 5400,
+    "world_provider_sha256": "1b5e60de453e91787b50750b538557a8e92af8b59a8cf9cee61ecfa1094939a4",
+    "world_basis_policy": "all four physical source coefficients are nonzero for every source task in all three groups; all individual tasks are modular four-input sums up to per-coordinate category permutations"
+  },
+  "code_sha256": "492ffbba4815a10bdc5e046431f815663772983f51f6c2c4a0c40fe8eccc6aed",
+  "model_sha256": "8620b9115e28384bb71b0813ba1689eee37222fef9b35096cb6f99d13d3305c5",
+  "algebra_sha256": "758fa9839a31dc27b1d09d25d140821395b86f6eddbe4663a9a002d4f7fee6e3",
+  "fingerprint": "2a944ae1b79d66ce34abc2e63342aed2f89e9b27e7011565bf83f9ce81a892e2",
+  "registered_unix": 1791210936.873033,
+  "audit": [
+    {
+      "group": "P",
+      "sources": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "rank": 4,
+      "joint_entropy": 6.437751649736401,
+      "joint_support": 625,
+      "max_pairwise_mi": 0.0,
+      "predicted_categorical_cka": 1.0,
+      "exact_categorical_cka": 0.9999999999999998,
+      "directions_retained": 4
+    },
+    {
+      "group": "M1",
+      "sources": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "rank": 4,
+      "joint_entropy": 6.437751649736401,
+      "joint_support": 625,
+      "max_pairwise_mi": 0.0,
+      "predicted_categorical_cka": 0.75,
+      "exact_categorical_cka": 0.7500000000000007,
+      "directions_retained": 3
+    },
+    {
+      "group": "M2",
+      "sources": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          2
+        ]
+      ],
+      "rank": 4,
+      "joint_entropy": 6.437751649736401,
+      "joint_support": 625,
+      "max_pairwise_mi": 0.0,
+      "predicted_categorical_cka": 0.5,
+      "exact_categorical_cka": 0.5000000000000012,
+      "directions_retained": 2
+    }
+  ]
+}

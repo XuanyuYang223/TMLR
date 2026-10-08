@@ -1,0 +1,139 @@
+{
+  "analysis_sha256": "19e8a60044b0901c4836c6a44b1193420fe7052c276fd51396dfba9e1d77abb1",
+  "pretrained_models": 48,
+  "source_combinations": 8,
+  "input_bases": 3,
+  "initialization_seeds": 2,
+  "target_count": 10,
+  "target_endpoints": 2880,
+  "source_accuracy_min": 1.0,
+  "all_sources_pass_accuracy_gate": true,
+  "source_accuracy_partition": "full source-training domain; this gate measures training fit, not unseen-input generalization",
+  "source_examples_per_task": 750000,
+  "mean_cka_to_initialization": 0.07178359381252565,
+  "primary_prediction_incremental": {
+    "delta_r2": 0.0032542678625033794,
+    "mae_reduction": -0.00018245549517598159,
+    "folds_with_lower_mae": 4,
+    "fold_count": 8
+  },
+  "transfer_summary": [
+    {
+      "mode": "probe",
+      "budget": 10,
+      "family": "A",
+      "accuracy_mean": 0.19583334183941284,
+      "accuracy_world_sd": 0.0044881322384625905,
+      "gain_mean": -0.04150000183532635,
+      "gain_world_sd": 0.01704728805910004
+    },
+    {
+      "mode": "probe",
+      "budget": 10,
+      "family": "B",
+      "accuracy_mean": 0.19790000890692075,
+      "accuracy_world_sd": 0.004521061018269523,
+      "gain_mean": -0.039433334767818455,
+      "gain_world_sd": 0.02189276972982222
+    },
+    {
+      "mode": "probe",
+      "budget": 25,
+      "family": "A",
+      "accuracy_mean": 0.19680000878870488,
+      "accuracy_world_sd": 0.0034044094696072513,
+      "gain_mean": -0.06480000279843807,
+      "gain_world_sd": 0.018347479745569384
+    },
+    {
+      "mode": "probe",
+      "budget": 25,
+      "family": "B",
+      "accuracy_mean": 0.21080000900352994,
+      "accuracy_world_sd": 0.011121600685829172,
+      "gain_mean": -0.050800002583613,
+      "gain_world_sd": 0.018638937615512177
+    },
+    {
+      "mode": "probe",
+      "budget": 50,
+      "family": "A",
+      "accuracy_mean": 0.19343334219108024,
+      "accuracy_world_sd": 0.004007908495614113,
+      "gain_mean": -0.07483333467195431,
+      "gain_world_sd": 0.017772544058815055
+    },
+    {
+      "mode": "probe",
+      "budget": 50,
+      "family": "B",
+      "accuracy_mean": 0.2237333436186115,
+      "accuracy_world_sd": 0.020040293848055724,
+      "gain_mean": -0.044533333244423066,
+      "gain_world_sd": 0.013673817584471549
+    },
+    {
+      "mode": "finetune",
+      "budget": 10,
+      "family": "A",
+      "accuracy_mean": 0.20466667593767243,
+      "accuracy_world_sd": 0.0035118849919722607,
+      "gain_mean": -0.03826666890333096,
+      "gain_world_sd": 0.014862482459998756
+    },
+    {
+      "mode": "finetune",
+      "budget": 10,
+      "family": "B",
+      "accuracy_mean": 0.210800009034574,
+      "accuracy_world_sd": 0.003994996532817996,
+      "gain_mean": -0.03213333580642939,
+      "gain_world_sd": 0.014414346220747776
+    },
+    {
+      "mode": "finetune",
+      "budget": 25,
+      "family": "A",
+      "accuracy_mean": 0.2130000108852982,
+      "accuracy_world_sd": 0.010023972150112156,
+      "gain_mean": -0.05020000096410513,
+      "gain_world_sd": 0.017325127663475805
+    },
+    {
+      "mode": "finetune",
+      "budget": 25,
+      "family": "B",
+      "accuracy_mean": 0.216500010030965,
+      "accuracy_world_sd": 0.009101648470460307,
+      "gain_mean": -0.04670000181843837,
+      "gain_world_sd": 0.019389688129354682
+    },
+    {
+      "mode": "finetune",
+      "budget": 50,
+      "family": "A",
+      "accuracy_mean": 0.2251000105092923,
+      "accuracy_world_sd": 0.016094409035621503,
+      "gain_mean": -0.03863333115975062,
+      "gain_world_sd": 0.013557409085165421
+    },
+    {
+      "mode": "finetune",
+      "budget": 50,
+      "family": "B",
+      "accuracy_mean": 0.22976667738209167,
+      "accuracy_world_sd": 0.017658520674584195,
+      "gain_mean": -0.03396666428695123,
+      "gain_world_sd": 0.011263364176908009
+    }
+  ],
+  "limitations": [
+    "This is transductive new-task transfer; every input appears in source training.",
+    "The source accuracy gate measures training fit, not generalization to new inputs.",
+    "Three random input bases give little statistical power; target rows are not independent replications.",
+    "One MLP architecture and one finite-field domain do not establish cross-domain generality.",
+    "No direction of the A-versus-B transfer effect was assumed.",
+    "Held-out combinations are coefficient variants of two known circuit templates.",
+    "Equal marginal output statistics do not guarantee equal computational difficulty."
+  ]
+}

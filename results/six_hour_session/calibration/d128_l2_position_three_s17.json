@@ -1,0 +1,596 @@
+{
+  "job": {
+    "phase": "calibration",
+    "id": "position_three",
+    "seed": 17,
+    "tasks": [
+      "fixed_points",
+      "exceedances",
+      "deficiencies",
+      "right_to_left_minima"
+    ],
+    "steps": 20000
+  },
+  "architecture": {
+    "id": "d128_l2",
+    "d_model": 128,
+    "layers": 2,
+    "heads": 4
+  },
+  "training_policy": {
+    "source_learning_rate": 0.0003,
+    "warmup_steps": 500,
+    "minimum_learning_rate_ratio": 0.1,
+    "examples_per_task_per_step": 32,
+    "record_every": 1000,
+    "precision": "bf16"
+  },
+  "data_sha256": "ea63f0bb7dd843c40217574755e30f3f65a476b68bd8cf1d90fedc1791d47535",
+  "source_hashes": {
+    "experiments/longrun_engine.py": "c40cede331cb3a92e61a3a501421c067db2ce862ad1a5934dd31ec28b6802bca",
+    "experiments/longrun_attention.py": "5035f58453ddee5c5d5b05878491dfcc81764e172f2ebada437dc9e325048918",
+    "experiments/permworld_combinations.py": "b14ac19b0be4c5695998d04782f43220f4b05a4634435f1715d6d1cdf3b0cdc0"
+  },
+  "upstream_hashes": {
+    "models.py": "286a01f794f627c1f0db5dd6dd31adbdb7f58f235e47203163eda6fc8a8baab6",
+    "math_ops.py": "968e7580c01289e5ffeab9f07c52beb334be40d95c0e61d7a7f9e2cab694c62c",
+    "passage.py": "d200ffe6f5f6cff717c1b6ed6698a5a6af42bb6580fa4e8729a2fd84b79babd6"
+  },
+  "fingerprint": "71b7fdf16789915046dea0af74fefd8dd7ff14f02db3b3074a4b77168586f329",
+  "job_id": "d128_l2_position_three_s17",
+  "status": "complete",
+  "step": 20000,
+  "exposures_per_task": 640000,
+  "elapsed_seconds": 163.26333485497162,
+  "checkpoint_sha256": "bbc89fb0779c1b077e2c5d97dc9abc6865c297da7ef961553b32703e65c90df4",
+  "curve": [
+    {
+      "step": 0,
+      "task": "fixed_points",
+      "accuracy": 0.02619047619047619,
+      "cross_entropy": 5.151292041596912
+    },
+    {
+      "step": 0,
+      "task": "exceedances",
+      "accuracy": 0.0,
+      "cross_entropy": 5.1806238083612355
+    },
+    {
+      "step": 0,
+      "task": "deficiencies",
+      "accuracy": 0.0,
+      "cross_entropy": 5.1703179059709825
+    },
+    {
+      "step": 0,
+      "task": "right_to_left_minima",
+      "accuracy": 0.023333333333333334,
+      "cross_entropy": 5.251189531598772
+    },
+    {
+      "step": 1000,
+      "task": "fixed_points",
+      "accuracy": 0.4704761904761905,
+      "cross_entropy": 1.1622850218273344
+    },
+    {
+      "step": 1000,
+      "task": "exceedances",
+      "accuracy": 0.2923809523809524,
+      "cross_entropy": 1.7166119748070126
+    },
+    {
+      "step": 1000,
+      "task": "deficiencies",
+      "accuracy": 0.30142857142857143,
+      "cross_entropy": 1.7108707101004463
+    },
+    {
+      "step": 1000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.37,
+      "cross_entropy": 1.4746017456054688
+    },
+    {
+      "step": 2000,
+      "task": "fixed_points",
+      "accuracy": 0.6876190476190476,
+      "cross_entropy": 0.7801282673790342
+    },
+    {
+      "step": 2000,
+      "task": "exceedances",
+      "accuracy": 0.31476190476190474,
+      "cross_entropy": 1.6457527923583983
+    },
+    {
+      "step": 2000,
+      "task": "deficiencies",
+      "accuracy": 0.33,
+      "cross_entropy": 1.6448542967296782
+    },
+    {
+      "step": 2000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.5461904761904762,
+      "cross_entropy": 1.056576189313616
+    },
+    {
+      "step": 3000,
+      "task": "fixed_points",
+      "accuracy": 0.7333333333333333,
+      "cross_entropy": 0.6425415282022385
+    },
+    {
+      "step": 3000,
+      "task": "exceedances",
+      "accuracy": 0.3414285714285714,
+      "cross_entropy": 1.6149049922398158
+    },
+    {
+      "step": 3000,
+      "task": "deficiencies",
+      "accuracy": 0.33,
+      "cross_entropy": 1.5767628079368954
+    },
+    {
+      "step": 3000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.6571428571428571,
+      "cross_entropy": 0.8227577445620582
+    },
+    {
+      "step": 4000,
+      "task": "fixed_points",
+      "accuracy": 0.8742857142857143,
+      "cross_entropy": 0.3449167494546799
+    },
+    {
+      "step": 4000,
+      "task": "exceedances",
+      "accuracy": 0.5447619047619048,
+      "cross_entropy": 1.1510434087117514
+    },
+    {
+      "step": 4000,
+      "task": "deficiencies",
+      "accuracy": 0.5461904761904762,
+      "cross_entropy": 1.1577418917701359
+    },
+    {
+      "step": 4000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.6533333333333333,
+      "cross_entropy": 0.7869227690923781
+    },
+    {
+      "step": 5000,
+      "task": "fixed_points",
+      "accuracy": 0.8733333333333333,
+      "cross_entropy": 0.3373833885647002
+    },
+    {
+      "step": 5000,
+      "task": "exceedances",
+      "accuracy": 0.67,
+      "cross_entropy": 0.864843613760812
+    },
+    {
+      "step": 5000,
+      "task": "deficiencies",
+      "accuracy": 0.5952380952380952,
+      "cross_entropy": 0.9492730712890625
+    },
+    {
+      "step": 5000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.7933333333333333,
+      "cross_entropy": 0.5506651024591355
+    },
+    {
+      "step": 6000,
+      "task": "fixed_points",
+      "accuracy": 0.930952380952381,
+      "cross_entropy": 0.18539522321451277
+    },
+    {
+      "step": 6000,
+      "task": "exceedances",
+      "accuracy": 0.7661904761904762,
+      "cross_entropy": 0.6441470754714239
+    },
+    {
+      "step": 6000,
+      "task": "deficiencies",
+      "accuracy": 0.7966666666666666,
+      "cross_entropy": 0.5988317171732584
+    },
+    {
+      "step": 6000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.7614285714285715,
+      "cross_entropy": 0.580977516628447
+    },
+    {
+      "step": 7000,
+      "task": "fixed_points",
+      "accuracy": 0.9585714285714285,
+      "cross_entropy": 0.13022531038238888
+    },
+    {
+      "step": 7000,
+      "task": "exceedances",
+      "accuracy": 0.8428571428571429,
+      "cross_entropy": 0.5110693268548875
+    },
+    {
+      "step": 7000,
+      "task": "deficiencies",
+      "accuracy": 0.8280952380952381,
+      "cross_entropy": 0.4815436531248547
+    },
+    {
+      "step": 7000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.7861904761904762,
+      "cross_entropy": 0.4971302059718541
+    },
+    {
+      "step": 8000,
+      "task": "fixed_points",
+      "accuracy": 0.969047619047619,
+      "cross_entropy": 0.09011752761545636
+    },
+    {
+      "step": 8000,
+      "task": "exceedances",
+      "accuracy": 0.7457142857142857,
+      "cross_entropy": 0.5817008234205701
+    },
+    {
+      "step": 8000,
+      "task": "deficiencies",
+      "accuracy": 0.8766666666666667,
+      "cross_entropy": 0.40663307189941406
+    },
+    {
+      "step": 8000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.7895238095238095,
+      "cross_entropy": 0.48408890996660503
+    },
+    {
+      "step": 9000,
+      "task": "fixed_points",
+      "accuracy": 0.98,
+      "cross_entropy": 0.06225487105903171
+    },
+    {
+      "step": 9000,
+      "task": "exceedances",
+      "accuracy": 0.7271428571428571,
+      "cross_entropy": 0.5933310009184338
+    },
+    {
+      "step": 9000,
+      "task": "deficiencies",
+      "accuracy": 0.8985714285714286,
+      "cross_entropy": 0.3150584577378773
+    },
+    {
+      "step": 9000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.8066666666666666,
+      "cross_entropy": 0.4478183964320592
+    },
+    {
+      "step": 10000,
+      "task": "fixed_points",
+      "accuracy": 0.9876190476190476,
+      "cross_entropy": 0.03999878483513991
+    },
+    {
+      "step": 10000,
+      "task": "exceedances",
+      "accuracy": 0.91,
+      "cross_entropy": 0.29750710578191847
+    },
+    {
+      "step": 10000,
+      "task": "deficiencies",
+      "accuracy": 0.9442857142857143,
+      "cross_entropy": 0.2112778970173427
+    },
+    {
+      "step": 10000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.8466666666666667,
+      "cross_entropy": 0.38293586299532933
+    },
+    {
+      "step": 11000,
+      "task": "fixed_points",
+      "accuracy": 0.9780952380952381,
+      "cross_entropy": 0.06109449613661993
+    },
+    {
+      "step": 11000,
+      "task": "exceedances",
+      "accuracy": 0.9347619047619048,
+      "cross_entropy": 0.2160119356427874
+    },
+    {
+      "step": 11000,
+      "task": "deficiencies",
+      "accuracy": 0.9280952380952381,
+      "cross_entropy": 0.22849313701902116
+    },
+    {
+      "step": 11000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.8604761904761905,
+      "cross_entropy": 0.33172502177102225
+    },
+    {
+      "step": 12000,
+      "task": "fixed_points",
+      "accuracy": 0.9914285714285714,
+      "cross_entropy": 0.0252061033838739
+    },
+    {
+      "step": 12000,
+      "task": "exceedances",
+      "accuracy": 0.9657142857142857,
+      "cross_entropy": 0.11753460957890464
+    },
+    {
+      "step": 12000,
+      "task": "deficiencies",
+      "accuracy": 0.9652380952380952,
+      "cross_entropy": 0.11737631269863674
+    },
+    {
+      "step": 12000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.8695238095238095,
+      "cross_entropy": 0.31940134247144064
+    },
+    {
+      "step": 13000,
+      "task": "fixed_points",
+      "accuracy": 0.9923809523809524,
+      "cross_entropy": 0.022435148656368257
+    },
+    {
+      "step": 13000,
+      "task": "exceedances",
+      "accuracy": 0.9809523809523809,
+      "cross_entropy": 0.08033180299259367
+    },
+    {
+      "step": 13000,
+      "task": "deficiencies",
+      "accuracy": 0.981904761904762,
+      "cross_entropy": 0.0919705335299174
+    },
+    {
+      "step": 13000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.878095238095238,
+      "cross_entropy": 0.28953408581869944
+    },
+    {
+      "step": 14000,
+      "task": "fixed_points",
+      "accuracy": 0.9961904761904762,
+      "cross_entropy": 0.013733897666846002
+    },
+    {
+      "step": 14000,
+      "task": "exceedances",
+      "accuracy": 0.9857142857142858,
+      "cross_entropy": 0.07433236520914804
+    },
+    {
+      "step": 14000,
+      "task": "deficiencies",
+      "accuracy": 0.9833333333333333,
+      "cross_entropy": 0.06507622579733531
+    },
+    {
+      "step": 14000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.8828571428571429,
+      "cross_entropy": 0.26855868827728996
+    },
+    {
+      "step": 15000,
+      "task": "fixed_points",
+      "accuracy": 0.9947619047619047,
+      "cross_entropy": 0.011540281989035152
+    },
+    {
+      "step": 15000,
+      "task": "exceedances",
+      "accuracy": 0.9885714285714285,
+      "cross_entropy": 0.04977779626846313
+    },
+    {
+      "step": 15000,
+      "task": "deficiencies",
+      "accuracy": 0.9852380952380952,
+      "cross_entropy": 0.05822701064958459
+    },
+    {
+      "step": 15000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.9023809523809524,
+      "cross_entropy": 0.24973581677391415
+    },
+    {
+      "step": 16000,
+      "task": "fixed_points",
+      "accuracy": 0.9971428571428571,
+      "cross_entropy": 0.009368998517637096
+    },
+    {
+      "step": 16000,
+      "task": "exceedances",
+      "accuracy": 0.9814285714285714,
+      "cross_entropy": 0.07473248862794467
+    },
+    {
+      "step": 16000,
+      "task": "deficiencies",
+      "accuracy": 0.9780952380952381,
+      "cross_entropy": 0.069479917475865
+    },
+    {
+      "step": 16000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.9076190476190477,
+      "cross_entropy": 0.21395435828538167
+    },
+    {
+      "step": 17000,
+      "task": "fixed_points",
+      "accuracy": 0.9971428571428571,
+      "cross_entropy": 0.013683654886138227
+    },
+    {
+      "step": 17000,
+      "task": "exceedances",
+      "accuracy": 0.9923809523809524,
+      "cross_entropy": 0.03382321439328648
+    },
+    {
+      "step": 17000,
+      "task": "deficiencies",
+      "accuracy": 0.9861904761904762,
+      "cross_entropy": 0.04201398625615097
+    },
+    {
+      "step": 17000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.9138095238095238,
+      "cross_entropy": 0.20878435699712664
+    },
+    {
+      "step": 18000,
+      "task": "fixed_points",
+      "accuracy": 0.9938095238095238,
+      "cross_entropy": 0.014210876665033755
+    },
+    {
+      "step": 18000,
+      "task": "exceedances",
+      "accuracy": 0.9938095238095238,
+      "cross_entropy": 0.03431036820723897
+    },
+    {
+      "step": 18000,
+      "task": "deficiencies",
+      "accuracy": 0.991904761904762,
+      "cross_entropy": 0.03396254807001069
+    },
+    {
+      "step": 18000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.910952380952381,
+      "cross_entropy": 0.21257756150194576
+    },
+    {
+      "step": 19000,
+      "task": "fixed_points",
+      "accuracy": 0.9980952380952381,
+      "cross_entropy": 0.0057320824460614294
+    },
+    {
+      "step": 19000,
+      "task": "exceedances",
+      "accuracy": 0.9923809523809524,
+      "cross_entropy": 0.036123690590971994
+    },
+    {
+      "step": 19000,
+      "task": "deficiencies",
+      "accuracy": 0.9938095238095238,
+      "cross_entropy": 0.03110026043085825
+    },
+    {
+      "step": 19000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.9238095238095239,
+      "cross_entropy": 0.17477010582174574
+    },
+    {
+      "step": 20000,
+      "task": "fixed_points",
+      "accuracy": 0.9980952380952381,
+      "cross_entropy": 0.005084813137849172
+    },
+    {
+      "step": 20000,
+      "task": "exceedances",
+      "accuracy": 0.9957142857142857,
+      "cross_entropy": 0.024928166522156625
+    },
+    {
+      "step": 20000,
+      "task": "deficiencies",
+      "accuracy": 0.9928571428571429,
+      "cross_entropy": 0.02803201442318303
+    },
+    {
+      "step": 20000,
+      "task": "right_to_left_minima",
+      "accuracy": 0.9257142857142857,
+      "cross_entropy": 0.17452139486869175
+    }
+  ],
+  "source_validation": [
+    {
+      "task": "fixed_points",
+      "accuracy": 0.9980952380952381,
+      "cross_entropy": 0.005084813137849172
+    },
+    {
+      "task": "exceedances",
+      "accuracy": 0.9957142857142857,
+      "cross_entropy": 0.024928166522156625
+    },
+    {
+      "task": "deficiencies",
+      "accuracy": 0.9928571428571429,
+      "cross_entropy": 0.02803201442318303
+    },
+    {
+      "task": "right_to_left_minima",
+      "accuracy": 0.9257142857142857,
+      "cross_entropy": 0.17452139486869175
+    }
+  ],
+  "source_train": [
+    {
+      "task": "fixed_points",
+      "accuracy": 0.9992380952380953,
+      "cross_entropy": 0.0030513710023591383
+    },
+    {
+      "task": "exceedances",
+      "accuracy": 0.9946904761904762,
+      "cross_entropy": 0.02553706374684615
+    },
+    {
+      "task": "deficiencies",
+      "accuracy": 0.9940476190476191,
+      "cross_entropy": 0.02518000418151773
+    },
+    {
+      "task": "right_to_left_minima",
+      "accuracy": 0.9390952380952381,
+      "cross_entropy": 0.14671193610876798
+    }
+  ]
+}

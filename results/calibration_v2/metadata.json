@@ -1,0 +1,44 @@
+{
+  "config": {
+    "p": 5,
+    "dimension": 4,
+    "world_seeds": [
+      17
+    ],
+    "model_seeds": [
+      17
+    ],
+    "scenario_limit": 2,
+    "target_count": 3,
+    "hidden": 192,
+    "features": 64,
+    "pretrain_steps": 1200,
+    "pretrain_lr": 0.003,
+    "weight_decay": 0.001,
+    "record_every": 100,
+    "budgets": [
+      10,
+      25
+    ],
+    "test_per_class": 25,
+    "adapt_steps": 100,
+    "probe_lr": 0.03,
+    "finetune_head_lr": 0.01,
+    "finetune_encoder_lr": 0.001,
+    "source_accuracy_gate": 0.98,
+    "device": "auto",
+    "primary_budget": 25,
+    "primary_mode": "finetune",
+    "prediction_alpha": 10.0
+  },
+  "fingerprint": "3b9417b3ce1292060f3e2f68b0ca22b6ea65d9fa6697c089397a38d9434ce611",
+  "python": "3.13.13",
+  "torch": "2.11.0+cu128",
+  "numpy": "2.4.4",
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "evaluation": "transductive new-task transfer: all inputs exposed during source training; target support and test labels disjoint",
+  "replication": "independent random input bases; initialization seeds crossed within each basis",
+  "holdout": "entire coefficient-defined source combination, across all world/model seeds",
+  "pretrain_only": true
+}

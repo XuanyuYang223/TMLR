@@ -1,0 +1,228 @@
+{
+  "source_repository": "https://github.com/XuanyuYang223/neurips",
+  "source_commit": "74f0de2017115f06f11b7285366b66e7e8431d30",
+  "config_sha256": "8a3b21366ca344c0cb50f5a26108375b96eceb3ca49720ff001749ef09155e88",
+  "exhaustive_max_n": 7,
+  "permutations_checked": 5912,
+  "primitive_registered_relations": 8,
+  "affine_candidates": 148,
+  "registered_graph_max_degree": 1,
+  "r_definition": "cross-bundle correspondences between two disjoint four-task sets",
+  "existing_bundles_with_known_joint_constraints": 0,
+  "all_four_task_bundles": 35960,
+  "three_task_constraint_bundles": 87,
+  "four_task_constraint_bundles": 3,
+  "matched_three_vs_four_candidates": 87,
+  "design_sample": {
+    "seed": 20261004,
+    "lengths": [
+      10,
+      30
+    ],
+    "per_length": 200,
+    "source": "fresh synthetic permutations; no published test data"
+  },
+  "identities": [
+    {
+      "id": "position_partition",
+      "terms": {
+        "fixed_points": 1,
+        "exceedances": 1,
+        "deficiencies": 1
+      },
+      "n": 1,
+      "constant": 0,
+      "proof": "Every position has pi(i)=i, pi(i)>i, or pi(i)<i."
+    },
+    {
+      "id": "cycle_parity_partition",
+      "terms": {
+        "even_cycle_count": 1,
+        "odd_cycle_count": 1,
+        "cycle_count": -1
+      },
+      "n": 0,
+      "constant": 0,
+      "proof": "Every cycle has even or odd length."
+    },
+    {
+      "id": "cycle_fixed_partition",
+      "terms": {
+        "fixed_points": 1,
+        "nontrivial_cycle_count": 1,
+        "cycle_count": -1
+      },
+      "n": 0,
+      "constant": 0,
+      "proof": "A length-one cycle is a fixed point; all other cycles are nontrivial."
+    },
+    {
+      "id": "interior_partition",
+      "terms": {
+        "peaks": 1,
+        "valleys": 1,
+        "double_ascents": 1,
+        "double_descents": 1
+      },
+      "n": 1,
+      "constant": -2,
+      "proof": "Each interior index has one of four adjacent comparison-sign patterns; valid for n>=2."
+    },
+    {
+      "id": "cycles_without_cycle_count",
+      "terms": {
+        "even_cycle_count": 1,
+        "odd_cycle_count": 1,
+        "fixed_points": -1,
+        "nontrivial_cycle_count": -1
+      },
+      "n": 0,
+      "constant": 0,
+      "proof": "cycle_parity_partition minus cycle_fixed_partition."
+    },
+    {
+      "id": "positions_without_fixed_points",
+      "terms": {
+        "exceedances": 1,
+        "deficiencies": 1,
+        "cycle_count": 1,
+        "nontrivial_cycle_count": -1
+      },
+      "n": 1,
+      "constant": 0,
+      "proof": "position_partition minus cycle_fixed_partition."
+    }
+  ],
+  "transformation_composition_table": {
+    "identity": {
+      "identity": "identity",
+      "complement": "complement",
+      "reverse": "reverse",
+      "reverse_complement": "reverse_complement",
+      "inverse": "inverse",
+      "inverse_after_complement": "inverse_after_complement",
+      "inverse_after_reverse": "inverse_after_reverse",
+      "inverse_after_reverse_complement": "inverse_after_reverse_complement"
+    },
+    "complement": {
+      "identity": "complement",
+      "complement": "identity",
+      "reverse": "reverse_complement",
+      "reverse_complement": "reverse",
+      "inverse": "inverse_after_complement",
+      "inverse_after_complement": "inverse",
+      "inverse_after_reverse": "inverse_after_reverse_complement",
+      "inverse_after_reverse_complement": "inverse_after_reverse"
+    },
+    "reverse": {
+      "identity": "reverse",
+      "complement": "reverse_complement",
+      "reverse": "identity",
+      "reverse_complement": "complement",
+      "inverse": "inverse_after_reverse",
+      "inverse_after_complement": "inverse_after_reverse_complement",
+      "inverse_after_reverse": "inverse",
+      "inverse_after_reverse_complement": "inverse_after_complement"
+    },
+    "reverse_complement": {
+      "identity": "reverse_complement",
+      "complement": "reverse",
+      "reverse": "complement",
+      "reverse_complement": "identity",
+      "inverse": "inverse_after_reverse_complement",
+      "inverse_after_complement": "inverse_after_reverse",
+      "inverse_after_reverse": "inverse_after_complement",
+      "inverse_after_reverse_complement": "inverse"
+    },
+    "inverse": {
+      "identity": "inverse",
+      "complement": "inverse_after_reverse",
+      "reverse": "inverse_after_complement",
+      "reverse_complement": "inverse_after_reverse_complement",
+      "inverse": "identity",
+      "inverse_after_complement": "reverse",
+      "inverse_after_reverse": "complement",
+      "inverse_after_reverse_complement": "reverse_complement"
+    },
+    "inverse_after_complement": {
+      "identity": "inverse_after_complement",
+      "complement": "inverse_after_reverse_complement",
+      "reverse": "inverse",
+      "reverse_complement": "inverse_after_reverse",
+      "inverse": "complement",
+      "inverse_after_complement": "reverse_complement",
+      "inverse_after_reverse": "identity",
+      "inverse_after_reverse_complement": "reverse"
+    },
+    "inverse_after_reverse": {
+      "identity": "inverse_after_reverse",
+      "complement": "inverse",
+      "reverse": "inverse_after_reverse_complement",
+      "reverse_complement": "inverse_after_complement",
+      "inverse": "reverse",
+      "inverse_after_complement": "identity",
+      "inverse_after_reverse": "reverse_complement",
+      "inverse_after_reverse_complement": "complement"
+    },
+    "inverse_after_reverse_complement": {
+      "identity": "inverse_after_reverse_complement",
+      "complement": "inverse_after_complement",
+      "reverse": "inverse_after_reverse",
+      "reverse_complement": "inverse",
+      "inverse": "reverse_complement",
+      "inverse_after_complement": "complement",
+      "inverse_after_reverse": "reverse",
+      "inverse_after_reverse_complement": "identity"
+    }
+  },
+  "linear_completeness_certificate": {
+    "scope": "same-input rational linear identities among 32 scalar properties, n and 1, for n>=2",
+    "prime": 1000003,
+    "proved_independent_identity_rank": 4,
+    "witness_row_rank_mod_prime": 30,
+    "completeness_certified": true,
+    "witness_rows": 332,
+    "argument": "Four universal independent identities give augmented rational rank <=30; a mod-prime rank-30 witness gives rational rank >=30. Thus all universal identities of this specified linear form are in their span.",
+    "minimal_task_supports_up_to_four": [
+      [
+        "fixed_points",
+        "exceedances",
+        "deficiencies"
+      ],
+      [
+        "fixed_points",
+        "cycle_count",
+        "nontrivial_cycle_count"
+      ],
+      [
+        "cycle_count",
+        "even_cycle_count",
+        "odd_cycle_count"
+      ],
+      [
+        "peaks",
+        "valleys",
+        "double_ascents",
+        "double_descents"
+      ],
+      [
+        "fixed_points",
+        "even_cycle_count",
+        "odd_cycle_count",
+        "nontrivial_cycle_count"
+      ],
+      [
+        "exceedances",
+        "deficiencies",
+        "cycle_count",
+        "nontrivial_cycle_count"
+      ]
+    ]
+  },
+  "limitations": [
+    "Affine candidates are finite checks, not general mathematical proofs.",
+    "The completeness certificate covers rational linear same-input identities with affine length terms, not nonlinear or input-transformed joint dependencies.",
+    "Matched candidates do not control single-task learning difficulty or the full output distribution.",
+    "Existing CKA analysis is retrospective and provides no new transfer evidence."
+  ]
+}

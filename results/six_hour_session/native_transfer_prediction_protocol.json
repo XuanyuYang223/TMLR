@@ -1,0 +1,43 @@
+{
+  "registered_utc": "2026-10-05T16:08:06.124206+00:00",
+  "scope": "exploratory after prior pilot transfer and long-run source/geometry results; before any long-run target test endpoints; validation search ongoing",
+  "native_target_test_records_at_registration": 0,
+  "endpoint": "long-run test accuracy minus same seed/target/budget/mode random accuracy",
+  "folds": "leave one entire source task group out, including every initialization and target; fit separately for each of five readouts and two budgets",
+  "ridge_alpha": 1.0,
+  "preprocessing": "feature mean/std fitted on training fold only, std floor 1e-8; intercept unpenalized",
+  "baseline_features": [
+    "source audit macro accuracy",
+    "mean source validation learning-curve accuracy",
+    "source label mean marginal conditional entropy given length",
+    "source label joint conditional entropy given length",
+    "mean absolute pairwise source correlation residualized by length",
+    "max source-target conditional categorical MI given length",
+    "mean source-target conditional categorical MI given length",
+    "target indicator excluding first",
+    "initialization indicator excluding first"
+  ],
+  "math_features": [
+    "minimum known circuit size (none=5)",
+    "no known circuit indicator",
+    "mean exact source-answer transformed categorical CKA within length over C R RC I",
+    "proved source-vector action fraction",
+    "proved unary source-permutation action fraction"
+  ],
+  "geometry_features": [
+    "mean same-group cross-seed trained source-query-concat CKA within length for current seed",
+    "mean transformed source-query-concat CKA within length over C R RC I"
+  ],
+  "variants": [
+    "baseline",
+    "plus_mathematical_relations",
+    "plus_measured_geometry",
+    "plus_both"
+  ],
+  "reporting": "all five readouts, both label budgets, all variants and every heldout group; no test-based selection of feature set or ridge parameter",
+  "limits": [
+    "one input world, eight source sets, three initialization seeds; correlated rows, no causal interpretation",
+    "mathematical feature formulas know true source task definitions, and MI uses unexposed target labels on source-training inputs as an analytical similarity reference",
+    "geometry landmarks were chosen after source measurements; not a prespecified primary endpoint or independent replication"
+  ]
+}

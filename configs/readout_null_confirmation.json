@@ -1,0 +1,30 @@
+{
+  "output": "results/readout_null_confirmation",
+  "conditions": ["full_correct", "full_wrong", "null_correct", "null_wrong"],
+  "source_seeds": [8123, 9133, 10151],
+  "adaptation_repeats": 3,
+  "geometry_weight": 0.25,
+  "loss_normalization": "Each space divided by fixed ordinary-teacher per-coordinate variance in that same space; computed on single-step training states only. No composite target or answer in fitting.",
+  "nullspace": "Orthogonal complement of all fixed numeric readout rows. Forward and backward PermWorld geometry use the same projector; existing bidirectional and forward-only domain protocols retained.",
+  "predictions": [
+    "Primary: matrix correct-minus-wrong collision compound-accuracy advantage is larger under nullspace than fullspace geometry.",
+    "Supporting: null emphasis reduces actual null-only margin-crossing errors for correct pairing more than wrong pairing.",
+    "PermWorld is a second domain confirmation; no positive cross-domain outcome assumed. Report each source and failed single-generator gates."
+  ],
+  "primary_metric": "difference_in_differences_collision_accuracy_percentage_points",
+  "secondary_metrics": ["collision_pair_both_correct", "heldout_hidden_nmse", "single_generator_accuracy", "null_only_margin_crossing", "cka"],
+  "test_policy": "All twelve fixed-budget fits per domain complete before that domain compound test opens. No selection on compound outcomes. Three new source initializations, one independent support pool each.",
+  "permworld": {
+    "ordinary_steps": 20000, "epochs": 20, "fit_per_length": 8192, "validation_per_length": 512,
+    "support_seeds": [261080101, 261080103, 261080107], "test_seed": 261080201,
+    "source_data": "results/algebra_hidden_relations/source_data.npz",
+    "source_data_scope": "New ordinary source seeds, existing supervised source corpus; this is initialization replication, not new-source-corpus replication. Adaptation/test inputs fresh and whole-orbit excluded from all local archived datasets."
+  },
+  "matrix": {
+    "data_seed": 261081001, "ordinary_epochs": 500, "epochs": 900,
+    "fit_anchors": 1024, "source_anchors": 512, "validation_anchors": 128,
+    "iid_examples": 256, "collision_pairs": 128,
+    "test_novelty": "Fresh split excludes all previously examined v3 matrix test group orbits from the entire new experiment. New source/validation/fit/test group orbits mutually disjoint. Old training orbits can recur under new models and are not claimed unseen across all historical work."
+  },
+  "scope": "Prospective directional-loss intervention after old-model diagnostics. New source seeds and tests; fixed architecture, output labels/KD, input marginals, schedules, and budget across four arms. Only geometric direction and matched correspondence vary. Three independent source clusters; architecture and involution assumptions differ between legacy domains."
+}

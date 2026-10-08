@@ -1,0 +1,57 @@
+{
+  "output": "results/budget_matched_geometry",
+  "parent": "results/confidence_residual_geometry",
+  "dimension": 64,
+  "encoders": [
+    "fixed_random",
+    "fit_pca"
+  ],
+  "primary_encoder": "fixed_random",
+  "projection_seed": 2026100691,
+  "ridge_grid": [
+    1e-06,
+    0.0001,
+    0.01,
+    1.0
+  ],
+  "groups": [
+    "novel_records",
+    "novel_minima_pair",
+    "novel_peak_mixed"
+  ],
+  "source_seeds": [
+    17203,
+    18211,
+    19213
+  ],
+  "statuses": [
+    "trained",
+    "random"
+  ],
+  "words": [
+    "c",
+    "r",
+    "i",
+    "rc",
+    "ci",
+    "ri",
+    "rci"
+  ],
+  "composites": [
+    "rc",
+    "ci",
+    "ri",
+    "rci"
+  ],
+  "interpretation": "Exploratory follow-up of inspected output-proxy results, using existing immutable sources and test pairs. Primary input encoders (fixed random projection of hidden vectors and identity on all 277 output-code features) have no data-fitted loadings. Both have 277 reconstruction inputs, identical FIT/VAL rows, centering/scaling statistics, 278-by-1024 decoder dimensions, a FIT-only 1024-by-64 probe basis, generator parameter counts and ridge search sizes. Predictions retain only each branch's own reconstructed residual, never an actual-hidden shortcut. Hidden FIT-PCA277 is a separately reported sensitivity with additional fitted input loadings; it is not an exact-budget primary comparison. Full null-space targets are primary; a shared FIT-only PCA64 target is secondary. All output features from the earlier proxy are retained. No new source training; compositions are products of separately fitted generators, not compound regressions. Ordinary calibration includes complete orbits and does not test withheld relation discovery.",
+  "reconstruction_input_dimension": 277,
+  "branches": [
+    "hidden_fixed_random",
+    "hidden_fit_pca",
+    "output_identity"
+  ],
+  "primary_comparison": [
+    "hidden_fixed_random",
+    "output_identity"
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "config": {
+    "repository": "external/neurips",
+    "candidate_table": "results/permutation_audit/candidate_bundles.csv",
+    "data_seed": 20261005,
+    "lengths": [
+      10,
+      30
+    ],
+    "examples_per_length": {
+      "train": 200,
+      "validation": 30,
+      "representation": 20,
+      "support_pool": 50,
+      "target_test": 30
+    },
+    "model_seeds": [
+      17,
+      42,
+      101
+    ],
+    "d_model": 96,
+    "layers": 2,
+    "heads": 4,
+    "ff_multiplier": 4,
+    "dropout": 0.0,
+    "pretrain_steps": 1200,
+    "examples_per_task_per_step": 32,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.01,
+    "record_every": 300,
+    "target_tasks": [
+      "descents",
+      "recoils",
+      "lis_length",
+      "longest_increasing_run"
+    ],
+    "target_budgets": [
+      64,
+      256
+    ],
+    "adapt_steps": 100,
+    "adapt_batch_size": 32,
+    "adapt_learning_rate": 0.0005,
+    "probe_steps": 200,
+    "probe_learning_rate": 0.01,
+    "primary_budget": 256,
+    "primary_mode": "finetune",
+    "status": "exploratory small-model new-combination pilot; not the original full-scale training protocol",
+    "selection_policy": "fixed known circuits; null controls minimize source-label-statistic distance with equal expanded affine pair count; no neural outcomes used",
+    "evaluation_policy": "all source training, validation, representation, target support and target test inputs are globally disjoint; no target-test tuning",
+    "limitations": [
+      "Source label marginals and task difficulty are not exactly matched.",
+      "No separately trained single-task controls in this pilot.",
+      "Null means no proved rational linear identity of the audited form, not absence of all mathematical relationships.",
+      "Two layers and answer-token-only loss differ from the original full-scale protocol."
+    ]
+  },
+  "groups": [
+    {
+      "id": "cycle_none",
+      "family": "cycle",
+      "minimum_constraint_size": 0,
+      "tasks": [
+        "exceedances",
+        "cycle_count",
+        "three_cycle_count",
+        "odd_cycle_count"
+      ],
+      "selection_statistics": {
+        "tasks": "exceedances|cycle_count|three_cycle_count|odd_cycle_count",
+        "registered_internal_pair_count": "0",
+        "expanded_affine_pair_count": "0",
+        "known_joint_constraint_count": "0",
+        "joint_constraints": "",
+        "mean_abs_within_length_correlation": "0.3411300045647802",
+        "max_abs_within_length_correlation": "0.7083938227806713",
+        "mean_conditional_entropy": "1.262387484792705",
+        "minimum_known_constraint_size": "0"
+      },
+      "null_match_distance": 0.04523688809282403
+    },
+    {
+      "id": "cycle_three",
+      "family": "cycle",
+      "minimum_constraint_size": 3,
+      "tasks": [
+        "fixed_points",
+        "cycle_count",
+        "nontrivial_cycle_count",
+        "components"
+      ],
+      "selection_statistics": {
+        "tasks": "fixed_points|cycle_count|nontrivial_cycle_count|components",
+        "registered_internal_pair_count": "0",
+        "expanded_affine_pair_count": "0",
+        "known_joint_constraint_count": "1",
+        "joint_constraints": "cycle_fixed_partition",
+        "mean_abs_within_length_correlation": "0.3375162937650373",
+        "max_abs_within_length_correlation": "0.6908775508467523",
+        "mean_conditional_entropy": "1.2085650774986494",
+        "minimum_known_constraint_size": "3"
+      }
+    },
+    {
+      "id": "cycle_four",
+      "family": "cycle",
+      "minimum_constraint_size": 4,
+      "tasks": [
+        "fixed_points",
+        "even_cycle_count",
+        "odd_cycle_count",
+        "nontrivial_cycle_count"
+      ],
+      "selection_statistics": {
+        "tasks": "fixed_points|even_cycle_count|odd_cycle_count|nontrivial_cycle_count",
+        "registered_internal_pair_count": "0",
+        "expanded_affine_pair_count": "0",
+        "known_joint_constraint_count": "1",
+        "joint_constraints": "cycles_without_cycle_count",
+        "mean_abs_within_length_correlation": "0.3363076057002319",
+        "max_abs_within_length_correlation": "0.7428053533170148",
+        "mean_conditional_entropy": "1.268784805600838",
+        "minimum_known_constraint_size": "4"
+      }
+    },
+    {
+      "id": "interior_none",
+      "family": "interior",
+      "minimum_constraint_size": 0,
+      "tasks": [
+        "peaks",
+        "valleys",
+        "left_to_right_maxima",
+        "right_to_left_maxima"
+      ],
+      "selection_statistics": {
+        "tasks": "peaks|valleys|left_to_right_maxima|right_to_left_maxima",
+        "registered_internal_pair_count": "1",
+        "expanded_affine_pair_count": "2",
+        "known_joint_constraint_count": "0",
+        "joint_constraints": "",
+        "mean_abs_within_length_correlation": "0.23547482437549913",
+        "max_abs_within_length_correlation": "0.7120553465360189",
+        "mean_conditional_entropy": "1.532530762157589",
+        "minimum_known_constraint_size": "0"
+      },
+      "null_match_distance": 0.3153639819580303
+    },
+    {
+      "id": "interior_four",
+      "family": "interior",
+      "minimum_constraint_size": 4,
+      "tasks": [
+        "peaks",
+        "valleys",
+        "double_ascents",
+        "double_descents"
+      ],
+      "selection_statistics": {
+        "tasks": "peaks|valleys|double_ascents|double_descents",
+        "registered_internal_pair_count": "1",
+        "expanded_affine_pair_count": "2",
+        "known_joint_constraint_count": "1",
+        "joint_constraints": "interior_partition",
+        "mean_abs_within_length_correlation": "0.5342836351273487",
+        "max_abs_within_length_correlation": "0.7120553465360189",
+        "mean_conditional_entropy": "1.5656411045699505",
+        "minimum_known_constraint_size": "4"
+      }
+    },
+    {
+      "id": "position_none",
+      "family": "position",
+      "minimum_constraint_size": 0,
+      "tasks": [
+        "double_ascents",
+        "double_descents",
+        "successions",
+        "adjacencies"
+      ],
+      "selection_statistics": {
+        "tasks": "double_ascents|double_descents|successions|adjacencies",
+        "registered_internal_pair_count": "0",
+        "expanded_affine_pair_count": "1",
+        "known_joint_constraint_count": "0",
+        "joint_constraints": "",
+        "mean_abs_within_length_correlation": "0.31543582450919594",
+        "max_abs_within_length_correlation": "0.6766223047690078",
+        "mean_conditional_entropy": "1.603521663171311",
+        "minimum_known_constraint_size": "0"
+      },
+      "null_match_distance": 0.03018343352134506
+    },
+    {
+      "id": "position_three",
+      "family": "position",
+      "minimum_constraint_size": 3,
+      "tasks": [
+        "fixed_points",
+        "exceedances",
+        "deficiencies",
+        "right_to_left_minima"
+      ],
+      "selection_statistics": {
+        "tasks": "fixed_points|exceedances|deficiencies|right_to_left_minima",
+        "registered_internal_pair_count": "1",
+        "expanded_affine_pair_count": "1",
+        "known_joint_constraint_count": "1",
+        "joint_constraints": "position_partition",
+        "mean_abs_within_length_correlation": "0.32986095561061785",
+        "max_abs_within_length_correlation": "0.6711835517405693",
+        "mean_conditional_entropy": "1.5753394847922881",
+        "minimum_known_constraint_size": "3"
+      }
+    },
+    {
+      "id": "position_four",
+      "family": "position",
+      "minimum_constraint_size": 4,
+      "tasks": [
+        "exceedances",
+        "deficiencies",
+        "cycle_count",
+        "nontrivial_cycle_count"
+      ],
+      "selection_statistics": {
+        "tasks": "exceedances|deficiencies|cycle_count|nontrivial_cycle_count",
+        "registered_internal_pair_count": "1",
+        "expanded_affine_pair_count": "1",
+        "known_joint_constraint_count": "1",
+        "joint_constraints": "positions_without_fixed_points",
+        "mean_abs_within_length_correlation": "0.3263794589330848",
+        "max_abs_within_length_correlation": "0.6908775508467523",
+        "mean_conditional_entropy": "1.605947689614681",
+        "minimum_known_constraint_size": "4"
+      }
+    }
+  ],
+  "code_sha256": "b14ac19b0be4c5695998d04782f43220f4b05a4634435f1715d6d1cdf3b0cdc0",
+  "upstream_commit": "74f0de2017115f06f11b7285366b66e7e8431d30",
+  "upstream_files": {
+    "models.py": "286a01f794f627c1f0db5dd6dd31adbdb7f58f235e47203163eda6fc8a8baab6",
+    "math_ops.py": "968e7580c01289e5ffeab9f07c52beb334be40d95c0e61d7a7f9e2cab694c62c",
+    "passage.py": "d200ffe6f5f6cff717c1b6ed6698a5a6af42bb6580fa4e8729a2fd84b79babd6"
+  },
+  "candidate_sha256": "b29cba0604a542f160d946c6751c7e98d0185df45b4ff8dc6ec2e53425b00108",
+  "fingerprint": "4fc357665bdd382ec74eee11f4d4c3d0f2230042bb5f10cf083655d69334ebfe",
+  "cka_landmark": "task-free <ONE_END>; raw and within-length-centered CKA both reported",
+  "source_objective": "cross-entropy at answer token; inputs end with task token and equals; EOS not predicted"
+}

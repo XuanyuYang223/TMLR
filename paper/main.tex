@@ -1,0 +1,83 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue]{hyperref}
+\title{When Does Correct Relational Geometry Support Unseen Composition?}
+\author{Working draft: authors to be supplied}
+\date{October 7, 2026}
+\newcommand{\F}{\mathbb{F}}
+\begin{document}
+\maketitle
+\begin{abstract}
+We study whether correct mathematical correspondences supply functional value beyond matched output supervision. We compare correct, one-sided incorrect, and doubly incorrect geometric pairings while holding labels, teacher outputs, input exposure, and optimization budgets fixed. Permutation experiments identify a local compositional advantage but substantial failure of inferred intermediate states: accurate single-step answers do not ensure intermediate representations remain usable by a second learned operator. Matched finite matrix-group and irreversible polynomial experiments do not reproduce a stable correctness-specific benefit; translation-generator generalization also varies across polynomial sources. Oracle repairs of intermediate errors locate information that preserves current readout values but affects the next prediction. This study concerns interventions with specified relations, rather than spontaneous discovery of algebra or proof of a faithful group representation.
+\end{abstract}
+
+\section{Question and contribution}
+Our question is whether the correctness of supplied relations contributes to held-out compositional prediction after controlling native and generator-output supervision. We distinguish detectable alignment, held-out representation prediction, and functional composition. These are separate endpoints. We use linear CKA \cite{kornblith2019} as an auxiliary alignment measure. CKA can change while functional behavior is largely preserved \cite{davari2022}; therefore accuracy and collision-pair performance are primary functional measures.
+
+Group-structured latent representations and prediction of action sequences have already been demonstrated, for example by the Homomorphism AutoEncoder \cite{keurti2023}. Mechanistic analyses of finite-group composition also identify representation-theoretic circuits and test them by ablation \cite{chughtai2023}. Homomorphism-error probes predict synthetic language generalization by learning representation-level composition operators from expression pairs \cite{an2026}. Our intended contribution is a controlled correct-versus-matched-incorrect intervention, with identical correct output supervision, including conditions where a geometric relation has no measurable additional benefit. We train generator operators without compound representation targets, and evaluate their products separately. A complete related-work survey remains necessary before submission.
+
+\section{Controlled intervention}
+Let $h_\theta(x)$ be an encoder with fixed readout $W$, and let $T_A,T_B$ be two specified input operations. Learned affine row-vector operators are
+\[
+ R_A(h)=hM_A+b_A,\qquad R_B(h)=hM_B+b_B.
+\]
+The ordered word $AB$ always means first $T_A$, then $T_B$; its latent prediction is $R_B(R_A(h_\theta(x)))$. Compound inputs are used to construct evaluation truth but are never fed to the predictor. The program supplies the requested operation order, not the mathematical endpoint.
+
+All four factorial conditions share correct native labels, native teacher logits, and correct generator-output distillation. Only the geometric correspondence changes. Within strata of length where relevant and the three visible gold answers, derangements $P_A,P_B$ preserve endpoint marginals. Both compositions of the discrete derangements are prohibited from returning an anchor to itself. This excludes discrete cancellation, not all possible numerical cancellation of learned operators.
+\[
+ L=L_{\mathrm{native\ CE}}+L_{\mathrm{native\ KD}}+L_{\mathrm{operator\ KD}}
+ +\lambda\sum_{j\in\{A,B\}}\frac{\|R_j(h_\theta(x))-h_\theta(T_jP_jx)\|^2}{2s^2}.
+\]
+For correct pairings $P_j$ is the identity. A no-geometry condition uses $\lambda=0$ with the same input exposure and update count. The output-space diagnostic applies operators directly to full logits; it has fewer operator parameters and is not a capacity-matched causal control.
+
+\section{Permutation results and error localization}
+The primary permutation word is complement followed by inverse. The reversed word overlaps a visible statistic and is secondary. Six fitting repeats reuse three independently trained sources; they are not six independent source-model replications. The 20-epoch experiment continues the 10-epoch optimization state and is dependent on it.
+
+\input{generated_permworld.tex}
+
+\begin{figure}[h]\centering
+\includegraphics[width=\linewidth]{../results/algebra_relation_review/permworld_diagnostic.pdf}
+\caption{Functional comparisons and oracle error localization. Oracle repairs require the true intermediate and are not predictions available at deployment.}
+\end{figure}
+
+Correct complement pairing accounts for most of the factorial advantage. The additional inverse-pairing increment is small with uncertainty crossing zero; we do not impose monotonicity as a success criterion. The matched 20-epoch no-geometry comparator was specified after the main 20-epoch outcomes were observed, using the previously fixed zero coefficient without tuning on those outcomes. Its timing must remain disclosed.
+
+For a true intermediate $h_C$ and true endpoint $h_{CI}$, define $\delta_C=R_C(h)-h_C$. Then
+\[
+ R_I(R_C(h))-h_{CI}=\delta_CM_I+(R_I(h_C)-h_{CI}).
+\]
+The squared error includes the cross term between these two components. We report all terms rather than interpret their squared norms as additive causal fractions.
+Let $P_W$ project onto the row span of the fixed numeric readout. Oracle repairs of $\delta_CP_W$ and $\delta_C(I-P_W)$ locate different intermediate errors. These repairs use the true intermediate and cannot count as inference. A nullspace repair preserves current linear numeric logits but need not remove nonlinear or other answer information. Its effect on subsequent predictions is evidence of fragility of the learned composition, not an output-independent mechanism.
+
+\section{Two exact additional systems}
+\paragraph{Finite matrix group.}
+Inputs are invertible $2\times2$ matrices over $\F_{13}$, with task $\operatorname{tr}(X)$. Left actions use
+\[
+ A=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+ B=\begin{pmatrix}0&-1\\1&-1\end{pmatrix}.
+\]
+They generate a six-element noncommutative group with $A^2=B^3=e$ and $ABA=B^2$. Source, support, validation, and test partitions use disjoint complete group orbits. Visible answers are trace at $X,AX,BX$. The held-out ordered endpoint is $BAX$, with reverse order $ABX$ evaluated against the same primary target only where their gold answers differ.
+
+\paragraph{Polynomials with an irreversible operation.}
+Inputs are exact degree-three polynomials over $\F_{13}$. $T f(x)=f(x+1)$ and $D f=f'$. The native readout is evaluation at zero: visible answers are $f(0),f(1),f'(0)$ and the missing endpoint is $f'(1)$. Here $DT=TD$; this system cannot demonstrate order discrimination. Derivative-block and translation-orbit separation is audited for every actually observed and evaluated path. Complete semigroup closure cannot separate all inputs because $D^4f=0$. Polynomial collision pairs can connect derivative blocks, so their dependence is reported rather than treating every pair as an independent sample.
+
+For illustration, $f(x)=x$ and $g(x)=x-x^2+x^3$ share visible answers $(0,1,1)$ but have missing answers $1$ and $2$. This algebra fixture is not itself a member of the formal exact-degree-three training distribution because $f$ has degree one.
+
+\section{Prospective evaluation protocol}
+Both new domains share field size, four scalar input coordinates, a generic GELU encoder of width 128, three source seeds, six fitting repeats, and 900 fixed joint epochs. No group or polynomial operations are hard-coded in the encoder. There are 1024 anchors per fitting pool, 512 source anchors, 128 validation anchors, 256 IID test examples, and128 collision pairs. All six conditions receive five native state queries per anchor and identical forward-only supervision. The legacy permutation transformer uses bidirectional involution supervision and must be described separately.
+
+The initial one-hot-plus-numeric encoder generalized native predictions but overfit generator prediction. A scalar encoder was selected using known matrix validation only, including a separately reserved confirmation set. This adaptation and pilot reuse are disclosed. No compound outcomes were used in that selection. A domain's compound test opens only after its known-only pilot reaches 95\% native and 90\% for both generators, and all36 formal fits finish. Polynomial uses the matrix-selected scalar architecture without compound-based tuning.
+
+Primary endpoints are ordered compound accuracy, collision-pair double correctness, and held-out representation prediction error normalized by actual displacement energy. CKA is auxiliary. All conditions' primitive scores and true-intermediate diagnostics are shown; failed primitive generalization limits interpretation. Source-cluster intervals describe three independently trained sources conditional on the fixed test set; six supports and overlapping polynomial blocks do not create extra independent sources.
+
+\input{generated_cross_domain.tex}
+
+\section{Limitations and scope}
+The matrix correct-minus-incorrect increment is small and its source-plus-input interval crosses zero. Two polynomial sources miss the primitive translation threshold; their full outcomes remain in the primary report, with a known-only source stratum supplied separately. Even the passed source composes poorly. These findings identify limits of this affine-operator protocol and cannot refute every form of algebraic supervision. Generic geometric regularization greatly reduces displacement error relative to no geometry in both new domains, but wrong geometry often reduces it similarly and functional composition remains poor.
+
+The three-gold-visible-answer collision ceiling applies only to a deterministic representation of those three answers. Full teacher probability distributions and hidden states can carry additional information. Pairwise double correctness above zero does not alone identify a relation-specific mechanism. The current study supplies relation supervision and composition rules, and cannot establish spontaneous discovery. Readout-nullspace analyses, output-space diagnostics, and correct-versus-wrong geometric comparisons answer different questions. Success in one domain does not establish a universal algebraic inductive bias.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

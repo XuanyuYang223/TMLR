@@ -1,0 +1,391 @@
+{
+  "registered_utc": "2026-10-07T13:11:26.487131+00:00",
+  "new_outcomes_observed": false,
+  "signature": {
+    "plan": {
+      "output": "results/two_step_joint_visible_lr3e4",
+      "parent": "results/algebra_hidden_relations",
+      "source_condition": "ordinary",
+      "source_seeds": [
+        5081,
+        6091,
+        7103
+      ],
+      "support_seeds": [
+        261071101,
+        261071103,
+        261071107,
+        261071109,
+        261071113,
+        261071127
+      ],
+      "test_seed": 261071201,
+      "lengths": [
+        12,
+        15,
+        20,
+        25,
+        30
+      ],
+      "fit_per_length": 512,
+      "validation_per_length": 64,
+      "iid_per_length": 256,
+      "collision_pairs_per_length": 128,
+      "conditions": [
+        "both_correct",
+        "c_correct_i_wrong",
+        "c_wrong_i_correct",
+        "both_wrong"
+      ],
+      "views": [
+        "hidden"
+      ],
+      "epochs": 100,
+      "checkpoint_epochs": [
+        25,
+        50,
+        100
+      ],
+      "batch_size": 32,
+      "learning_rate": 0.001,
+      "warmup_updates": 100,
+      "minimum_learning_rate_ratio": 0.2,
+      "weight_decay": 0.0001,
+      "geometry_weight": 0.25,
+      "distillation_temperature": 2.0,
+      "minimum_pairing_stratum": 3,
+      "primary_word": "ci",
+      "words": [
+        "c",
+        "i",
+        "ci",
+        "ic",
+        "cc",
+        "ii"
+      ],
+      "primary_epoch": 100,
+      "fixed_predictions": [
+        "Both-correct hidden operators have higher heldout-ci accuracy than each of the other three conditions; compare paired outcomes without imposing a single-correct ordering.",
+        "Both-correct collision-ci accuracy exceeds the visible-answer-only0.5 ceiling in each of the three frozen-source means.",
+        "Both-correct collision-ci pair-both-correct is positive in each source mean.",
+        "Output-space operators, true-intermediate diagnostics, all single-step scores and all failures are reported; none are used to select fitting settings."
+      ],
+      "deadline_utc": "2026-10-07T17:00:00+00:00",
+      "scope": "Visible-only feasibility pilot after the frozen assay and early joint visible grades; no new compound evaluation. Same n0 source/data across two registered rates.",
+      "source_learning_rate": 0.0003,
+      "operator_learning_rate": 0.001,
+      "native_ce_weight": 1.0,
+      "native_distillation_weight": 1.0,
+      "operator_distillation_weight": 1.0,
+      "interpretation_gate": "Before interpreting hidden-composition failure, both correct single-generator validation accuracies must exceed0.90 in each of the three source means; report failure if unmet. Source native observed-state accuracy and each control operator accuracy are reported separately."
+    },
+    "code_sha256": "3579578ed29649fd2be314e3e73eb6fbb258335202b00aa9bb8bcda323520ecc",
+    "config_sha256": "9c9cd3a93514fe5be422a085caed15bf78c3760c24cb6850c348adf06236d8a2",
+    "sources": [
+      {
+        "seed": 5081,
+        "checkpoint": "results/algebra_hidden_relations/checkpoints/ordinary_s5081.pt",
+        "sha256": "bc90859da5ad087f862304c9bf93e6f9220ec27a2abf3250e8aad82cbb6b6d8a"
+      },
+      {
+        "seed": 6091,
+        "checkpoint": "results/algebra_hidden_relations/checkpoints/ordinary_s6091.pt",
+        "sha256": "0ed388c242caa89ec94aabcc8e6a339396be475303c8bd1143d2442cdccc655e"
+      },
+      {
+        "seed": 7103,
+        "checkpoint": "results/algebra_hidden_relations/checkpoints/ordinary_s7103.pt",
+        "sha256": "dcc2d064c223b10cf60b4a15b5679ef35833fd46bd4efd5d8925c64d461cc330"
+      }
+    ],
+    "excluded_archives": [
+      {
+        "path": "results/algebra_hidden_relations/probe_dataset.npz",
+        "sha256": "b5f8f7d288bf9dc2c807f36952dc5af96c3470568b547cdf8993c8d1bb6a911c"
+      },
+      {
+        "path": "results/algebra_hidden_relations/source_data.npz",
+        "sha256": "7764f8b056459a51b21996493d34eb52e75d7d448eafcab8128a73c7c9d67132"
+      },
+      {
+        "path": "results/algebra_hidden_relations/training_orbit_audit.npz",
+        "sha256": "f68508629a08fdf6bcd7146907d07556ab08f7f750080f5853907f0a9ea6fd8d"
+      },
+      {
+        "path": "results/algebra_structure/native/dataset.npz",
+        "sha256": "7a2b45ca674ac09435694a3776afff6821eb391ce51634fe68363712cee51d1d"
+      },
+      {
+        "path": "results/algebra_structure_replication/dataset/data.npz",
+        "sha256": "59c7dfcee14926ae002853f8c69cd113cb4be8564a813ad38f0e0289a4f234f5"
+      },
+      {
+        "path": "results/algebra_structure_replication/probe_dataset.npz",
+        "sha256": "5c9539adc5b76b732740d673789abef0e6b96eeb1f12950a90f55c752d19a35e"
+      },
+      {
+        "path": "results/answer_matched_geometry/dataset.npz",
+        "sha256": "f662c12fe77401b41bb5a04177b8ea4a0089d756eadba69620b645857ee15d56"
+      },
+      {
+        "path": "results/frozen_operator_constraint_ablation/dataset.npz",
+        "sha256": "d2f208f8bd898d72d7cc11907f7d9a88f4cfd10799a4100ba6a02d23ba6e32dd"
+      },
+      {
+        "path": "results/inverse_alignment_coverage/dataset/r0/dataset.npz",
+        "sha256": "3e51adbf4bfcff4a1892d0f1921a9f411b68f2de1a456b5793701c1b88e24722"
+      },
+      {
+        "path": "results/inverse_alignment_coverage/dataset/r1/dataset.npz",
+        "sha256": "4dd816da6a8cd24779da0d3ce042f4c788eaa73e75e9ef3b3d2783e61429dc03"
+      },
+      {
+        "path": "results/inverse_alignment_coverage/dataset/r2/dataset.npz",
+        "sha256": "749afed9d050f0dac34771c08005719c6eb9b5dd580b5668462aed097b4fa65f"
+      },
+      {
+        "path": "results/inverse_alignment_coverage/dataset/r3/dataset.npz",
+        "sha256": "54573dcdc33fa0c58b8b96c28591aadf8ae1a4a6f8db4d63a8cff8687cba1093"
+      },
+      {
+        "path": "results/inverse_alignment_coverage/dataset/r4/dataset.npz",
+        "sha256": "fc69b02c0edabda749a4ed2c38ff683632004529e0241ead3518b90e13ec9a87"
+      },
+      {
+        "path": "results/inverse_alignment_coverage/dataset/r5/dataset.npz",
+        "sha256": "9049d94d7b393efe21e8c290d710a8ad24cdfd39ca3beb2cb66296f19c69d9b0"
+      },
+      {
+        "path": "results/inverse_alignment_coverage/dataset/test/dataset.npz",
+        "sha256": "a834086ce5a50b49350fdc48338692cb17ad1af7d5d7b99dffe16b87f89238a3"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/audit/dataset.npz",
+        "sha256": "34490eb25f97532ce3d7a89fa69b332015e62772298bfe84672b0615a5945f26"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r0/dataset.npz",
+        "sha256": "8a4a1ccc47b46effbdba7baf45914ef15eee702db76e0386628e6d4b883e60be"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r1/dataset.npz",
+        "sha256": "5fead0fbebf1120f40707a7a5e76709f102bc7c966d9adb40da055b4e7d6bbe1"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r2/dataset.npz",
+        "sha256": "bc201042da6a514a47abb68882470300a7219e02ca08a219c5fa7119e3ad8e69"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r3/dataset.npz",
+        "sha256": "4b98f52e457886ba8a5948af9f18081689c979bb1495dbf63ad0725887839a1a"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r4/dataset.npz",
+        "sha256": "c536e38db283005e7f4427a4d29eee31b0d54d0dca518b8dca79dba46a7a456c"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r5/dataset.npz",
+        "sha256": "b1cd96e65143df1629cedf8365914bc45a863a854fb4e19c1f8d1e11ff6b7a91"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/test/dataset.npz",
+        "sha256": "6f5676b214d8178552df623f4e7e09440b7cc173e121891f2d1a740a52a4c5bd"
+      },
+      {
+        "path": "results/joint_answer_matched_geometry/dataset.npz",
+        "sha256": "f8d34caa858183360a383ad9abab6913330c3abe6050fc66d39386cdbfe402d9"
+      },
+      {
+        "path": "results/native_ablation/dataset/data.npz",
+        "sha256": "8dc94e74db5c9084015f64217eb17b30df962838de5e3774c5e0cfb7c5717242"
+      },
+      {
+        "path": "results/native_target_repeat/dataset/data.npz",
+        "sha256": "c1a3be77c71f72e5d8f2e6ee4feb8ba2615bbd691f8e696daa8f59653a4cfa59"
+      },
+      {
+        "path": "results/overnight_inverse_functional/confirmation/dataset/test/dataset.npz",
+        "sha256": "b43c33ce6e80036bf4e5d6b4da87484fb2d76e5a0af37b044b731962068a63d1"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n0/support/dataset.npz",
+        "sha256": "399be76e860f746b72b0b6384f4034cef25d3ae138de37db41890fd36e12d85c"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n0/unlabeled/dataset.npz",
+        "sha256": "d9762ac7cc00844d22a8926f22f750c9a696bdc72d94433e5b131037084e2d0d"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n1/support/dataset.npz",
+        "sha256": "d76faddf53f2720b6f3bde6760073f906f35af9869ee159d4882515d949f7fcb"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n1/unlabeled/dataset.npz",
+        "sha256": "b4b9b4c29c702dc99cd72e9528f78656162266a64033303539d79452e73b5b6c"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n2/support/dataset.npz",
+        "sha256": "e16c141e6145909be2a58bc60da54136deaa3564f6e9db63a45e815230cf172d"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n2/unlabeled/dataset.npz",
+        "sha256": "d668c128745b290ce81534500858955e92fc496fe07e1b091fcc42715ab37375"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n3/support/dataset.npz",
+        "sha256": "873de905d2efd529c09e52dfdfac6b29d2222c321d2ba20f6b3da5f080d84def"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n3/unlabeled/dataset.npz",
+        "sha256": "ee329fda9fa8632d21069b5df68e504c5bbe507a16a8886e8ce8bcd589e4f433"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n4/support/dataset.npz",
+        "sha256": "4db08c7c8d78b4c9aa725b014fe2995d9e1b1b7e93422f81888d04809735b80f"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n4/unlabeled/dataset.npz",
+        "sha256": "ec2d633c7568645e32c6f7e1f05ca8de4d41722163aa0c4bf7892269fa6bb1b6"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n5/support/dataset.npz",
+        "sha256": "cba28e03dc924c28edf010deb29903cb14e3e1fdd3d0d732d54a36c7ea93e589"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n5/unlabeled/dataset.npz",
+        "sha256": "4258644973c4aab3f796eb75d03a4221e7c440a5b34ffd008ef82f59431f6145"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/test/dataset.npz",
+        "sha256": "c6cc7e8fda03d328b37698d6e395363b2d2e0620cd4bf97078ca5fcf59fd8870"
+      },
+      {
+        "path": "results/overnight_inverse_functional/heldout_lengths/dataset/calibration/dataset.npz",
+        "sha256": "f31b112c6dd0260285df3291b17fe1e14d23aa609737774fc57eb9c4b50ab74e"
+      },
+      {
+        "path": "results/overnight_inverse_functional/heldout_lengths/dataset/test/dataset.npz",
+        "sha256": "22eedcc317c09c68c7105d75d88ef830c0d39dd4210b70887167d68d86ebaab9"
+      },
+      {
+        "path": "results/overnight_inverse_residual_geometry/dataset/test/dataset.npz",
+        "sha256": "bdfff3a242e8fb3ff5a8c3193e5b7b9009787c153760f1747a94ea315485e756"
+      },
+      {
+        "path": "results/permworld_combinations/data.npz",
+        "sha256": "964581706a8261c9abbd100b0c06b6c2c6f562e181cddbef672efa106dc88a3b"
+      },
+      {
+        "path": "results/relation_world_confirmation/world0/probe_dataset.npz",
+        "sha256": "5abb123b59507a613375ad870d24df13bf101e4f8b334452ab3c793870476597"
+      },
+      {
+        "path": "results/relation_world_confirmation/world0/source_data.npz",
+        "sha256": "e3b32aaa4d4775afc1e5b5696771368526e80d54167533661cd0be243a31b1c4"
+      },
+      {
+        "path": "results/relation_world_confirmation/world0/training_orbit_audit.npz",
+        "sha256": "9fd421df0790aa72da1c0ceb5a6ab5748296dff05d064191225f6348b604d398"
+      },
+      {
+        "path": "results/relation_world_confirmation/world1/probe_dataset.npz",
+        "sha256": "42a6ef6fd319fdc0ad631c72380c5414da0c801b216eaf67f7cd383f56c518e5"
+      },
+      {
+        "path": "results/relation_world_confirmation/world1/source_data.npz",
+        "sha256": "b30375ca77cdbf251cd1aa792a868d018910112c442d817644f1b761e8d63385"
+      },
+      {
+        "path": "results/relation_world_confirmation/world1/training_orbit_audit.npz",
+        "sha256": "9c8601f932c5c9dcb2e82499ec6ca2ade762b0133ac67bcacfefccdae82153d1"
+      },
+      {
+        "path": "results/relation_world_confirmation/world2/probe_dataset.npz",
+        "sha256": "2ee969bd6d2915438c514e2c1040e7ba9e4615daf96d27045806ab6ce58af9eb"
+      },
+      {
+        "path": "results/relation_world_confirmation/world2/source_data.npz",
+        "sha256": "b91c88f044b352458194257f4686d7aab3608fedc46e49ce6f2a0165b6a0f0c4"
+      },
+      {
+        "path": "results/relation_world_confirmation/world2/training_orbit_audit.npz",
+        "sha256": "ce57d7ba3871c725bc1375abebefba5ee97f5560890605539198b766a42e662e"
+      },
+      {
+        "path": "results/six_hour_session/dataset/data.npz",
+        "sha256": "ea63f0bb7dd843c40217574755e30f3f65a476b68bd8cf1d90fedc1791d47535"
+      },
+      {
+        "path": "results/specialist_cka_controls/dataset.npz",
+        "sha256": "e353558d7ac211637a9a783461b5eeb198dad6b99e95e2ec5946924f3280e65e"
+      },
+      {
+        "path": "results/two_step_relation_factorial/dataset/n0/support/dataset.npz",
+        "sha256": "b2dd26a129eebdb0a88cbf8025d440c21b7b7aba680e4999a0cf2df6922db7d1"
+      },
+      {
+        "path": "results/two_step_relation_factorial/dataset/n1/support/dataset.npz",
+        "sha256": "22f4da807f47c13fe62250401a84fa29ec825699cf04f601bf440a5b774b0254"
+      },
+      {
+        "path": "results/two_step_relation_factorial/dataset/n2/support/dataset.npz",
+        "sha256": "109eb7e5aee4d8b104c915c859f90f7eb0d5c3a06bd2a361dfc72e4b5bc91fec"
+      },
+      {
+        "path": "results/two_step_relation_factorial/dataset/n3/support/dataset.npz",
+        "sha256": "46a980348a03446969a8e450942626fad61394fa0e56a52f258734adf12c9b2f"
+      },
+      {
+        "path": "results/two_step_relation_factorial/dataset/n4/support/dataset.npz",
+        "sha256": "07e8af203ffdc615e36ee7bd0897ae6da78220bc3eef3339b3621922bbd38516"
+      },
+      {
+        "path": "results/two_step_relation_factorial/dataset/n5/support/dataset.npz",
+        "sha256": "806e85b9dddaaea1ad1f76fd9492d48e8f266a90bafd0485678cc588c25c46e7"
+      },
+      {
+        "path": "results/two_step_relation_factorial/dataset/test/dataset.npz",
+        "sha256": "1f95a1eaa72f060bf3859e548fb7c1223ac52c25b9fd7313c5d1325886fa3cf6"
+      },
+      {
+        "path": "results/two_step_relation_joint/dataset/n0/support/dataset.npz",
+        "sha256": "7b713f692e4331e46ac20a54b6e2a0709b6a0b135754a34e3ae1572c91f68377"
+      },
+      {
+        "path": "results/two_step_relation_joint/dataset/n1/support/dataset.npz",
+        "sha256": "a7a073c06e66d49985ae1b0b4548662202c9b984257fba6398a2ac3c1a528327"
+      },
+      {
+        "path": "results/two_step_relation_joint/dataset/n2/support/dataset.npz",
+        "sha256": "f20d3b49b11c46977d0a0abc928feeb7898261c59dd99d96ee4fad8f26b93e96"
+      },
+      {
+        "path": "results/two_step_relation_joint/dataset/n3/support/dataset.npz",
+        "sha256": "1a342e96fc56fc6c257a8437b1152a341acb16dec0fe33a3b15f2acfb251e95b"
+      },
+      {
+        "path": "results/two_step_relation_joint/dataset/n4/support/dataset.npz",
+        "sha256": "1f5c7eec3056d70b1066fee8c22de49e04c745051f660e8da6cca09998c501e6"
+      },
+      {
+        "path": "results/two_step_relation_joint/dataset/n5/support/dataset.npz",
+        "sha256": "256a8be6c54f2cd1b46d7bbb3bba730daf620518824a96fe3962150e62076d3b"
+      },
+      {
+        "path": "results/two_step_relation_joint/dataset/test/dataset.npz",
+        "sha256": "04e53251de34ba6eb163136e27ef235be6ed0905074d11b39aa27bff6715f941"
+      }
+    ],
+    "dependencies_sha256": {
+      "experiments/hidden_relation_train.py": "43115c61592d34ac7a53cb2c4a4ccaad83d97c21b893ec2d87824867123a9cf3",
+      "experiments/longrun_transfer.py": "e3fcc098e21ca9c7566b97fcdcc277200ba6a774627ab46f1a314b8e671fa8c2",
+      "experiments/longrun_attention.py": "5035f58453ddee5c5d5b05878491dfcc81764e172f2ebada437dc9e325048918",
+      "experiments/permworld_combinations.py": "b14ac19b0be4c5695998d04782f43220f4b05a4634435f1715d6d1cdf3b0cdc0",
+      "experiments/permutation_audit.py": "d02b667d8d1951c547ad4a4a6a84875535f6ee59255db96bb6abef241b5b267e",
+      "experiments/representation_algebra.py": "0f520644029ffc2b3bd32ddbea1f3d522f6335dee9ea4b2ae72ca4bdd96a7eae",
+      "experiments/specialist_cka_controls.py": "ecae66ac70ea20b1b274775712bd35e1305fbeadaf8ce522d8af79f3f0213b14"
+    },
+    "parent_protocol_sha256": "1063d1b102558ee19d30d1f1ad3fa467875f980009ddaa3c2a320d143a468b70",
+    "limits": "Source models were trained from scratch on the local e/C/I source dataset. Local archive orbits are excluded. This study does not claim exclusion against the unrelated original16M upstream corpus, on which these backbones were not pretrained."
+  }
+}

@@ -1,0 +1,596 @@
+{
+  "job": {
+    "phase": "calibration",
+    "id": "interior_four",
+    "seed": 17,
+    "tasks": [
+      "peaks",
+      "valleys",
+      "double_ascents",
+      "double_descents"
+    ],
+    "steps": 20000
+  },
+  "architecture": {
+    "id": "d128_l2",
+    "d_model": 128,
+    "layers": 2,
+    "heads": 4
+  },
+  "training_policy": {
+    "source_learning_rate": 0.0003,
+    "warmup_steps": 500,
+    "minimum_learning_rate_ratio": 0.1,
+    "examples_per_task_per_step": 32,
+    "record_every": 1000,
+    "precision": "bf16"
+  },
+  "data_sha256": "ea63f0bb7dd843c40217574755e30f3f65a476b68bd8cf1d90fedc1791d47535",
+  "source_hashes": {
+    "experiments/longrun_engine.py": "c40cede331cb3a92e61a3a501421c067db2ce862ad1a5934dd31ec28b6802bca",
+    "experiments/longrun_attention.py": "5035f58453ddee5c5d5b05878491dfcc81764e172f2ebada437dc9e325048918",
+    "experiments/permworld_combinations.py": "b14ac19b0be4c5695998d04782f43220f4b05a4634435f1715d6d1cdf3b0cdc0"
+  },
+  "upstream_hashes": {
+    "models.py": "286a01f794f627c1f0db5dd6dd31adbdb7f58f235e47203163eda6fc8a8baab6",
+    "math_ops.py": "968e7580c01289e5ffeab9f07c52beb334be40d95c0e61d7a7f9e2cab694c62c",
+    "passage.py": "d200ffe6f5f6cff717c1b6ed6698a5a6af42bb6580fa4e8729a2fd84b79babd6"
+  },
+  "fingerprint": "3f400f24564a7d170a618a6bd2d3177ad09caa5fa6cf4da547344724acd370c6",
+  "job_id": "d128_l2_interior_four_s17",
+  "status": "complete",
+  "step": 20000,
+  "exposures_per_task": 640000,
+  "elapsed_seconds": 162.92109449091367,
+  "checkpoint_sha256": "34443af8644d0d8472f79af61d522aa8c6c6684ce2b60f644afd6eaca5c550ee",
+  "curve": [
+    {
+      "step": 0,
+      "task": "peaks",
+      "accuracy": 0.0,
+      "cross_entropy": 5.288939005533854
+    },
+    {
+      "step": 0,
+      "task": "valleys",
+      "accuracy": 0.0,
+      "cross_entropy": 5.295760047549293
+    },
+    {
+      "step": 0,
+      "task": "double_ascents",
+      "accuracy": 0.022857142857142857,
+      "cross_entropy": 5.196194370814732
+    },
+    {
+      "step": 0,
+      "task": "double_descents",
+      "accuracy": 0.024761904761904763,
+      "cross_entropy": 5.1990444946289065
+    },
+    {
+      "step": 1000,
+      "task": "peaks",
+      "accuracy": 0.38047619047619047,
+      "cross_entropy": 1.437959493001302
+    },
+    {
+      "step": 1000,
+      "task": "valleys",
+      "accuracy": 0.36714285714285716,
+      "cross_entropy": 1.4431703222365606
+    },
+    {
+      "step": 1000,
+      "task": "double_ascents",
+      "accuracy": 0.25333333333333335,
+      "cross_entropy": 1.846858168102446
+    },
+    {
+      "step": 1000,
+      "task": "double_descents",
+      "accuracy": 0.25761904761904764,
+      "cross_entropy": 1.8374725596110026
+    },
+    {
+      "step": 2000,
+      "task": "peaks",
+      "accuracy": 0.3842857142857143,
+      "cross_entropy": 1.4035469454810734
+    },
+    {
+      "step": 2000,
+      "task": "valleys",
+      "accuracy": 0.3819047619047619,
+      "cross_entropy": 1.4114637429373604
+    },
+    {
+      "step": 2000,
+      "task": "double_ascents",
+      "accuracy": 0.2580952380952381,
+      "cross_entropy": 1.8278355080740794
+    },
+    {
+      "step": 2000,
+      "task": "double_descents",
+      "accuracy": 0.27666666666666667,
+      "cross_entropy": 1.801667680286226
+    },
+    {
+      "step": 3000,
+      "task": "peaks",
+      "accuracy": 0.4023809523809524,
+      "cross_entropy": 1.382179954165504
+    },
+    {
+      "step": 3000,
+      "task": "valleys",
+      "accuracy": 0.38952380952380955,
+      "cross_entropy": 1.3934462011428106
+    },
+    {
+      "step": 3000,
+      "task": "double_ascents",
+      "accuracy": 0.2671428571428571,
+      "cross_entropy": 1.8092703646705264
+    },
+    {
+      "step": 3000,
+      "task": "double_descents",
+      "accuracy": 0.25952380952380955,
+      "cross_entropy": 1.7959183683849516
+    },
+    {
+      "step": 4000,
+      "task": "peaks",
+      "accuracy": 0.4085714285714286,
+      "cross_entropy": 1.3769600895472935
+    },
+    {
+      "step": 4000,
+      "task": "valleys",
+      "accuracy": 0.3952380952380952,
+      "cross_entropy": 1.3819915371849423
+    },
+    {
+      "step": 4000,
+      "task": "double_ascents",
+      "accuracy": 0.26571428571428574,
+      "cross_entropy": 1.813748572213309
+    },
+    {
+      "step": 4000,
+      "task": "double_descents",
+      "accuracy": 0.26476190476190475,
+      "cross_entropy": 1.7898219371977306
+    },
+    {
+      "step": 5000,
+      "task": "peaks",
+      "accuracy": 0.4014285714285714,
+      "cross_entropy": 1.3739884912400018
+    },
+    {
+      "step": 5000,
+      "task": "valleys",
+      "accuracy": 0.39476190476190476,
+      "cross_entropy": 1.3775054931640625
+    },
+    {
+      "step": 5000,
+      "task": "double_ascents",
+      "accuracy": 0.26857142857142857,
+      "cross_entropy": 1.818623991466704
+    },
+    {
+      "step": 5000,
+      "task": "double_descents",
+      "accuracy": 0.27095238095238094,
+      "cross_entropy": 1.790284910656157
+    },
+    {
+      "step": 6000,
+      "task": "peaks",
+      "accuracy": 0.3976190476190476,
+      "cross_entropy": 1.380386948358445
+    },
+    {
+      "step": 6000,
+      "task": "valleys",
+      "accuracy": 0.3880952380952381,
+      "cross_entropy": 1.3842854527064732
+    },
+    {
+      "step": 6000,
+      "task": "double_ascents",
+      "accuracy": 0.26142857142857145,
+      "cross_entropy": 1.8201288314092727
+    },
+    {
+      "step": 6000,
+      "task": "double_descents",
+      "accuracy": 0.27095238095238094,
+      "cross_entropy": 1.7887317330496653
+    },
+    {
+      "step": 7000,
+      "task": "peaks",
+      "accuracy": 0.4147619047619048,
+      "cross_entropy": 1.3617004830496653
+    },
+    {
+      "step": 7000,
+      "task": "valleys",
+      "accuracy": 0.39476190476190476,
+      "cross_entropy": 1.3670646667480468
+    },
+    {
+      "step": 7000,
+      "task": "double_ascents",
+      "accuracy": 0.2719047619047619,
+      "cross_entropy": 1.8212896183558873
+    },
+    {
+      "step": 7000,
+      "task": "double_descents",
+      "accuracy": 0.27380952380952384,
+      "cross_entropy": 1.7822279648553758
+    },
+    {
+      "step": 8000,
+      "task": "peaks",
+      "accuracy": 0.4114285714285714,
+      "cross_entropy": 1.3429285830543154
+    },
+    {
+      "step": 8000,
+      "task": "valleys",
+      "accuracy": 0.4066666666666667,
+      "cross_entropy": 1.3353889156523204
+    },
+    {
+      "step": 8000,
+      "task": "double_ascents",
+      "accuracy": 0.2680952380952381,
+      "cross_entropy": 1.801267078944615
+    },
+    {
+      "step": 8000,
+      "task": "double_descents",
+      "accuracy": 0.2819047619047619,
+      "cross_entropy": 1.7737360345749629
+    },
+    {
+      "step": 9000,
+      "task": "peaks",
+      "accuracy": 0.4204761904761905,
+      "cross_entropy": 1.3437540671938941
+    },
+    {
+      "step": 9000,
+      "task": "valleys",
+      "accuracy": 0.4080952380952381,
+      "cross_entropy": 1.3549762889317103
+    },
+    {
+      "step": 9000,
+      "task": "double_ascents",
+      "accuracy": 0.26761904761904765,
+      "cross_entropy": 1.7977214994884672
+    },
+    {
+      "step": 9000,
+      "task": "double_descents",
+      "accuracy": 0.26857142857142857,
+      "cross_entropy": 1.7719832829066686
+    },
+    {
+      "step": 10000,
+      "task": "peaks",
+      "accuracy": 0.4280952380952381,
+      "cross_entropy": 1.3150732876005626
+    },
+    {
+      "step": 10000,
+      "task": "valleys",
+      "accuracy": 0.4119047619047619,
+      "cross_entropy": 1.32870607648577
+    },
+    {
+      "step": 10000,
+      "task": "double_ascents",
+      "accuracy": 0.2671428571428571,
+      "cross_entropy": 1.7910468473888579
+    },
+    {
+      "step": 10000,
+      "task": "double_descents",
+      "accuracy": 0.27095238095238094,
+      "cross_entropy": 1.7616426631382534
+    },
+    {
+      "step": 11000,
+      "task": "peaks",
+      "accuracy": 0.4166666666666667,
+      "cross_entropy": 1.3093634541829426
+    },
+    {
+      "step": 11000,
+      "task": "valleys",
+      "accuracy": 0.4195238095238095,
+      "cross_entropy": 1.2995575605119978
+    },
+    {
+      "step": 11000,
+      "task": "double_ascents",
+      "accuracy": 0.27714285714285714,
+      "cross_entropy": 1.7830369785853795
+    },
+    {
+      "step": 11000,
+      "task": "double_descents",
+      "accuracy": 0.29285714285714287,
+      "cross_entropy": 1.7564044516427175
+    },
+    {
+      "step": 12000,
+      "task": "peaks",
+      "accuracy": 0.43,
+      "cross_entropy": 1.3010825329735165
+    },
+    {
+      "step": 12000,
+      "task": "valleys",
+      "accuracy": 0.430952380952381,
+      "cross_entropy": 1.2951999864124117
+    },
+    {
+      "step": 12000,
+      "task": "double_ascents",
+      "accuracy": 0.27666666666666667,
+      "cross_entropy": 1.7694429379417782
+    },
+    {
+      "step": 12000,
+      "task": "double_descents",
+      "accuracy": 0.28285714285714286,
+      "cross_entropy": 1.7481668054489863
+    },
+    {
+      "step": 13000,
+      "task": "peaks",
+      "accuracy": 0.4438095238095238,
+      "cross_entropy": 1.2704272769746325
+    },
+    {
+      "step": 13000,
+      "task": "valleys",
+      "accuracy": 0.44857142857142857,
+      "cross_entropy": 1.2724150012788318
+    },
+    {
+      "step": 13000,
+      "task": "double_ascents",
+      "accuracy": 0.2742857142857143,
+      "cross_entropy": 1.75700437999907
+    },
+    {
+      "step": 13000,
+      "task": "double_descents",
+      "accuracy": 0.28476190476190477,
+      "cross_entropy": 1.7409871564592634
+    },
+    {
+      "step": 14000,
+      "task": "peaks",
+      "accuracy": 0.45,
+      "cross_entropy": 1.2604888062250046
+    },
+    {
+      "step": 14000,
+      "task": "valleys",
+      "accuracy": 0.4514285714285714,
+      "cross_entropy": 1.2595869990757533
+    },
+    {
+      "step": 14000,
+      "task": "double_ascents",
+      "accuracy": 0.2742857142857143,
+      "cross_entropy": 1.74490968250093
+    },
+    {
+      "step": 14000,
+      "task": "double_descents",
+      "accuracy": 0.28523809523809524,
+      "cross_entropy": 1.7354727499825613
+    },
+    {
+      "step": 15000,
+      "task": "peaks",
+      "accuracy": 0.44904761904761903,
+      "cross_entropy": 1.2613861701602027
+    },
+    {
+      "step": 15000,
+      "task": "valleys",
+      "accuracy": 0.44333333333333336,
+      "cross_entropy": 1.258159065246582
+    },
+    {
+      "step": 15000,
+      "task": "double_ascents",
+      "accuracy": 0.2823809523809524,
+      "cross_entropy": 1.732077193487258
+    },
+    {
+      "step": 15000,
+      "task": "double_descents",
+      "accuracy": 0.28714285714285714,
+      "cross_entropy": 1.7263172294980005
+    },
+    {
+      "step": 16000,
+      "task": "peaks",
+      "accuracy": 0.4480952380952381,
+      "cross_entropy": 1.2472098904564266
+    },
+    {
+      "step": 16000,
+      "task": "valleys",
+      "accuracy": 0.44952380952380955,
+      "cross_entropy": 1.248538578578404
+    },
+    {
+      "step": 16000,
+      "task": "double_ascents",
+      "accuracy": 0.28523809523809524,
+      "cross_entropy": 1.7160384114583334
+    },
+    {
+      "step": 16000,
+      "task": "double_descents",
+      "accuracy": 0.2861904761904762,
+      "cross_entropy": 1.7194786471412296
+    },
+    {
+      "step": 17000,
+      "task": "peaks",
+      "accuracy": 0.44571428571428573,
+      "cross_entropy": 1.243727046421596
+    },
+    {
+      "step": 17000,
+      "task": "valleys",
+      "accuracy": 0.4533333333333333,
+      "cross_entropy": 1.24144471123105
+    },
+    {
+      "step": 17000,
+      "task": "double_ascents",
+      "accuracy": 0.2795238095238095,
+      "cross_entropy": 1.7189305187406994
+    },
+    {
+      "step": 17000,
+      "task": "double_descents",
+      "accuracy": 0.28285714285714286,
+      "cross_entropy": 1.7116688755580358
+    },
+    {
+      "step": 18000,
+      "task": "peaks",
+      "accuracy": 0.44285714285714284,
+      "cross_entropy": 1.2370134498959495
+    },
+    {
+      "step": 18000,
+      "task": "valleys",
+      "accuracy": 0.45571428571428574,
+      "cross_entropy": 1.2323052669706798
+    },
+    {
+      "step": 18000,
+      "task": "double_ascents",
+      "accuracy": 0.28714285714285714,
+      "cross_entropy": 1.7079747045607794
+    },
+    {
+      "step": 18000,
+      "task": "double_descents",
+      "accuracy": 0.2895238095238095,
+      "cross_entropy": 1.714052247546968
+    },
+    {
+      "step": 19000,
+      "task": "peaks",
+      "accuracy": 0.4461904761904762,
+      "cross_entropy": 1.2327236847650438
+    },
+    {
+      "step": 19000,
+      "task": "valleys",
+      "accuracy": 0.46714285714285714,
+      "cross_entropy": 1.2228180694580078
+    },
+    {
+      "step": 19000,
+      "task": "double_ascents",
+      "accuracy": 0.2814285714285714,
+      "cross_entropy": 1.7046184830438522
+    },
+    {
+      "step": 19000,
+      "task": "double_descents",
+      "accuracy": 0.28,
+      "cross_entropy": 1.7081120954241071
+    },
+    {
+      "step": 20000,
+      "task": "peaks",
+      "accuracy": 0.4514285714285714,
+      "cross_entropy": 1.229151467822847
+    },
+    {
+      "step": 20000,
+      "task": "valleys",
+      "accuracy": 0.4633333333333333,
+      "cross_entropy": 1.2217658542451404
+    },
+    {
+      "step": 20000,
+      "task": "double_ascents",
+      "accuracy": 0.28523809523809524,
+      "cross_entropy": 1.6984844353085473
+    },
+    {
+      "step": 20000,
+      "task": "double_descents",
+      "accuracy": 0.3,
+      "cross_entropy": 1.703537107195173
+    }
+  ],
+  "source_validation": [
+    {
+      "task": "peaks",
+      "accuracy": 0.4514285714285714,
+      "cross_entropy": 1.229151467822847
+    },
+    {
+      "task": "valleys",
+      "accuracy": 0.4633333333333333,
+      "cross_entropy": 1.2217658542451404
+    },
+    {
+      "task": "double_ascents",
+      "accuracy": 0.28523809523809524,
+      "cross_entropy": 1.6984844353085473
+    },
+    {
+      "task": "double_descents",
+      "accuracy": 0.3,
+      "cross_entropy": 1.703537107195173
+    }
+  ],
+  "source_train": [
+    {
+      "task": "peaks",
+      "accuracy": 0.46535714285714286,
+      "cross_entropy": 1.2075893369856334
+    },
+    {
+      "task": "valleys",
+      "accuracy": 0.46335714285714286,
+      "cross_entropy": 1.2026113565989902
+    },
+    {
+      "task": "double_ascents",
+      "accuracy": 0.2975714285714286,
+      "cross_entropy": 1.6840882518405007
+    },
+    {
+      "task": "double_descents",
+      "accuracy": 0.28454761904761905,
+      "cross_entropy": 1.7103716953822545
+    }
+  ]
+}

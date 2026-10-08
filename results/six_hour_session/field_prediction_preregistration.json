@@ -1,0 +1,35 @@
+{
+  "registered_utc": "2026-10-05T13:32:39.187413+00:00",
+  "status": "registered_before_new_source_cohort_training_and_target_behavior",
+  "ridge_alpha": 1.0,
+  "holdout": "remove every world, initialization, target and budget for one entire source combination",
+  "baseline": [
+    "target fixed effects",
+    "input-basis fixed effects",
+    "initialization fixed effects",
+    "source final mean accuracy",
+    "source learning-curve mean AUC",
+    "mean physical source coefficient support size"
+  ],
+  "structural_features": [
+    "minimum target composition size"
+  ],
+  "learned_feature_statistic": "Fourier energy fraction along the four nonzero character multiples of the target coefficient",
+  "analytical_reference": "oracle-minimum-subset lookup occupancy; correct subset supplied externally, not generic-decoder performance theorem",
+  "outcomes": [
+    "paired random-adjusted linear accuracy",
+    "paired random-adjusted MLP accuracy",
+    "generic categorical-subset accuracy"
+  ],
+  "budgets": [
+    25,
+    50
+  ],
+  "code_sha256": "63176043d900866080c41b786f73b56e6240904ae794f5508a67211b0600da58",
+  "limitations": [
+    "Only five source-combination folds; folds share an abstract algebra family.",
+    "Crossed worlds, seeds and targets are correlated observations; no independent dataset p-value.",
+    "Source learning statistics are observed after source training; these are conditional predictions of downstream outcomes.",
+    "An analytical lookup reference is specific to its oracle subset and sampling assumptions."
+  ]
+}

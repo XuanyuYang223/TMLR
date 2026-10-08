@@ -1,0 +1,274 @@
+target validation tuning: random/descents, budget=64
+target validation tuning: random/descents, budget=256
+target validation tuning: random/recoils, budget=64
+target validation tuning: random/recoils, budget=256
+target validation tuning: random/lis_length, budget=64
+target validation tuning: random/lis_length, budget=256
+target validation tuning: random/longest_increasing_run, budget=64
+target validation tuning: random/longest_increasing_run, budget=256
+target validation tuning: cycle_none/descents, budget=64
+target validation tuning: cycle_none/descents, budget=256
+target validation tuning: cycle_none/recoils, budget=64
+target validation tuning: cycle_none/recoils, budget=256
+target validation tuning: cycle_none/lis_length, budget=64
+target validation tuning: cycle_none/lis_length, budget=256
+target validation tuning: cycle_none/longest_increasing_run, budget=64
+target validation tuning: cycle_none/longest_increasing_run, budget=256
+target validation tuning: cycle_three/descents, budget=64
+target validation tuning: cycle_three/descents, budget=256
+target validation tuning: cycle_three/recoils, budget=64
+target validation tuning: cycle_three/recoils, budget=256
+target validation tuning: cycle_three/lis_length, budget=64
+target validation tuning: cycle_three/lis_length, budget=256
+target validation tuning: cycle_three/longest_increasing_run, budget=64
+target validation tuning: cycle_three/longest_increasing_run, budget=256
+target validation tuning: cycle_four/descents, budget=64
+target validation tuning: cycle_four/descents, budget=256
+target validation tuning: cycle_four/recoils, budget=64
+target validation tuning: cycle_four/recoils, budget=256
+target validation tuning: cycle_four/lis_length, budget=64
+target validation tuning: cycle_four/lis_length, budget=256
+target validation tuning: cycle_four/longest_increasing_run, budget=64
+target validation tuning: cycle_four/longest_increasing_run, budget=256
+target validation tuning: interior_none/descents, budget=64
+target validation tuning: interior_none/descents, budget=256
+target validation tuning: interior_none/recoils, budget=64
+target validation tuning: interior_none/recoils, budget=256
+target validation tuning: interior_none/lis_length, budget=64
+target validation tuning: interior_none/lis_length, budget=256
+target validation tuning: interior_none/longest_increasing_run, budget=64
+target validation tuning: interior_none/longest_increasing_run, budget=256
+target validation tuning: interior_four/descents, budget=64
+target validation tuning: interior_four/descents, budget=256
+target validation tuning: interior_four/recoils, budget=64
+target validation tuning: interior_four/recoils, budget=256
+target validation tuning: interior_four/lis_length, budget=64
+target validation tuning: interior_four/lis_length, budget=256
+target validation tuning: interior_four/longest_increasing_run, budget=64
+target validation tuning: interior_four/longest_increasing_run, budget=256
+target validation tuning: position_none/descents, budget=64
+target validation tuning: position_none/descents, budget=256
+target validation tuning: position_none/recoils, budget=64
+target validation tuning: position_none/recoils, budget=256
+target validation tuning: position_none/lis_length, budget=64
+target validation tuning: position_none/lis_length, budget=256
+target validation tuning: position_none/longest_increasing_run, budget=64
+target validation tuning: position_none/longest_increasing_run, budget=256
+target validation tuning: position_three/descents, budget=64
+target validation tuning: position_three/descents, budget=256
+target validation tuning: position_three/recoils, budget=64
+target validation tuning: position_three/recoils, budget=256
+target validation tuning: position_three/lis_length, budget=64
+target validation tuning: position_three/lis_length, budget=256
+target validation tuning: position_three/longest_increasing_run, budget=64
+target validation tuning: position_three/longest_increasing_run, budget=256
+target validation tuning: position_four/descents, budget=64
+target validation tuning: position_four/descents, budget=256
+target validation tuning: position_four/recoils, budget=64
+target validation tuning: position_four/recoils, budget=256
+target validation tuning: position_four/lis_length, budget=64
+target validation tuning: position_four/lis_length, budget=256
+target validation tuning: position_four/longest_increasing_run, budget=64
+target validation tuning: position_four/longest_increasing_run, budget=256
+{
+  "selected_adaptation": {
+    "random": {
+      "finetune": {
+        "learning_rate": 0.0001,
+        "steps": 100,
+        "validation_macro": 0.30464285714285716
+      },
+      "linear": {
+        "learning_rate": 0.01,
+        "steps": 200,
+        "validation_macro": 0.2828571442514658
+      },
+      "linear_query": {
+        "learning_rate": 0.003,
+        "steps": 200,
+        "validation_macro": 0.28357142955064774
+      },
+      "mlp": {
+        "learning_rate": 0.003,
+        "steps": 200,
+        "validation_macro": 0.2889285683631897
+      }
+    },
+    "cycle_none": {
+      "finetune": {
+        "learning_rate": 0.001,
+        "steps": 100,
+        "validation_macro": 0.284047619047619
+      },
+      "linear": {
+        "learning_rate": 0.003,
+        "steps": 200,
+        "validation_macro": 0.25083332881331444
+      },
+      "linear_query": {
+        "learning_rate": 0.003,
+        "steps": 200,
+        "validation_macro": 0.24678571335971355
+      },
+      "mlp": {
+        "learning_rate": 0.03,
+        "steps": 1000,
+        "validation_macro": 0.26202380657196045
+      }
+    },
+    "cycle_three": {
+      "finetune": {
+        "learning_rate": 0.001,
+        "steps": 100,
+        "validation_macro": 0.28583333333333333
+      },
+      "linear": {
+        "learning_rate": 0.003,
+        "steps": 1000,
+        "validation_macro": 0.23654761351644993
+      },
+      "linear_query": {
+        "learning_rate": 0.01,
+        "steps": 200,
+        "validation_macro": 0.23750000074505806
+      },
+      "mlp": {
+        "learning_rate": 0.03,
+        "steps": 1000,
+        "validation_macro": 0.23380952514708042
+      }
+    },
+    "cycle_four": {
+      "finetune": {
+        "learning_rate": 0.001,
+        "steps": 100,
+        "validation_macro": 0.2671428571428571
+      },
+      "linear": {
+        "learning_rate": 0.01,
+        "steps": 200,
+        "validation_macro": 0.24964285269379616
+      },
+      "linear_query": {
+        "learning_rate": 0.03,
+        "steps": 200,
+        "validation_macro": 0.2196428533643484
+      },
+      "mlp": {
+        "learning_rate": 0.03,
+        "steps": 200,
+        "validation_macro": 0.24845237843692303
+      }
+    },
+    "interior_none": {
+      "finetune": {
+        "learning_rate": 0.0003,
+        "steps": 100,
+        "validation_macro": 0.32916666666666666
+      },
+      "linear": {
+        "learning_rate": 0.01,
+        "steps": 200,
+        "validation_macro": 0.30559523589909077
+      },
+      "linear_query": {
+        "learning_rate": 0.03,
+        "steps": 200,
+        "validation_macro": 0.2992857079952955
+      },
+      "mlp": {
+        "learning_rate": 0.01,
+        "steps": 200,
+        "validation_macro": 0.3022619001567364
+      }
+    },
+    "interior_four": {
+      "finetune": {
+        "learning_rate": 0.0001,
+        "steps": 100,
+        "validation_macro": 0.30488095238095236
+      },
+      "linear": {
+        "learning_rate": 0.01,
+        "steps": 200,
+        "validation_macro": 0.2838095221668482
+      },
+      "linear_query": {
+        "learning_rate": 0.003,
+        "steps": 200,
+        "validation_macro": 0.28226190246641636
+      },
+      "mlp": {
+        "learning_rate": 0.03,
+        "steps": 1000,
+        "validation_macro": 0.2909523732960224
+      }
+    },
+    "position_none": {
+      "finetune": {
+        "learning_rate": 0.0003,
+        "steps": 100,
+        "validation_macro": 0.31726190476190474
+      },
+      "linear": {
+        "learning_rate": 0.03,
+        "steps": 200,
+        "validation_macro": 0.2410714216530323
+      },
+      "linear_query": {
+        "learning_rate": 0.003,
+        "steps": 200,
+        "validation_macro": 0.27702380530536175
+      },
+      "mlp": {
+        "learning_rate": 0.003,
+        "steps": 200,
+        "validation_macro": 0.24214285425841808
+      }
+    },
+    "position_three": {
+      "finetune": {
+        "learning_rate": 0.001,
+        "steps": 1000,
+        "validation_macro": 0.30642857142857144
+      },
+      "linear": {
+        "learning_rate": 0.03,
+        "steps": 200,
+        "validation_macro": 0.27297618985176086
+      },
+      "linear_query": {
+        "learning_rate": 0.03,
+        "steps": 200,
+        "validation_macro": 0.2620238047093153
+      },
+      "mlp": {
+        "learning_rate": 0.03,
+        "steps": 200,
+        "validation_macro": 0.2797618992626667
+      }
+    },
+    "position_four": {
+      "finetune": {
+        "learning_rate": 0.001,
+        "steps": 100,
+        "validation_macro": 0.30714285714285716
+      },
+      "linear": {
+        "learning_rate": 0.03,
+        "steps": 200,
+        "validation_macro": 0.25654761865735054
+      },
+      "linear_query": {
+        "learning_rate": 0.003,
+        "steps": 200,
+        "validation_macro": 0.2583333272486925
+      },
+      "mlp": {
+        "learning_rate": 0.03,
+        "steps": 1000,
+        "validation_macro": 0.2697618994861841
+      }
+    }
+  }
+}

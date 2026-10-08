@@ -1,0 +1,57 @@
+{
+  "status": "six_hour_window_complete",
+  "started_utc": "2026-10-05T11:51:45+00:00",
+  "scheduled_deadline_utc": "2026-10-05T17:51:45+00:00",
+  "completed_utc": "2026-10-05T17:51:45.036139+00:00",
+  "elapsed_wall_seconds": 21600.036154985428,
+  "completed_source_models": {
+    "calibration": 9,
+    "multi": 24,
+    "single": 24
+  },
+  "planned_optional_single_models": 54,
+  "partial_optional_single_models": [
+    {
+      "job_id": "d256_l4_fixed_points_s42",
+      "status": "partial_deadline",
+      "step": 8500
+    }
+  ],
+  "partial_conditions_excluded_from_complete_results": true,
+  "target_evaluations": [
+    {
+      "root": "results/six_hour_session",
+      "completed_conditions": 27,
+      "test_endpoints": 1080
+    },
+    {
+      "root": "results/native_target_repeat",
+      "completed_conditions": 27,
+      "test_endpoints": 1080
+    }
+  ],
+  "globally_disjoint_native_inputs": 57540,
+  "fresh_target_pool_reuses_original_sources": true,
+  "unit_tests": {
+    "passed": 63,
+    "log": "results/six_hour_session/tests_final.log",
+    "log_sha256": "374528e782b6f9d418d2d093a627115ced2a9bbe8aae26566136af0a5818bcd5"
+  },
+  "verification": {
+    "source": "results/six_hour_session/verification.json",
+    "fresh_target_pool": "results/native_target_repeat/verification.json",
+    "supplementary": "results/factor_kernel_readout/verification.json",
+    "final_artifacts": "results/six_hour_session/session_final_audit.json"
+  },
+  "reports": {
+    "main": "results/six_hour_session/report.html",
+    "target_pool_comparison": "results/native_target_repeat/comparison.html"
+  },
+  "limitations": [
+    "Only one native source-data world and three initialization seeds.",
+    "Target repeat uses the same source models and tasks with new globally disjoint support/validation/test inputs.",
+    "Source-task learning and output statistics are not fully matched across native groups.",
+    "Single-task and multi-task loss objectives differ despite identical per-task exposure.",
+    "CKA effects depend on input alignment, layer and extraction position."
+  ]
+}

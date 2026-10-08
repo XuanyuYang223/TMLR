@@ -1,0 +1,15 @@
+{
+  "registered_utc": "2026-10-07T00:40:18.729037+00:00",
+  "rules": {
+    "exploratory_post_test": true,
+    "reason": "Primary accuracy is not improved and predeclared fresh-test CKA is weak despite low minibatch geometry loss. Check fit versus input generalization without further training.",
+    "models": "All six exact initializations and all thirty selected/final models; no selection or parameter changes.",
+    "features": "Task-free ONE_END, frozen inverse teacher. All conditions use the identical geometry-eligible training rows; validation uses every row.",
+    "comparison": "Report full train/validation CKA and a matched-count comparison using the first 12 eligible train, first 12 validation and first 12 fresh test rows per length. Equal count avoids treating the sample-size bias of linear CKA as fit generalization.",
+    "aggregate": "Five lengths averaged equally; retain every replicate and endpoint. Fit accuracy uses all 192 train labels; validation uses 64.",
+    "scope": "Implementation and overfitting diagnostic, not a new confirmatory hypothesis or hyperparameter search."
+  },
+  "code_sha256": "7aeda0cec3f6d5f62eafc1ffee5abfd82499a133fce839f9503fd0bdd6a40695",
+  "primary_summary_sha256_before_diagnostic": "66603da4bc2a254828c9de40f5bf67fec1405121a5f6f1a7ded11ecbcc676ecc",
+  "all_target_training_complete": true
+}

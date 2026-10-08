@@ -1,0 +1,73 @@
+{
+  "output": "results/two_step_relation_output_only20",
+  "parent": "results/algebra_hidden_relations",
+  "source_condition": "ordinary",
+  "source_seeds": [
+    5081,
+    6091,
+    7103
+  ],
+  "support_seeds": [
+    261073101,
+    261073103,
+    261073107,
+    261073109,
+    261073113,
+    261073127
+  ],
+  "test_seed": 261074201,
+  "lengths": [
+    12,
+    15,
+    20,
+    25,
+    30
+  ],
+  "fit_per_length": 8192,
+  "validation_per_length": 512,
+  "iid_per_length": 256,
+  "collision_pairs_per_length": 128,
+  "conditions": [
+    "both_correct"
+  ],
+  "views": [
+    "hidden"
+  ],
+  "epochs": 20,
+  "checkpoint_epochs": [
+    15,
+    20
+  ],
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "warmup_updates": 100,
+  "minimum_learning_rate_ratio": 0.2,
+  "weight_decay": 0.0001,
+  "geometry_weight": 0,
+  "distillation_temperature": 2.0,
+  "minimum_pairing_stratum": 3,
+  "primary_word": "ci",
+  "words": [
+    "c",
+    "i",
+    "ci",
+    "ic",
+    "cc",
+    "ii"
+  ],
+  "primary_epoch": 20,
+  "fixed_predictions": [
+    "Both-correct hidden operators have higher heldout-ci accuracy than each of the other three conditions; compare paired outcomes without imposing a single-correct ordering.",
+    "Both-correct collision-ci accuracy exceeds the visible-answer-only0.5 ceiling in each of the three frozen-source means.",
+    "Both-correct collision-ci pair-both-correct is positive in each source mean.",
+    "Output-space operators, true-intermediate diagnostics, all single-step scores and all failures are reported; none are used to select fitting settings."
+  ],
+  "deadline_utc": "2026-10-09T00:00:00+00:00",
+  "scope": "Matched20-epoch no-geometry extension. Preserve each completed10-epoch baseline model and optimizer; same six supports, sources and exact20-epoch prefix-plus-continuation schedule as the four geometric20-epoch arms. Main20-epoch test outcomes are already known; no fitting hyperparameter selection from them. This added baseline is not an independent replication.",
+  "source_learning_rate": 0.0003,
+  "operator_learning_rate": 0.001,
+  "native_ce_weight": 1.0,
+  "native_distillation_weight": 1.0,
+  "operator_distillation_weight": 1.0,
+  "interpretation_gate": "Before interpreting hidden-composition failure, both correct single-generator validation accuracies must exceed0.90 in each of the three source means; report failure if unmet. Source native observed-state accuracy and each control operator accuracy are reported separately."
+}

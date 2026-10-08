@@ -1,0 +1,23 @@
+{
+  "output": "results/specialist_cka_controls",
+  "repository": "/home/yangx/neurips",
+  "upstream_python": "external/neurips/src",
+  "model_seeds": [17, 42, 101],
+  "independent_random_seed_offset": 104729,
+  "data_seed": 2026100701,
+  "lengths": [10, 30],
+  "candidates_per_length": 4096,
+  "examples_per_length": {"fit": 32, "validation": 16, "test": 128},
+  "transforms": ["identity", "complement", "inverse"],
+  "minimum_stratum_size": 3,
+  "conditional_permutations": 32,
+  "conditional_permutation_seed": 2026100702,
+  "confidence_ridge": 0.01,
+  "batch_size": 128,
+  "primary": "final_norm at task-free ONE_END; correct-minus-original-wrong contrast, length-centered and common answer strata, with matched initialization contrasts",
+  "secondary": "final_norm at task-specific equals position; all prefix layers; independent random initialization; confidence residualization",
+  "answer_strata": "common key (length, left answer on identity, right answers on identity/complement/inverse); retain strata >=3; subtract each stratum mean separately in every branch using the same retained anchors",
+  "input_control": "Report same-seed and independent random networks, positional permutation-matrix and normalized numeric-input CKA, and within-answer-stratum row permutations. These controls do not remove every possible input confounder and are not the PSD dCKA algorithm.",
+  "confidence_control": "Fit ridge on FIT only, fixed alpha; nuisance is length onehot plus max numeric probability, entropy, probability of true answer and top-two logit margin. Evaluate on TEST; supplemental and does not prove causal mediation.",
+  "inference_scope": "Fresh permutations conditional on the original eight relations, three source seeds and one existing source data world. Relation-seed cells share data/tasks and are not independent trials. No result-dependent task/model/transform/stratum selection. Higher hidden CKA than output CKA alone is not independent-mechanism evidence."
+}

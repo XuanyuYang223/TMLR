@@ -1,0 +1,81 @@
+"""Exact categorical-kernel identity; never a theorem about hidden features."""
+from collections import Counter
+from datetime import datetime, timezone
+from itertools import product
+import json
+from pathlib import Path
+
+import numpy as np
+
+from .algebra import projective
+from .analysis import linear_cka
+from .field_symmetry import group_sources
+from .longrun_engine import atomic_json
+from .permworld_combinations import sha
+from .six_hour_report import write_rows
+
+
+def directional_cka(left, right, p):
+    """Cosine of task-direction multiplicities for complete uniform field grid."""
+    def counts(matrix):
+        return Counter(projective(row, p) for row in matrix if np.any(np.asarray(row) % p))
+    a, b = counts(left), counts(right)
+    denominator = np.sqrt(sum(v*v for v in a.values())*sum(v*v for v in b.values()))
+    return float(sum(v*b[k] for k, v in a.items())/denominator) if denominator else None
+
+
+def categorical_features(inputs, coefficients, p, offsets=None):
+    labels = inputs@np.asarray(coefficients).T % p
+    if offsets is not None: labels = (labels+np.asarray(offsets)) % p
+    return np.eye(p)[labels].reshape(len(inputs), -1)
+
+
+def run():
+    root = Path('results/field_kernel_identity'); root.mkdir(exist_ok=True)
+    p, dimension = 5, 4
+    inputs = np.array(list(product(range(p), repeat=dimension)))
+    transform = np.eye(dimension, dtype=int); transform[[2, 3]] = transform[[3, 2]]
+    rows = []
+    for group in ('P', 'M1', 'M4', 'M2', 'M3'):
+        source = group_sources(group, p); changed = source@transform % p
+        exact = directional_cka(source, changed, p)
+        measured = linear_cka(categorical_features(inputs, source, p), categorical_features(inputs, changed, p))
+        assert abs(exact-measured) < 1e-12
+        rows.append({'group': group, 'source_directions': source.tolist(), 'transformed_directions': changed.tolist(),
+                     'exact_direction_overlap_cka': exact, 'enumerated_categorical_cka': measured,
+                     'directions_retained': int(round(4*exact))})
+    # Deterministic independent random examples, including repeated directions,
+    # noninvertible maps and affine label offsets.
+    rng = np.random.default_rng(202610055)
+    checks = 0
+    for prime, dim in ((3, 2), (5, 3), (7, 3)):
+        x = np.array(list(product(range(prime), repeat=dim)))
+        for _ in range(30):
+            a = rng.integers(prime, size=(4, dim)); b = rng.integers(prime, size=(4, dim))
+            offsets_a = rng.integers(prime, size=4); offsets_b = rng.integers(prime, size=4)
+            expected = directional_cka(a, b, prime)
+            actual = linear_cka(categorical_features(x, a, prime, offsets_a), categorical_features(x, b, prime, offsets_b))
+            assert expected is not None and abs(actual-expected) < 1e-12
+            checks += 1
+    write_rows(root/'cohort_cases.csv', rows)
+    summary = {'status': 'exact_identity_verified', 'code_sha256': sha(__file__),
+               'reported_utc': datetime.now(timezone.utc).isoformat(), 'cohort_cases': rows,
+               'additional_field_enumeration_checks': checks,
+               'scope': 'post hoc derivation after source-hidden outcomes; complete uniform prime-field inputs and concatenated categorical one-hot task answers',
+               'not_claimed': 'neither a novelty claim nor a prediction theorem for trained hidden vectors'}
+    atomic_json(root/'summary.json', summary)
+    table = ''.join(f"<tr><td>{r['group']}</td><td>{r['directions_retained']}/4</td><td>{r['exact_direction_overlap_cka']:.2f}</td><td>{r['enumerated_categorical_cka']:.2f}</td></tr>" for r in rows)
+    (root/'report.html').write_text(f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>答案核的精确恒等式</title><style>body{{max-width:1000px;margin:40px auto;padding:0 20px;font:16px/1.8 system-ui}}table{{border-collapse:collapse;width:100%}}td,th{{padding:8px;border-bottom:1px solid #ddd}}aside,pre{{background:#f2f4f7;padding:16px}}</style>
+<h1>为什么精确答案 CKA 有 1、0.75、0.5，而隐藏层未必如此</h1>
+<p>以下是在网络结果之后整理的代数推导，不声称首次，也不将它当作隐藏层定理。输入均匀遍历 Fₚᵈ；每个任务是 a·x+b，并把任务答案分别独热编码再拼接。用 cₛ(ℓ) 表示源任务在射影方向 ℓ 上的出现次数，常数任务不计入中心化核。对任意两组这样的类别编码：</p>
+<pre>CKA(S, Q) = Σℓ cₛ(ℓ)cᵩ(ℓ) / √[Σℓ cₛ(ℓ)² · Σℓ cᵩ(ℓ)²]</pre>
+<p>若两边都是四个不同方向，这就是重合方向数除以四。独热核只检查两输入的某个任务答案是否相等；有限域字符展开把该指示核分解为同一射影直线上的 p−1 个非平凡字符。完整均匀输入使不同字符正交，因此核的 Frobenius 内积只留下重合方向。标量倍数和常数偏移只重排类别，不改变答案相等关系。重复任务方向的核权重则相加，给出上面的次数余弦。</p>
+<p>本轮源集合 P=[e₁,e₂,e₃,e₄]，Mₖ=[e₁,e₂,e₃,e₃+k e₄]，输入变换交换第三、四潜在坐标。P 的四条射影直线全部保持；Mₖ 至少保持前两条，第四条仅在 k²=1 时额外保持。因此：</p>
+<table><tr><th>源集合</th><th>保持方向</th><th>解析 CKA</th><th>625 输入枚举</th></tr>{table}</table>
+<p>还对 p=3、5、7 的 90 个独立例子检查恒等式，涵盖方向重复、常数任务及偏移；均与枚举的线性 CKA 一致。</p>
+<aside>所有四任务向量在任一 Mₖ 中仍构成满秩基，交换操作都可写成四答案的线性组合。这里区分的是保留单任务射影方向的数量，不能将 M₂/M₃ 描述为“没有代数闭合”。真实类别编码、源输出概率、中心化 logits、完整隐藏向量是不同表示：隐藏层的额外方向、尺度和非线性都会改变 CKA。由正确源答案得到理想类别核是编码定义的结果，不能替代神经迁移证据。</aside>
+<p><a href="summary.json">范围与核验</a> · <a href="cohort_cases.csv">全部本轮精确结果</a></p></html>''')
+    print(json.dumps({'exact_cases': len(rows), 'random_checks': checks}))
+
+
+if __name__ == '__main__': run()

@@ -1,0 +1,87 @@
+\section{Protocol details and evidence provenance}
+The main text follows the argument rather than the chronological order of exploratory runs.
+Immutable protocol, fit, test-opening, prediction, and delivery records retain that chronology.
+Table~\ref{tab:studies} distinguishes the roles of the major studies.
+The final five-source test was not used for hyperparameter or checkpoint selection. Its ending rule closed experiments after the predefined source, optimization, and precision checks, regardless of the result.
+
+\begin{table}[ht]\centering\small
+\begin{tabular}{p{.23\linewidth}p{.24\linewidth}p{.42\linewidth}}
+\toprule Study & Sources / budget & Evidential role\\\midrule
+Permutation factorial & 3 sources, 6 fits per arm; 20 epochs & Correspondence-sensitive composition; true-state localization is diagnostic.\\
+Initial matrix/polynomial & 3 sources, 6 fits per arm; 900 joint epochs & Cross-domain boundaries; polynomial primitive failures retained.\\
+Null-only replacement & 3 new sources per domain; 20 permutation or 900 matrix epochs & Prospective test of the specified replacement objective.\\
+Activation confirmation & 3 new matrix sources; 2,000 updates & Parameter-matched confirmation with $10^{-4}$ decay.\\
+Reused-source mechanisms & Same preceding 3 sources & Exploratory predicted-null and optimization diagnostics; not new-source replication.\\
+Final confirmation & 5 new matrix sources; 20 budget fits, 20 affine solves & Fixed hypotheses independently checked; zero decay for the shared loss.\\
+\bottomrule
+\end{tabular}
+\caption{Evidence roles and differences that prevent indiscriminate pooling.}\label{tab:studies}
+\end{table}
+
+\subsection{Data, initialization, and training}
+The final seeds and partitions are stored in \texttt{configs/final\_mechanism\_confirmation.json}.
+Source training has 512 anchors; known validation has 128 and pilot validation 64. Each first-operator support has 1,024 answer-stratified eligible anchors.
+Numeric coordinates are centered at 6 and scaled by $2\pi/13$. The scalar encoder is Linear(4,128), GELU, Linear(128,128), and LayerNorm.
+Ordinary training uses 500 epochs, batch size 128 and learning rate 0.003. Correct source preparation uses 900 joint epochs, batch size 64, encoder learning rate 0.0008 and operator learning rate 0.002.
+The original readout is preserved during relation preparation. Native CE, native KD and generator-output KD have coefficient one; geometry has coefficient 0.25.
+The final first-operator stage is separately specified in Section~3 and freezes these prepared models.
+
+\subsection{State-error and null-transfer algebra}
+The reported final first-state NMSE is
+$\|\hat H_A-H_A\|_F^2/(Nds^2)$ with the training variance $s^2$ fixed across the four arms.
+Initial cross-domain displacement NMSE uses actual displacement energy and is not numerically comparable to this variance normalization.
+CKA is computed as an auxiliary centered-Gram similarity and is not an accuracy surrogate.
+
+Let $P$ be the orthogonal projector onto the row span of $W$ and $Q=I-P$.
+Then $QW^\top=0$ and the predicted hybrid
+$\hat h_{L\leftarrow G}=\hat h_L+(\hat h_G-\hat h_L)Q$
+satisfies $z(\hat h_{L\leftarrow G})=z(\hat h_L)$.
+For an affine second operator $R_B(h)=hM_B+b_B$, the final logit difference is
+$(\hat h_G-\hat h_L)QM_BW^\top$, which need not vanish.
+Thus invisibility to the first readout is consistent with downstream usefulness.
+This algebra alone does not imply that the transferred state is correct; the held-out intervention measures that.
+
+For first-step error $e=\hat h_A-h_A$, the composition error decomposes as
+$eM_B+[R_B(h_A)-h_{AB}]$.
+Its squared norm includes a cross term. Propagated row/null energies and oracle repairs must not be interpreted as additive causal percentages.
+
+\subsection{Same-family convex optimization}\label{app:convergence}
+A width-256 Identity residual can express any affine residual on dimension 128; adding the frozen affine skip retains the unrestricted affine family.
+With the augmented training design $X=[H_0,\mathbf{1}]$, retain all singular directions above the registered $10^{-12}$ relative threshold.
+All final designs retain 129 directions.
+Use $F=\sqrt{N}U$, so $F^\top F/N=I$, and express predictions as $FC$.
+The readout-null coefficients minimizing Equation~\ref{eq:loss} are their least-squares solution because KD is invariant to those coefficients.
+Readout-row coefficients are fitted using float64 L-BFGS (history 100, maximum 2,000 iterations, gradient tolerance $10^{-9}$, change tolerance $10^{-14}$, strong-Wolfe search).
+OLS and budget-linear row initializations are both fixed beforehand.
+
+The quadratic term has Hessian $2\lambda I/(ds^2)$ in whitened coefficient coordinates and KD is convex in logits.
+Writing $\mu=2\lambda/(ds^2)$, strong convexity gives
+\[
+ L(C)-L(C^\star)\leq\frac{\|\nabla L(C)\|_F^2}{2\mu}.
+\]
+The implementation independently recomputes the full analytic gradient, including null coordinates, and evaluates this bound in float64.
+These are numerically computed empirical-objective diagnostics, not interval-arithmetic proofs.
+The registered acceptable bound is $10^{-8}$.
+No ridge, changed teacher targets, altered loss weights, or compound outcomes enter the solve.
+
+\subsection{Collision ceilings and information controls}
+On a pair with the same visible gold-answer triple and different compound labels, a deterministic predictor using only that triple must give the same answer to both inputs. Its pairwise double-correct rate is zero and aggregate pair accuracy is at most 50\%.
+These ceilings do not apply to full probability outputs, hidden states, or input features. Positive pairwise success alone therefore does not establish an output-independent mechanism. We do not claim to surpass the 50\% ceiling stably.
+
+\subsection{Supporting-study selection and dependence}
+The initial one-hot/numeric matrix encoder fit generator outputs but generalized poorly. The scalar encoder was selected using known-state validation, including a reserved confirmation set, before compound testing; the polynomial study reused that architecture.
+This feasibility stage precedes the cross-domain protocol and is not itself a new confirmatory test.
+The permutation 20-epoch continuation and later no-geometry comparator are explicitly dependent or posthoc, respectively.
+Polynomial splitting audits the actual observed and evaluated paths. Full semigroup-closure separation is impossible because $D^4$ maps all cubics to zero.
+Source-only polynomial intervals condition on the shared test set and cannot convert its connected collision graph into independent input replications.
+
+\section{Reproducibility and literature audit}
+The public repository contains the experiment implementations, fixed configurations, tests, readable results, original sealed delivery manifests, and this revised manuscript.
+Downloadable archives preserve the main experiment inputs, predictions and checkpoints; archive inventories and checksums identify exactly what is included.
+A portable verifier resolves recorded historical workspace paths and runs replay in a temporary copy, preserving the sealed artifacts.
+The numerical results in the revised tables are generated from completed JSON records, without retraining or selecting new outcomes.
+The prior 174-test run and independent final replay are distinct verification evidence; test counts do not constitute statistical replications.
+
+The literature audit records twelve original studies with exact titles, venues, primary URLs, source locators, and claim-level relevance in \texttt{paper/literature\_review.csv}.
+It is a targeted review of the closest mechanisms and controls, not an assertion that no other related study exists.
+No new priority or first-discovery claim is inferred from the search.

@@ -1,0 +1,134 @@
+{
+  "registered_utc": "2026-10-06T06:28:26.412614+00:00",
+  "signature": {
+    "plan": {
+      "output": "results/algebra_structure",
+      "native_source": "results/native_confirmation",
+      "native_base_config": "configs/permworld_combinations.json",
+      "native_seeds": [
+        1009,
+        2027,
+        3037
+      ],
+      "data_seed": 2026100623,
+      "lengths": [
+        10,
+        30
+      ],
+      "orbits_per_length": {
+        "fit": 16,
+        "validation": 4,
+        "test": 8
+      },
+      "excluded_datasets": [
+        "results/six_hour_session/dataset/data.npz",
+        "results/native_target_repeat/dataset/data.npz",
+        "results/native_confirmation/dataset/data.npz",
+        "results/native_ablation/dataset/data.npz"
+      ],
+      "pca_dimension": 64,
+      "ridge_grid": [
+        1e-06,
+        0.0001,
+        0.01,
+        1.0
+      ],
+      "batch_size": 96,
+      "native_landmarks": [
+        "ONE_END",
+        "source_query_concat"
+      ],
+      "native_layers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "native_generators": [
+        "complement",
+        "reverse",
+        "inverse"
+      ],
+      "primary_endpoint": "Final-layer orbit-centered generator and unfitted-composition prediction errors, with trained versus matched random initialization; both landmarks reported.",
+      "primary_scope": "Prospective structural assay of previously trained ordinary models; fresh complete orbits withheld from all recorded source/target data. No new architecture or equivariance training.",
+      "secondary_native_views": [
+        "final_numeric_contrast",
+        "final_numeric_null",
+        "exact_source_numeric",
+        "exact_source_onehot"
+      ],
+      "field_source": "results/field_matched_support",
+      "field_config": "configs/field_matched_support.json",
+      "field_split_seed": 2026100624,
+      "field_fit_fraction": 0.6,
+      "field_validation_fraction": 0.2,
+      "field_probe_dimension": 32,
+      "field_scope": "C4 rotations, D4 rotations/reflections, and irreversible idempotent projection on F5^4; probe-held-out inputs only, because source models previously saw all 625 inputs.",
+      "interpretation": "Fit generators independently. No group laws or projection idempotence enforced during fitting. Orbit residuals remove invariant energy. Consistency alone is insufficient without held-out prediction and controls. Repeats are source seeds/worlds, not activation rows or action pairs."
+    },
+    "code": {
+      "experiments/representation_algebra.py": "0f520644029ffc2b3bd32ddbea1f3d522f6335dee9ea4b2ae72ca4bdd96a7eae",
+      "experiments/field_algebra_structure.py": "abd25f465658013b387e89c55b8c78ab0a8adbbf73933a37d1fb18d01fe8cb3c",
+      "experiments/native_algebra_structure.py": "cdf20ab31ad0f5cb44a43bbd8c6fbd2e1719b8a1ee5a7a78fcf3a490d3a78ce6"
+    },
+    "sources": {
+      "results/field_matched_support/P_w271_m17_step0_features.npy": "5847d6ada3ed50a62160f38a07c33fa326299e745f7251e9eb52dc257c74e791",
+      "results/field_matched_support/P_w271_m17_step6000_features.npy": "6de9bac847353d291a2fc5d268f3dcc3d322665135af98a8ea316569746c7374",
+      "results/field_matched_support/P_w271_m42_step0_features.npy": "63f06932597d5196dcf4b329a04d9c58405d076542c8a9747f7130da4ecc69dd",
+      "results/field_matched_support/P_w271_m42_step6000_features.npy": "f3be25ea20826690f1e8dcfd275a4d2d364a678dca4c56eb0b468819297fb264",
+      "results/field_matched_support/P_w271_m101_step0_features.npy": "76bd867d876c707bdb4c3079db2d30b91b2e64ac889c6265d16c9df002f7aef7",
+      "results/field_matched_support/P_w271_m101_step6000_features.npy": "768b0dd370f2878e82ca87790d36f63a3b437164fc5e79b64b3a6d862a860674",
+      "results/field_matched_support/P_w314_m17_step0_features.npy": "5847d6ada3ed50a62160f38a07c33fa326299e745f7251e9eb52dc257c74e791",
+      "results/field_matched_support/P_w314_m17_step6000_features.npy": "7ca96f4f4d2c63a7aeb854c13a3d2aca873916006f2fdee27c3b44fc5ae5fe74",
+      "results/field_matched_support/P_w314_m42_step0_features.npy": "63f06932597d5196dcf4b329a04d9c58405d076542c8a9747f7130da4ecc69dd",
+      "results/field_matched_support/P_w314_m42_step6000_features.npy": "863564b573499150d705e21296bab5945fe26ac600ac532d821f174fbd1273af",
+      "results/field_matched_support/P_w314_m101_step0_features.npy": "76bd867d876c707bdb4c3079db2d30b91b2e64ac889c6265d16c9df002f7aef7",
+      "results/field_matched_support/P_w314_m101_step6000_features.npy": "b3baf4f2875c89e8649a03aae62493358e9a6291154cf163051ec5388ed841ad",
+      "results/field_matched_support/P_w593_m17_step0_features.npy": "5847d6ada3ed50a62160f38a07c33fa326299e745f7251e9eb52dc257c74e791",
+      "results/field_matched_support/P_w593_m17_step6000_features.npy": "c8435ca2061a30776146433e6c595b2c76d6c8db9fb962376fe367d6822e947f",
+      "results/field_matched_support/P_w593_m42_step0_features.npy": "63f06932597d5196dcf4b329a04d9c58405d076542c8a9747f7130da4ecc69dd",
+      "results/field_matched_support/P_w593_m42_step6000_features.npy": "95aad82c33be3a128f18505d24afe4c67bdb8d061ef41f79ffbbade47fb2c9f7",
+      "results/field_matched_support/P_w593_m101_step0_features.npy": "76bd867d876c707bdb4c3079db2d30b91b2e64ac889c6265d16c9df002f7aef7",
+      "results/field_matched_support/P_w593_m101_step6000_features.npy": "41d650c43edfc526c8bbc8f6a2340c88474d2e2679f62655ec1f6fae599c36e1",
+      "results/field_matched_support/M1_w271_m17_step0_features.npy": "5847d6ada3ed50a62160f38a07c33fa326299e745f7251e9eb52dc257c74e791",
+      "results/field_matched_support/M1_w271_m17_step6000_features.npy": "5d4a5be03cd57ff40613f89da030bbbbb55d5c9d9c27e7020b9a592f1154a521",
+      "results/field_matched_support/M1_w271_m42_step0_features.npy": "63f06932597d5196dcf4b329a04d9c58405d076542c8a9747f7130da4ecc69dd",
+      "results/field_matched_support/M1_w271_m42_step6000_features.npy": "773c65147e1c6a5b1c62da645b55a4dceb7afdb9bd8c915ffaf0b2297d7b8a0d",
+      "results/field_matched_support/M1_w271_m101_step0_features.npy": "76bd867d876c707bdb4c3079db2d30b91b2e64ac889c6265d16c9df002f7aef7",
+      "results/field_matched_support/M1_w271_m101_step6000_features.npy": "dd144c34931b8c807706962b5be3ec7538d1f2007a77b53981f9ce468504d2d0",
+      "results/field_matched_support/M1_w314_m17_step0_features.npy": "5847d6ada3ed50a62160f38a07c33fa326299e745f7251e9eb52dc257c74e791",
+      "results/field_matched_support/M1_w314_m17_step6000_features.npy": "0922f1df97fb0544b54b134f4533121d52480e7969e0736d1296014eec81809a",
+      "results/field_matched_support/M1_w314_m42_step0_features.npy": "63f06932597d5196dcf4b329a04d9c58405d076542c8a9747f7130da4ecc69dd",
+      "results/field_matched_support/M1_w314_m42_step6000_features.npy": "cbcdf3f39c1827e438c56a9df88b7efb5e205b28d0b5bf3faecd2041d49b09c1",
+      "results/field_matched_support/M1_w314_m101_step0_features.npy": "76bd867d876c707bdb4c3079db2d30b91b2e64ac889c6265d16c9df002f7aef7",
+      "results/field_matched_support/M1_w314_m101_step6000_features.npy": "e1700fc652b83fb0c3634ad9c6f195c6211daa6a55ea89eb9b080d11654f03f0",
+      "results/field_matched_support/M1_w593_m17_step0_features.npy": "5847d6ada3ed50a62160f38a07c33fa326299e745f7251e9eb52dc257c74e791",
+      "results/field_matched_support/M1_w593_m17_step6000_features.npy": "06eb648ad0e81c6de30aca2e0da29dc5d743b77a0090efc1fc2caa4f4fe3ff36",
+      "results/field_matched_support/M1_w593_m42_step0_features.npy": "63f06932597d5196dcf4b329a04d9c58405d076542c8a9747f7130da4ecc69dd",
+      "results/field_matched_support/M1_w593_m42_step6000_features.npy": "4e5bb5433b5357bd2000ef22a8776f82982be8ac01bf3755e6aa28d91a4a317d",
+      "results/field_matched_support/M1_w593_m101_step0_features.npy": "76bd867d876c707bdb4c3079db2d30b91b2e64ac889c6265d16c9df002f7aef7",
+      "results/field_matched_support/M1_w593_m101_step6000_features.npy": "9c99013f336f418e905a31fb5aa2dc337972741d50ac070fb3cf3afddb2468f2",
+      "results/field_matched_support/M2_w271_m17_step0_features.npy": "5847d6ada3ed50a62160f38a07c33fa326299e745f7251e9eb52dc257c74e791",
+      "results/field_matched_support/M2_w271_m17_step6000_features.npy": "3d5d720be186f7cc3a045db7e34171efb6d5f6904d3578d1a35a18895abf7479",
+      "results/field_matched_support/M2_w271_m42_step0_features.npy": "63f06932597d5196dcf4b329a04d9c58405d076542c8a9747f7130da4ecc69dd",
+      "results/field_matched_support/M2_w271_m42_step6000_features.npy": "f2dc20e41655d94f4617bad8871a9ccf66e452ed192d5d0226f1662ddaa26fdb",
+      "results/field_matched_support/M2_w271_m101_step0_features.npy": "76bd867d876c707bdb4c3079db2d30b91b2e64ac889c6265d16c9df002f7aef7",
+      "results/field_matched_support/M2_w271_m101_step6000_features.npy": "8550e9ad6794bfd210e28a27b2ff4237aee30923b3b4f98724f0eae34877fc07",
+      "results/field_matched_support/M2_w314_m17_step0_features.npy": "5847d6ada3ed50a62160f38a07c33fa326299e745f7251e9eb52dc257c74e791",
+      "results/field_matched_support/M2_w314_m17_step6000_features.npy": "b33945f7b84e7122409abab3cfa9e77b7932b533df5eb620355e4ea6c0651025",
+      "results/field_matched_support/M2_w314_m42_step0_features.npy": "63f06932597d5196dcf4b329a04d9c58405d076542c8a9747f7130da4ecc69dd",
+      "results/field_matched_support/M2_w314_m42_step6000_features.npy": "e26d1055f2eebaa4d5b6d5e93fcf1e51f71e3c37260d5e8ff21879a95b9ef427",
+      "results/field_matched_support/M2_w314_m101_step0_features.npy": "76bd867d876c707bdb4c3079db2d30b91b2e64ac889c6265d16c9df002f7aef7",
+      "results/field_matched_support/M2_w314_m101_step6000_features.npy": "1fd0eadb19df9c5287f9bb040d35af289415f64ff0c153d561322869f659b1ab",
+      "results/field_matched_support/M2_w593_m17_step0_features.npy": "5847d6ada3ed50a62160f38a07c33fa326299e745f7251e9eb52dc257c74e791",
+      "results/field_matched_support/M2_w593_m17_step6000_features.npy": "9e53351c6f74030daa0a75f0d7daa0c3f73e91efe005580feaa419dc910cf92e",
+      "results/field_matched_support/M2_w593_m42_step0_features.npy": "63f06932597d5196dcf4b329a04d9c58405d076542c8a9747f7130da4ecc69dd",
+      "results/field_matched_support/M2_w593_m42_step6000_features.npy": "6fbe6969220b51c2f95bc0ce8be6eb46a364b927eb55d465f48bc99b77185540",
+      "results/field_matched_support/M2_w593_m101_step0_features.npy": "76bd867d876c707bdb4c3079db2d30b91b2e64ac889c6265d16c9df002f7aef7",
+      "results/field_matched_support/M2_w593_m101_step6000_features.npy": "75c554aea677f51bba1f35c9706d3706c20d661534586dc96cdd83181364609c"
+    },
+    "scope": "C4 rotations, D4 rotations/reflections, and irreversible idempotent projection on F5^4; probe-held-out inputs only, because source models previously saw all 625 inputs.",
+    "projection": "erase third latent coordinate; affine probe; all retained-coordinate fibers held out together"
+  },
+  "new_probe_results_at_registration": 0
+}

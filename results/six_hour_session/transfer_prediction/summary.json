@@ -1,0 +1,452 @@
+{
+  "status": "complete",
+  "protocol": {
+    "registered_utc": "2026-10-05T16:08:06.124206+00:00",
+    "scope": "exploratory after prior pilot transfer and long-run source/geometry results; before any long-run target test endpoints; validation search ongoing",
+    "native_target_test_records_at_registration": 0,
+    "endpoint": "long-run test accuracy minus same seed/target/budget/mode random accuracy",
+    "folds": "leave one entire source task group out, including every initialization and target; fit separately for each of five readouts and two budgets",
+    "ridge_alpha": 1.0,
+    "preprocessing": "feature mean/std fitted on training fold only, std floor 1e-8; intercept unpenalized",
+    "baseline_features": [
+      "source audit macro accuracy",
+      "mean source validation learning-curve accuracy",
+      "source label mean marginal conditional entropy given length",
+      "source label joint conditional entropy given length",
+      "mean absolute pairwise source correlation residualized by length",
+      "max source-target conditional categorical MI given length",
+      "mean source-target conditional categorical MI given length",
+      "target indicator excluding first",
+      "initialization indicator excluding first"
+    ],
+    "math_features": [
+      "minimum known circuit size (none=5)",
+      "no known circuit indicator",
+      "mean exact source-answer transformed categorical CKA within length over C R RC I",
+      "proved source-vector action fraction",
+      "proved unary source-permutation action fraction"
+    ],
+    "geometry_features": [
+      "mean same-group cross-seed trained source-query-concat CKA within length for current seed",
+      "mean transformed source-query-concat CKA within length over C R RC I"
+    ],
+    "variants": [
+      "baseline",
+      "plus_mathematical_relations",
+      "plus_measured_geometry",
+      "plus_both"
+    ],
+    "reporting": "all five readouts, both label budgets, all variants and every heldout group; no test-based selection of feature set or ridge parameter",
+    "limits": [
+      "one input world, eight source sets, three initialization seeds; correlated rows, no causal interpretation",
+      "mathematical feature formulas know true source task definitions, and MI uses unexposed target labels on source-training inputs as an analytical similarity reference",
+      "geometry landmarks were chosen after source measurements; not a prespecified primary endpoint or independent replication"
+    ]
+  },
+  "scores": [
+    {
+      "mode": "linear_task_free",
+      "budget": 64,
+      "variant": "baseline",
+      "r2": -0.06049124629577274,
+      "mae": 0.026399743583770775,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.0
+    },
+    {
+      "mode": "linear_task_free",
+      "budget": 64,
+      "variant": "plus_mathematical_relations",
+      "r2": -0.7540254316424964,
+      "mae": 0.03430651512166721,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.6935341853467236
+    },
+    {
+      "mode": "linear_task_free",
+      "budget": 64,
+      "variant": "plus_measured_geometry",
+      "r2": -0.35703652043979983,
+      "mae": 0.030241655738171915,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.2965452741440271
+    },
+    {
+      "mode": "linear_task_free",
+      "budget": 64,
+      "variant": "plus_both",
+      "r2": -0.4876603025985484,
+      "mae": 0.032378154736560694,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.4271690563027757
+    },
+    {
+      "mode": "linear_task_free",
+      "budget": 256,
+      "variant": "baseline",
+      "r2": -1.2584188721555627,
+      "mae": 0.030444407168360138,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.0
+    },
+    {
+      "mode": "linear_task_free",
+      "budget": 256,
+      "variant": "plus_mathematical_relations",
+      "r2": -1.8235896413757366,
+      "mae": 0.03507065004519381,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.565170769220174
+    },
+    {
+      "mode": "linear_task_free",
+      "budget": 256,
+      "variant": "plus_measured_geometry",
+      "r2": -2.3165637939981485,
+      "mae": 0.03800153947526152,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -1.0581449218425858
+    },
+    {
+      "mode": "linear_task_free",
+      "budget": 256,
+      "variant": "plus_both",
+      "r2": -1.1252862918450552,
+      "mae": 0.030363097829065766,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.13313258031050745
+    },
+    {
+      "mode": "linear_query",
+      "budget": 64,
+      "variant": "baseline",
+      "r2": 0.3335271187547617,
+      "mae": 0.020836128524715957,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.0
+    },
+    {
+      "mode": "linear_query",
+      "budget": 64,
+      "variant": "plus_mathematical_relations",
+      "r2": 0.25282521802876734,
+      "mae": 0.021576776763342412,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.08070190072599437
+    },
+    {
+      "mode": "linear_query",
+      "budget": 64,
+      "variant": "plus_measured_geometry",
+      "r2": 0.298468084652332,
+      "mae": 0.02106330169233474,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.03505903410242972
+    },
+    {
+      "mode": "linear_query",
+      "budget": 64,
+      "variant": "plus_both",
+      "r2": 0.4298546876321695,
+      "mae": 0.018806489098985697,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.09632756887740779
+    },
+    {
+      "mode": "linear_query",
+      "budget": 256,
+      "variant": "baseline",
+      "r2": 0.03799369022591248,
+      "mae": 0.021323374367814386,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.0
+    },
+    {
+      "mode": "linear_query",
+      "budget": 256,
+      "variant": "plus_mathematical_relations",
+      "r2": 0.07009884218296736,
+      "mae": 0.020994106265384293,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.03210515195705488
+    },
+    {
+      "mode": "linear_query",
+      "budget": 256,
+      "variant": "plus_measured_geometry",
+      "r2": 0.010099608312718278,
+      "mae": 0.021715329925882265,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.027894081913194202
+    },
+    {
+      "mode": "linear_query",
+      "budget": 256,
+      "variant": "plus_both",
+      "r2": 0.1613333693475043,
+      "mae": 0.01965801876359718,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.12333967912159183
+    },
+    {
+      "mode": "mlp_task_free",
+      "budget": 64,
+      "variant": "baseline",
+      "r2": -0.5255600950583683,
+      "mae": 0.029001331201518755,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.0
+    },
+    {
+      "mode": "mlp_task_free",
+      "budget": 64,
+      "variant": "plus_mathematical_relations",
+      "r2": -2.3686465849281704,
+      "mae": 0.04313203768407594,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -1.843086489869802
+    },
+    {
+      "mode": "mlp_task_free",
+      "budget": 64,
+      "variant": "plus_measured_geometry",
+      "r2": -0.8898186197295763,
+      "mae": 0.03258936264181262,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.364258524671208
+    },
+    {
+      "mode": "mlp_task_free",
+      "budget": 64,
+      "variant": "plus_both",
+      "r2": -1.4030042265597085,
+      "mae": 0.0366346785148091,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.8774441315013402
+    },
+    {
+      "mode": "mlp_task_free",
+      "budget": 256,
+      "variant": "baseline",
+      "r2": -0.3461719669355843,
+      "mae": 0.024697020017569394,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.0
+    },
+    {
+      "mode": "mlp_task_free",
+      "budget": 256,
+      "variant": "plus_mathematical_relations",
+      "r2": -0.6739455805326766,
+      "mae": 0.028747617374383194,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.32777361359709234
+    },
+    {
+      "mode": "mlp_task_free",
+      "budget": 256,
+      "variant": "plus_measured_geometry",
+      "r2": -0.8651452340440027,
+      "mae": 0.029206527453525755,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.5189732671084184
+    },
+    {
+      "mode": "mlp_task_free",
+      "budget": 256,
+      "variant": "plus_both",
+      "r2": -0.3426302954527032,
+      "mae": 0.025745299244266603,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.0035416714828810925
+    },
+    {
+      "mode": "finetune",
+      "budget": 64,
+      "variant": "baseline",
+      "r2": 0.06856083489242837,
+      "mae": 0.02872619705936978,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.0
+    },
+    {
+      "mode": "finetune",
+      "budget": 64,
+      "variant": "plus_mathematical_relations",
+      "r2": -0.4997247113480725,
+      "mae": 0.03591958094237081,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.5682855462405009
+    },
+    {
+      "mode": "finetune",
+      "budget": 64,
+      "variant": "plus_measured_geometry",
+      "r2": -0.20164301042132693,
+      "mae": 0.03253192063712252,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.2702038453137553
+    },
+    {
+      "mode": "finetune",
+      "budget": 64,
+      "variant": "plus_both",
+      "r2": -0.5646089980038584,
+      "mae": 0.03722958297927792,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.6331698328962868
+    },
+    {
+      "mode": "finetune",
+      "budget": 256,
+      "variant": "baseline",
+      "r2": -0.6138832612433696,
+      "mae": 0.03348342011081142,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.0
+    },
+    {
+      "mode": "finetune",
+      "budget": 256,
+      "variant": "plus_mathematical_relations",
+      "r2": -0.953822666812798,
+      "mae": 0.03912000887556057,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.3399394055694285
+    },
+    {
+      "mode": "finetune",
+      "budget": 256,
+      "variant": "plus_measured_geometry",
+      "r2": -0.7565701526331532,
+      "mae": 0.035222800427433414,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.14268689138978363
+    },
+    {
+      "mode": "finetune",
+      "budget": 256,
+      "variant": "plus_both",
+      "r2": -1.255502926330193,
+      "mae": 0.042627920831249576,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.6416196650868233
+    },
+    {
+      "mode": "finetune_shared",
+      "budget": 64,
+      "variant": "baseline",
+      "r2": 0.09578430161313511,
+      "mae": 0.03202669712201225,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.0
+    },
+    {
+      "mode": "finetune_shared",
+      "budget": 64,
+      "variant": "plus_mathematical_relations",
+      "r2": -0.801382818790696,
+      "mae": 0.045815573223608595,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.8971671204038311
+    },
+    {
+      "mode": "finetune_shared",
+      "budget": 64,
+      "variant": "plus_measured_geometry",
+      "r2": -0.25712434404084705,
+      "mae": 0.03937186478460419,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.35290864565398217
+    },
+    {
+      "mode": "finetune_shared",
+      "budget": 64,
+      "variant": "plus_both",
+      "r2": -0.7171412754933764,
+      "mae": 0.04534372857680433,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": -0.8129255771065115
+    },
+    {
+      "mode": "finetune_shared",
+      "budget": 256,
+      "variant": "baseline",
+      "r2": -0.2893961864580097,
+      "mae": 0.03487309338932026,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.0
+    },
+    {
+      "mode": "finetune_shared",
+      "budget": 256,
+      "variant": "plus_mathematical_relations",
+      "r2": 0.2735967232868668,
+      "mae": 0.023553083837464045,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.5629929097448765
+    },
+    {
+      "mode": "finetune_shared",
+      "budget": 256,
+      "variant": "plus_measured_geometry",
+      "r2": 0.11031890296074609,
+      "mae": 0.027625452582951415,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.3997150894187558
+    },
+    {
+      "mode": "finetune_shared",
+      "budget": 256,
+      "variant": "plus_both",
+      "r2": 0.24996269036187635,
+      "mae": 0.02416082908766749,
+      "rows": 96,
+      "independent_group_folds": 8,
+      "delta_r2": 0.539358876819886
+    }
+  ],
+  "predictions": 3840,
+  "feature_code_frozen_utc": "2026-10-05T16:11:02.977613+00:00",
+  "all_27_test_models_complete": true,
+  "all_variants_retained": true
+}

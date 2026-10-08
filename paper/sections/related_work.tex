@@ -1,0 +1,30 @@
+\section{Related work}
+\paragraph{Task relations and representation geometry.}
+Turner and Barak \cite{turner2023} study shared attractors and reuse of dynamics in multitask RNNs, including a family of function tasks whose geometry depends on task requirements. Park \cite{park2026} finds representational convergence under multitask city-geometric training, together with task-dependent failures of new-entity integration. These findings motivate separating geometric similarity from functional generalization. Our intervention fixes the source model and correct output targets within each comparison, then changes the correctness of intermediate-state pairing.
+
+\paragraph{Transforming tasks and testing composition.}
+Lampinen and McClelland \cite{lampinen2020} learn metamappings that transform task representations to support novel tasks, including polynomial task transformations. Lake and Baroni \cite{lake2018} use SCAN to distinguish successful local generalization from systematic reuse of familiar primitives. Both establish that relationship learning and composition are substantive existing research directions. We study transformations of \emph{input-state representations} with a fixed task readout, and evaluate operator compositions whose endpoint labels and states are absent from fitting.
+
+\paragraph{Equivariance and learned algebraic structure.}
+Cohen and Welling \cite{cohen2016} incorporate known symmetries through group-equivariant convolution. Keurti et al.\ \cite{keurti2023} learn group-structured latent representations with a Homomorphism AutoEncoder and evaluate action sequences. Their theoretical justification uses two-step latent prediction together with reconstruction. Our compound endpoint is held out from the single-step fitting objective, and our encoders have no hard-coded group operations. Chughtai et al.\ \cite{chughtai2023} identify representation-theoretic circuits in networks trained for finite-group composition and validate them through ablations. Hwang and Park \cite{hwang2026} relate intrinsic task symmetry, geometric organization, and algorithmic generalization. We provide no circuit recovery or symmetry-acquisition theorem; the question is the functional increment of a controlled correspondence intervention.
+
+\paragraph{Structural diagnostics and latent operators.}
+An and Du \cite{an2026}, in a NeurReps workshop paper, use representational homomorphism error to predict synthetic-language compositional generalization. Here an operator prediction error is accompanied by correctness interventions and frozen downstream tests, so a low error alone is not the functional conclusion. Azencot et al.\ \cite{azencot2020} connect forward/backward consistency and Koopman latent dynamics to sequence forecasting. Our affine convergence diagnostic retains the same empirical single-step loss as the original linear arm; it does not introduce a consistency objective or claim to recover a Koopman representation.
+
+\paragraph{Similarity measures and the scope of the comparison.}
+Kornblith et al.\ \cite{kornblith2019} develop CKA for comparing representations. Davari et al.\ \cite{davari2022} show that its value can change substantially while functional behavior is largely retained. We therefore treat CKA as auxiliary and prioritize composition accuracy, pairwise success, and controlled state interventions. The closest comparisons are summarized in Table~\ref{tab:related}; they define the question added by this study, not empirical claims of superiority over those methods. The related methods are not reimplemented as competing baselines, and we do not claim priority for learning latent algebra or predicting compositions.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{p{.23\linewidth}p{.31\linewidth}p{.37\linewidth}}
+\toprule
+Prior setting & Established focus & Question addressed here\\\midrule
+Metamappings \cite{lampinen2020} & Learned transformations between task representations & What changes when state correspondence changes but correct output supervision stays fixed?\\
+Homomorphism AutoEncoder \cite{keurti2023} & Equivariant latent actions and sequence prediction & How much composition benefit arises without fitting the held-out compound endpoint?\\
+Finite-group circuits \cite{chughtai2023} & Representation-theoretic computation and ablation & Can a predicted state component transmit correspondence-sensitive functional gains?\\
+Homomorphism error \cite{an2026} & Structural error as a generalization predictor & Does a correspondence intervention change actual downstream prediction?\\
+Task/world geometry \cite{turner2023,park2026,hwang2026} & Geometry associated with task structure or symmetry & Which observed gains survive fixed-output and optimization controls?\\
+\bottomrule
+\end{tabular}
+\caption{Positioning of the controlled empirical question. These are conceptual comparisons, not a performance ranking.}\label{tab:related}
+\end{table}

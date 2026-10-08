@@ -1,0 +1,54 @@
+\section{Source-level results and the complete contrast inventory}
+\begin{table}[ht]\centering\small
+\begin{tabular}{lrrrrrr}\toprule
+Source seed & L correct & L wrong & G correct & G wrong & Affine correct & Correct-null swap\\\midrule
+17291 & 8.20 & 8.59 & 19.92 & 8.98 & 15.23 & 18.75 \\
+18401 & 8.20 & 8.98 & 21.09 & 8.59 & 24.61 & 18.36 \\
+19507 & 7.42 & 9.38 & 17.58 & 7.42 & 22.27 & 16.80 \\
+20611 & 8.20 & 9.38 & 18.75 & 7.03 & 20.70 & 14.45 \\
+21713 & 10.16 & 10.94 & 24.22 & 10.16 & 16.80 & 17.58 \\
+\bottomrule\end{tabular}
+\caption{Collision AB accuracy (\%) for every final source. All ten affine cases also include the second fixed solver initialization in the archived results.}
+\end{table}
+\begin{table}[ht]\centering\small
+\begin{tabular}{lrr}\toprule
+Accuracy contrast & Mean (pp) & Descriptive 95\% interval\\\midrule
+gelu\_relation\_advantage & +11.88 & [+8.05,+15.62] \\
+linear\_relation\_advantage & -1.02 & [-3.75,+1.80] \\
+same\_budget\_interaction & +12.89 & [+8.67,+17.03] \\
+correct\_null\_swap\_gain & +8.75 & [+5.31,+12.42] \\
+correct\_vs\_wrong\_null\_donor & +8.44 & [+4.92,+11.95] \\
+wrong\_null\_swap\_gain & +0.31 & [-2.73,+3.44] \\
+remove\_correct\_gelu\_null & +7.11 & [+3.75,+10.55] \\
+converged\_linear\_relation\_advantage & +11.56 & [+6.56,+16.80] \\
+remaining\_relation\_interaction & +0.31 & [-5.86,+6.33] \\
+converged\_linear\_vs\_gelu & -0.39 & [-6.09,+5.08] \\
+linear\_optimization\_gain & +11.48 & [+6.56,+16.56] \\
+\bottomrule\end{tabular}
+\caption{All recorded final accuracy contrasts, including secondary explanatory contrasts. These are not eleven independent confirmatory tests.}
+\end{table}
+\section{Initial cross-domain outcome tables}
+The following tables preserve the initial joint affine outcomes. Their six adaptation repeats reuse three sources. They are separate from the five-source frozen-encoder confirmation.
+\paragraph{Matrix.}
+\begin{center}\begin{tabular}{lrr}\toprule Condition & Accuracy(\%) & Double correct(\%)\\\midrule
+both correct & 9.44 & 0.52\\
+a correct b wrong & 8.66 & 0.39\\
+a wrong b correct & 7.94 & 0.26\\
+both wrong & 8.92 & 0.39\\
+no geometry & 7.55 & 0.26\\
+output space & 7.23 & 0.26\\
+\bottomrule\end{tabular}\end{center}
+All 36 models have the same 900-epoch budget. Source-cluster uncertainty conditions on the shared test inputs. Output-space results are information diagnostics with fewer parameters.
+Correct-vs-incorrect collision accuracy differs by 0.52 percentage points; supplementary source-plus-whole-pair resampling gives[-1.56,2.73] percentage points. Thus a stable additional functional benefit is not established. Single-step scores are high, and true-intermediate prediction reaches 99.22\%, whereas inferred composition reaches9.44\%.
+\paragraph{Polynomial.}
+\begin{center}\begin{tabular}{lrr}\toprule Condition & Accuracy(\%) & Double correct(\%)\\\midrule
+both correct & 8.27 & 0.39\\
+a correct b wrong & 8.20 & 0.52\\
+a wrong b correct & 8.20 & 0.65\\
+both wrong & 8.20 & 0.39\\
+no geometry & 6.77 & 0.13\\
+output space & 7.36 & 0.26\\
+\bottomrule\end{tabular}\end{center}
+All 36 models have the same 900-epoch budget. Source-cluster uncertainty conditions on the shared test inputs. Output-space results are information diagnostics with fewer parameters.
+The all-source correct group reaches 8.27\% versus8.20\% for incorrect geometry. Translation generator scores are91.80\%,87.11\%,87.50\% across sources; only the first meets the previously fixed90\% threshold. Its composition accuracy is7.42\%. Thus neither stable relation-specific benefit nor robust irreversible composition is established. Differentiation at the true intermediate achieves99.87\% overall.
+The 128 collision pairs connect39 derivative blocks into one connected component. They cannot be treated as128 independent block-level repetitions; source intervals condition on this fixed test set.

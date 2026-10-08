@@ -1,0 +1,32 @@
+{
+  "registered_utc": "2026-10-06T23:31:41.410732+00:00",
+  "new_adjusted_scores": 0,
+  "signature": {
+    "plan": {
+      "output": "results/specialist_input_adjustment",
+      "parent": "results/specialist_cka_controls",
+      "conditions": [
+        "trained",
+        "matched_init",
+        "independent_init"
+      ],
+      "branches": [
+        "prefix_final_norm",
+        "query_final_norm"
+      ],
+      "controls": [
+        "length",
+        "answer_strata"
+      ],
+      "input_kernel": "Centered linear kernel of flattened positional permutation matrices, independently within each length. All e/C/I actions preserve this input Gram exactly at fixed length, including after common answer-stratum centering.",
+      "adjustment": "Regress each centered feature Gram K on the single invariant input Gram G: alpha=<K,G>/<G,G>. Project K-alpha G onto the PSD cone by clipping negative eigenvalues. Compute normalized Frobenius inner product between the resulting PSD kernels.",
+      "aggregation": "Unweighted mean of the 21 per-length values; each length has 128 raw test anchors, conditional counts fixed by the parent common-stratum rule. Report ordinary per-length CKA alongside the input-adjusted value. Do not compare this mean directly with pooled parent CKA as if denominators were identical.",
+      "registration_scope": "Supplemental input-control analysis specified after inspecting the parent CKA outcomes and input-only kernel baselines, before computing these adjusted outcomes. No new network fitting, relation selection, kernel search or outcome tuning. Adaptation of Cui et al. 2022 covariate adjustment plus PSD projection, applied to already centered within-length or within-answer kernels; not an exact replication of every paper preprocessing choice. One specified input kernel does not remove all possible input confounders.",
+      "reference": "https://proceedings.neurips.cc/paper_files/paper/2022/file/79cbf4f96c2bcc67267421154da689dd-Paper-Conference.pdf"
+    },
+    "config_sha256": "498b1da5c9b2dc51c1870fdcbcee97eb8dd4f1d5370aa26b59dd9730fc078584",
+    "code_sha256": "624fd9ad8a202a7bd462c19c6a730ec2d1b96afeeb63cd736a0b0984dd7ba889",
+    "parent_protocol_sha256": "67dd6c7c0f4f8eb945aae013ef0857398d77b525f7b4ad7536148e124b289721",
+    "parent_dataset_sha256": "e353558d7ac211637a9a783461b5eeb198dad6b99e95e2ec5946924f3280e65e"
+  }
+}

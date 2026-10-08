@@ -1,0 +1,23 @@
+\paragraph{Matrix.}
+\begin{center}\begin{tabular}{lrr}\toprule Condition & Accuracy(\%) & Double correct(\%)\\\midrule
+both correct & 9.44 & 0.52\\
+a correct b wrong & 8.66 & 0.39\\
+a wrong b correct & 7.94 & 0.26\\
+both wrong & 8.92 & 0.39\\
+no geometry & 7.55 & 0.26\\
+output space & 7.23 & 0.26\\
+\bottomrule\end{tabular}\end{center}
+All 36 models have the same 900-epoch budget. Source-cluster uncertainty conditions on the shared test inputs. Output-space results are information diagnostics with fewer parameters.
+Correct-vs-incorrect collision accuracy differs by0.52 percentage points; supplementary source-plus-whole-pair resampling gives[-1.56,2.73] percentage points. Thus a stable additional functional benefit is not established. Single-step scores are high, and true-intermediate prediction reaches99.22\%, whereas inferred composition reaches9.44\%.
+\paragraph{Polynomial.}
+\begin{center}\begin{tabular}{lrr}\toprule Condition & Accuracy(\%) & Double correct(\%)\\\midrule
+both correct & 8.27 & 0.39\\
+a correct b wrong & 8.20 & 0.52\\
+a wrong b correct & 8.20 & 0.65\\
+both wrong & 8.20 & 0.39\\
+no geometry & 6.77 & 0.13\\
+output space & 7.36 & 0.26\\
+\bottomrule\end{tabular}\end{center}
+All 36 models have the same 900-epoch budget. Source-cluster uncertainty conditions on the shared test inputs. Output-space results are information diagnostics with fewer parameters.
+The all-source correct group reaches8.27\% versus8.20\% for incorrect geometry. Translation generator scores are91.80\%,87.11\%,87.50\% across sources; only the first meets the previously fixed90\% threshold. Its composition accuracy is7.42\%. Thus neither stable relation-specific benefit nor robust irreversible composition is established. Differentiation at the true intermediate achieves99.87\% overall.
+The128 collision pairs connect39 derivative blocks into one connected component. They cannot be treated as128 independent block-level repetitions; source intervals condition on this fixed test set.

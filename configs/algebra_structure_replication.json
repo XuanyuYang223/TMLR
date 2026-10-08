@@ -1,0 +1,46 @@
+{
+  "output": "results/algebra_structure_replication",
+  "source_data": "results/native_confirmation/dataset/data.npz",
+  "source_reference": "results/native_ablation/source",
+  "base_config": "configs/permworld_combinations.json",
+  "source_seeds": [2027, 3037, 4051],
+  "pilot_seed": 1009,
+  "architecture": {"id": "d256_l4", "d_model": 256, "layers": 4, "heads": 8},
+  "source_steps": 20000,
+  "record_every": 1000,
+  "source_learning_rate": 0.0003,
+  "warmup_steps": 500,
+  "minimum_learning_rate_ratio": 0.1,
+  "groups": [
+    {"id": "novel_records", "tasks": ["left_to_right_maxima", "right_to_left_maxima", "left_to_right_minima", "right_to_left_minima"]},
+    {"id": "novel_minima_pair", "tasks": ["peaks", "valleys", "left_to_right_minima", "right_to_left_minima"]},
+    {"id": "novel_peak_mixed", "tasks": ["peaks", "left_to_right_maxima", "left_to_right_minima", "right_to_left_maxima"]}
+  ],
+  "examples_per_task_per_step": 32,
+  "probe_data_seed": 2026100641,
+  "lengths": [10, 30],
+  "orbits_per_length": {"fit": 16, "validation": 4, "test": 8},
+  "excluded_datasets": [
+    "results/six_hour_session/dataset/data.npz",
+    "results/native_target_repeat/dataset/data.npz",
+    "results/permworld_combinations/data.npz",
+    "results/native_confirmation/dataset/data.npz",
+    "results/native_ablation/dataset/data.npz",
+    "results/algebra_structure/native/dataset.npz"
+  ],
+  "probe_dimension": 64,
+  "ridge_grid": [0.000001, 0.0001, 0.01, 1.0],
+  "batch_size": 96,
+  "primary_landmark": "source_query_concat",
+  "views": ["ONE_END", "source_query_concat", "source_query_numeric_contrast", "source_query_numeric_null", "source_query_numeric_logits"],
+  "full_width_sensitivity": ["ONE_END", "source_query_concat"],
+  "primary_endpoints": ["raw-h full-space generator displacement NMSE", "unfitted composite displacement NMSE", "wrong-order minus correct-order gap"],
+  "fixed_predictions": [
+    "Across the three new source seeds, records has lower mean generator displacement NMSE than each control group.",
+    "Across the three new source seeds, records has lower mean unfitted-composite displacement NMSE than each control group.",
+    "Records has lower generator and composite displacement NMSE than identity (1), shuffled-pair fits, and matched random initialization.",
+    "Records has positive wrong-order minus correct-order gap for CI versus IC."
+  ],
+  "scope": "Three independently initialized new source seeds, conditional on one reused source-training world and one fresh orbit probe world. Pilot seed is separately reported, not counted as blind replication.",
+  "interpretation": "Generators fitted separately with no group laws enforced. Row vectors: first C then I is z rho_C rho_I. Only FIT-derived length means and PCA. Query, numeric readout contrast, numeric null, logits and task-free prefix reported separately. No target adaptation."
+}

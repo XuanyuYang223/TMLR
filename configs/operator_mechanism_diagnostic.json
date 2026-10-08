@@ -1,0 +1,36 @@
+{
+  "output": "results/operator_mechanism_diagnostic",
+  "parent": "results/operator_capacity_confirmation",
+  "source_seeds": [11261, 12373, 13487],
+  "conditions": ["linear_correct", "linear_wrong", "nonlinear_correct", "nonlinear_wrong"],
+  "analysis_scope": "Existing compound outcomes already observed: posthoc mechanism and optimization diagnosis. The original equal-budget confirmation is immutable. Three reused sources, not new source replications.",
+  "hybrids": [
+    ["linear_correct", "nonlinear_correct"],
+    ["linear_correct", "nonlinear_wrong"],
+    ["linear_wrong", "nonlinear_correct"],
+    ["linear_wrong", "nonlinear_wrong"],
+    ["nonlinear_correct", "linear_correct"]
+  ],
+  "hybrid_rule": "recipient@P_row(W) + donor@(I-P_row(W)) within one source and hidden coordinate system. Uses predicted states only. Verify all first-step logits, probabilities and classes remain recipient's. True intermediates used only for error analysis, never for swapping or fitting.",
+  "linear_fits": ["state_ols", "convex_kd_geometry", "validation_ridge_state"],
+  "linear_scope": "Unrestricted affine maps: the same function family as the two-layer Identity residual, with different parameterization and extra budget. Unregularized OLS is the global training state-MSE optimum; whitened readout-row L-BFGS solves the original KD+normalized-MSE data objective. Factorized AdamW weight decay is not duplicated; this is an optimization diagnosis, not an equal-budget comparison or theoretical impossibility proof.",
+  "solver": {"precision": "float64", "max_iterations": 2000, "gradient_tolerance": 1e-9, "change_tolerance": 1e-14, "gap_bound_tolerance": 1e-8, "svd_relative_rank_threshold": 1e-12},
+  "ridge_candidates": [0.0, 1e-10, 1e-8, 1e-6, 1e-4, 1e-2],
+  "ridge_selection": "Minimum original single-step validation KD+0.25*true-first-state-MSE/scale; no composite data for selection. Each candidate minimizes a ridge-regularized single-step state MSE on its assigned geometric targets. This changes the loss and is reported separately.",
+  "output_kd_weight": 1.0,
+  "geometry_weight": 0.25,
+  "temperature": 2.0,
+  "fresh_seed": 261083001,
+  "fresh_iid_examples_per_source": 128,
+  "fresh_collision_pairs_per_source": 128,
+  "fresh_policy": "Register all diagnostics and solvers before analysis. Each source's fresh whole-orbit test excludes its own source/support/validation/pilot orbits and all three previously examined matrix test sets. The three fresh tests have mutually distinct orbits. Some fresh inputs can have been training inputs of another source, so novelty is relative to each evaluated frozen source, not universal historical novelty. Complete all linear fits using known states only before opening fresh inference. No subsequent tuning on either compound test.",
+  "predictions": [
+    "Replacing linear-correct's predicted null component with nonlinear-correct's improves compound accuracy while preserving all first-step logits; nonlinear-wrong donor is a relation-specificity control.",
+    "If an adequately optimized affine map catches up with GELU on heldout state error and compound accuracy, optimization/conditioning becomes the stronger explanation; otherwise a residual linear expressivity limitation remains a candidate.",
+    "Replicate these fixed diagnoses on fresh, source-specific heldout inputs, without new hyperparameter choices."
+  ],
+  "bootstrap_samples": 10000,
+  "bootstrap_seed": 261083901,
+  "uncertainty": "Old shared test: paired crossed source/pair bootstrap. Fresh distinct per-source tests: paired nested source/pair bootstrap. Three reused source clusters; both are descriptive intervals with limited source coverage.",
+  "limits": "Nullspace is for the full fixed linear logits, not removal of all answer information. Hybrids can be off the encoder manifold. Error norms and class margins have different implications. Numerical full-rank affine fits may exploit float32 rounding of an almost exact LayerNorm constraint; report condition numbers, coefficient norms and regularized validation controls."
+}

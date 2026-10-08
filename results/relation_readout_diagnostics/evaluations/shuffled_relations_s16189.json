@@ -1,0 +1,405 @@
+{
+  "source": "shuffled_relations_s16189",
+  "source_condition": "shuffled_relations",
+  "seed": 16189,
+  "scope": "world2",
+  "source_checkpoint_sha256": "155aa4dd25e463b586ba3337a26f8d7d782c7688a795362b555c0d5af1f1dfca",
+  "native_map_sha256": "6d050d663d3e06e36c35a6784226e86233e12a2468f24ae9eb2aa4798c11bbdd",
+  "known_feature_sha256": "ef20393543d4ce46b0db3f33c5ded099f8f9174318392ee02d95eec6c1be8ebb",
+  "readout_selection": {
+    "ridge_alpha": 0.0001,
+    "ridge_validation_squared_error": 1.842606898053327,
+    "prototype_selected": "euclidean",
+    "prototype_validation_accuracies": [
+      0.996031746031746,
+      0.996031746031746
+    ],
+    "known_training_label_classes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "calibrations": [
+    {
+      "readout": "original_lm_head",
+      "known_validation_accuracy": 0.996031746031746,
+      "rows": [
+        {
+          "case": "base_CI",
+          "split": "iid",
+          "start_action": 0,
+          "destination_action": 5,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.5251182873417488,
+          "answer_accuracy": 0.26785714285714285
+        },
+        {
+          "case": "observed_C_then_I",
+          "split": "iid",
+          "start_action": 1,
+          "destination_action": 5,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.5345003891896888,
+          "answer_accuracy": 0.26785714285714285
+        },
+        {
+          "case": "base_ICI",
+          "split": "iid",
+          "start_action": 0,
+          "destination_action": 2,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.5236399256276587,
+          "answer_accuracy": 0.26785714285714285
+        },
+        {
+          "case": "observed_I_then_CI",
+          "split": "iid",
+          "start_action": 4,
+          "destination_action": 2,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.48302269508262957,
+          "answer_accuracy": 0.26785714285714285
+        },
+        {
+          "case": "base_CI",
+          "split": "answer_collisions",
+          "start_action": 0,
+          "destination_action": 5,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.5282950259730907,
+          "answer_accuracy": 0.2838541666666667,
+          "pair_both_correct": 0.0,
+          "paired_accuracy_interval_95": [
+            0.27156808035714286,
+            0.2976190476190476
+          ],
+          "pair_both_correct_interval_95": [
+            0.0,
+            0.0
+          ],
+          "swapped_start_self_answer_accuracy": 0.2849702380952381,
+          "swapped_start_partner_answer_accuracy": 0.2838541666666667
+        },
+        {
+          "case": "observed_C_then_I",
+          "split": "answer_collisions",
+          "start_action": 1,
+          "destination_action": 5,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.55458089886731,
+          "answer_accuracy": 0.28273809523809523,
+          "pair_both_correct": 0.001488095238095238,
+          "paired_accuracy_interval_95": [
+            0.2700892857142857,
+            0.2961309523809524
+          ],
+          "pair_both_correct_interval_95": [
+            0.0,
+            0.003720238095238095
+          ],
+          "swapped_start_self_answer_accuracy": 0.27901785714285715,
+          "swapped_start_partner_answer_accuracy": 0.28273809523809523
+        },
+        {
+          "case": "base_ICI",
+          "split": "answer_collisions",
+          "start_action": 0,
+          "destination_action": 2,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.529837502368954,
+          "answer_accuracy": 0.28348214285714285,
+          "pair_both_correct": 0.0,
+          "paired_accuracy_interval_95": [
+            0.27120535714285715,
+            0.296875
+          ],
+          "pair_both_correct_interval_95": [
+            0.0,
+            0.0
+          ],
+          "swapped_start_self_answer_accuracy": 0.28348214285714285,
+          "swapped_start_partner_answer_accuracy": 0.28348214285714285
+        },
+        {
+          "case": "observed_I_then_CI",
+          "split": "answer_collisions",
+          "start_action": 4,
+          "destination_action": 2,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.5383197082174834,
+          "answer_accuracy": 0.28311011904761907,
+          "pair_both_correct": 0.000744047619047619,
+          "paired_accuracy_interval_95": [
+            0.27046130952380953,
+            0.29650297619047616
+          ],
+          "pair_both_correct_interval_95": [
+            0.0,
+            0.002976190476190476
+          ],
+          "swapped_start_self_answer_accuracy": 0.28348214285714285,
+          "swapped_start_partner_answer_accuracy": 0.28311011904761907
+        }
+      ]
+    },
+    {
+      "readout": "known_onehot_ridge",
+      "known_validation_accuracy": 0.996031746031746,
+      "rows": [
+        {
+          "case": "base_CI",
+          "split": "iid",
+          "start_action": 0,
+          "destination_action": 5,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.5251182873417488,
+          "answer_accuracy": 0.24404761904761904
+        },
+        {
+          "case": "observed_C_then_I",
+          "split": "iid",
+          "start_action": 1,
+          "destination_action": 5,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.5345003891896888,
+          "answer_accuracy": 0.24404761904761904
+        },
+        {
+          "case": "base_ICI",
+          "split": "iid",
+          "start_action": 0,
+          "destination_action": 2,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.5236399256276587,
+          "answer_accuracy": 0.25
+        },
+        {
+          "case": "observed_I_then_CI",
+          "split": "iid",
+          "start_action": 4,
+          "destination_action": 2,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.48302269508262957,
+          "answer_accuracy": 0.27380952380952384
+        },
+        {
+          "case": "base_CI",
+          "split": "answer_collisions",
+          "start_action": 0,
+          "destination_action": 5,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.5282950259730907,
+          "answer_accuracy": 0.26785714285714285,
+          "pair_both_correct": 0.006696428571428571,
+          "paired_accuracy_interval_95": [
+            0.2544642857142857,
+            0.28162202380952384
+          ],
+          "pair_both_correct_interval_95": [
+            0.002976190476190476,
+            0.011160714285714286
+          ],
+          "swapped_start_self_answer_accuracy": 0.2767857142857143,
+          "swapped_start_partner_answer_accuracy": 0.26785714285714285
+        },
+        {
+          "case": "observed_C_then_I",
+          "split": "answer_collisions",
+          "start_action": 1,
+          "destination_action": 5,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.55458089886731,
+          "answer_accuracy": 0.2786458333333333,
+          "pair_both_correct": 0.009672619047619048,
+          "paired_accuracy_interval_95": [
+            0.265625,
+            0.2924107142857143
+          ],
+          "pair_both_correct_interval_95": [
+            0.004464285714285714,
+            0.01488095238095238
+          ],
+          "swapped_start_self_answer_accuracy": 0.2767857142857143,
+          "swapped_start_partner_answer_accuracy": 0.2786458333333333
+        },
+        {
+          "case": "base_ICI",
+          "split": "answer_collisions",
+          "start_action": 0,
+          "destination_action": 2,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.529837502368954,
+          "answer_accuracy": 0.27046130952380953,
+          "pair_both_correct": 0.004464285714285714,
+          "paired_accuracy_interval_95": [
+            0.2570684523809524,
+            0.28386346726190476
+          ],
+          "pair_both_correct_interval_95": [
+            0.001488095238095238,
+            0.00818452380952381
+          ],
+          "swapped_start_self_answer_accuracy": 0.2786458333333333,
+          "swapped_start_partner_answer_accuracy": 0.27046130952380953
+        },
+        {
+          "case": "observed_I_then_CI",
+          "split": "answer_collisions",
+          "start_action": 4,
+          "destination_action": 2,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.5383197082174834,
+          "answer_accuracy": 0.2779017857142857,
+          "pair_both_correct": 0.003720238095238095,
+          "paired_accuracy_interval_95": [
+            0.26450892857142855,
+            0.2916666666666667
+          ],
+          "pair_both_correct_interval_95": [
+            0.000744047619047619,
+            0.00744047619047619
+          ],
+          "swapped_start_self_answer_accuracy": 0.28311011904761907,
+          "swapped_start_partner_answer_accuracy": 0.2779017857142857
+        }
+      ]
+    },
+    {
+      "readout": "known_prototype_validation_selected",
+      "known_validation_accuracy": 0.996031746031746,
+      "rows": [
+        {
+          "case": "base_CI",
+          "split": "iid",
+          "start_action": 0,
+          "destination_action": 5,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.5251182873417488,
+          "answer_accuracy": 0.27380952380952384
+        },
+        {
+          "case": "observed_C_then_I",
+          "split": "iid",
+          "start_action": 1,
+          "destination_action": 5,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.5345003891896888,
+          "answer_accuracy": 0.27380952380952384
+        },
+        {
+          "case": "base_ICI",
+          "split": "iid",
+          "start_action": 0,
+          "destination_action": 2,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.5236399256276587,
+          "answer_accuracy": 0.27380952380952384
+        },
+        {
+          "case": "observed_I_then_CI",
+          "split": "iid",
+          "start_action": 4,
+          "destination_action": 2,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.48302269508262957,
+          "answer_accuracy": 0.27380952380952384
+        },
+        {
+          "case": "base_CI",
+          "split": "answer_collisions",
+          "start_action": 0,
+          "destination_action": 5,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.5282950259730907,
+          "answer_accuracy": 0.2775297619047619,
+          "pair_both_correct": 0.0,
+          "paired_accuracy_interval_95": [
+            0.2648809523809524,
+            0.29055059523809523
+          ],
+          "pair_both_correct_interval_95": [
+            0.0,
+            0.0
+          ],
+          "swapped_start_self_answer_accuracy": 0.2771577380952381,
+          "swapped_start_partner_answer_accuracy": 0.2775297619047619
+        },
+        {
+          "case": "observed_C_then_I",
+          "split": "answer_collisions",
+          "start_action": 1,
+          "destination_action": 5,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.55458089886731,
+          "answer_accuracy": 0.27641369047619047,
+          "pair_both_correct": 0.0,
+          "paired_accuracy_interval_95": [
+            0.26339285714285715,
+            0.2898065476190476
+          ],
+          "pair_both_correct_interval_95": [
+            0.0,
+            0.0
+          ],
+          "swapped_start_self_answer_accuracy": 0.27641369047619047,
+          "swapped_start_partner_answer_accuracy": 0.27641369047619047
+        },
+        {
+          "case": "base_ICI",
+          "split": "answer_collisions",
+          "start_action": 0,
+          "destination_action": 2,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.529837502368954,
+          "answer_accuracy": 0.2775297619047619,
+          "pair_both_correct": 0.0,
+          "paired_accuracy_interval_95": [
+            0.2648809523809524,
+            0.29055059523809523
+          ],
+          "pair_both_correct_interval_95": [
+            0.0,
+            0.0
+          ],
+          "swapped_start_self_answer_accuracy": 0.2771577380952381,
+          "swapped_start_partner_answer_accuracy": 0.2775297619047619
+        },
+        {
+          "case": "observed_I_then_CI",
+          "split": "answer_collisions",
+          "start_action": 4,
+          "destination_action": 2,
+          "start_type_seen_during_source_training": true,
+          "displacement_nmse": 0.5383197082174834,
+          "answer_accuracy": 0.2775297619047619,
+          "pair_both_correct": 0.000744047619047619,
+          "paired_accuracy_interval_95": [
+            0.2648809523809524,
+            0.29092261904761907
+          ],
+          "pair_both_correct_interval_95": [
+            0.0,
+            0.002232142857142857
+          ],
+          "swapped_start_self_answer_accuracy": 0.2767857142857143,
+          "swapped_start_partner_answer_accuracy": 0.2775297619047619
+        }
+      ]
+    }
+  ],
+  "archive_sha256": {
+    "shuffled_relations_s16189_original_lm_head.npz": "a5aea17e1545079228f152aeedf0ea5f34e337832679b7a4709e3064ba3ff52d",
+    "shuffled_relations_s16189_known_onehot_ridge.npz": "eb4378551c43304091a74cdda4001f16479d91953b361c5f672bb513629178b9",
+    "shuffled_relations_s16189_known_prototype_validation_selected.npz": "1f1fe2a674de9f4449b2edf2f77d969f9ba3100ee5797b1079458905a3fbdd61"
+  },
+  "completed_utc": "2026-10-06T15:20:07.493984+00:00"
+}

@@ -1,0 +1,27 @@
+{
+  "registered_utc": "2026-10-07T19:07:31.613502+00:00",
+  "compound_outcomes_observed": false,
+  "signature": {
+    "code_sha256": "57b36fc55d36670adabfa43e9e49819d66d020dcdc93ad6eff05b5ad0121471d",
+    "original_plan_sha256": "c486aac4b68c077d12ef7e172c36af07c1105bb640c35a1492d73eefb341f29b",
+    "data_sha256": {
+      "/home/yangx/ICML/results/algebra_relation_followup/matrix/dataset/support1.npz": "97868a1ba40ab16837a7086d20d451b10a38d629e8e3d04fb870a5b4b61b964c",
+      "/home/yangx/ICML/results/algebra_relation_followup/matrix/dataset/support0.npz": "d57bae6744625998e48d8e262dc4d9fff02f2a4517b9101d21cf41cecea99ad9",
+      "/home/yangx/ICML/results/algebra_relation_followup/matrix/dataset/support3.npz": "876eca37e3b92ce0465feb20293d9c9c4e99bdeacc33bdf14a9e1498fce9b40e",
+      "/home/yangx/ICML/results/algebra_relation_followup/matrix/dataset/support6.npz": "f389b7dada83841bef130fa19d4c0948f9cc6159b4d20d675d3e593ab064f803",
+      "/home/yangx/ICML/results/algebra_relation_followup/matrix/dataset/source.npz": "8264d8907a51dbadd9c51889fbbe4da79c409bdf01402a4555d5eaf9dcba3e3c",
+      "/home/yangx/ICML/results/algebra_relation_followup/matrix/dataset/support5.npz": "a12158fcc3a2c54c06d036f3fe5f9387878e4f8a5d4ca766627537d41d29624b",
+      "/home/yangx/ICML/results/algebra_relation_followup/matrix/dataset/pilot_validation.npz": "0c8b1f51158f3080e4f3270ce2d51f262eb62ce469fc2b114ccfc47eeb442f78",
+      "/home/yangx/ICML/results/algebra_relation_followup/matrix/dataset/validation.npz": "40f7f4a41af1845b986735336b35c017d487b2a3f29d3b6c54ee7d4846f8e6fb",
+      "/home/yangx/ICML/results/algebra_relation_followup/matrix/dataset/test.npz": "7cb6e636a92bc8f9106eb424703bcab7f75bd7a4f90fd5016a5bebc5d32bf6b1",
+      "/home/yangx/ICML/results/algebra_relation_followup/matrix/dataset/support4.npz": "d0b8b26648c9d14ce90a4ad0f1f9042d2ed7fb7a47072c864882ec4fa1fc687f",
+      "/home/yangx/ICML/results/algebra_relation_followup/matrix/dataset/support2.npz": "4f6a2cd26782ad5216b6b899d08599c3ece120ab623288804bf2fbf6a7f4e2a6"
+    },
+    "candidates": [
+      "numeric_gelu",
+      "numeric_sine"
+    ],
+    "selection": "First candidate with native>=95% and both generators>=90% on the64 known pilot examples, confirmed on128 separately reserved known examples. Same900-epoch pilot and500-epoch source. Never evaluate compound inputs or labels.",
+    "reason": "Original model fits both generators at99.8% on train but inverse-like second generator is7.8% on known heldout inputs. Distinguish generalization from optimizer failure. Remove the one-hot lookup shortcut; retain scalar field values. Sine activation is a generic periodic prior, with no group operations or polynomial transforms in the model."
+  }
+}

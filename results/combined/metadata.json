@@ -1,0 +1,51 @@
+{
+  "config": {
+    "p": 5,
+    "dimension": 4,
+    "world_seeds": [
+      17,
+      42,
+      101
+    ],
+    "model_seeds": [
+      17,
+      42,
+      101
+    ],
+    "scenario_limit": 8,
+    "target_count": 10,
+    "hidden": 192,
+    "features": 64,
+    "pretrain_steps": 1200,
+    "pretrain_lr": 0.003,
+    "weight_decay": 0.001,
+    "record_every": 100,
+    "budgets": [
+      10,
+      25,
+      50
+    ],
+    "test_per_class": 25,
+    "adapt_steps": 200,
+    "probe_lr": 0.03,
+    "finetune_head_lr": 0.01,
+    "finetune_encoder_lr": 0.001,
+    "source_accuracy_gate": 0.98,
+    "primary_budget": 25,
+    "primary_mode": "finetune",
+    "prediction_alpha": 10.0,
+    "device": "auto"
+  },
+  "aggregation_of": [
+    {
+      "directory": "/home/yangx/ICML/results/pilot",
+      "fingerprint": "53b4e613ba32e9dbc500c77d3f0149549bb8ca2bacaad49b4678a54e6a7bf83a"
+    },
+    {
+      "directory": "/home/yangx/ICML/results/replication",
+      "fingerprint": "1753c7416047f9d8c23c95d319930dfa410a22128bc27a1defe55f4106bf2236"
+    }
+  ],
+  "fingerprint": "aggregation_only_not_a_training_run",
+  "replication": "same three input bases crossed with three independent initialization seeds"
+}

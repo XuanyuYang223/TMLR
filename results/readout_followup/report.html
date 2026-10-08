@@ -1,0 +1,11 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>继续试验：读出与代数关系拟合</title>
+<style>body{max-width:1150px;margin:40px auto;padding:0 20px;font:16px/1.7 system-ui}img{max-width:100%}table{border-collapse:collapse;width:100%}td,th{padding:8px;border-bottom:1px solid #ddd;text-align:left}</style>
+<h1>读出诊断：信息可恢复以后，如何用少量标签学习目标？</h1>
+<p>使用原 72 个有限域源模型，保持源权重和目标标签划分不变。线性与小 MLP 读出都冻结编码器，训练 200 步，分别报告学习率 0.01、0.03；主对照固定为 25 标签、学习率 0.01。每种读出都有匹配的随机特征基线。</p>
+<p>原 PermWorld 正确输入变换的最终层 CKA 确实在 24/24 个单元上增加。<a href="../cka_review/report.html">CKA 原始数据核验</a>。本页的有限域读出试验不复现那项 Transformer 输入变换对照，也不否定它。</p><img src="readouts.png">
+<table><tr><th>组</th><th>冻结读出</th><th>准确率</th><th>随机特征基线</th><th>迁移收益</th></tr><tr><td>A</td><td>linear</td><td>19.73%</td><td>26.03%</td><td>-6.30 pp</td></tr><tr><td>A</td><td>mlp</td><td>19.54%</td><td>25.05%</td><td>-5.51 pp</td></tr><tr><td>B</td><td>linear</td><td>21.47%</td><td>26.03%</td><td>-4.55 pp</td></tr><tr><td>B</td><td>mlp</td><td>21.97%</td><td>25.05%</td><td>-3.08 pp</td></tr></table>
+<p>第二类诊断先读取四个已训练源任务的输出值，再只用目标支持标签求解有限域仿射系数。拟合过程不接收真实目标公式。它额外假设目标属于这个代数函数族，因此使用了特权结构先验，不能解释成普通神经训练自发学会了组合。</p>
+<table><tr><th>组</th><th>源答案读出</th><th>准确率</th><th>支持标签可精确拟合比例</th></tr><tr><td>A</td><td>field_fit</td><td>100.00%</td><td>100.0%</td></tr><tr><td>A</td><td>shuffled_field_fit</td><td>20.00%</td><td>0.0%</td></tr><tr><td>A</td><td>code_lookup</td><td>32.40%</td><td>100.0%</td></tr><tr><td>B</td><td>field_fit</td><td>100.00%</td><td>100.0%</td></tr><tr><td>B</td><td>shuffled_field_fit</td><td>20.00%</td><td>0.0%</td></tr><tr><td>B</td><td>code_lookup</td><td>32.40%</td><td>100.0%</td></tr></table>
+<p>查表仅在支持集出现相同完整源答案组合时复用标签，否则输出支持集多数类；它量化潜在状态重复。打乱源答案行顺序保持源答案联合分布不变，但破坏与目标的对应；无法拟合时同样使用多数类。</p>
+<p>这些是观察初始负迁移后的探索诊断。源训练覆盖全部输入，因此这里只能讨论同实体的新任务标签迁移。所有方法和学习率完整报告，不按目标测试准确率挑选参数或最佳方法。</p>
+<p>数据：<a href="neural_endpoints.csv">神经读出端点</a>；<a href="code_diagnostic_endpoints.csv">代数及查表端点</a>；<a href="metadata.json">协议与来源</a>；<a href="summary.json">汇总</a>。</p></html>

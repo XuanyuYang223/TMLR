@@ -1,0 +1,31 @@
+{
+  "created_utc": "2026-10-08T00:47:58.602392+00:00",
+  "status": "passed",
+  "source_audits": [
+    {
+      "source": 0,
+      "fresh_orbits": 384,
+      "candidate_orbits": 1104,
+      "own_training_and_all_seen_test_orbits_excluded": true
+    },
+    {
+      "source": 1,
+      "fresh_orbits": 384,
+      "candidate_orbits": 908,
+      "own_training_and_all_seen_test_orbits_excluded": true
+    },
+    {
+      "source": 2,
+      "fresh_orbits": 384,
+      "candidate_orbits": 683,
+      "own_training_and_all_seen_test_orbits_excluded": true
+    }
+  ],
+  "all_three_fresh_test_orbits_mutually_disjoint": true,
+  "scope": "Register all diagnostics and solvers before analysis. Each source's fresh whole-orbit test excludes its own source/support/validation/pilot orbits and all three previously examined matrix test sets. The three fresh tests have mutually distinct orbits. Some fresh inputs can have been training inputs of another source, so novelty is relative to each evaluated frozen source, not universal historical novelty. Complete all linear fits using known states only before opening fresh inference. No subsequent tuning on either compound test.",
+  "dataset_sha256": {
+    "results/operator_mechanism_diagnostic/datasets/s0_fresh.npz": "2925b7578883dc97770050d0b0a60785abbbf26b8387ac06b24f7eb2495fe457",
+    "results/operator_mechanism_diagnostic/datasets/s1_fresh.npz": "6a607dbb823e0633d7537cfb6476e4068bf561c52d204833bc78ebc6426d4581",
+    "results/operator_mechanism_diagnostic/datasets/s2_fresh.npz": "59e1a4dcbd5d9705533d58de442c0cc62de15d1d6bf6e420abd50314e52cc9ba"
+  }
+}

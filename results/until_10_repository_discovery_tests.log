@@ -1,0 +1,1157 @@
+..............................F.........................F............... [ 19%]
+................................................................... [ 36%]
+.............................................FFFF.FFF.........FFFFFFF..F [ 56%]
+FF..F...F.FFFFF.FFF...............FF.................................... [ 75%]
+........................................................................ [ 94%]
+.....................                                                    [100%]
+=================================== FAILURES ===================================
+_______________________ test_frozen_real_config_is_valid _______________________
+
+    def test_frozen_real_config_is_valid() -> None:
+>       value, digest = validate_config(REPOSITORY / "configs/v3_category_linear_probe.toml")
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_category_linear_probe.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/home/yangx/ICML/external/neurips/configs/v3_category_linear_probe.toml')
+
+    def validate_config(path: Path) -> tuple[dict[str, Any], str]:
+        value, digest = _read_config(path)
+        if value.get("protocol_version") != "v3-category-linear-probe/v1":
+            raise ValueError("unsupported category linear-probe protocol")
+        frozen = value.get("frozen_artifacts")
+        probe = value.get("probe")
+        if not isinstance(frozen, Mapping) or not isinstance(probe, Mapping):
+            raise ValueError("category probe config lacks frozen_artifacts or probe")
+        expected_files = {
+            "base_experiment_config": "base_experiment_config_sha256",
+            "dataset_manifest": "dataset_manifest_sha256",
+            "validation_manifest": "validation_manifest_sha256",
+            "test_manifest": "test_manifest_sha256",
+        }
+        for path_key, hash_key in expected_files.items():
+            artifact = Path(str(value[path_key]))
+            if not artifact.is_file() or _sha256(artifact) != frozen.get(hash_key):
+>               raise ValueError(f"{path_key} differs from the frozen protocol")
+E               ValueError: base_experiment_config differs from the frozen protocol
+
+../neurips/src/neurips_permutations/category_linear_probe.py:150: ValueError
+_________________ test_status_starts_with_every_run_incomplete _________________
+
+tmp_path = PosixPath('/tmp/pytest-of-yangx/pytest-7/test_status_starts_with_every_0')
+
+    def test_status_starts_with_every_run_incomplete(tmp_path: Path) -> None:
+        config = tmp_path / "henry_permutation.toml"
+        config.write_text(
+            CONFIG.read_text(encoding="utf-8").replace(
+                'output_dir = "runs/henry-permutation"',
+                f'output_dir = "{tmp_path / "runs"}"',
+            ),
+            encoding="utf-8",
+        )
+    
+>       summary = matrix_summary(config)
+                  ^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_experiments.py:251: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/experiments.py:451: in matrix_summary
+    dataset_sha256 = _sha256_file(Path(config["dataset_manifest"]))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/experiments.py:482: in _sha256_file
+    with path.open("rb") as handle:
+         ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('data/permutation-10m-v2/manifest.json'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'data/permutation-10m-v2/manifest.json'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+_____________ test_frozen_matrix_has_ten_disjoint_transformer_runs _____________
+
+    def test_frozen_matrix_has_ten_disjoint_transformer_runs() -> None:
+>       runs = build_property_matrix(CONFIG)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_experiments.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_experiments.py:51: in build_property_matrix
+    config, _ = _read_config(config_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_experiments.py:41: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property32_zero_overlap_pilot.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property32_zero_overlap_pilot.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+________________ test_initial_summary_and_dry_run_are_complete _________________
+
+tmp_path = PosixPath('/tmp/pytest-of-yangx/pytest-7/test_initial_summary_and_dry_r0')
+capsys = <_pytest.capture.CaptureFixture object at 0x73495437e650>
+
+    def test_initial_summary_and_dry_run_are_complete(tmp_path, capsys) -> None:
+        isolated = tmp_path / "pilot.toml"
+        isolated.write_text(
+>           CONFIG.read_text(encoding="utf-8").replace(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                'output_dir = "runs/property32-zero-overlap-pilot"',
+                f'output_dir = "{tmp_path / "runs"}"',
+            ),
+            encoding="utf-8",
+        )
+
+external/neurips/tests/test_property_experiments.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../miniforge3/lib/python3.13/pathlib/_local.py:546: in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:632: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property32_zero_overlap_pilot.toml'), mode = 'r'
+buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property32_zero_overlap_pilot.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+______ test_frozen_property_fewshot_design_is_balanced_and_uses_shard199 _______
+
+    def test_frozen_property_fewshot_design_is_balanced_and_uses_shard199() -> None:
+>       spec = load_spec()
+               ^^^^^^^^^^^
+
+external/neurips/tests/test_property_fewshot.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_fewshot.py:95: in load_spec
+    payload = config_path.read_bytes()
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/home/yangx/ICML/configs/property32_fewshot.toml')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/yangx/ICML/configs/property32_fewshot.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+____ test_property_fewshot_plan_has_120_unseen_warm_starts_and_24_controls _____
+
+    def test_property_fewshot_plan_has_120_unseen_warm_starts_and_24_controls() -> None:
+>       spec = load_spec()
+               ^^^^^^^^^^^
+
+external/neurips/tests/test_property_fewshot.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_fewshot.py:95: in load_spec
+    payload = config_path.read_bytes()
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/home/yangx/ICML/configs/property32_fewshot.toml')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/yangx/ICML/configs/property32_fewshot.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+________ test_lr_sensitivity_fills_exactly_two_missing_factorial_cells _________
+
+    def test_lr_sensitivity_fills_exactly_two_missing_factorial_cells() -> None:
+>       value = plan(Path("configs/property32_fewshot_lr_sensitivity.toml"))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_fewshot_lr_sensitivity.py:9: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_fewshot_lr_sensitivity.py:81: in plan
+    _, _, digest, base, sensitivity = _load(config_path)
+                                      ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_fewshot_lr_sensitivity.py:45: in _load
+    payload = absolute.read_bytes()
+              ^^^^^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/home/yangx/ICML/configs/property32_fewshot_lr_sensitivity.toml')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/yangx/ICML/configs/property32_fewshot_lr_sensitivity.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+__________ test_lr_sensitivity_identity_binds_protocol_and_matched_lr __________
+
+    def test_lr_sensitivity_identity_binds_protocol_and_matched_lr() -> None:
+>       _, _, protocol_sha256, base, sensitivity = _load(
+            Path("configs/property32_fewshot_lr_sensitivity.toml")
+        )
+
+external/neurips/tests/test_property_fewshot_lr_sensitivity.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_fewshot_lr_sensitivity.py:45: in _load
+    payload = absolute.read_bytes()
+              ^^^^^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/home/yangx/ICML/configs/property32_fewshot_lr_sensitivity.toml')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/yangx/ICML/configs/property32_fewshot_lr_sensitivity.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+____________ test_frozen_config_and_property_labels_are_recomputed _____________
+
+    def test_frozen_config_and_property_labels_are_recomputed() -> None:
+>       config, digest = _validate_config(Path("configs/property32_linear_probe.toml"))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_linear_probe.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_linear_probe.py:145: in _validate_config
+    value, digest = _read_config(path)
+                    ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_linear_probe.py:140: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property32_linear_probe.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property32_linear_probe.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+______ test_relation_design_has_nine_cells_and_no_selected_natural_duals _______
+
+    def test_relation_design_has_nine_cells_and_no_selected_natural_duals() -> None:
+>       design = validate_relation_config()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_relation_experiments.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_relation_experiments.py:66: in validate_relation_config
+    config, config_sha256 = _read_config(path)
+                            ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_relation_experiments.py:50: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property32_relation_controlled.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property32_relation_controlled.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+_____________ test_relation_matrix_has_complete_unique_nested_grid _____________
+
+    def test_relation_matrix_has_complete_unique_nested_grid() -> None:
+>       runs = build_relation_matrix()
+               ^^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_relation_experiments.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_relation_experiments.py:131: in build_relation_matrix
+    validate_relation_config(path)
+../neurips/src/neurips_permutations/property_relation_experiments.py:66: in validate_relation_config
+    config, config_sha256 = _read_config(path)
+                            ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_relation_experiments.py:50: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property32_relation_controlled.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property32_relation_controlled.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+____________ test_relation_cell_dry_run_emits_only_unique_commands _____________
+
+capsys = <_pytest.capture.CaptureFixture object at 0x73495437eea0>
+
+    def test_relation_cell_dry_run_emits_only_unique_commands(capsys: pytest.CaptureFixture[str]) -> None:
+>       run_relation_matrix(cell="s1:42", dry_run=True)
+
+external/neurips/tests/test_property_relation_experiments.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_relation_experiments.py:295: in run_relation_matrix
+    config, config_sha256 = _read_config(path)
+                            ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_relation_experiments.py:50: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property32_relation_controlled.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property32_relation_controlled.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+_____________ test_relation_full_dry_run_emits_sixty_unique_models _____________
+
+capsys = <_pytest.capture.CaptureFixture object at 0x73499c7b0a70>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x734945cf8b50>
+
+    def test_relation_full_dry_run_emits_sixty_unique_models(
+        capsys: pytest.CaptureFixture[str], monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        # Dry-run command coverage must not depend on completed runs in the
+        # developer's local ignored ``runs/`` tree.
+        monkeypatch.setattr(relation_module, "_completed", lambda *args, **kwargs: False)
+>       run_relation_matrix(dry_run=True)
+
+external/neurips/tests/test_property_relation_experiments.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_relation_experiments.py:295: in run_relation_matrix
+    config, config_sha256 = _read_config(path)
+                            ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_relation_experiments.py:50: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property32_relation_controlled.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property32_relation_controlled.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+_________ test_relation_summary_accepts_completed_or_unstarted_matrix __________
+
+    def test_relation_summary_accepts_completed_or_unstarted_matrix() -> None:
+>       summary = relation_summary()
+                  ^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_relation_experiments.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_relation_experiments.py:219: in relation_summary
+    config, config_sha256 = _read_config(path)
+                            ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_relation_experiments.py:50: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property32_relation_controlled.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property32_relation_controlled.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+__________________ test_relation_runner_rejects_unknown_cell ___________________
+
+    def test_relation_runner_rejects_unknown_cell() -> None:
+        with pytest.raises(ValueError, match="unknown relation-controlled cell"):
+>           run_relation_matrix(cell="s9:999", dry_run=True)
+
+external/neurips/tests/test_property_relation_experiments.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_relation_experiments.py:295: in run_relation_matrix
+    config, config_sha256 = _read_config(path)
+                            ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_relation_experiments.py:50: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property32_relation_controlled.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property32_relation_controlled.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+____________ test_relation_outputs_are_isolated_from_previous_runs _____________
+
+    def test_relation_outputs_are_isolated_from_previous_runs() -> None:
+>       outputs = {Path(run.output_dir).parts[:2] for run in build_relation_matrix()}
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_relation_experiments.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_relation_experiments.py:131: in build_relation_matrix
+    validate_relation_config(path)
+../neurips/src/neurips_permutations/property_relation_experiments.py:66: in validate_relation_config
+    config, config_sha256 = _read_config(path)
+                            ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_relation_experiments.py:50: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property32_relation_controlled.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property32_relation_controlled.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+_______ test_frozen_replicate_design_is_balanced_and_changes_membership ________
+
+    def test_frozen_replicate_design_is_balanced_and_changes_membership() -> None:
+>       design = validate_replicate_design()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_replicates.py:8: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_replicates.py:108: in validate_replicate_design
+    config = _read_config(path)
+             ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_replicates.py:97: in _read_config
+    return tomllib.loads(path.read_text(encoding="utf-8"))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_local.py:546: in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:632: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property32_zero_overlap_pilot.toml'), mode = 'r'
+buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property32_zero_overlap_pilot.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+_________________ test_combined_status_has_thirty_unique_runs __________________
+
+    def test_combined_status_has_thirty_unique_runs() -> None:
+>       status = combined_status()
+                 ^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_replicates.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_replicates.py:145: in combined_status
+    design = validate_replicate_design()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_replicates.py:108: in validate_replicate_design
+    config = _read_config(path)
+             ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_replicates.py:97: in _read_config
+    return tomllib.loads(path.read_text(encoding="utf-8"))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_local.py:546: in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:632: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property32_zero_overlap_pilot.toml'), mode = 'r'
+buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property32_zero_overlap_pilot.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+____________ test_task_status_separates_seen_and_two_unseen_groups _____________
+
+    def test_task_status_separates_seen_and_two_unseen_groups():
+>       runs = build_property_matrix()
+               ^^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_report.py:9: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_experiments.py:51: in build_property_matrix
+    config, _ = _read_config(config_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_experiments.py:41: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property32_zero_overlap_pilot.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property32_zero_overlap_pilot.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+_________ test_fixed_seed_subset_replicates_are_balanced_and_disjoint __________
+
+    def test_fixed_seed_subset_replicates_are_balanced_and_disjoint() -> None:
+        for replicate_id, split_seed in (("r3", 20261101), ("r4", 20261359)):
+            path = Path("configs") / f"property32_zero_overlap_{replicate_id}.toml"
+>           config = tomllib.loads(path.read_text(encoding="utf-8"))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_subset_replicates.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../miniforge3/lib/python3.13/pathlib/_local.py:546: in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:632: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property32_zero_overlap_r3.toml'), mode = 'r'
+buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property32_zero_overlap_r3.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+________ test_task_label_permutation_test_is_deterministic_and_complete ________
+
+    def test_task_label_permutation_test_is_deterministic_and_complete() -> None:
+>       relations = relation_definitions()
+                    ^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_task_geometry_cka.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:66: in relation_definitions
+    config, _ = _read_config(path)
+                ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:61: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property_task_geometry.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property_task_geometry.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+____________ test_geometry_config_freezes_balanced_two_layer_design ____________
+
+    def test_geometry_config_freezes_balanced_two_layer_design() -> None:
+>       design = validate_geometry_config()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_task_geometry_experiments.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:132: in validate_geometry_config
+    config, config_sha256 = _read_config(path)
+                            ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:61: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property_task_geometry.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property_task_geometry.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+_________ test_geometry_matrix_contains_only_unique_task_seed_designs __________
+
+    def test_geometry_matrix_contains_only_unique_task_seed_designs() -> None:
+>       runs = build_geometry_matrix()
+               ^^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_task_geometry_experiments.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:237: in build_geometry_matrix
+    design = validate_geometry_config(path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:132: in validate_geometry_config
+    config, config_sha256 = _read_config(path)
+                            ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:61: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property_task_geometry.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property_task_geometry.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+________ test_every_bundle_cell_has_exact_preregistered_relation_count _________
+
+    def test_every_bundle_cell_has_exact_preregistered_relation_count() -> None:
+>       relations = relation_definitions()
+                    ^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_task_geometry_experiments.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:66: in relation_definitions
+    config, _ = _read_config(path)
+                ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:61: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property_task_geometry.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property_task_geometry.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+_______ test_each_condition_and_anchor_use_every_task_once_across_splits _______
+
+    def test_each_condition_and_anchor_use_every_task_once_across_splits() -> None:
+>       relations = relation_definitions()
+                    ^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_task_geometry_experiments.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:66: in relation_definitions
+    config, _ = _read_config(path)
+                ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:61: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property_task_geometry.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property_task_geometry.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+__________ test_preregistered_relations_hold_exhaustively_through_six __________
+
+    def test_preregistered_relations_hold_exhaustively_through_six() -> None:
+>       result = verify_relation_identities(max_n=6)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_task_geometry_experiments.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:104: in verify_relation_identities
+    relations = relation_definitions(path)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:66: in relation_definitions
+    config, _ = _read_config(path)
+                ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:61: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property_task_geometry.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property_task_geometry.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+______________ test_dry_run_partitions_all_models_without_overlap ______________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x734945cf9550>
+capsys = <_pytest.capture.CaptureFixture object at 0x7349543bef10>
+
+    def test_dry_run_partitions_all_models_without_overlap(
+        monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+    ) -> None:
+        monkeypatch.setattr(
+            "neurips_permutations.property_task_geometry_experiments._completed",
+            lambda *_args, **_kwargs: False,
+        )
+        commands: list[str] = []
+        for index in range(7):
+>           run_geometry_matrix(worker_index=index, worker_count=7, dry_run=True)
+
+external/neurips/tests/test_property_task_geometry_experiments.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:397: in run_geometry_matrix
+    config, _ = _read_config(path)
+                ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:61: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property_task_geometry.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property_task_geometry.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+______ test_geometry_summary_accepts_completed_partial_or_unstarted_runs _______
+
+    def test_geometry_summary_accepts_completed_partial_or_unstarted_runs() -> None:
+>       summary = geometry_summary()
+                  ^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_task_geometry_experiments.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:338: in geometry_summary
+    config, config_sha256 = _read_config(path)
+                            ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:61: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property_task_geometry.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property_task_geometry.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+__________ test_geometry_outputs_are_separate_from_superseded_matrix ___________
+
+    def test_geometry_outputs_are_separate_from_superseded_matrix() -> None:
+>       fresh = [run for run in build_geometry_matrix() if not run.reused]
+                                ^^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_property_task_geometry_experiments.py:124: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:237: in build_geometry_matrix
+    design = validate_geometry_config(path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:132: in validate_geometry_config
+    config, config_sha256 = _read_config(path)
+                            ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/property_task_geometry_experiments.py:61: in _read_config
+    payload = path.read_bytes()
+              ^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('configs/property_task_geometry.toml'), mode = 'rb'
+buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'configs/property_task_geometry.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+_________________ test_k16_scaling_plan_is_frozen_and_balanced _________________
+
+    def test_k16_scaling_plan_is_frozen_and_balanced() -> None:
+>       value = plan(Path("configs/permutation_scaling_k16.toml"))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+external/neurips/tests/test_scaling_k16.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../neurips/src/neurips_permutations/scaling_k16.py:93: in plan
+    repository, config, digest = _load(config_path)
+                                 ^^^^^^^^^^^^^^^^^^
+../neurips/src/neurips_permutations/scaling_k16.py:51: in _load
+    payload = absolute.read_bytes()
+              ^^^^^^^^^^^^^^^^^^^^^
+../miniforge3/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/home/yangx/ICML/configs/permutation_scaling_k16.toml')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/yangx/ICML/configs/permutation_scaling_k16.toml'
+
+../miniforge3/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+______ test_v3_manifest_recovers_original_vocab_after_property_extension _______
+
+    def test_v3_manifest_recovers_original_vocab_after_property_extension() -> None:
+        v3 = TrainConfig(
+            output_dir="unused",
+            manifest="data/permutation-10m-v3/manifest.json",
+        )
+        property32 = TrainConfig(
+            output_dir="unused",
+            manifest="data/permutation-properties-16m-v1/manifest.json",
+        )
+        assert len(PERMUTATION20_VOCABULARY) == 163
+        assert len(TOKEN_TO_ID) == 188
+>       assert _model_vocab_size(v3) == 163
+E       AssertionError: assert 188 == 163
+E        +  where 188 = _model_vocab_size(TrainConfig(output_dir='unused', manifest='data/permutation-10m-v3/manifest.json', train_shards=(), validation_manifes... resume=None, shard_indices=None, validation_shard_indices=None, experiment_config=None, experiment_config_sha256=None))
+
+external/neurips/tests/test_scaling_k16.py:37: AssertionError
+=============================== warnings summary ===============================
+external/neurips/tests/test_generate.py: 25 warnings
+  /home/yangx/miniforge3/lib/python3.13/multiprocessing/popen_fork.py:67: DeprecationWarning: This process (pid=1900302) is multi-threaded, use of fork() may lead to deadlocks in the child.
+    self.pid = os.fork()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED external/neurips/tests/test_category_linear_probe.py::test_frozen_real_config_is_valid
+FAILED external/neurips/tests/test_experiments.py::test_status_starts_with_every_run_incomplete
+FAILED external/neurips/tests/test_property_experiments.py::test_frozen_matrix_has_ten_disjoint_transformer_runs
+FAILED external/neurips/tests/test_property_experiments.py::test_initial_summary_and_dry_run_are_complete
+FAILED external/neurips/tests/test_property_fewshot.py::test_frozen_property_fewshot_design_is_balanced_and_uses_shard199
+FAILED external/neurips/tests/test_property_fewshot.py::test_property_fewshot_plan_has_120_unseen_warm_starts_and_24_controls
+FAILED external/neurips/tests/test_property_fewshot_lr_sensitivity.py::test_lr_sensitivity_fills_exactly_two_missing_factorial_cells
+FAILED external/neurips/tests/test_property_fewshot_lr_sensitivity.py::test_lr_sensitivity_identity_binds_protocol_and_matched_lr
+FAILED external/neurips/tests/test_property_linear_probe.py::test_frozen_config_and_property_labels_are_recomputed
+FAILED external/neurips/tests/test_property_relation_experiments.py::test_relation_design_has_nine_cells_and_no_selected_natural_duals
+FAILED external/neurips/tests/test_property_relation_experiments.py::test_relation_matrix_has_complete_unique_nested_grid
+FAILED external/neurips/tests/test_property_relation_experiments.py::test_relation_cell_dry_run_emits_only_unique_commands
+FAILED external/neurips/tests/test_property_relation_experiments.py::test_relation_full_dry_run_emits_sixty_unique_models
+FAILED external/neurips/tests/test_property_relation_experiments.py::test_relation_summary_accepts_completed_or_unstarted_matrix
+FAILED external/neurips/tests/test_property_relation_experiments.py::test_relation_runner_rejects_unknown_cell
+FAILED external/neurips/tests/test_property_relation_experiments.py::test_relation_outputs_are_isolated_from_previous_runs
+FAILED external/neurips/tests/test_property_replicates.py::test_frozen_replicate_design_is_balanced_and_changes_membership
+FAILED external/neurips/tests/test_property_replicates.py::test_combined_status_has_thirty_unique_runs
+FAILED external/neurips/tests/test_property_report.py::test_task_status_separates_seen_and_two_unseen_groups
+FAILED external/neurips/tests/test_property_subset_replicates.py::test_fixed_seed_subset_replicates_are_balanced_and_disjoint
+FAILED external/neurips/tests/test_property_task_geometry_cka.py::test_task_label_permutation_test_is_deterministic_and_complete
+FAILED external/neurips/tests/test_property_task_geometry_experiments.py::test_geometry_config_freezes_balanced_two_layer_design
+FAILED external/neurips/tests/test_property_task_geometry_experiments.py::test_geometry_matrix_contains_only_unique_task_seed_designs
+FAILED external/neurips/tests/test_property_task_geometry_experiments.py::test_every_bundle_cell_has_exact_preregistered_relation_count
+FAILED external/neurips/tests/test_property_task_geometry_experiments.py::test_each_condition_and_anchor_use_every_task_once_across_splits
+FAILED external/neurips/tests/test_property_task_geometry_experiments.py::test_preregistered_relations_hold_exhaustively_through_six
+FAILED external/neurips/tests/test_property_task_geometry_experiments.py::test_dry_run_partitions_all_models_without_overlap
+FAILED external/neurips/tests/test_property_task_geometry_experiments.py::test_geometry_summary_accepts_completed_partial_or_unstarted_runs
+FAILED external/neurips/tests/test_property_task_geometry_experiments.py::test_geometry_outputs_are_separate_from_superseded_matrix
+FAILED external/neurips/tests/test_scaling_k16.py::test_k16_scaling_plan_is_frozen_and_balanced
+FAILED external/neurips/tests/test_scaling_k16.py::test_v3_manifest_recovers_original_vocab_after_property_extension
+31 failed, 345 passed, 25 warnings, 2741 subtests passed in 15.79s

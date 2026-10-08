@@ -1,0 +1,479 @@
+{
+  "status": "complete",
+  "group": "P",
+  "world_seed": 314,
+  "seed": 17,
+  "model_status": "trained",
+  "results": {
+    "hidden_dihedral": {
+      "status": "complete",
+      "probe_dimension": 32,
+      "orbit_sensitive_energy_fraction": 0.7284089497854089,
+      "generators": [
+        {
+          "generator": "a",
+          "action": 1,
+          "alpha": 1.0,
+          "validation_nmse": 0.8580412063341614,
+          "test_nmse": 0.8781058294498664,
+          "identity_nmse": 2.574736559691073,
+          "shuffled_fit_nmse": 1.010912552965025,
+          "full_space_nmse": 0.9060718138248947,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "s",
+          "action": 4,
+          "alpha": 1.0,
+          "validation_nmse": 0.8586808613250151,
+          "test_nmse": 0.8729380122290276,
+          "identity_nmse": 2.524628960980426,
+          "shuffled_fit_nmse": 1.0149982469622578,
+          "full_space_nmse": 0.9020896406344365,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "aa",
+          "action": 2,
+          "test_nmse": 0.9676577928972713,
+          "identity_nmse": 2.472510102482247,
+          "shuffled_fit_nmse": 1.000547921078538,
+          "full_space_nmse": 0.9750780136872131
+        },
+        {
+          "word": "aaa",
+          "action": 3,
+          "test_nmse": 0.9824559759451575,
+          "identity_nmse": 2.574736559691073,
+          "shuffled_fit_nmse": 0.9998890734659086,
+          "full_space_nmse": 0.9864810732929513
+        },
+        {
+          "word": "as",
+          "action": 5,
+          "test_nmse": 0.943584416962709,
+          "identity_nmse": 1.5723358454116136,
+          "shuffled_fit_nmse": 0.9989777475007416,
+          "full_space_nmse": 0.9565277538475528
+        },
+        {
+          "word": "aas",
+          "action": 6,
+          "test_nmse": 0.981039909982096,
+          "identity_nmse": 2.4560853399443268,
+          "shuffled_fit_nmse": 1.0000456775652427,
+          "full_space_nmse": 0.9853898930764209
+        },
+        {
+          "word": "aaas",
+          "action": 7,
+          "test_nmse": 0.9900549603182311,
+          "identity_nmse": 1.8249666317992397,
+          "shuffled_fit_nmse": 1.0000030552162211,
+          "full_space_nmse": 0.9923366348486388
+        }
+      ],
+      "laws": [
+        {
+          "name": "rotation order four",
+          "left": "aaaa",
+          "right": "",
+          "consistency_nmse": 0.984834283397022,
+          "left_prediction_nmse": 0.984834283397022,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "reflection involution",
+          "left": "ss",
+          "right": "",
+          "consistency_nmse": 0.838803380299907,
+          "left_prediction_nmse": 0.838803380299907,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "reflection conjugates rotation to inverse",
+          "left": "sas",
+          "right": "aaa",
+          "consistency_nmse": 0.0018205459234280832,
+          "left_prediction_nmse": 0.9686783074051294,
+          "right_prediction_nmse": 0.9824559759451575
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "as",
+          "wrong_word": "sa",
+          "correct_nmse": 0.943584416962709,
+          "wrong_nmse": 1.002913128133445,
+          "gap_wrong_minus_correct": 0.059328711170735904,
+          "target_separation_nmse": 2.472510102482247
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 0.32017900938389254
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 0.3849558577811857
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 0.32017900938389254
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 0.34876553671486993
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 0.4798735445562338
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 0.2921022190711727
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 0.5111158916999683
+        }
+      ],
+      "test_pca_energy_fraction": 0.7705716011782014
+    },
+    "hidden_projection": {
+      "status": "complete",
+      "probe_dimension": 32,
+      "alpha": 0.01,
+      "test_nmse": 0.8081326510696735,
+      "identity_nmse": 1.615390827760967,
+      "shuffled_fit_nmse": 1.0152416370224095,
+      "double_prediction_nmse": 0.8017236736545832,
+      "idempotence_consistency_nmse": 0.04362229723435053,
+      "correct_versus_identity_gap": 0.15325156290087116,
+      "full_space_nmse": 0.8615027107028381,
+      "test_target_pca_energy_fraction": 0.7407624165266523,
+      "fit_rows": 375,
+      "validation_rows": 125,
+      "test_rows": 125
+    },
+    "exact_numeric_dihedral": {
+      "status": "complete",
+      "probe_dimension": 3,
+      "orbit_sensitive_energy_fraction": 0.6901041666666666,
+      "generators": [
+        {
+          "generator": "a",
+          "action": 1,
+          "alpha": 1e-06,
+          "validation_nmse": 9.905132091120466e-13,
+          "test_nmse": 1.0279493993742622e-12,
+          "identity_nmse": 2.723076923076923,
+          "shuffled_fit_nmse": 1.0238160234842069,
+          "full_space_nmse": 1.0279493993312983e-12,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "s",
+          "action": 4,
+          "alpha": 1e-06,
+          "validation_nmse": 9.905132091238407e-13,
+          "test_nmse": 1.0279493993945926e-12,
+          "identity_nmse": 2.723076923076923,
+          "shuffled_fit_nmse": 0.9896823053967523,
+          "full_space_nmse": 1.027949399366752e-12,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "aa",
+          "action": 2,
+          "test_nmse": 4.1117933504903724e-12,
+          "identity_nmse": 2.5538461538461537,
+          "shuffled_fit_nmse": 1.0003172593835878,
+          "full_space_nmse": 4.111793350455849e-12
+        },
+        {
+          "word": "aaa",
+          "action": 3,
+          "test_nmse": 9.251525482952663e-12,
+          "identity_nmse": 2.723076923076923,
+          "shuffled_fit_nmse": 0.9999929221073461,
+          "full_space_nmse": 9.251525482886642e-12
+        },
+        {
+          "word": "as",
+          "action": 5,
+          "test_nmse": 4.111793350479133e-12,
+          "identity_nmse": 1.2769230769230764,
+          "shuffled_fit_nmse": 1.0005204205919571,
+          "full_space_nmse": 4.111793350401981e-12
+        },
+        {
+          "word": "aas",
+          "action": 6,
+          "test_nmse": 9.251525482943737e-12,
+          "identity_nmse": 2.723076923076923,
+          "shuffled_fit_nmse": 0.9999638750290584,
+          "full_space_nmse": 9.251525482877737e-12
+        },
+        {
+          "word": "aaas",
+          "action": 7,
+          "test_nmse": 1.644713942640741e-11,
+          "identity_nmse": 1.2769230769230773,
+          "shuffled_fit_nmse": 0.9999991769944546,
+          "full_space_nmse": 1.644713942629743e-11
+        }
+      ],
+      "laws": [
+        {
+          "name": "rotation order four",
+          "left": "aaaa",
+          "right": "",
+          "consistency_nmse": 1.6447139426413362e-11,
+          "left_prediction_nmse": 1.6447139426413362e-11,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "reflection involution",
+          "left": "ss",
+          "right": "",
+          "consistency_nmse": 4.111793350519793e-12,
+          "left_prediction_nmse": 4.111793350519793e-12,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "reflection conjugates rotation to inverse",
+          "left": "sas",
+          "right": "aaa",
+          "consistency_nmse": 6.1008417099240305e-33,
+          "left_prediction_nmse": 9.251525483004728e-12,
+          "right_prediction_nmse": 9.251525482952663e-12
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "as",
+          "wrong_word": "sa",
+          "correct_nmse": 4.111793350479133e-12,
+          "wrong_nmse": 2.5538405617858473,
+          "gap_wrong_minus_correct": 2.5538405617817355,
+          "target_separation_nmse": 2.5538461538461537
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 1.0
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 1.0
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 1.0
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 1.0
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 1.0
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 1.0
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 1.0
+        }
+      ],
+      "test_pca_energy_fraction": 1.0
+    },
+    "exact_numeric_projection": {
+      "status": "complete",
+      "probe_dimension": 4,
+      "alpha": 1e-06,
+      "test_nmse": 1.1504739555872459e-12,
+      "identity_nmse": 0.8944662355560261,
+      "shuffled_fit_nmse": 1.0333319608695546,
+      "double_prediction_nmse": 4.601890739449503e-12,
+      "idempotence_consistency_nmse": 1.1504714141382195e-12,
+      "correct_versus_identity_gap": 0.8944662355560259,
+      "full_space_nmse": 1.1504739539054762e-12,
+      "test_target_pca_energy_fraction": 1.0000000000000004,
+      "fit_rows": 375,
+      "validation_rows": 125,
+      "test_rows": 125
+    },
+    "exact_onehot_dihedral": {
+      "status": "complete",
+      "probe_dimension": 12,
+      "orbit_sensitive_energy_fraction": 0.6901041666666664,
+      "generators": [
+        {
+          "generator": "a",
+          "action": 1,
+          "alpha": 1e-06,
+          "validation_nmse": 1.0703525027423925e-12,
+          "test_nmse": 1.1144635471495644e-12,
+          "identity_nmse": 2.6902654867256635,
+          "shuffled_fit_nmse": 1.0253697721331405,
+          "full_space_nmse": 1.1144635481329287e-12,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "s",
+          "action": 4,
+          "alpha": 1e-06,
+          "validation_nmse": 1.070352502325876e-12,
+          "test_nmse": 1.1144635467412052e-12,
+          "identity_nmse": 2.690265486725663,
+          "shuffled_fit_nmse": 0.998366818410622,
+          "full_space_nmse": 1.1144635477219215e-12,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "aa",
+          "action": 2,
+          "test_nmse": 4.457849332133999e-12,
+          "identity_nmse": 2.619469026548673,
+          "shuffled_fit_nmse": 1.0007674411025391,
+          "full_space_nmse": 4.457849334117285e-12
+        },
+        {
+          "word": "aaa",
+          "action": 3,
+          "test_nmse": 1.0030150070192323e-11,
+          "identity_nmse": 2.6902654867256635,
+          "shuffled_fit_nmse": 0.9999518450899633,
+          "full_space_nmse": 1.003015007315959e-11
+        },
+        {
+          "word": "as",
+          "action": 5,
+          "test_nmse": 4.457849331309125e-12,
+          "identity_nmse": 1.309734513274336,
+          "shuffled_fit_nmse": 1.0001587053155667,
+          "full_space_nmse": 4.457849333305413e-12
+        },
+        {
+          "word": "aas",
+          "action": 6,
+          "test_nmse": 1.0030150068988386e-11,
+          "identity_nmse": 2.6902654867256635,
+          "shuffled_fit_nmse": 1.000019481417468,
+          "full_space_nmse": 1.0030150071982688e-11
+        },
+        {
+          "word": "aaas",
+          "action": 7,
+          "test_nmse": 1.7831358475031234e-11,
+          "identity_nmse": 1.3097345132743365,
+          "shuffled_fit_nmse": 1.0000007178755848,
+          "full_space_nmse": 1.7831358479047554e-11
+        }
+      ],
+      "laws": [
+        {
+          "name": "rotation order four",
+          "left": "aaaa",
+          "right": "",
+          "consistency_nmse": 1.7831358476671126e-11,
+          "left_prediction_nmse": 1.7831358476671126e-11,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "reflection involution",
+          "left": "ss",
+          "right": "",
+          "consistency_nmse": 4.457849330491204e-12,
+          "left_prediction_nmse": 4.457849330491204e-12,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "reflection conjugates rotation to inverse",
+          "left": "sas",
+          "right": "aaa",
+          "consistency_nmse": 7.950082241540949e-31,
+          "left_prediction_nmse": 1.0030150067771223e-11,
+          "right_prediction_nmse": 1.0030150070192323e-11
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "as",
+          "wrong_word": "sa",
+          "correct_nmse": 4.457849331309125e-12,
+          "wrong_nmse": 2.619463024745369,
+          "gap_wrong_minus_correct": 2.619463024740911,
+          "target_separation_nmse": 2.619469026548673
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 1.0
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 1.0
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 1.0
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 1.0
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 1.0
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 1.0
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 1.0
+        }
+      ],
+      "test_pca_energy_fraction": 0.9999999999999994
+    },
+    "exact_onehot_projection": {
+      "status": "complete",
+      "probe_dimension": 16,
+      "alpha": 1e-06,
+      "test_nmse": 1.4041002049512151e-12,
+      "identity_nmse": 0.6508533410471504,
+      "shuffled_fit_nmse": 1.0195114680766155,
+      "double_prediction_nmse": 5.616393594606494e-12,
+      "idempotence_consistency_nmse": 1.4040965923532459e-12,
+      "correct_versus_identity_gap": 0.6508533410471504,
+      "full_space_nmse": 1.4041002051840905e-12,
+      "test_target_pca_energy_fraction": 0.9999999999999997,
+      "fit_rows": 375,
+      "validation_rows": 125,
+      "test_rows": 125
+    }
+  },
+  "array_sha256": {
+    "P_w314_s17_trained_hidden_dihedral.npz": "39348d6775ad7cc210f1bd4b67674ca60b63151625e58be6d89fe1efbb62a969",
+    "P_w314_s17_trained_hidden_projection.npz": "91f6ca0dcc3ec0ac7f369794d5e8607667947dfb00a03e7e3e77160467871487",
+    "P_w314_s17_trained_exact_numeric_dihedral.npz": "1c2cfe53f86b137869d24041c379ce88e5597ad9e0eea31374fbe3496167cf5e",
+    "P_w314_s17_trained_exact_numeric_projection.npz": "330614190f04bfafa9a670ca82aba8c6ba32453c4756cce2e0e103bd11d5528b",
+    "P_w314_s17_trained_exact_onehot_dihedral.npz": "438ddf1800c7a586afe71ae33b22afe841cd02ae24cf035d8b899f1a7c8bc79e",
+    "P_w314_s17_trained_exact_onehot_projection.npz": "8a73755d02062db6ec6dec285829c932c79584a18a308b94926544717c46b40c"
+  }
+}

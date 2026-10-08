@@ -1,0 +1,40 @@
+{
+  "registered_utc": "2026-10-05T14:16:44.146589+00:00",
+  "code_sha256": "9bce2f322e683e60924f2da9900afb055df8c08edc8c1cd3bc7dcf459b7efeb7",
+  "status": "registered before either field cohort is trained and before all behavior endpoints",
+  "fit_cohort": "all five original groups, three original input bases, three initialization seeds",
+  "forecast_cohort": "P, M1, M2 on three independently selected all-source-support-four bases, all three initialization seeds",
+  "forecast_timing": "save forecasts after new source features exist but before new target-readout process starts",
+  "ridge_alpha": 1.0,
+  "variants": [
+    "baseline",
+    "plus_composition",
+    "plus_oracle_occupancy",
+    "plus_target_spectrum",
+    "plus_both"
+  ],
+  "baseline": [
+    "source final accuracy",
+    "source learning AUC",
+    "physical source support count",
+    "physical target support count",
+    "target, initialization and original input-basis fixed effects"
+  ],
+  "unseen_world_policy": "average training-world fixed effect; each non-reference world dummy gets 1/3",
+  "outcomes": [
+    "linear gain over paired random encoder",
+    "MLP gain over paired random encoder",
+    "categorical subset accuracy"
+  ],
+  "structural_features": [
+    "target minimum source composition",
+    "analytical oracle-subset key occupancy"
+  ],
+  "learned_feature_diagnostic": "target-character energy in frozen source features; privileged analytical task-definition diagnostic",
+  "limitations": [
+    "The three forecast source-group formulas also occur in the fitting cohort; only the input bases and model runs are unseen.",
+    "Generic categorical dependency order is not specific evidence of finite-field algebra learning.",
+    "Oracle lookup occupancy assumes the correct source subset; generic subset discovery need not achieve it.",
+    "The full source grid is exposed; no new-input source generalization."
+  ]
+}

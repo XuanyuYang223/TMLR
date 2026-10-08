@@ -1,0 +1,965 @@
+{
+  "source": "novel_records_s19213_random",
+  "group": "novel_records",
+  "seed": 19213,
+  "status": "random",
+  "parent_path": "results/confidence_residual_geometry/evaluations/novel_records_s19213_random.json",
+  "parent_sha256": "fb29d23a7691a20437ca79324f757ac6307f3da7db9a605af4d01156553540f8",
+  "map_path": "results/budget_matched_geometry/maps/novel_records_s19213_random.npz",
+  "map_sha256": "501f0058427dad236592ab42e8f3a4f8e557135d848e5e1d3623013cf9f8d4ca",
+  "calibration_target_dim": 1024,
+  "shared_pca64_pair_energy_fraction": 0.9769187480980214,
+  "fits": [
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "input_dimension": 1024,
+      "reconstruction_input_dimension": 277,
+      "latent_dimension": 64,
+      "decoder_parameters": 284672,
+      "generator_parameters_per_pairing": 12288,
+      "input_center_statistics": 277,
+      "input_scale_statistics": 277,
+      "fitted_input_encoder_loadings": 0,
+      "fitted_probe_loadings": 65536,
+      "probe_center_statistics": 21504,
+      "input_fit_rank": 277,
+      "decoder_fit_rows": 2688,
+      "decoder_validation_rows": 672,
+      "generator_fit_rows_each": 2688,
+      "generator_validation_rows_each": 672,
+      "ridge_candidates_per_fit": 4,
+      "decoder": {
+        "alpha": 1e-06,
+        "validation_losses": [
+          0.3437856991690207,
+          4.847436014627288,
+          96.66843456795297,
+          1812.4536880935934
+        ],
+        "effective_ridge_df": 252.68343394487096,
+        "validation_target_nmse": 5.423433716278533e-07
+      },
+      "generators": [
+        {
+          "generator": "c",
+          "pairing": "correct",
+          "alpha": 0.01,
+          "validation_losses": [
+            3704.3303393731494,
+            3704.16862151444,
+            3698.621894024277,
+            4361.315508843915
+          ]
+        },
+        {
+          "generator": "c",
+          "pairing": "shuffled",
+          "alpha": 0.01,
+          "validation_losses": [
+            4159.563362584874,
+            4159.325555046731,
+            4143.67907992996,
+            4503.265805298399
+          ]
+        },
+        {
+          "generator": "r",
+          "pairing": "correct",
+          "alpha": 0.0001,
+          "validation_losses": [
+            1105.6388633866877,
+            1105.6025108291828,
+            1116.2341874222843,
+            2745.019011874858
+          ]
+        },
+        {
+          "generator": "r",
+          "pairing": "shuffled",
+          "alpha": 0.01,
+          "validation_losses": [
+            4135.955793973584,
+            4135.760098382787,
+            4123.9342191530395,
+            4527.174377453448
+          ]
+        },
+        {
+          "generator": "i",
+          "pairing": "correct",
+          "alpha": 0.01,
+          "validation_losses": [
+            3541.5654857759014,
+            3541.3002504529877,
+            3529.203511773346,
+            4091.1295608532887
+          ]
+        },
+        {
+          "generator": "i",
+          "pairing": "shuffled",
+          "alpha": 0.01,
+          "validation_losses": [
+            4165.6537677585175,
+            4165.414011571449,
+            4149.939925788136,
+            4539.743961648867
+          ]
+        }
+      ]
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "input_dimension": 1024,
+      "reconstruction_input_dimension": 277,
+      "latent_dimension": 64,
+      "decoder_parameters": 284672,
+      "generator_parameters_per_pairing": 12288,
+      "input_center_statistics": 277,
+      "input_scale_statistics": 277,
+      "fitted_input_encoder_loadings": 283648,
+      "fitted_probe_loadings": 65536,
+      "probe_center_statistics": 21504,
+      "input_fit_rank": 277,
+      "decoder_fit_rows": 2688,
+      "decoder_validation_rows": 672,
+      "generator_fit_rows_each": 2688,
+      "generator_validation_rows_each": 672,
+      "ridge_candidates_per_fit": 4,
+      "decoder": {
+        "alpha": 1e-06,
+        "validation_losses": [
+          0.04178393110236378,
+          0.16800558435223623,
+          112.64455619291155,
+          2943.512366553995
+        ],
+        "effective_ridge_df": 277.92436012472933,
+        "validation_target_nmse": 6.591675607419785e-08
+      },
+      "generators": [
+        {
+          "generator": "c",
+          "pairing": "correct",
+          "alpha": 0.01,
+          "validation_losses": [
+            3704.2556435668034,
+            3704.0946952073905,
+            3698.6006199085923,
+            4361.481861406102
+          ]
+        },
+        {
+          "generator": "c",
+          "pairing": "shuffled",
+          "alpha": 0.01,
+          "validation_losses": [
+            4160.139074859539,
+            4159.900267397209,
+            4144.163702600234,
+            4503.256314617358
+          ]
+        },
+        {
+          "generator": "r",
+          "pairing": "correct",
+          "alpha": 0.0001,
+          "validation_losses": [
+            1105.3735977423064,
+            1105.3380174728732,
+            1116.0152444980577,
+            2745.150567278123
+          ]
+        },
+        {
+          "generator": "r",
+          "pairing": "shuffled",
+          "alpha": 0.01,
+          "validation_losses": [
+            4136.39696953867,
+            4136.201028457435,
+            4124.3473999555135,
+            4527.4373386913885
+          ]
+        },
+        {
+          "generator": "i",
+          "pairing": "correct",
+          "alpha": 0.01,
+          "validation_losses": [
+            3542.0038038999937,
+            3541.739323533002,
+            3529.6656512116124,
+            4091.129334670831
+          ]
+        },
+        {
+          "generator": "i",
+          "pairing": "shuffled",
+          "alpha": 0.01,
+          "validation_losses": [
+            4165.813955081649,
+            4165.573635424633,
+            4150.052670709079,
+            4539.712720179206
+          ]
+        }
+      ]
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "input_dimension": 277,
+      "reconstruction_input_dimension": 277,
+      "latent_dimension": 64,
+      "decoder_parameters": 284672,
+      "generator_parameters_per_pairing": 12288,
+      "input_center_statistics": 277,
+      "input_scale_statistics": 277,
+      "fitted_input_encoder_loadings": 0,
+      "fitted_probe_loadings": 65536,
+      "probe_center_statistics": 21504,
+      "input_fit_rank": 268,
+      "decoder_fit_rows": 2688,
+      "decoder_validation_rows": 672,
+      "generator_fit_rows_each": 2688,
+      "generator_validation_rows_each": 672,
+      "ridge_candidates_per_fit": 4,
+      "decoder": {
+        "alpha": 1e-06,
+        "validation_losses": [
+          366.0171542032855,
+          613.0081215820645,
+          899.669385537097,
+          5229.3845161375075
+        ],
+        "effective_ridge_df": 164.1636098735801,
+        "validation_target_nmse": 0.0005774148778266856
+      },
+      "generators": [
+        {
+          "generator": "c",
+          "pairing": "correct",
+          "alpha": 0.0001,
+          "validation_losses": [
+            3357.07992681217,
+            3356.612439672689,
+            3366.4076567849315,
+            3962.7237343606685
+          ]
+        },
+        {
+          "generator": "c",
+          "pairing": "shuffled",
+          "alpha": 0.01,
+          "validation_losses": [
+            3867.0331971311793,
+            3866.4372006106532,
+            3839.2433630070964,
+            4100.986461544479
+          ]
+        },
+        {
+          "generator": "r",
+          "pairing": "correct",
+          "alpha": 0.0001,
+          "validation_losses": [
+            1317.7310332399272,
+            1317.607030958911,
+            1332.9320058565054,
+            2462.213431932706
+          ]
+        },
+        {
+          "generator": "r",
+          "pairing": "shuffled",
+          "alpha": 0.01,
+          "validation_losses": [
+            3833.921576475106,
+            3833.4371995491592,
+            3812.6630500215083,
+            4109.679475659805
+          ]
+        },
+        {
+          "generator": "i",
+          "pairing": "correct",
+          "alpha": 0.0001,
+          "validation_losses": [
+            3249.9006140927804,
+            3249.4836277552754,
+            3253.4476129262885,
+            3737.687129161087
+          ]
+        },
+        {
+          "generator": "i",
+          "pairing": "shuffled",
+          "alpha": 0.01,
+          "validation_losses": [
+            3850.70401294408,
+            3850.1745114360256,
+            3826.7568771759566,
+            4124.147651879672
+          ]
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "identity",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 8.773521401056463e-05,
+      "shared_pca64_pair_target_nmse": 2.05068161323082e-05,
+      "full_null_action_displacement_nmse": null
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "c",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0031353599146042,
+      "shared_pca64_pair_target_nmse": 0.9767640250691617,
+      "full_null_action_displacement_nmse": 0.4601107636854229
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "r",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.33651013506097827,
+      "shared_pca64_pair_target_nmse": 0.2855338272429428,
+      "full_null_action_displacement_nmse": 0.09755869473111031
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "i",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.9484981705191059,
+      "shared_pca64_pair_target_nmse": 0.9250369529765597,
+      "full_null_action_displacement_nmse": 0.4939452628827196
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "rc",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0092877286028221,
+      "shared_pca64_pair_target_nmse": 0.9879380632583711,
+      "full_null_action_displacement_nmse": 0.5517342331333562
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "ci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.9963183989812239,
+      "shared_pca64_pair_target_nmse": 0.9722931726597449,
+      "full_null_action_displacement_nmse": 0.4819490973801433
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "ri",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0076691634307227,
+      "shared_pca64_pair_target_nmse": 0.983916599110648,
+      "full_null_action_displacement_nmse": 0.4874398026472591
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "rci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0045607894250568,
+      "shared_pca64_pair_target_nmse": 0.982640311454528,
+      "full_null_action_displacement_nmse": 0.5191103454813619
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "ic_against_ci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0109242020360945,
+      "shared_pca64_pair_target_nmse": 0.9872437047263495,
+      "full_null_action_displacement_nmse": 0.4890143624660886
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "identity",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 8.773521401056463e-05,
+      "shared_pca64_pair_target_nmse": 2.05068161323082e-05,
+      "full_null_action_displacement_nmse": null
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "c",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0473688168340356,
+      "shared_pca64_pair_target_nmse": 1.0220424798215062,
+      "full_null_action_displacement_nmse": 0.48039944102342286
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "r",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.05835140281413,
+      "shared_pca64_pair_target_nmse": 1.0244289217994185,
+      "full_null_action_displacement_nmse": 0.3068299307142001
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "i",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0476574775262744,
+      "shared_pca64_pair_target_nmse": 1.0265375705076638,
+      "full_null_action_displacement_nmse": 0.5455840234932099
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "rc",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.021436649784449,
+      "shared_pca64_pair_target_nmse": 1.0003740315854652,
+      "full_null_action_displacement_nmse": 0.5583755263162442
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "ci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0244583115937025,
+      "shared_pca64_pair_target_nmse": 1.0010976097074327,
+      "full_null_action_displacement_nmse": 0.49556121725849533
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "ri",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0243117606665229,
+      "shared_pca64_pair_target_nmse": 1.0009509827796879,
+      "full_null_action_displacement_nmse": 0.49549032617874944
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "rci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0214681250935522,
+      "shared_pca64_pair_target_nmse": 0.9999470803116886,
+      "full_null_action_displacement_nmse": 0.527847271063601
+    },
+    {
+      "pipeline": "hidden_fixed_random",
+      "encoder": "fixed_random",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "ic_against_ci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.024464010315994,
+      "shared_pca64_pair_target_nmse": 1.0011033246529208,
+      "full_null_action_displacement_nmse": 0.4955639739014194
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "identity",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0704805515122243e-05,
+      "shared_pca64_pair_target_nmse": 1.1489707626547167e-09,
+      "full_null_action_displacement_nmse": null
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "c",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.003280038234649,
+      "shared_pca64_pair_target_nmse": 0.9767750570911021,
+      "full_null_action_displacement_nmse": 0.4601771236752952
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "r",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.33662767898227075,
+      "shared_pca64_pair_target_nmse": 0.28546914039561344,
+      "full_null_action_displacement_nmse": 0.09759277225312252
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "i",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.948745556794724,
+      "shared_pca64_pair_target_nmse": 0.9251752875679532,
+      "full_null_action_displacement_nmse": 0.49407409315645323
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "rc",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.009392941860974,
+      "shared_pca64_pair_target_nmse": 0.987918926337757,
+      "full_null_action_displacement_nmse": 0.5517917487006784
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "ci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.9964496901696593,
+      "shared_pca64_pair_target_nmse": 0.9722932501094308,
+      "full_null_action_displacement_nmse": 0.4820126068664934
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "ri",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0077954435877214,
+      "shared_pca64_pair_target_nmse": 0.9839070493808426,
+      "full_null_action_displacement_nmse": 0.48750088814738113
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "rci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0046471729019393,
+      "shared_pca64_pair_target_nmse": 0.9826097800772302,
+      "full_null_action_displacement_nmse": 0.519154984448959
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "correct",
+      "word": "ic_against_ci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0110780280007918,
+      "shared_pca64_pair_target_nmse": 0.9872672057401934,
+      "full_null_action_displacement_nmse": 0.4890887726997202
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "identity",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0704805515122243e-05,
+      "shared_pca64_pair_target_nmse": 1.1489707626547167e-09,
+      "full_null_action_displacement_nmse": null
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "c",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0473794717811817,
+      "shared_pca64_pair_target_nmse": 1.021916412669234,
+      "full_null_action_displacement_nmse": 0.4804043281563706
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "r",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.058392453529824,
+      "shared_pca64_pair_target_nmse": 1.0242867742952706,
+      "full_null_action_displacement_nmse": 0.306841831854236
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "i",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.04765968333515,
+      "shared_pca64_pair_target_nmse": 1.0264264356618509,
+      "full_null_action_displacement_nmse": 0.5455851722026949
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "rc",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0215995142364236,
+      "shared_pca64_pair_target_nmse": 1.0004139010056239,
+      "full_null_action_displacement_nmse": 0.5584645573140146
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "ci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0245837983710648,
+      "shared_pca64_pair_target_nmse": 1.001092074700825,
+      "full_null_action_displacement_nmse": 0.4956219189770873
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "ri",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.024455228285764,
+      "shared_pca64_pair_target_nmse": 1.0009604528312486,
+      "full_null_action_displacement_nmse": 0.49555972576995166
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "rci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0215807968280122,
+      "shared_pca64_pair_target_nmse": 0.9999434880162311,
+      "full_null_action_displacement_nmse": 0.5279054945813982
+    },
+    {
+      "pipeline": "hidden_fit_pca",
+      "encoder": "fit_pca",
+      "branch": "hidden",
+      "pairing": "shuffled",
+      "word": "ic_against_ci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.024597988861414,
+      "shared_pca64_pair_target_nmse": 1.0011065994167385,
+      "full_null_action_displacement_nmse": 0.4956287833429588
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "correct",
+      "word": "identity",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.09504662872058009,
+      "shared_pca64_pair_target_nmse": 0.0790813880936784,
+      "full_null_action_displacement_nmse": null
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "correct",
+      "word": "c",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.9704291674766858,
+      "shared_pca64_pair_target_nmse": 0.9665046876324976,
+      "full_null_action_displacement_nmse": 0.44510932740753706
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "correct",
+      "word": "r",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.4075410403828712,
+      "shared_pca64_pair_target_nmse": 0.3885581918984269,
+      "full_null_action_displacement_nmse": 0.11815148432871705
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "correct",
+      "word": "i",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.9344215426667551,
+      "shared_pca64_pair_target_nmse": 0.9304223901706477,
+      "full_null_action_displacement_nmse": 0.48661463868001165
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "correct",
+      "word": "rc",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.9777138848843006,
+      "shared_pca64_pair_target_nmse": 0.9748402104363219,
+      "full_null_action_displacement_nmse": 0.5344741694692251
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "correct",
+      "word": "ci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.9709230666272025,
+      "shared_pca64_pair_target_nmse": 0.9673509901608335,
+      "full_null_action_displacement_nmse": 0.4696646133053691
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "correct",
+      "word": "ri",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.9879195750319242,
+      "shared_pca64_pair_target_nmse": 0.9847834394263528,
+      "full_null_action_displacement_nmse": 0.47788633428597704
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "correct",
+      "word": "rci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.9868801485100999,
+      "shared_pca64_pair_target_nmse": 0.9839882717592381,
+      "full_null_action_displacement_nmse": 0.509973811674435
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "correct",
+      "word": "ic_against_ci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.9940073740773292,
+      "shared_pca64_pair_target_nmse": 0.9909521966291622,
+      "full_null_action_displacement_nmse": 0.48083118530746255
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "shuffled",
+      "word": "identity",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 0.09504662872058009,
+      "shared_pca64_pair_target_nmse": 0.0790813880936784,
+      "full_null_action_displacement_nmse": null
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "shuffled",
+      "word": "c",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0206918251470558,
+      "shared_pca64_pair_target_nmse": 1.0174619998165038,
+      "full_null_action_displacement_nmse": 0.4681634342905221
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "shuffled",
+      "word": "r",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0231466996967542,
+      "shared_pca64_pair_target_nmse": 1.0176506057898698,
+      "full_null_action_displacement_nmse": 0.29662362627732164
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "shuffled",
+      "word": "i",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0242619600266156,
+      "shared_pca64_pair_target_nmse": 1.0220132919210447,
+      "full_null_action_displacement_nmse": 0.5334004416995607
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "shuffled",
+      "word": "rc",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0035867494674264,
+      "shared_pca64_pair_target_nmse": 1.0012524028173786,
+      "full_null_action_displacement_nmse": 0.5486177528054609
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "shuffled",
+      "word": "ci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0047017502310585,
+      "shared_pca64_pair_target_nmse": 1.0018597028562999,
+      "full_null_action_displacement_nmse": 0.48600437586542455
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "shuffled",
+      "word": "ri",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.004596755196334,
+      "shared_pca64_pair_target_nmse": 1.0017716293948595,
+      "full_null_action_displacement_nmse": 0.4859535866174627
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "shuffled",
+      "word": "rci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0031285762305582,
+      "shared_pca64_pair_target_nmse": 1.0006131803856062,
+      "full_null_action_displacement_nmse": 0.5183702442410729
+    },
+    {
+      "pipeline": "output_identity",
+      "encoder": "identity",
+      "branch": "output",
+      "pairing": "shuffled",
+      "word": "ic_against_ci",
+      "pairs": 1344,
+      "starts_per_pair": 8,
+      "full_null_pair_target_nmse": 1.0051095165092951,
+      "shared_pca64_pair_target_nmse": 1.0022777555513949,
+      "full_null_action_displacement_nmse": 0.48620162464647604
+    }
+  ],
+  "completed_utc": "2026-10-06T22:49:19.578918+00:00"
+}

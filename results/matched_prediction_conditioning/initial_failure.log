@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/yangx/ICML/experiments/matched_prediction_conditioning.py", line 129, in <module>
+    evaluate(path, rp)
+    ~~~~~~~~^^^^^^^^^^
+  File "/home/yangx/ICML/experiments/matched_prediction_conditioning.py", line 77, in evaluate
+    weight = heads(rec, root)
+  File "/home/yangx/ICML/experiments/matched_prediction_conditioning.py", line 53, in heads
+    state = torch.load(cp, map_location='cpu', weights_only=True)['model']
+            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yangx/miniforge3/lib/python3.13/site-packages/torch/serialization.py", line 1530, in load
+    with _open_file_like(f, "rb") as opened_file:
+         ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/yangx/miniforge3/lib/python3.13/site-packages/torch/serialization.py", line 795, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/yangx/miniforge3/lib/python3.13/site-packages/torch/serialization.py", line 776, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+                     ~~~~^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'results/algebra_structure_replication/source/checkpoints/novel_minima_pair_s2027_trained.pt'

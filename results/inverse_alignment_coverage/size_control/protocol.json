@@ -1,0 +1,9 @@
+{
+  "registered_utc": "2026-10-07T05:21:15.940764+00:00",
+  "code_sha256": "f701cb7c5c5571a101148f7677ca7a274fe24ac90a18b2ab54d5c7d63ff8cad3",
+  "base_test_computation_started": true,
+  "base_numerical_test_outcomes_inspected_by_agent": false,
+  "reason": "Base coverage uses up to64 geometry rows versus up to32 for support alignment. This control was chosen from code inspection before reading base-test results.",
+  "rule": "Same initialized target, stored labeled/unlabeled schedules,64 forward rows,CE on32 labeled rows,optimizer and1200 updates. Each step align the first m unlabeled rows, m=number of eligible labeled rows used by support_alignment. Thus same actual geometry sample count every step, but relations cover4096 rather than192 available inputs. Correct inverse teacher only; no new oracle labels.",
+  "primary": "Fixed1200 geometry and accuracy; validation-selected sensitivity; compare with the existing support_alignment, all six repeats. Supplemental, not part of the original six-condition registration."
+}

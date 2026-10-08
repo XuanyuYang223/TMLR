@@ -1,0 +1,64 @@
+\section{Controlled correspondence and the final confirmation}
+\subsection{Prediction problem}
+Let $h(x)\in\mathbb{R}^{d}$ be a row-vector representation and let the task logits be
+$z(h)=hW^\top+b_W$. Two specified input operations are $T_A$ and $T_B$.
+The word $AB$ means \emph{first $A$, then $B$}. Prediction starts from $h(x)$ and produces
+\[
+ \widehat z_{AB}(x)=z\!\left(R_B(R_A(h(x)))\right).
+\]
+The program supplies the operation order. It does not compute the mathematical endpoint for the predictor, and the predictor does not forward $T_BT_Ax$ through the encoder. A separate endpoint forward is used only to construct evaluation truth and diagnostics.
+
+\subsection{Exact matrix world and held-out data}
+Inputs are the $26{,}208$ invertible $2\times2$ matrices over $\F_{13}$.
+The task is $\operatorname{tr}(X)\bmod13$, and left actions use
+\[
+A=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+B=\begin{pmatrix}0&-1\\1&-1\end{pmatrix}.
+\]
+They generate a six-element noncommutative group with $A^2=B^3=e$ and $ABA=B^2$.
+The action on invertible matrices is free, yielding $4{,}368$ complete orbits.
+Visible task labels are the traces of $X,AX,BX$; the missing endpoint is $BAX$.
+
+Within the final study, source/support, validation, and test complete orbits are disjoint. The shared test has 256 IID anchors and 128 collision pairs (256 anchors). Each pair agrees on all three visible gold answers and disagrees on the compound answer. These collision scores describe this selected conditional distribution; they are not IID population estimates. The test excludes all 2,688 previously examined matrix test orbits. Historical inputs may recur in the new training partitions under new initialized models. We claim new source initializations and newly held-out test orbits, not inputs never used anywhere in the project.
+
+\subsection{Source preparation and frozen intervention}
+Five previously unused source seeds were fixed before training:
+17291, 18401, 19507, 20611, and 21713.
+Each model receives 500 ordinary epochs and 900 correct, forward-only single-generator preparation epochs. Four scalar field coordinates enter a generic GELU MLP with hidden dimension 128; no group operation is implemented in the encoder. Each final first-operator support contains 1,024 anchors; the source corpus is shared and supports may overlap across sources.
+After preparation, the encoder, original first map, second affine map, and original readout are frozen.
+Thus the four arms share exactly the same starting representations and downstream computation within a source.
+
+The first operator is a fixed original affine skip plus a two-layer residual of width 256. The middle activation is either Identity or GELU. Both families have 65,920 trainable parameters, matching initial weights and zero final layers. Every arm receives 2,000 AdamW updates, batch size 128, learning rate $10^{-3}$, the same sample schedule, and the same correct teacher logits. All final arms use zero weight decay, declared in advance to match the unregularized empirical objective of the convergence diagnostic. Earlier confirmation arms used $10^{-4}$ decay and remain separately reported.
+
+\subsection{Correct versus answer-matched incorrect targets}
+For a training anchor $x_i$, write $h_{0i}=h(x_i)$ and $h_{Ai}=h(AX_i)$.
+Correct pairing uses $h_{Ai}$ as the state target. Incorrect pairing uses
+$h_{A\sigma(i)}$, where $\sigma$ is a complete derangement within strata having identical visible gold-answer triples. It preserves the target-state marginal and gold answers. Full teacher probability distributions need not agree within a gold-answer stratum; the \emph{correct} teacher logits for $i$ are nevertheless used unchanged in every arm. That possible conflict with a wrong state target is part of the correspondence intervention, rather than additional wrong-output supervision.
+
+With $s^2$ the fixed correct-target population variance averaged across hidden coordinates, the first-operator objective is
+\begin{equation}
+ L(R)=T^2\,\frac1N\sum_i
+ \operatorname{KL}\!\left(
+ \operatorname{softmax}(z_{Ai}/T)\,\Vert\,
+ \operatorname{softmax}(z(R(h_{0i}))/T)
+ \right)
+ +\lambda\frac{\sum_i\|R(h_{0i})-h_{A\sigma(i)}\|_2^2}{Nds^2},
+\label{eq:loss}
+\end{equation}
+where $T=2$, $\lambda=0.25$, and correct pairing sets $\sigma(i)=i$.
+Compound labels and compound target states never enter this objective.
+
+\subsection{Predeclared endpoints and uncertainty}
+The final protocol fixes GELU's correct-minus-incorrect collision accuracy,
+the activation-by-correctness interaction, correct predicted-null transfer,
+correct-versus-incorrect donor transfer, and the remaining interaction after affine convergence.
+For instance, the fixed-budget interaction is
+\[
+ (\Acc_{\mathrm{G,c}}-\Acc_{\mathrm{G,w}})
+ -(\Acc_{\mathrm{L,c}}-\Acc_{\mathrm{L,w}}).
+\]
+Secondary outcomes include IID accuracy, pairwise double correctness, first-state normalized error, first-step accuracy, and true-intermediate diagnostics.
+All five source preparations, twenty budget-controlled arms, and twenty converged affine fits finish before compound inference opens.
+Known-task gates are checked without replacing unsuccessful sources; all five final sources pass.
+
+Intervals use 10,000 paired crossed bootstrap draws of five independent source clusters and 128 shared collision pairs. Models, optimizer steps, and repeated endpoints do not increase the independent-source count. We report descriptive 95\% intervals for separately stated hypotheses without familywise adjustment. A zero-crossing interval does not demonstrate equivalence.

@@ -1,0 +1,353 @@
+{
+  "registered_utc": "2026-10-07T06:15:03.798955+00:00",
+  "main_test_opened": false,
+  "supplementary_test_results_observed": false,
+  "signature": {
+    "plan": {
+      "output": "results/overnight_inverse_residual_geometry",
+      "base_study": "results/overnight_inverse_functional",
+      "deadline_utc": "2026-10-07T17:00:00+00:00",
+      "training_stop_utc": "2026-10-07T16:50:00+00:00",
+      "test_seed": 261071003,
+      "test_per_length": 1024,
+      "conditions": [
+        "distillation",
+        "raw_correct",
+        "residual_correct",
+        "residual_mismatch"
+      ],
+      "updates": 20000,
+      "primary_update": 10000,
+      "round_endpoints": [
+        5000,
+        10000,
+        20000
+      ],
+      "save_every": 1000,
+      "labeled_batch": 32,
+      "unlabeled_batch": 128,
+      "learning_rate": 1e-05,
+      "weight_decay": 0.01,
+      "warmup_updates": 200,
+      "minimum_lr_ratio": 0.2,
+      "gradient_clip": 1.0,
+      "geometry_weight": 0.3,
+      "distillation_temperature": 2.0,
+      "primary_contrasts": [
+        "residual_correct-residual_mismatch",
+        "residual_correct-distillation",
+        "residual_correct-raw_correct"
+      ],
+      "rationale": "Registered before competent-target primary test outcomes. Existing geometry has little relation specificity and is compatible with answer information. On128 U rows, subtract each teacher-predicted answer group mean from student and teacher, retain groups>=3, then apply linear CKA. Correct and fixed within-answer mismatch use identical rows/groups; teacher outputs are correct in every condition. This deliberately removes batch-level linear answer means, not every possible output encoding.",
+      "shared_inputs": "Reuse all six fresh competent-target supports, U pools, teacher caches and original pretrained starts from base study. No added oracle training labels; same160 rows/order/RNG/optimizer within this supplementary assay. Comparisons across base and supplement also differ in batch size and schedule, so are descriptive only. Supplements are not independent source/data replications.",
+      "primary_and_doses": "Round-robin all24 conditions through5000 then10000 then20000 updates; fixed10000 primary, other doses sensitivity. Open fresh final test only after all24 primary10000 endpoints exist. Report20000 only if all24 complete; any incomplete high dose is flagged and excluded from matched high-dose contrasts. Monitoring uses same64 validation labels without tuning.",
+      "test_separation": "One new5120-input holdout; full eight-state orbits excluded from original16M and all original/main local inputs, including both main tests. Generated before main outcomes but never used for fitting or tuning.",
+      "scope": "Supplementary intervention on supplied inverse relation, not ordinary spontaneous discovery. Positive accuracy contrast against answer-matched mismatch would support functional specificity in this setting; CKA or answer-mean subtraction alone does not establish an output-independent mechanism. Stop fitting at16:50UTC and retain complete matched endpoints for final reporting by17:00UTC."
+    },
+    "code_sha256": "d420ed024752bd681f85d1492875b2ad446a592607cf33cfd335bbb02ba00636",
+    "config_sha256": "8cfbcc115ac027dd757b48293c38a84f91656a716aa4de434e98eb6ed2bbed20",
+    "base_protocol_sha256": "9bb4d25f9cf0bfe3c0e27767347afdcd398bd73e7f02b63b789c8c084d3dd787",
+    "excluded_archives": [
+      {
+        "path": "results/algebra_hidden_relations/probe_dataset.npz",
+        "sha256": "b5f8f7d288bf9dc2c807f36952dc5af96c3470568b547cdf8993c8d1bb6a911c"
+      },
+      {
+        "path": "results/algebra_hidden_relations/source_data.npz",
+        "sha256": "7764f8b056459a51b21996493d34eb52e75d7d448eafcab8128a73c7c9d67132"
+      },
+      {
+        "path": "results/algebra_hidden_relations/training_orbit_audit.npz",
+        "sha256": "f68508629a08fdf6bcd7146907d07556ab08f7f750080f5853907f0a9ea6fd8d"
+      },
+      {
+        "path": "results/algebra_structure/native/dataset.npz",
+        "sha256": "7a2b45ca674ac09435694a3776afff6821eb391ce51634fe68363712cee51d1d"
+      },
+      {
+        "path": "results/algebra_structure_replication/dataset/data.npz",
+        "sha256": "59c7dfcee14926ae002853f8c69cd113cb4be8564a813ad38f0e0289a4f234f5"
+      },
+      {
+        "path": "results/algebra_structure_replication/probe_dataset.npz",
+        "sha256": "5c9539adc5b76b732740d673789abef0e6b96eeb1f12950a90f55c752d19a35e"
+      },
+      {
+        "path": "results/answer_matched_geometry/dataset.npz",
+        "sha256": "f662c12fe77401b41bb5a04177b8ea4a0089d756eadba69620b645857ee15d56"
+      },
+      {
+        "path": "results/frozen_operator_constraint_ablation/dataset.npz",
+        "sha256": "d2f208f8bd898d72d7cc11907f7d9a88f4cfd10799a4100ba6a02d23ba6e32dd"
+      },
+      {
+        "path": "results/inverse_alignment_coverage/dataset/r0/dataset.npz",
+        "sha256": "3e51adbf4bfcff4a1892d0f1921a9f411b68f2de1a456b5793701c1b88e24722"
+      },
+      {
+        "path": "results/inverse_alignment_coverage/dataset/r1/dataset.npz",
+        "sha256": "4dd816da6a8cd24779da0d3ce042f4c788eaa73e75e9ef3b3d2783e61429dc03"
+      },
+      {
+        "path": "results/inverse_alignment_coverage/dataset/r2/dataset.npz",
+        "sha256": "749afed9d050f0dac34771c08005719c6eb9b5dd580b5668462aed097b4fa65f"
+      },
+      {
+        "path": "results/inverse_alignment_coverage/dataset/r3/dataset.npz",
+        "sha256": "54573dcdc33fa0c58b8b96c28591aadf8ae1a4a6f8db4d63a8cff8687cba1093"
+      },
+      {
+        "path": "results/inverse_alignment_coverage/dataset/r4/dataset.npz",
+        "sha256": "fc69b02c0edabda749a4ed2c38ff683632004529e0241ead3518b90e13ec9a87"
+      },
+      {
+        "path": "results/inverse_alignment_coverage/dataset/r5/dataset.npz",
+        "sha256": "9049d94d7b393efe21e8c290d710a8ad24cdfd39ca3beb2cb66296f19c69d9b0"
+      },
+      {
+        "path": "results/inverse_alignment_coverage/dataset/test/dataset.npz",
+        "sha256": "a834086ce5a50b49350fdc48338692cb17ad1af7d5d7b99dffe16b87f89238a3"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/audit/dataset.npz",
+        "sha256": "34490eb25f97532ce3d7a89fa69b332015e62772298bfe84672b0615a5945f26"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r0/dataset.npz",
+        "sha256": "8a4a1ccc47b46effbdba7baf45914ef15eee702db76e0386628e6d4b883e60be"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r1/dataset.npz",
+        "sha256": "5fead0fbebf1120f40707a7a5e76709f102bc7c966d9adb40da055b4e7d6bbe1"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r2/dataset.npz",
+        "sha256": "bc201042da6a514a47abb68882470300a7219e02ca08a219c5fa7119e3ad8e69"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r3/dataset.npz",
+        "sha256": "4b98f52e457886ba8a5948af9f18081689c979bb1495dbf63ad0725887839a1a"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r4/dataset.npz",
+        "sha256": "c536e38db283005e7f4427a4d29eee31b0d54d0dca518b8dca79dba46a7a456c"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r5/dataset.npz",
+        "sha256": "b1cd96e65143df1629cedf8365914bc45a863a854fb4e19c1f8d1e11ff6b7a91"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/test/dataset.npz",
+        "sha256": "6f5676b214d8178552df623f4e7e09440b7cc173e121891f2d1a740a52a4c5bd"
+      },
+      {
+        "path": "results/joint_answer_matched_geometry/dataset.npz",
+        "sha256": "f8d34caa858183360a383ad9abab6913330c3abe6050fc66d39386cdbfe402d9"
+      },
+      {
+        "path": "results/native_ablation/dataset/data.npz",
+        "sha256": "8dc94e74db5c9084015f64217eb17b30df962838de5e3774c5e0cfb7c5717242"
+      },
+      {
+        "path": "results/native_target_repeat/dataset/data.npz",
+        "sha256": "c1a3be77c71f72e5d8f2e6ee4feb8ba2615bbd691f8e696daa8f59653a4cfa59"
+      },
+      {
+        "path": "results/permworld_combinations/data.npz",
+        "sha256": "964581706a8261c9abbd100b0c06b6c2c6f562e181cddbef672efa106dc88a3b"
+      },
+      {
+        "path": "results/relation_world_confirmation/world0/probe_dataset.npz",
+        "sha256": "5abb123b59507a613375ad870d24df13bf101e4f8b334452ab3c793870476597"
+      },
+      {
+        "path": "results/relation_world_confirmation/world0/source_data.npz",
+        "sha256": "e3b32aaa4d4775afc1e5b5696771368526e80d54167533661cd0be243a31b1c4"
+      },
+      {
+        "path": "results/relation_world_confirmation/world0/training_orbit_audit.npz",
+        "sha256": "9fd421df0790aa72da1c0ceb5a6ab5748296dff05d064191225f6348b604d398"
+      },
+      {
+        "path": "results/relation_world_confirmation/world1/probe_dataset.npz",
+        "sha256": "42a6ef6fd319fdc0ad631c72380c5414da0c801b216eaf67f7cd383f56c518e5"
+      },
+      {
+        "path": "results/relation_world_confirmation/world1/source_data.npz",
+        "sha256": "b30375ca77cdbf251cd1aa792a868d018910112c442d817644f1b761e8d63385"
+      },
+      {
+        "path": "results/relation_world_confirmation/world1/training_orbit_audit.npz",
+        "sha256": "9c8601f932c5c9dcb2e82499ec6ca2ade762b0133ac67bcacfefccdae82153d1"
+      },
+      {
+        "path": "results/relation_world_confirmation/world2/probe_dataset.npz",
+        "sha256": "2ee969bd6d2915438c514e2c1040e7ba9e4615daf96d27045806ab6ce58af9eb"
+      },
+      {
+        "path": "results/relation_world_confirmation/world2/source_data.npz",
+        "sha256": "b91c88f044b352458194257f4686d7aab3608fedc46e49ce6f2a0165b6a0f0c4"
+      },
+      {
+        "path": "results/relation_world_confirmation/world2/training_orbit_audit.npz",
+        "sha256": "ce57d7ba3871c725bc1375abebefba5ee97f5560890605539198b766a42e662e"
+      },
+      {
+        "path": "results/six_hour_session/dataset/data.npz",
+        "sha256": "ea63f0bb7dd843c40217574755e30f3f65a476b68bd8cf1d90fedc1791d47535"
+      },
+      {
+        "path": "results/specialist_cka_controls/dataset.npz",
+        "sha256": "e353558d7ac211637a9a783461b5eeb198dad6b99e95e2ec5946924f3280e65e"
+      },
+      {
+        "path": "results/overnight_inverse_functional/confirmation/dataset/test/dataset.npz",
+        "sha256": "b43c33ce6e80036bf4e5d6b4da87484fb2d76e5a0af37b044b731962068a63d1"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/test/dataset.npz",
+        "sha256": "c6cc7e8fda03d328b37698d6e395363b2d2e0620cd4bf97078ca5fcf59fd8870"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n0/support/dataset.npz",
+        "sha256": "399be76e860f746b72b0b6384f4034cef25d3ae138de37db41890fd36e12d85c"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n0/unlabeled/dataset.npz",
+        "sha256": "d9762ac7cc00844d22a8926f22f750c9a696bdc72d94433e5b131037084e2d0d"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n1/support/dataset.npz",
+        "sha256": "d76faddf53f2720b6f3bde6760073f906f35af9869ee159d4882515d949f7fcb"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n1/unlabeled/dataset.npz",
+        "sha256": "b4b9b4c29c702dc99cd72e9528f78656162266a64033303539d79452e73b5b6c"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n2/support/dataset.npz",
+        "sha256": "e16c141e6145909be2a58bc60da54136deaa3564f6e9db63a45e815230cf172d"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n2/unlabeled/dataset.npz",
+        "sha256": "d668c128745b290ce81534500858955e92fc496fe07e1b091fcc42715ab37375"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n3/support/dataset.npz",
+        "sha256": "873de905d2efd529c09e52dfdfac6b29d2222c321d2ba20f6b3da5f080d84def"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n3/unlabeled/dataset.npz",
+        "sha256": "ee329fda9fa8632d21069b5df68e504c5bbe507a16a8886e8ce8bcd589e4f433"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n4/support/dataset.npz",
+        "sha256": "4db08c7c8d78b4c9aa725b014fe2995d9e1b1b7e93422f81888d04809735b80f"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n4/unlabeled/dataset.npz",
+        "sha256": "ec2d633c7568645e32c6f7e1f05ca8de4d41722163aa0c4bf7892269fa6bb1b6"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n5/support/dataset.npz",
+        "sha256": "cba28e03dc924c28edf010deb29903cb14e3e1fdd3d0d732d54a36c7ea93e589"
+      },
+      {
+        "path": "results/overnight_inverse_functional/dataset/n5/unlabeled/dataset.npz",
+        "sha256": "4258644973c4aab3f796eb75d03a4221e7c440a5b34ffd008ef82f59431f6145"
+      }
+    ],
+    "references_sha256": {
+      "results/overnight_inverse_functional/protocol.json": "9bb4d25f9cf0bfe3c0e27767347afdcd398bd73e7f02b63b789c8c084d3dd787",
+      "results/overnight_inverse_functional/dataset/audit.json": "c09c21aea216531eef83382aceb826bdba94b7796d88f19622a8b3f501a35fbe",
+      "results/overnight_inverse_functional/dataset/n0/support/dataset.npz": "399be76e860f746b72b0b6384f4034cef25d3ae138de37db41890fd36e12d85c",
+      "results/overnight_inverse_functional/teacher/n0_support.npz": "35fa576cb037dd4e8e63b436d0ccd643bd1d9a171dfdda67e285a1eb36ba4486",
+      "results/overnight_inverse_functional/teacher/n0_support_mismatch.npz": "58b722bb642ef58dad1933eb82e25179c12c622a51d88c9ecbeef034735bc7ad",
+      "results/overnight_inverse_functional/dataset/n0/unlabeled/dataset.npz": "d9762ac7cc00844d22a8926f22f750c9a696bdc72d94433e5b131037084e2d0d",
+      "results/overnight_inverse_functional/teacher/n0_unlabeled.npz": "a2eb35d4efb2eb7ab721e88f8eda6a041cdd66e48650d930f867ed359cbabc85",
+      "results/overnight_inverse_functional/teacher/n0_unlabeled_mismatch.npz": "2a5c9f2c3a09f5f7d13de6e38169b63d795c8ed279c114c3bbf7192a08e2093c",
+      "results/overnight_inverse_functional/dataset/n1/support/dataset.npz": "d76faddf53f2720b6f3bde6760073f906f35af9869ee159d4882515d949f7fcb",
+      "results/overnight_inverse_functional/teacher/n1_support.npz": "389cea08c078b6f243cba3df6d817545b42f2f961677aa5ef80c2400a68f5224",
+      "results/overnight_inverse_functional/teacher/n1_support_mismatch.npz": "f562cbda9b5e193ff7ffad8fcbdec93f62d589a67f6f2b06baffae9ec7552ae8",
+      "results/overnight_inverse_functional/dataset/n1/unlabeled/dataset.npz": "b4b9b4c29c702dc99cd72e9528f78656162266a64033303539d79452e73b5b6c",
+      "results/overnight_inverse_functional/teacher/n1_unlabeled.npz": "6f83869392c99bb4326558f68f2b367cfffa12e5d664ecd793f6a4ee186aa2a6",
+      "results/overnight_inverse_functional/teacher/n1_unlabeled_mismatch.npz": "4a3ed5d772c66e1015deb752e1ad15e870ae9a658b9da6307679f4198153cc0d",
+      "results/overnight_inverse_functional/dataset/n2/support/dataset.npz": "e16c141e6145909be2a58bc60da54136deaa3564f6e9db63a45e815230cf172d",
+      "results/overnight_inverse_functional/teacher/n2_support.npz": "e87f8794b3fe348385f70267f707b939596ebc6dd4b7ffc8eff012ee2e57a60b",
+      "results/overnight_inverse_functional/teacher/n2_support_mismatch.npz": "135bcc36dd9a4cc658424dbd17803cca6a5a29367ca31ab13a581a0ecb27ae01",
+      "results/overnight_inverse_functional/dataset/n2/unlabeled/dataset.npz": "d668c128745b290ce81534500858955e92fc496fe07e1b091fcc42715ab37375",
+      "results/overnight_inverse_functional/teacher/n2_unlabeled.npz": "bff9a8ab8751fe142ab6ed6a6a20060052a6edf4dc8c85230dc306e79a25bc7b",
+      "results/overnight_inverse_functional/teacher/n2_unlabeled_mismatch.npz": "b36460dc7993d618d22388df7b090f7ba0f6232edfeff18aadd2b1924fbc47d6",
+      "results/overnight_inverse_functional/dataset/n3/support/dataset.npz": "873de905d2efd529c09e52dfdfac6b29d2222c321d2ba20f6b3da5f080d84def",
+      "results/overnight_inverse_functional/teacher/n3_support.npz": "959e6d3c51d0ddd151847850f8e5e98b5caf5a0e8ab8e68cbc344fc1c1dd6793",
+      "results/overnight_inverse_functional/teacher/n3_support_mismatch.npz": "956badac46a890ebd54249d40a377c59cfde6e9957a21d6b3c5a7a2e4e585138",
+      "results/overnight_inverse_functional/dataset/n3/unlabeled/dataset.npz": "ee329fda9fa8632d21069b5df68e504c5bbe507a16a8886e8ce8bcd589e4f433",
+      "results/overnight_inverse_functional/teacher/n3_unlabeled.npz": "28e8262f903e91c7ecc96c97c03ee722918aa6135e82b588dbc35fc809349a4c",
+      "results/overnight_inverse_functional/teacher/n3_unlabeled_mismatch.npz": "707b5704bf16600c25451310ba86747761601287b8e2ffb3cc5a736f6fb867aa",
+      "results/overnight_inverse_functional/dataset/n4/support/dataset.npz": "4db08c7c8d78b4c9aa725b014fe2995d9e1b1b7e93422f81888d04809735b80f",
+      "results/overnight_inverse_functional/teacher/n4_support.npz": "379e436b8a48a1bd3466ef5bc0811599bd54f8fa7c5c501ed079e07565dff1fb",
+      "results/overnight_inverse_functional/teacher/n4_support_mismatch.npz": "bd308431bc998eb43ec3e8ec64fddeb4c70b0311e5b6b7f70975542c06d9a5be",
+      "results/overnight_inverse_functional/dataset/n4/unlabeled/dataset.npz": "ec2d633c7568645e32c6f7e1f05ca8de4d41722163aa0c4bf7892269fa6bb1b6",
+      "results/overnight_inverse_functional/teacher/n4_unlabeled.npz": "e113c94967774d76749c5fdadda205b6eee05c9dba34d2d3f4a335ebc6174aee",
+      "results/overnight_inverse_functional/teacher/n4_unlabeled_mismatch.npz": "01b8c87a3115934c1634ba916c4c37cf589deeb897f79eab5243daa7cd4f5747",
+      "results/overnight_inverse_functional/dataset/n5/support/dataset.npz": "cba28e03dc924c28edf010deb29903cb14e3e1fdd3d0d732d54a36c7ea93e589",
+      "results/overnight_inverse_functional/teacher/n5_support.npz": "83c51bf1b5ac5883aa10a3128da534c32b2b3065291e9d3a6347c1798fdc0354",
+      "results/overnight_inverse_functional/teacher/n5_support_mismatch.npz": "b2b21ca6b11db7506de873dfb9b196d81dec0e0cdb5f9726b3171c55a0dbbc24",
+      "results/overnight_inverse_functional/dataset/n5/unlabeled/dataset.npz": "4258644973c4aab3f796eb75d03a4221e7c440a5b34ffd008ef82f59431f6145",
+      "results/overnight_inverse_functional/teacher/n5_unlabeled.npz": "c42692dd41bee7453092b652666c1803ed2a982bb8bcb9548d7b6cc9143c957d",
+      "results/overnight_inverse_functional/teacher/n5_unlabeled_mismatch.npz": "c0a30e2301988c98d15a482428c88cd851c2c447d29b3db0bd89d9e76ae24d6a"
+    },
+    "sources": [
+      {
+        "task": "descents",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property32-zero-overlap-pilot/property-a-transformer-tasks01-seed17/checkpoint.pt",
+        "checkpoint_sha256": "96cb96d163fb751d5c321c52b770b46a7918c1be275fc5eb0f3fae78a241e17a",
+        "marker": "/home/yangx/neurips/runs/property32-zero-overlap-pilot/property-a-transformer-tasks01-seed17/completed.json",
+        "marker_sha256": "2228208777af6ae0946939ad4beef290ced080f8d13092e7dc76e4b0a6b9eada"
+      },
+      {
+        "task": "descents",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-descents-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "b3a0de80a387a8022a4cb79c7b142efc0a27c819efce4b80bd83eda85003664e",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-descents-transformer-seed42/completed.json",
+        "marker_sha256": "6bd7e0f472001e37cde87dfc5f30cf8c34311698ea0ea6c05cd8dc322c06e23d"
+      },
+      {
+        "task": "descents",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property32-zero-overlap-replicates/r2/property-b-transformer-tasks01-seed101/checkpoint.pt",
+        "checkpoint_sha256": "e734bca31bb18bb64f0b688699e0d95611bd601921a8145fcd01c2824f71d509",
+        "marker": "/home/yangx/neurips/runs/property32-zero-overlap-replicates/r2/property-b-transformer-tasks01-seed101/completed.json",
+        "marker_sha256": "a0b45935b157add83f03d7c709c41f1cb51a92f846ce08a0e934e3692f3a7f20"
+      }
+    ],
+    "targets": [
+      {
+        "task": "recoils",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property32-zero-overlap-pilot/property-b-transformer-tasks01-seed17/checkpoint.pt",
+        "checkpoint_sha256": "f9e4e8a56304d039a581514e0b55c324e7139f45f6a087096bfe469e9213ed11",
+        "marker": "/home/yangx/neurips/runs/property32-zero-overlap-pilot/property-b-transformer-tasks01-seed17/completed.json",
+        "marker_sha256": "25dae15191c9c4baf433b806cd8cd76122ac8b00ff7063825c686159d3221c1f"
+      },
+      {
+        "task": "recoils",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property32-relation-controlled/s0-seed42/relation-s0-a-transformer-tasks01-seed42/checkpoint.pt",
+        "checkpoint_sha256": "1a871155189aebe8db652e834b9b4e14ad3e4ca8f02e8f9c6df2d1927ea80c34",
+        "marker": "/home/yangx/neurips/runs/property32-relation-controlled/s0-seed42/relation-s0-a-transformer-tasks01-seed42/completed.json",
+        "marker_sha256": "ecae4c80ee1147d45444b76ae89e39ddc65adb50ebdd3c694b9d827e089217eb"
+      },
+      {
+        "task": "recoils",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property32-relation-controlled/s0-seed101/relation-s0-a-transformer-tasks01-seed101/checkpoint.pt",
+        "checkpoint_sha256": "764c1b1f280157a5654d9134e4449b4a495a2d4d609297516eb44384c4a11a1f",
+        "marker": "/home/yangx/neurips/runs/property32-relation-controlled/s0-seed101/relation-s0-a-transformer-tasks01-seed101/completed.json",
+        "marker_sha256": "137fcbcded97065644c02a999eac59fd0d3604de07642b9725380a44b82a0115"
+      }
+    ]
+  }
+}

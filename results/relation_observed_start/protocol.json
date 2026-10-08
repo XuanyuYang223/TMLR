@@ -1,0 +1,41 @@
+{
+  "registered_utc": "2026-10-06T13:15:04.943213+00:00",
+  "signature": {
+    "config_sha256": "66e6bf60f5f388e4bca668f4e27c1f17caca0d5a3ecf9bcc65c3ed741966bc1a",
+    "code_sha256": "7180d949b53f74f1ecd8cda9aedade37ee98221fe143ddbae5564a7e93666f43",
+    "parent_protocol_sha256": "1063d1b102558ee19d30d1f1ad3fa467875f980009ddaa3c2a320d143a468b70",
+    "extension_protocol_sha256": "c08c0da613d94c20a6c166057d0d2044b9b3dba9a6ed3260d76cd0bc6c794a10",
+    "probe_data_sha256": "b5f8f7d288bf9dc2c807f36952dc5af96c3470568b547cdf8993c8d1bb6a911c",
+    "plan": {
+      "output": "results/relation_observed_start",
+      "parent": "results/algebra_hidden_relations",
+      "extension": "results/relation_seed_extension",
+      "deadline_utc": "2026-10-06T17:00:00+00:00",
+      "original_seeds_exploratory": [
+        5081,
+        6091,
+        7103
+      ],
+      "additional_seeds_prospective_endpoint": [
+        8111,
+        9127,
+        10141,
+        11159,
+        12163,
+        13171
+      ],
+      "conditions": [
+        "ordinary",
+        "correct_relations",
+        "shuffled_relations"
+      ],
+      "fixed_secondary_predictions": [
+        "Correct native I applied to a true observed C-state hidden vector exceeds the scalar-answer-only ceiling 0.5 on each additional source seed.",
+        "Correct native observed-C-start prediction is more accurate than base-only CI composition on source-seed average.",
+        "Correct versus shuffled full-source I fits on the identical relation-trained backbone differ in unseen C-to-CI prediction, with identical visible-task grades."
+      ],
+      "scope": "Secondary hypothesis motivated by original-seed teacher-forcing diagnosis, before inspecting the additional-seed observed-start endpoint. The predictor forwards a C-transformed input, which is an observed state type; it never forwards the withheld CI input. This tests unseen-edge generalization with an observed input state, not autonomous base-only composite inference. I-start CI uses observed I as input but remains a two-step chain. All cases are reported separately."
+    }
+  },
+  "new_additional_seed_observed_start_results": 0
+}

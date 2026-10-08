@@ -1,0 +1,15 @@
+{
+  "source_runs": ["results/pilot", "results/replication"],
+  "source_metadata": "results/combined/metadata.json",
+  "hidden": 128,
+  "steps": 200,
+  "learning_rates": [0.01, 0.03],
+  "weight_decay": 0.001,
+  "budgets": [10, 25, 50],
+  "primary_budget": 25,
+  "primary_learning_rate": 0.01,
+  "primary_comparison": "frozen MLP versus frozen linear readout, with matched random initialization for both",
+  "symbolic_diagnostics": ["fit_field_affine_from_support_labels", "lookup_decoded_source_tuple", "field_fit_after_shuffling_source_tuple_rows"],
+  "test_policy": "same fixed target test labels; no selection or tuning using their accuracy",
+  "status": "exploratory continuation after initial negative transfer"
+}

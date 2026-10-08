@@ -1,0 +1,318 @@
+{
+  "registered_utc": "2026-10-07T05:02:45.990950+00:00",
+  "new_test_outcomes_observed": false,
+  "signature": {
+    "plan": {
+      "output": "results/inverse_alignment_coverage",
+      "previous_study": "results/inverse_functional_alignment",
+      "upstream_python": "external/neurips/src",
+      "repository": "/home/yangx/neurips",
+      "source_task": "descents",
+      "target_task": "recoils",
+      "lengths": [
+        10,
+        15,
+        20,
+        25,
+        30
+      ],
+      "unlabeled_counts": [
+        820,
+        819,
+        819,
+        819,
+        819
+      ],
+      "test_per_length": 512,
+      "cka_test_per_length": 128,
+      "test_data_seed": 2610107,
+      "candidate_counts": [
+        8192,
+        2048,
+        2048,
+        2048,
+        2048
+      ],
+      "unlabeled_seeds": [
+        2610113,
+        2610127,
+        2610131,
+        2610149,
+        2610157,
+        2610169
+      ],
+      "conditions": [
+        "ordinary_exposure",
+        "support_alignment",
+        "coverage_alignment",
+        "coverage_matched_mismatch",
+        "coverage_distillation",
+        "coverage_distillation_alignment"
+      ],
+      "updates": 1200,
+      "labeled_batch": 32,
+      "unlabeled_batch": 32,
+      "learning_rate": 0.0003,
+      "weight_decay": 0.01,
+      "warmup_updates": 100,
+      "minimum_lr_ratio": 0.1,
+      "gradient_clip": 1.0,
+      "geometry_weight": 0.3,
+      "distillation_weight": 1.0,
+      "distillation_temperature": 2.0,
+      "validation_updates": [
+        400,
+        800,
+        1200
+      ],
+      "label_budget": "Reuse the exact six previous 192-train/64-validation supports and target initializations. No new target labels in gradients or selection. Each replicate receives 4096 new unlabeled permutations; these archives have no oracle labels. Teacher outputs and matching pseudo-labels are additional pretrained-source information, not target oracle labels.",
+      "budget": "All six conditions forward the same 32 labeled plus 32 unlabeled examples per update, same single length, order, initialization, RNG, optimizer and 1200 updates. All loss components are computed in every condition. Ordinary exposure has zero-weight unlabeled losses: seeing these inputs computationally does not itself provide a learning objective.",
+      "geometry": "Support-only loss is 1-linear-CKA on eligible labeled rows. Coverage loss is 1-linear-CKA on eligible rows in the combined 64-example batch. ONE_END features are task-free. Correct teacher features are evaluated on inverse(x). Frozen source; no adapter.",
+      "mismatch": "Labeled mismatch reuses the old true-answer/length-preserving training derangement. Unlabeled mismatch uses a fixed derangement within (length, frozen teacher full-vocabulary argmax). No true unlabeled target answers are computed. Singleton groups excluded identically from coverage geometry conditions. Distillation always uses correct teacher outputs.",
+      "primary_endpoints": "Fixed update 1200: geometry first, target accuracy second. No checkpoint selection for the primary endpoint. Also report models selected among 400/800/1200 by the existing 64-label target validation accuracy, tie by lower CE then earlier update, as sensitivity. Never select checkpoints or hyperparameters from new-test CKA or accuracy.",
+      "primary_contrasts": [
+        "coverage_alignment-ordinary_exposure",
+        "coverage_alignment-support_alignment",
+        "coverage_alignment-coverage_matched_mismatch",
+        "coverage_distillation_alignment-coverage_distillation"
+      ],
+      "geometry_measurement": "Per length first 128 fresh test rows; biased linear CKA between target ONE_END and frozen inverse teacher, five lengths equally weighted. Report matched-answer correct/wrong pairing and within-answer residual CKA as secondary specificity controls, plus exact target initialization. Oracle test answers are used for measurement only after all fitting.",
+      "uncertainty": "All six paired target/support repeats are reused from the previous study and conditional on three frozen teachers. Report every paired difference, exact empirical 6^6 percentile bootstrap and separately 3^3 teacher-cluster bootstrap; descriptive, shared data world, no multiplicity-adjusted population significance claim.",
+      "data_separation": "Complete eight-state orbits of each unlabeled pool and fresh test are mutually disjoint and excluded against all original 16M parent inputs and all previous local input archives, including the reused supports and previous tests.",
+      "scope": "One predeclared coverage intervention at 4096 additional unlabeled inputs, with fixed loss weights and update budget. The inverse rule and teacher supervision are supplied. Does not test spontaneous discovery or establish output-independent geometry. Report nulls and source/target accuracy, do not retune against this test. No expansion to a second task pair in this assay."
+    },
+    "replicates": [
+      {
+        "id": "r0",
+        "source_seed": 17,
+        "target_seed": 25013,
+        "data_seed": 2607011
+      },
+      {
+        "id": "r1",
+        "source_seed": 42,
+        "target_seed": 25031,
+        "data_seed": 2607017
+      },
+      {
+        "id": "r2",
+        "source_seed": 101,
+        "target_seed": 25033,
+        "data_seed": 2607029
+      },
+      {
+        "id": "r3",
+        "source_seed": 17,
+        "target_seed": 25037,
+        "data_seed": 2607037
+      },
+      {
+        "id": "r4",
+        "source_seed": 42,
+        "target_seed": 25057,
+        "data_seed": 2607041
+      },
+      {
+        "id": "r5",
+        "source_seed": 101,
+        "target_seed": 25073,
+        "data_seed": 2607053
+      }
+    ],
+    "sources": [
+      {
+        "task": "descents",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property32-zero-overlap-pilot/property-a-transformer-tasks01-seed17/checkpoint.pt",
+        "checkpoint_sha256": "96cb96d163fb751d5c321c52b770b46a7918c1be275fc5eb0f3fae78a241e17a",
+        "marker": "/home/yangx/neurips/runs/property32-zero-overlap-pilot/property-a-transformer-tasks01-seed17/completed.json",
+        "marker_sha256": "2228208777af6ae0946939ad4beef290ced080f8d13092e7dc76e4b0a6b9eada"
+      },
+      {
+        "task": "descents",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-descents-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "b3a0de80a387a8022a4cb79c7b142efc0a27c819efce4b80bd83eda85003664e",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-descents-transformer-seed42/completed.json",
+        "marker_sha256": "6bd7e0f472001e37cde87dfc5f30cf8c34311698ea0ea6c05cd8dc322c06e23d"
+      },
+      {
+        "task": "descents",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property32-zero-overlap-replicates/r2/property-b-transformer-tasks01-seed101/checkpoint.pt",
+        "checkpoint_sha256": "e734bca31bb18bb64f0b688699e0d95611bd601921a8145fcd01c2824f71d509",
+        "marker": "/home/yangx/neurips/runs/property32-zero-overlap-replicates/r2/property-b-transformer-tasks01-seed101/completed.json",
+        "marker_sha256": "a0b45935b157add83f03d7c709c41f1cb51a92f846ce08a0e934e3692f3a7f20"
+      }
+    ],
+    "references_sha256": {
+      "results/inverse_functional_alignment/dataset/r0/dataset.npz": "8a4a1ccc47b46effbdba7baf45914ef15eee702db76e0386628e6d4b883e60be",
+      "results/inverse_functional_alignment/dataset/r0/mismatch.npz": "d548a584d8023613c8aff589dfcb8c5d786bf6eaaca115b4f6a3fc4f08540810",
+      "results/inverse_functional_alignment/teacher/r0.npz": "778dab7f83a86ed476bbc52ec42316fd385a2aeea2b510daf51f9a3891edb3d4",
+      "results/inverse_functional_alignment/initializations/r0.pt": "3b22aab80981ccafab7bbe4e2870a8eca95def61a8a2713ef95183c8a50f8e06",
+      "results/inverse_functional_alignment/dataset/r1/dataset.npz": "5fead0fbebf1120f40707a7a5e76709f102bc7c966d9adb40da055b4e7d6bbe1",
+      "results/inverse_functional_alignment/dataset/r1/mismatch.npz": "86b53c41cf540007f90432b41fe4bf16aed879b6cb73aae357a115027f815990",
+      "results/inverse_functional_alignment/teacher/r1.npz": "6a6ed496acb1d74e9943e65c26693e95c77b27a53c23999ebb611fc89c0d3522",
+      "results/inverse_functional_alignment/initializations/r1.pt": "e3a008df4471858d2a2791b01839d70d73f36db4c93eb5ec07176ab83965c0eb",
+      "results/inverse_functional_alignment/dataset/r2/dataset.npz": "bc201042da6a514a47abb68882470300a7219e02ca08a219c5fa7119e3ad8e69",
+      "results/inverse_functional_alignment/dataset/r2/mismatch.npz": "0d2cd91798daf2100521b38a73db5d1edd03327570db8bbbc40e018d74fe1111",
+      "results/inverse_functional_alignment/teacher/r2.npz": "75bbc42e2477fa8704aa46b793a00ea767b9a151ed4ef90513c6d642b59cc68a",
+      "results/inverse_functional_alignment/initializations/r2.pt": "7e7cf1e98c0cf457bb3b7b509ea391be018f692fe549d7c4ec06fd1049d5599d",
+      "results/inverse_functional_alignment/dataset/r3/dataset.npz": "4b98f52e457886ba8a5948af9f18081689c979bb1495dbf63ad0725887839a1a",
+      "results/inverse_functional_alignment/dataset/r3/mismatch.npz": "ef2ee635dfe6450c0b6ea37638734c78df9976bfe9acd3604e2499dae810ff3c",
+      "results/inverse_functional_alignment/teacher/r3.npz": "84617ebda58e5ebda1360be68789b02e0f271c0ca6be6be4a62360db21df312f",
+      "results/inverse_functional_alignment/initializations/r3.pt": "c423bd82078a4b384bbc427a9ebbb88c64596abd7eb2a6582ad373ea06c86565",
+      "results/inverse_functional_alignment/dataset/r4/dataset.npz": "c536e38db283005e7f4427a4d29eee31b0d54d0dca518b8dca79dba46a7a456c",
+      "results/inverse_functional_alignment/dataset/r4/mismatch.npz": "3ded653be830efb95d73f96eeb62b7e0543bfd99f5dc8af5024b4f30d1d06619",
+      "results/inverse_functional_alignment/teacher/r4.npz": "a25d7b896aa3a4fa1ed0beb244cb2627c3a8135f8d9c94edbaee5fbb638dbc11",
+      "results/inverse_functional_alignment/initializations/r4.pt": "d429c91fb2d14350670f9d1f4eba174da370e93f87e6b032150e8f4a314a89df",
+      "results/inverse_functional_alignment/dataset/r5/dataset.npz": "b1cd96e65143df1629cedf8365914bc45a863a854fb4e19c1f8d1e11ff6b7a91",
+      "results/inverse_functional_alignment/dataset/r5/mismatch.npz": "27cb61566fa5d543377301d1769cb11d21b40753fb868fec1764508a73bf0954",
+      "results/inverse_functional_alignment/teacher/r5.npz": "05e247fa67b28eedf546e525de1cee74486824017369505e7872086a772ec8e0",
+      "results/inverse_functional_alignment/initializations/r5.pt": "91edf1eda51a8a5c84c0081e30520e5229a397bd0f241119eddafb5871ae08bf",
+      "results/inverse_functional_alignment/teacher/gate.json": "db52bb263e8720ec794317187c370a5361022f54e0c2ed97d5f7f3cc480452e4"
+    },
+    "code_sha256": "b43a94f7ebff374bf96105e228ca571f5c67646aa61167bdc4594e918d1e765d",
+    "config_sha256": "a451444d4bb488b8fb0ae99711c8ff9e712b7b2c9f3913b83bd19b0f9ad72ba3",
+    "excluded_archives": [
+      {
+        "path": "results/algebra_hidden_relations/probe_dataset.npz",
+        "sha256": "b5f8f7d288bf9dc2c807f36952dc5af96c3470568b547cdf8993c8d1bb6a911c"
+      },
+      {
+        "path": "results/algebra_hidden_relations/source_data.npz",
+        "sha256": "7764f8b056459a51b21996493d34eb52e75d7d448eafcab8128a73c7c9d67132"
+      },
+      {
+        "path": "results/algebra_hidden_relations/training_orbit_audit.npz",
+        "sha256": "f68508629a08fdf6bcd7146907d07556ab08f7f750080f5853907f0a9ea6fd8d"
+      },
+      {
+        "path": "results/algebra_structure/native/dataset.npz",
+        "sha256": "7a2b45ca674ac09435694a3776afff6821eb391ce51634fe68363712cee51d1d"
+      },
+      {
+        "path": "results/algebra_structure_replication/dataset/data.npz",
+        "sha256": "59c7dfcee14926ae002853f8c69cd113cb4be8564a813ad38f0e0289a4f234f5"
+      },
+      {
+        "path": "results/algebra_structure_replication/probe_dataset.npz",
+        "sha256": "5c9539adc5b76b732740d673789abef0e6b96eeb1f12950a90f55c752d19a35e"
+      },
+      {
+        "path": "results/answer_matched_geometry/dataset.npz",
+        "sha256": "f662c12fe77401b41bb5a04177b8ea4a0089d756eadba69620b645857ee15d56"
+      },
+      {
+        "path": "results/frozen_operator_constraint_ablation/dataset.npz",
+        "sha256": "d2f208f8bd898d72d7cc11907f7d9a88f4cfd10799a4100ba6a02d23ba6e32dd"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/audit/dataset.npz",
+        "sha256": "34490eb25f97532ce3d7a89fa69b332015e62772298bfe84672b0615a5945f26"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r0/dataset.npz",
+        "sha256": "8a4a1ccc47b46effbdba7baf45914ef15eee702db76e0386628e6d4b883e60be"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r1/dataset.npz",
+        "sha256": "5fead0fbebf1120f40707a7a5e76709f102bc7c966d9adb40da055b4e7d6bbe1"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r2/dataset.npz",
+        "sha256": "bc201042da6a514a47abb68882470300a7219e02ca08a219c5fa7119e3ad8e69"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r3/dataset.npz",
+        "sha256": "4b98f52e457886ba8a5948af9f18081689c979bb1495dbf63ad0725887839a1a"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r4/dataset.npz",
+        "sha256": "c536e38db283005e7f4427a4d29eee31b0d54d0dca518b8dca79dba46a7a456c"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/r5/dataset.npz",
+        "sha256": "b1cd96e65143df1629cedf8365914bc45a863a854fb4e19c1f8d1e11ff6b7a91"
+      },
+      {
+        "path": "results/inverse_functional_alignment/dataset/test/dataset.npz",
+        "sha256": "6f5676b214d8178552df623f4e7e09440b7cc173e121891f2d1a740a52a4c5bd"
+      },
+      {
+        "path": "results/joint_answer_matched_geometry/dataset.npz",
+        "sha256": "f8d34caa858183360a383ad9abab6913330c3abe6050fc66d39386cdbfe402d9"
+      },
+      {
+        "path": "results/native_ablation/dataset/data.npz",
+        "sha256": "8dc94e74db5c9084015f64217eb17b30df962838de5e3774c5e0cfb7c5717242"
+      },
+      {
+        "path": "results/native_target_repeat/dataset/data.npz",
+        "sha256": "c1a3be77c71f72e5d8f2e6ee4feb8ba2615bbd691f8e696daa8f59653a4cfa59"
+      },
+      {
+        "path": "results/permworld_combinations/data.npz",
+        "sha256": "964581706a8261c9abbd100b0c06b6c2c6f562e181cddbef672efa106dc88a3b"
+      },
+      {
+        "path": "results/relation_world_confirmation/world0/probe_dataset.npz",
+        "sha256": "5abb123b59507a613375ad870d24df13bf101e4f8b334452ab3c793870476597"
+      },
+      {
+        "path": "results/relation_world_confirmation/world0/source_data.npz",
+        "sha256": "e3b32aaa4d4775afc1e5b5696771368526e80d54167533661cd0be243a31b1c4"
+      },
+      {
+        "path": "results/relation_world_confirmation/world0/training_orbit_audit.npz",
+        "sha256": "9fd421df0790aa72da1c0ceb5a6ab5748296dff05d064191225f6348b604d398"
+      },
+      {
+        "path": "results/relation_world_confirmation/world1/probe_dataset.npz",
+        "sha256": "42a6ef6fd319fdc0ad631c72380c5414da0c801b216eaf67f7cd383f56c518e5"
+      },
+      {
+        "path": "results/relation_world_confirmation/world1/source_data.npz",
+        "sha256": "b30375ca77cdbf251cd1aa792a868d018910112c442d817644f1b761e8d63385"
+      },
+      {
+        "path": "results/relation_world_confirmation/world1/training_orbit_audit.npz",
+        "sha256": "9c8601f932c5c9dcb2e82499ec6ca2ade762b0133ac67bcacfefccdae82153d1"
+      },
+      {
+        "path": "results/relation_world_confirmation/world2/probe_dataset.npz",
+        "sha256": "2ee969bd6d2915438c514e2c1040e7ba9e4615daf96d27045806ab6ce58af9eb"
+      },
+      {
+        "path": "results/relation_world_confirmation/world2/source_data.npz",
+        "sha256": "b91c88f044b352458194257f4686d7aab3608fedc46e49ce6f2a0165b6a0f0c4"
+      },
+      {
+        "path": "results/relation_world_confirmation/world2/training_orbit_audit.npz",
+        "sha256": "ce57d7ba3871c725bc1375abebefba5ee97f5560890605539198b766a42e662e"
+      },
+      {
+        "path": "results/six_hour_session/dataset/data.npz",
+        "sha256": "ea63f0bb7dd843c40217574755e30f3f65a476b68bd8cf1d90fedc1791d47535"
+      },
+      {
+        "path": "results/specialist_cka_controls/dataset.npz",
+        "sha256": "e353558d7ac211637a9a783461b5eeb198dad6b99e95e2ec5946924f3280e65e"
+      }
+    ],
+    "prior_completion_sha256": "da5f78c4253d6e3b818fd2ae300cb0657894bb722fcd50ae798638d220212ca3",
+    "dependencies_sha256": {
+      "experiments/inverse_functional_alignment.py": "aa4cd557eaf504a1d639948cfd2f64137d4d5ca650d04dc4f11ed43495297e4c",
+      "experiments/longrun_attention.py": "5035f58453ddee5c5d5b05878491dfcc81764e172f2ebada437dc9e325048918",
+      "experiments/permworld_combinations.py": "b14ac19b0be4c5695998d04782f43220f4b05a4634435f1715d6d1cdf3b0cdc0",
+      "experiments/permutation_audit.py": "d02b667d8d1951c547ad4a4a6a84875535f6ee59255db96bb6abef241b5b267e",
+      "experiments/specialist_cka_controls.py": "ecae66ac70ea20b1b274775712bd35e1305fbeadaf8ce522d8af79f3f0213b14"
+    },
+    "upstream_sha256": {
+      "models.py": "286a01f794f627c1f0db5dd6dd31adbdb7f58f235e47203163eda6fc8a8baab6",
+      "training.py": "b09bdd90a349e18cbf71d1345a05a1e075de945956d30d4940806fd3d8712183",
+      "math_ops.py": "968e7580c01289e5ffeab9f07c52beb334be40d95c0e61d7a7f9e2cab694c62c",
+      "passage.py": "d200ffe6f5f6cff717c1b6ed6698a5a6af42bb6580fa4e8729a2fd84b79babd6"
+    }
+  }
+}

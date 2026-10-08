@@ -1,0 +1,16 @@
+{
+  "output": "results/relation_operator_stability",
+  "parent": "results/algebra_hidden_relations",
+  "extension": "results/relation_seed_extension",
+  "deadline_utc": "2026-10-06T17:00:00+00:00",
+  "source_seeds": [5081, 6091, 7103],
+  "extension_seeds": [8111, 9127, 10141, 11159, 12163, 13171],
+  "source_conditions": ["ordinary", "correct_relations", "shuffled_relations"],
+  "methods": ["shared_center_affine", "orthogonal_reflection", "native_bias_refit", "native_validation_gain_cap"],
+  "ridge_grid": [0.000001, 0.0001, 0.01, 1.0],
+  "spectral_norm_caps": [1, 2, 4, 8, 16],
+  "cap_validation_error_relative_tolerance": 0.05,
+  "batch_size": 64,
+  "selection_scope": "Only source-training known generator edges and known-state validation. Select the smallest cap with validation squared error within 5% of the best candidate, including an uncapped refitted-bias candidate. No compound test or hidden-answer selection.",
+  "interpretation_scope": "Exploratory interventions motivated by original-seed error decomposition. Reflection explicitly imposes orthogonality and involution; it does not prove discovered algebraic laws. Additional source seeds are fixed in advance and all completed outcomes reported."
+}

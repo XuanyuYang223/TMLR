@@ -1,0 +1,178 @@
+{
+  "registered_utc": "2026-10-06T23:22:45.270966+00:00",
+  "new_compound_evaluations": 0,
+  "signature": {
+    "plan": {
+      "output": "results/frozen_operator_constraint_ablation",
+      "parent": "results/algebra_hidden_relations",
+      "sources": "results/relation_seed_extension",
+      "known_features": "results/relation_operator_stability/features",
+      "source_seeds": [
+        8111,
+        9127,
+        10141
+      ],
+      "source_condition": "correct_relations",
+      "data_seed": 2026100703,
+      "collision_pairs_per_length": 64,
+      "lengths": [
+        10,
+        30
+      ],
+      "updates": 400,
+      "batch_anchors": 256,
+      "learning_rate": 0.001,
+      "projection_every": 10,
+      "norm_caps": [
+        1.0,
+        2.0,
+        4.0
+      ],
+      "roundtrip_weights": [
+        0.01,
+        0.1,
+        1.0
+      ],
+      "batch_size": 128,
+      "selection": "Minimum visible e<->C and e<->I validation prediction MSE, independently within each family, ties by declared grid order. Fixed 400-update endpoint. No CI/ICI inputs, hidden labels, collision scores or compound validation in fitting or selection.",
+      "methods": [
+        "native_frozen",
+        "unconstrained_refit",
+        "norm_constraint",
+        "roundtrip_constraint",
+        "combined_constraints"
+      ],
+      "coordinate_system": "One common FIT-only mean and isotropic scale for all known e/C/I states. Convert affine maps back into original hidden coordinates before frozen-readout evaluation.",
+      "norm_constraint": "Projected Adam: clip all singular values of each 256x256 linear map to the candidate cap every ten updates and after the final update; affine bias unconstrained.",
+      "roundtrip_constraint": "Generator prediction loss plus lambda times mean squared error of M_g(M_g(x))-x on both endpoints of known FIT edges, for g=C,I. Affine bias participates in both applications.",
+      "scope": "Small exploratory ablation on the first three previously specified new source seeds. Native frozen baseline has zero additional optimization; unconstrained_refit has the same initialization, batches and 400-update budget as the three constrained families. Report all five. This tests use of supplied algebraic constraints, not spontaneous algebra discovery. Collision selection defines a conditional evaluation population."
+    },
+    "code_sha256": "c7d2baba506766ab7942bfadfb6707c4900e0a378e0cebd688c1f4bd327299ac",
+    "config_sha256": "883eca5ab7215d54d3b5b010d68c120bffe26dc85625ac9f82a87d161f6ea369",
+    "sources": [
+      {
+        "seed": 8111,
+        "name": "correct_relations_s8111",
+        "checkpoint": "results/relation_seed_extension/checkpoints/correct_relations_s8111.pt",
+        "checkpoint_sha256": "3cce0606c47796e87abd2c8ea60b896ac026da5fe3aaf39690f45fae57213345",
+        "known_features": "results/relation_operator_stability/features/correct_relations_s8111.npz",
+        "known_features_sha256": "005950b895f557ae58b60e3af1d2a22a68fa596aeecfd516663db06ca23bf359"
+      },
+      {
+        "seed": 9127,
+        "name": "correct_relations_s9127",
+        "checkpoint": "results/relation_seed_extension/checkpoints/correct_relations_s9127.pt",
+        "checkpoint_sha256": "2d075ea425aa43f3c0cda28dab1893a8d711465f30ae1e3afedc47ea8c1d950a",
+        "known_features": "results/relation_operator_stability/features/correct_relations_s9127.npz",
+        "known_features_sha256": "94bb5588dcbca0a81a45c2bc708e21e283df0e54a915d96b4c3b0f259612f2c8"
+      },
+      {
+        "seed": 10141,
+        "name": "correct_relations_s10141",
+        "checkpoint": "results/relation_seed_extension/checkpoints/correct_relations_s10141.pt",
+        "checkpoint_sha256": "abe65a0c2771e1ac4f38fe61064de5417e753c0bfa518cbd7e837e7a696c2126",
+        "known_features": "results/relation_operator_stability/features/correct_relations_s10141.npz",
+        "known_features_sha256": "cb49519099e2bdee7e408976f459060f832bf5f0dfa411808565957c2891f1cf"
+      }
+    ],
+    "excluded_archives": [
+      {
+        "path": "results/algebra_hidden_relations/probe_dataset.npz",
+        "sha256": "b5f8f7d288bf9dc2c807f36952dc5af96c3470568b547cdf8993c8d1bb6a911c"
+      },
+      {
+        "path": "results/algebra_hidden_relations/source_data.npz",
+        "sha256": "7764f8b056459a51b21996493d34eb52e75d7d448eafcab8128a73c7c9d67132"
+      },
+      {
+        "path": "results/algebra_hidden_relations/training_orbit_audit.npz",
+        "sha256": "f68508629a08fdf6bcd7146907d07556ab08f7f750080f5853907f0a9ea6fd8d"
+      },
+      {
+        "path": "results/algebra_structure/native/dataset.npz",
+        "sha256": "7a2b45ca674ac09435694a3776afff6821eb391ce51634fe68363712cee51d1d"
+      },
+      {
+        "path": "results/algebra_structure_replication/dataset/data.npz",
+        "sha256": "59c7dfcee14926ae002853f8c69cd113cb4be8564a813ad38f0e0289a4f234f5"
+      },
+      {
+        "path": "results/algebra_structure_replication/probe_dataset.npz",
+        "sha256": "5c9539adc5b76b732740d673789abef0e6b96eeb1f12950a90f55c752d19a35e"
+      },
+      {
+        "path": "results/answer_matched_geometry/dataset.npz",
+        "sha256": "f662c12fe77401b41bb5a04177b8ea4a0089d756eadba69620b645857ee15d56"
+      },
+      {
+        "path": "results/joint_answer_matched_geometry/dataset.npz",
+        "sha256": "f8d34caa858183360a383ad9abab6913330c3abe6050fc66d39386cdbfe402d9"
+      },
+      {
+        "path": "results/native_ablation/dataset/data.npz",
+        "sha256": "8dc94e74db5c9084015f64217eb17b30df962838de5e3774c5e0cfb7c5717242"
+      },
+      {
+        "path": "results/native_target_repeat/dataset/data.npz",
+        "sha256": "c1a3be77c71f72e5d8f2e6ee4feb8ba2615bbd691f8e696daa8f59653a4cfa59"
+      },
+      {
+        "path": "results/permworld_combinations/data.npz",
+        "sha256": "964581706a8261c9abbd100b0c06b6c2c6f562e181cddbef672efa106dc88a3b"
+      },
+      {
+        "path": "results/relation_world_confirmation/world0/probe_dataset.npz",
+        "sha256": "5abb123b59507a613375ad870d24df13bf101e4f8b334452ab3c793870476597"
+      },
+      {
+        "path": "results/relation_world_confirmation/world0/source_data.npz",
+        "sha256": "e3b32aaa4d4775afc1e5b5696771368526e80d54167533661cd0be243a31b1c4"
+      },
+      {
+        "path": "results/relation_world_confirmation/world0/training_orbit_audit.npz",
+        "sha256": "9fd421df0790aa72da1c0ceb5a6ab5748296dff05d064191225f6348b604d398"
+      },
+      {
+        "path": "results/relation_world_confirmation/world1/probe_dataset.npz",
+        "sha256": "42a6ef6fd319fdc0ad631c72380c5414da0c801b216eaf67f7cd383f56c518e5"
+      },
+      {
+        "path": "results/relation_world_confirmation/world1/source_data.npz",
+        "sha256": "b30375ca77cdbf251cd1aa792a868d018910112c442d817644f1b761e8d63385"
+      },
+      {
+        "path": "results/relation_world_confirmation/world1/training_orbit_audit.npz",
+        "sha256": "9c8601f932c5c9dcb2e82499ec6ca2ade762b0133ac67bcacfefccdae82153d1"
+      },
+      {
+        "path": "results/relation_world_confirmation/world2/probe_dataset.npz",
+        "sha256": "2ee969bd6d2915438c514e2c1040e7ba9e4615daf96d27045806ab6ce58af9eb"
+      },
+      {
+        "path": "results/relation_world_confirmation/world2/source_data.npz",
+        "sha256": "b91c88f044b352458194257f4686d7aab3608fedc46e49ce6f2a0165b6a0f0c4"
+      },
+      {
+        "path": "results/relation_world_confirmation/world2/training_orbit_audit.npz",
+        "sha256": "ce57d7ba3871c725bc1375abebefba5ee97f5560890605539198b766a42e662e"
+      },
+      {
+        "path": "results/six_hour_session/dataset/data.npz",
+        "sha256": "ea63f0bb7dd843c40217574755e30f3f65a476b68bd8cf1d90fedc1791d47535"
+      },
+      {
+        "path": "results/specialist_cka_controls/dataset.npz",
+        "sha256": "e353558d7ac211637a9a783461b5eeb198dad6b99e95e2ec5946924f3280e65e"
+      }
+    ],
+    "parent_protocol_sha256": "1063d1b102558ee19d30d1f1ad3fa467875f980009ddaa3c2a320d143a468b70",
+    "cka_protocol_sha256": "67dd6c7c0f4f8eb945aae013ef0857398d77b525f7b4ad7536148e124b289721",
+    "dependencies_sha256": {
+      "experiments/hidden_relation_train.py": "43115c61592d34ac7a53cb2c4a4ccaad83d97c21b893ec2d87824867123a9cf3",
+      "experiments/collision_pair_followup.py": "bcc2584b2f2f12fceb2eff6996a9b2837241b91ecc09a39789ab93b35d4fec47",
+      "experiments/representation_algebra.py": "0f520644029ffc2b3bd32ddbea1f3d522f6335dee9ea4b2ae72ca4bdd96a7eae",
+      "experiments/longrun_transfer.py": "e3fcc098e21ca9c7566b97fcdcc277200ba6a774627ab46f1a314b8e671fa8c2",
+      "experiments/specialist_cka_controls.py": "ecae66ac70ea20b1b274775712bd35e1305fbeadaf8ce522d8af79f3f0213b14"
+    }
+  }
+}

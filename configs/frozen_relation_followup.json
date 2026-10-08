@@ -1,0 +1,17 @@
+{
+  "output": "results/frozen_relation_followup",
+  "parent": "results/algebra_hidden_relations",
+  "deadline_utc": "2026-10-06T17:00:00+00:00",
+  "source_seeds": [5081, 6091, 7103],
+  "source_conditions": ["ordinary", "correct_relations", "shuffled_relations"],
+  "fit_anchors_per_length": [4, 16, 64, 256],
+  "primary_fit_anchors_per_length": 256,
+  "relation_pairings": ["correct", "shuffled"],
+  "ridge_grid": [0.000001, 0.0001, 0.01, 1.0],
+  "batch_size": 128,
+  "primary_words": ["ci", "ici"],
+  "primary_split": "answer_collisions",
+  "frozen_feature_precision": "float32",
+  "fit_scope": "Only source-training e/C/I hidden features and known e<->C/e<->I edges. Hyperparameters use existing known-state validation, with matched correct/shuffled supervision; no hidden states or answers in map fit or selection.",
+  "diagnostic_scope": "Teacher forcing uses true intermediate states ONLY to localize error, and is never counted as a hidden-relation predictor. Correct and shuffled maps use exactly the same frozen backbone and readout. Source grades are identical within that comparison."
+}

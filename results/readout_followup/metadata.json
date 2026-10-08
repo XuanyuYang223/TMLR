@@ -1,0 +1,83 @@
+{
+  "plan": {
+    "source_runs": [
+      "results/pilot",
+      "results/replication"
+    ],
+    "source_metadata": "results/combined/metadata.json",
+    "hidden": 128,
+    "steps": 200,
+    "learning_rates": [
+      0.01,
+      0.03
+    ],
+    "weight_decay": 0.001,
+    "budgets": [
+      10,
+      25,
+      50
+    ],
+    "primary_budget": 25,
+    "primary_learning_rate": 0.01,
+    "primary_comparison": "frozen MLP versus frozen linear readout, with matched random initialization for both",
+    "symbolic_diagnostics": [
+      "fit_field_affine_from_support_labels",
+      "lookup_decoded_source_tuple",
+      "field_fit_after_shuffling_source_tuple_rows"
+    ],
+    "test_policy": "same fixed target test labels; no selection or tuning using their accuracy",
+    "status": "exploratory continuation after initial negative transfer"
+  },
+  "max_runs": null,
+  "source_fingerprints": [
+    "53b4e613ba32e9dbc500c77d3f0149549bb8ca2bacaad49b4678a54e6a7bf83a",
+    "1753c7416047f9d8c23c95d319930dfa410a22128bc27a1defe55f4106bf2236"
+  ],
+  "code_sha256": "68b723314a2f90c714d572f6c6c374836ee38003ae793424b77509fa302b2e74",
+  "source_config": {
+    "p": 5,
+    "dimension": 4,
+    "world_seeds": [
+      17,
+      42,
+      101
+    ],
+    "model_seeds": [
+      17,
+      42,
+      101
+    ],
+    "scenario_limit": 8,
+    "target_count": 10,
+    "hidden": 192,
+    "features": 64,
+    "pretrain_steps": 1200,
+    "pretrain_lr": 0.003,
+    "weight_decay": 0.001,
+    "record_every": 100,
+    "budgets": [
+      10,
+      25,
+      50
+    ],
+    "test_per_class": 25,
+    "adapt_steps": 200,
+    "probe_lr": 0.03,
+    "finetune_head_lr": 0.01,
+    "finetune_encoder_lr": 0.001,
+    "source_accuracy_gate": 0.98,
+    "primary_budget": 25,
+    "primary_mode": "finetune",
+    "prediction_alpha": 10.0,
+    "device": "auto"
+  },
+  "fingerprint": "abfefb2179886c13fd461784a6f44cfaf3231e755a2ee685e4f08a6dc6d2605d",
+  "neural_readout_policy": "same features, support/test labels, steps, learning rate and initialization seed for paired pretrained/random heads; encoder remains frozen",
+  "field_policy": "fit affine coefficients from decoded source values and target support labels only; no true target coefficient supplied",
+  "limitations": [
+    "Exploratory diagnostics after observing initial negative transfer.",
+    "Field fitting supplies a privileged algebraic hypothesis class; it is not spontaneous neural composition.",
+    "All source inputs were exposed during source pretraining.",
+    "Lookup control measures repetition of full decoded source states across support and test."
+  ]
+}

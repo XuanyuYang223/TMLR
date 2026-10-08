@@ -1,0 +1,34 @@
+{
+  "registered_utc": "2026-10-06T06:44:54.196207+00:00",
+  "signature": {
+    "code_sha256": "b7f6e2acc74188d2931bcf5fb263a0e23f5a36f54e3bb04bbc655147b5170b96",
+    "direct_code_sha256": "23556f70cd5727bb76d6a34d1048fd642345fa504edc5ec301837ce3937e26cb",
+    "checkpoints": {
+      "novel_records": "ba7812cdf12498dd6a09cce535c240c9dbfb738eb3e1449a707357e744363122",
+      "novel_minima_pair": "13e99a4a99ba83f01accd3f52a02e4996d270c125f9f2f865ae1bd2c46a3f29c",
+      "novel_peak_mixed": "6e58ffca7ede108c8dfdbc04acdeb358e5a02850938e117c15cafa1370507614"
+    },
+    "dataset_sha256": "7a2b45ca674ac09435694a3776afff6821eb391ce51634fe68363712cee51d1d",
+    "scope": "new structural combinations, after old-group endpoints; forecasts before extracting these three models; one source seed only",
+    "matched_budget": "all three and original four-task cohort: 32 examples/task/update, 20k updates, 2.56 million labels",
+    "forecasts": [
+      {
+        "endpoint": "64-d source-query raw-h generator full-space displacement mean",
+        "prediction": "novel_records has lower error than each of novel_minima_pair and novel_peak_mixed",
+        "reason": "all three generators permute the four directional record tasks; the other sets lack closure"
+      },
+      {
+        "endpoint": "64-d source-query raw-h inverse full-space displacement error",
+        "prediction": "novel_records has lower error than each of the other two new sets",
+        "reason": "inverse swaps LR maxima/RL minima and preserves LR minima/RL maxima"
+      },
+      {
+        "endpoint": "64-d source-query predicted CI action versus IC target",
+        "prediction": "novel_records has positive wrong-order-minus-correct-order error gap",
+        "reason": "C and I induce different noncommuting task permutations in the full record set"
+      }
+    ],
+    "rules": "No task or model selection based on these geometry outcomes; full width is diagnostic; source learning differs across sets."
+  },
+  "new_geometry_endpoints_at_registration": 0
+}

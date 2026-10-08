@@ -1,0 +1,14 @@
+{
+  "registered_utc": "2026-10-07T06:37:57.621665+00:00",
+  "new_main_test_opened": false,
+  "signature": {
+    "code_path": "/home/yangx/ICML/experiments/overnight_inverse_readout_probe.py",
+    "code_sha256": "7b2c15402782ef1b2d971af2aebe2f1540d06fbf6fda983bf04b7911bb15edfe",
+    "base_protocol_sha256": "9bb4d25f9cf0bfe3c0e27767347afdcd398bd73e7f02b63b789c8c084d3dd787",
+    "landmark": "Frozen inverse-input descents teacher final_norm at ONE_END, before task prompt.",
+    "fitting": "For each of6 U pools and each length separately, fit a linear188-output ridge head to frozen teacher full-vocabulary argmax. Standardize features using U-only mean/std, std floor1e-6. Center one-hot outputs and add output-mean intercept. Solve (Z^T Z/N+.01I)W=Z^T Y_center/N. Fixed penalty, no validation tuning. No true U answers computed.",
+    "comparators": "Teacher actual query/equals output; frozen teacher-U length mode; same masks and true labels on main new test after every main target fit. Report modal and nonmodal accuracy, per length, and training pseudo-answer fit.",
+    "interpretation": "This diagnoses linearly decodable answer content at the landmark, not absence of nonlinear answer information. It does not intervene on students or prove that useful alignment is impossible.",
+    "scope": "30 auxiliary linear heads, conditional on3 frozen teachers and6 U pools. Not independent source replications, no neural source retraining."
+  }
+}

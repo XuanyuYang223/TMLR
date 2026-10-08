@@ -1,0 +1,68 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/yangx/ICML/experiments/two_step_relation_dose_confirmation.py", line 141, in <module>
+    parser=argparse.ArgumentParser();parser.add_argument('phase',choices=['register','run']);run(parser.parse_args().phase)
+                                                                                             ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yangx/ICML/experiments/two_step_relation_dose_confirmation.py", line 97, in run
+    plan,parent,config,root,sig=register()
+                                ~~~~~~~~^^
+  File "/home/yangx/ICML/experiments/two_step_relation_dose_confirmation.py", line 24, in register
+    plan,parent,config,root,sig=joint.initialize()
+                                ~~~~~~~~~~~~~~~~^^
+  File "/home/yangx/ICML/experiments/two_step_relation_joint.py", line 24, in initialize
+    plan, parent, config, root, sig = core.initialize()
+                                      ~~~~~~~~~~~~~~~^^
+  File "/home/yangx/ICML/experiments/two_step_relation_factorial.py", line 57, in initialize
+    assert amendment['old_code_sha256'] == effective_sha
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+{"fit": "n0_hidden_both_correct", "epoch": 15, "native_e_C_I_accuracy": [0.999609375, 0.9984375, 1.0], "generator_C_I_accuracy": [0.994140625, 0.95390625]}
+{"fit": "n0_hidden_both_correct", "epoch": 20, "native_e_C_I_accuracy": [0.999609375, 0.998046875, 0.9984375], "generator_C_I_accuracy": [0.997265625, 0.940234375]}
+{"fit": "n0_hidden_c_correct_i_wrong", "epoch": 15, "native_e_C_I_accuracy": [0.9984375, 0.99765625, 0.999609375], "generator_C_I_accuracy": [0.994140625, 0.9484375]}
+{"fit": "n0_hidden_c_correct_i_wrong", "epoch": 20, "native_e_C_I_accuracy": [0.99765625, 0.996875, 0.9984375], "generator_C_I_accuracy": [0.950390625, 0.95]}
+{"fit": "n0_hidden_c_wrong_i_correct", "epoch": 15, "native_e_C_I_accuracy": [0.99921875, 0.995703125, 0.99921875], "generator_C_I_accuracy": [0.9890625, 0.957421875]}
+{"fit": "n0_hidden_c_wrong_i_correct", "epoch": 20, "native_e_C_I_accuracy": [0.998046875, 0.996484375, 0.9984375], "generator_C_I_accuracy": [0.959375, 0.9453125]}
+{"fit": "n0_hidden_both_wrong", "epoch": 15, "native_e_C_I_accuracy": [0.999609375, 0.999609375, 1.0], "generator_C_I_accuracy": [0.995703125, 0.940234375]}
+{"fit": "n0_hidden_both_wrong", "epoch": 20, "native_e_C_I_accuracy": [0.998828125, 0.998046875, 0.99921875], "generator_C_I_accuracy": [0.941796875, 0.958984375]}
+{"fit": "n1_hidden_both_correct", "epoch": 15, "native_e_C_I_accuracy": [0.99921875, 0.996484375, 0.996484375], "generator_C_I_accuracy": [0.98984375, 0.9375]}
+{"fit": "n1_hidden_both_correct", "epoch": 20, "native_e_C_I_accuracy": [0.998828125, 0.998046875, 0.99609375], "generator_C_I_accuracy": [0.998046875, 0.948046875]}
+{"fit": "n1_hidden_c_correct_i_wrong", "epoch": 15, "native_e_C_I_accuracy": [0.9984375, 0.998046875, 0.99765625], "generator_C_I_accuracy": [0.996875, 0.944140625]}
+{"fit": "n1_hidden_c_correct_i_wrong", "epoch": 20, "native_e_C_I_accuracy": [0.998046875, 0.996875, 0.995703125], "generator_C_I_accuracy": [0.998046875, 0.940234375]}
+{"fit": "n1_hidden_c_wrong_i_correct", "epoch": 15, "native_e_C_I_accuracy": [0.99921875, 0.996875, 0.996875], "generator_C_I_accuracy": [0.989453125, 0.900390625]}
+{"fit": "n1_hidden_c_wrong_i_correct", "epoch": 20, "native_e_C_I_accuracy": [0.998828125, 0.99765625, 0.99765625], "generator_C_I_accuracy": [0.994921875, 0.9515625]}
+{"fit": "n1_hidden_both_wrong", "epoch": 15, "native_e_C_I_accuracy": [0.998828125, 0.996875, 0.997265625], "generator_C_I_accuracy": [0.99609375, 0.873046875]}
+{"fit": "n1_hidden_both_wrong", "epoch": 20, "native_e_C_I_accuracy": [0.998828125, 0.998046875, 0.997265625], "generator_C_I_accuracy": [0.995703125, 0.934765625]}
+{"fit": "n2_hidden_both_correct", "epoch": 15, "native_e_C_I_accuracy": [0.99921875, 0.99921875, 0.999609375], "generator_C_I_accuracy": [0.99140625, 0.879296875]}
+{"fit": "n2_hidden_both_correct", "epoch": 20, "native_e_C_I_accuracy": [0.997265625, 0.9984375, 0.998828125], "generator_C_I_accuracy": [0.9828125, 0.918359375]}
+{"fit": "n2_hidden_c_correct_i_wrong", "epoch": 15, "native_e_C_I_accuracy": [0.998828125, 0.99921875, 0.998828125], "generator_C_I_accuracy": [0.994921875, 0.9421875]}
+{"fit": "n2_hidden_c_correct_i_wrong", "epoch": 20, "native_e_C_I_accuracy": [0.9953125, 0.995703125, 0.99375], "generator_C_I_accuracy": [0.98125, 0.93203125]}
+{"fit": "n2_hidden_c_wrong_i_correct", "epoch": 15, "native_e_C_I_accuracy": [0.9984375, 0.9984375, 0.9984375], "generator_C_I_accuracy": [0.994921875, 0.941015625]}
+{"fit": "n2_hidden_c_wrong_i_correct", "epoch": 20, "native_e_C_I_accuracy": [0.998046875, 0.997265625, 0.9984375], "generator_C_I_accuracy": [0.987109375, 0.950390625]}
+{"fit": "n2_hidden_both_wrong", "epoch": 15, "native_e_C_I_accuracy": [0.997265625, 0.997265625, 0.99765625], "generator_C_I_accuracy": [0.990234375, 0.89921875]}
+{"fit": "n2_hidden_both_wrong", "epoch": 20, "native_e_C_I_accuracy": [0.994140625, 0.99453125, 0.9953125], "generator_C_I_accuracy": [0.99375, 0.90390625]}
+{"fit": "n3_hidden_both_correct", "epoch": 15, "native_e_C_I_accuracy": [0.996484375, 0.995703125, 0.996875], "generator_C_I_accuracy": [0.994140625, 0.930078125]}
+{"fit": "n3_hidden_both_correct", "epoch": 20, "native_e_C_I_accuracy": [0.99921875, 0.9984375, 0.99921875], "generator_C_I_accuracy": [0.99609375, 0.963671875]}
+{"fit": "n3_hidden_c_correct_i_wrong", "epoch": 15, "native_e_C_I_accuracy": [0.99453125, 0.994140625, 0.995703125], "generator_C_I_accuracy": [0.99453125, 0.929296875]}
+{"fit": "n3_hidden_c_correct_i_wrong", "epoch": 20, "native_e_C_I_accuracy": [0.998828125, 0.998828125, 0.999609375], "generator_C_I_accuracy": [0.996484375, 0.94453125]}
+{"fit": "n3_hidden_c_wrong_i_correct", "epoch": 15, "native_e_C_I_accuracy": [0.994921875, 0.990625, 0.99375], "generator_C_I_accuracy": [0.9921875, 0.940625]}
+{"fit": "n3_hidden_c_wrong_i_correct", "epoch": 20, "native_e_C_I_accuracy": [0.998046875, 0.998046875, 0.99921875], "generator_C_I_accuracy": [0.993359375, 0.971484375]}
+{"fit": "n3_hidden_both_wrong", "epoch": 15, "native_e_C_I_accuracy": [0.998046875, 0.996484375, 0.99765625], "generator_C_I_accuracy": [0.992578125, 0.871875]}
+{"fit": "n3_hidden_both_wrong", "epoch": 20, "native_e_C_I_accuracy": [0.9984375, 0.99921875, 1.0], "generator_C_I_accuracy": [0.996484375, 0.949609375]}
+{"fit": "n4_hidden_both_correct", "epoch": 15, "native_e_C_I_accuracy": [0.995703125, 0.9921875, 0.99375], "generator_C_I_accuracy": [0.99375, 0.92890625]}
+{"fit": "n4_hidden_both_correct", "epoch": 20, "native_e_C_I_accuracy": [0.998828125, 0.997265625, 0.9984375], "generator_C_I_accuracy": [0.99609375, 0.964453125]}
+{"fit": "n4_hidden_c_correct_i_wrong", "epoch": 15, "native_e_C_I_accuracy": [0.99765625, 0.996875, 0.997265625], "generator_C_I_accuracy": [0.99375, 0.925390625]}
+{"fit": "n4_hidden_c_correct_i_wrong", "epoch": 20, "native_e_C_I_accuracy": [0.99453125, 0.9953125, 0.996875], "generator_C_I_accuracy": [0.9953125, 0.890234375]}
+{"fit": "n4_hidden_c_wrong_i_correct", "epoch": 15, "native_e_C_I_accuracy": [0.996484375, 0.99375, 0.996484375], "generator_C_I_accuracy": [0.9890625, 0.920703125]}
+{"fit": "n4_hidden_c_wrong_i_correct", "epoch": 20, "native_e_C_I_accuracy": [0.998046875, 0.994921875, 0.997265625], "generator_C_I_accuracy": [0.994921875, 0.95234375]}
+{"fit": "n4_hidden_both_wrong", "epoch": 15, "native_e_C_I_accuracy": [0.996875, 0.9921875, 0.99453125], "generator_C_I_accuracy": [0.989453125, 0.865625]}
+{"fit": "n4_hidden_both_wrong", "epoch": 20, "native_e_C_I_accuracy": [0.99921875, 0.99609375, 0.996875], "generator_C_I_accuracy": [0.99375, 0.932421875]}
+{"fit": "n5_hidden_both_correct", "epoch": 15, "native_e_C_I_accuracy": [0.999609375, 0.99765625, 0.998046875], "generator_C_I_accuracy": [0.991015625, 0.88671875]}
+{"fit": "n5_hidden_both_correct", "epoch": 20, "native_e_C_I_accuracy": [0.99765625, 0.9984375, 0.99921875], "generator_C_I_accuracy": [0.994921875, 0.946484375]}
+{"fit": "n5_hidden_c_correct_i_wrong", "epoch": 15, "native_e_C_I_accuracy": [0.997265625, 0.99765625, 0.99765625], "generator_C_I_accuracy": [0.99140625, 0.888671875]}
+{"fit": "n5_hidden_c_correct_i_wrong", "epoch": 20, "native_e_C_I_accuracy": [0.997265625, 0.99765625, 0.999609375], "generator_C_I_accuracy": [0.992578125, 0.938671875]}
+{"fit": "n5_hidden_c_wrong_i_correct", "epoch": 15, "native_e_C_I_accuracy": [0.998046875, 0.997265625, 0.99921875], "generator_C_I_accuracy": [0.99140625, 0.92890625]}
+{"fit": "n5_hidden_c_wrong_i_correct", "epoch": 20, "native_e_C_I_accuracy": [0.9984375, 0.998046875, 0.99921875], "generator_C_I_accuracy": [0.994140625, 0.960546875]}
+{"fit": "n5_hidden_both_wrong", "epoch": 15, "native_e_C_I_accuracy": [0.99921875, 0.99765625, 0.999609375], "generator_C_I_accuracy": [0.994921875, 0.938671875]}
+{"fit": "n5_hidden_both_wrong", "epoch": 20, "native_e_C_I_accuracy": [0.998046875, 0.99765625, 0.999609375], "generator_C_I_accuracy": [0.995703125, 0.95]}
+{"status": "complete", "completed_utc": "2026-10-07T16:26:04.173231+00:00", "independent_condition_means": 48, "independent_paired_contrasts": 48, "multinomial_bootstrap_intervals": 96, "independent_schedules_and_exact_marginal_exposures": 6, "all24_fits_completed_before_test_opened": true, "summary_sha256": "9fc352284d9515f77230367b5cc87af11cca9c3463697c5b4d9c23357148e9b1", "verifier_sha256": "8f9c65a9ec395577db7a5c830c6b4c9661eb50ba87663b10ceae909fd038ccd4"}

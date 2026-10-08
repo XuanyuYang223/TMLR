@@ -1,0 +1,54 @@
+{
+  "status": "complete",
+  "completed_utc": "2026-10-08T01:15:29.683766+00:00",
+  "source": 1,
+  "condition": "nonlinear_correct",
+  "parameters": 65920,
+  "steps": 2000,
+  "batch_size": 128,
+  "anchor_exposures": 256000,
+  "schedule_sha256": "f8ad6d7a1cec9abfeac382e314ba809d23f9671669dc292675427966fb4292ec",
+  "exposure_count_sha256": "fe94371b2fc9d12ffba526b10d50a095bacb33b6dcfdaf1879bdeeeaa6516aa3",
+  "geometry_scale": 7.42061710357666,
+  "pairing_sha256": "2f88e9ce00d238e7e011a7b140b413dcad818f1da41a721f914f1af604d0e217",
+  "backbone_sha256": "38603716feba6b2ce529921576b92fae8ff5c99fb2145a7ccbcc446bff1b973b",
+  "known_states_sha256": "d975edb77713daf5a9bad0434b33094dcfec33a0297dd8987a7fa45ae98f7d45",
+  "checkpoint_sha256": "da2a59321373fda768f431e0b086f8369c1fce605a2d35ee9bedc72ef98adf11",
+  "curve": [
+    {
+      "step": 500,
+      "output_kd": 0.004066544119268656,
+      "geometry_loss": 0.028772765770554543,
+      "validation_first_state_nmse": 0.031536564230918884,
+      "validation_first_accuracy": 1.0
+    },
+    {
+      "step": 1000,
+      "output_kd": 0.0023049674928188324,
+      "geometry_loss": 0.020067773759365082,
+      "validation_first_state_nmse": 0.02498820051550865,
+      "validation_first_accuracy": 1.0
+    },
+    {
+      "step": 1500,
+      "output_kd": 0.0017162930453196168,
+      "geometry_loss": 0.017067430540919304,
+      "validation_first_state_nmse": 0.021477553993463516,
+      "validation_first_accuracy": 1.0
+    },
+    {
+      "step": 2000,
+      "output_kd": 0.001299109309911728,
+      "geometry_loss": 0.012781336903572083,
+      "validation_first_state_nmse": 0.017846109345555305,
+      "validation_first_accuracy": 1.0
+    }
+  ],
+  "frozen_backbone_not_in_optimizer": true,
+  "fit_inputs": [
+    "h(e x)",
+    "h(a x)",
+    "correct readout(h(a x))"
+  ],
+  "no_compound_fit_targets": true
+}

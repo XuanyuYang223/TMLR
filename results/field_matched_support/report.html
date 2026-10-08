@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>有限域：精确匹配统计的变换试验</title>
+<style>body{max-width:1100px;margin:40px auto;padding:0 20px;font:16px/1.7 system-ui;color:#18202b}img{max-width:100%}table{border-collapse:collapse;width:100%}td,th{padding:8px;border-bottom:1px solid #ddd;text-align:left}aside{background:#f2f4f7;padding:16px}</style>
+<h1>相同任务数量与完整输出统计下，变换结构能否预测隐藏几何</h1>
+<p>模型已完成 27/27，源任务门槛通过 27/27；报告更新于 2026-10-05T14:45:27.082337+00:00。三个可逆输入基变换与三个初始化构成九个配对设置，3 种源组合共享输入、初始化、训练更新数与每任务曝光。</p>
+<p>输入为完整 F5⁴ 的 625 点。P 组合输出 z1、z2、z3、z4；Mk 输出 z1、z2、z3、z3+k·z4，本轮 k=1, 2。所有组合都是四个独立任务，秩均为 4，完整源答案联合分布均为 625 个等概率状态，每列均匀、每对互信息为零。完整输出分布也严格匹配；所有源答案联合起来都保留全部输入信息。</p><p>本独立复核进一步要求每个源任务的四个物理输入系数全部非零；每个单任务都可通过各输入坐标的类别置换化为四输入模加法。函数复杂度匹配不保证多任务训练轨迹相同。<a href="controlled_worlds.json">实际输入基与函数等价检查</a>已保存。</p>
+<p>同一输入变换 T 交换 z3、z4。在单独编码每个源答案的独热特征中，P 保留四个任务方向；M1、M4 保留三个；M2、M3 保留两个。由有限域字符方向正交性可精确推出独热核 CKA 为 1、0.75、0.5。训练前登记的待检验预测是：隐藏表征是否也出现 P &gt; 平均(M1,M4) &gt; 平均(M2,M3)。精确公式仅适用于指定的理想源答案编码，不能直接当成学习后隐藏层的定理。</p>
+<img src="symmetry.png"><table><tr><th>源组合</th><th>理想答案核预测</th><th>隐藏 CKA</th><th>源字符方向方差比例</th><th>源学习门槛</th></tr><tr><td>P</td><td>1.00</td><td>0.4472</td><td>0.410</td><td>9/9</td></tr><tr><td>M1</td><td>0.75</td><td>0.4011</td><td>0.411</td><td>9/9</td></tr><tr><td>M2</td><td>0.50</td><td>0.3125</td><td>0.433</td><td>9/9</td></tr></table>
+<p>完整配对设置 9/9，其中满足所登记三层排序 4/9。每个设置内所有源组合的训练前隐藏表征完全相同，可排除不同初始表征造成的组间差异。逐设置差值和全部中间检查点均保留。</p>
+<aside>这项试验测量训练输入全集上的表征几何，不检验新实体泛化或迁移。输出统计严格匹配仍不能保证各任务的优化难度与学习轨迹相同，因而同时报告源准确率门槛和学习过程。九个设置由三个输入基与三个初始化交叉而成，并不是九个互不相关的新数据集；不据此报告普适显著性结论。</aside>
+<p>训练前协议记录：<a href="../six_hour_session/matched_field_preregistration.json">登记时间及冻结协议</a>。<a href="metadata.json">数据生成与严格统计审计</a> · <a href="summary.json">结果汇总</a> · <a href="final_models.csv">逐模型结果</a> · <a href="paired_contrasts.csv">配对差值</a> · <a href="curves.csv">全部曲线</a> · <a href="verification.json">核验</a> · <a href="symmetry.pdf">PDF 图</a></p></html>

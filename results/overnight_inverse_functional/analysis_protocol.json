@@ -1,0 +1,26 @@
+{
+  "registered_utc": "2026-10-07T06:04:10.566287+00:00",
+  "new_test_outcomes_observed": false,
+  "signature": {
+    "code_sha256": "8315ff829583004332a922d623ca1ff6253c936c9b3ceae767311fc120a264e7",
+    "protocol_sha256": "9bb4d25f9cf0bfe3c0e27767347afdcd398bd73e7f02b63b789c8c084d3dd787",
+    "geometry_helper_sha256": "2be514e17ab2f0142c8e98ccf05da0dbc603b4410d094d221375d92705c07623",
+    "stratum_helper_sha256": "abade2158edb1d49505cd2a005e9bd265cecd8897af6247076f232f179b33f3e",
+    "rules": {
+      "fixed_primary_update": 40000,
+      "all_checkpoints_reported": [
+        1200,
+        5000,
+        10000,
+        20000,
+        40000
+      ],
+      "geometry": "First128 test rows per length, equal-weight five lengths; answer strata>=3, cyclic one-row matched shuffle; subtract stratum means as linear answer control. Output-logit CKA also reported; no output-independent conclusion from CKA alone.",
+      "modes": "Fit primary length modes only from each16384-U frozen teacher argmax; secondary modes from192 true training answers. Lowest answer breaks ties. Save mappings before final test is opened.",
+      "subgroups": "Shared modal/nonmodal masks per repeat from frozen primary modes; report exact overall weighted decomposition for each primary contrast. No test-refitted length prior.",
+      "uncertainty": "Exhaustive6^6 paired empirical and3^3 source/target-pair cluster bootstrap; shared test/data world and three related pretrained pairs; descriptive, not population significance.",
+      "primary_outcomes": "New-test target full-vocabulary accuracy first; raw CKA and matched/residual specificity secondary. Four predeclared contrasts and all nulls reported. No test selection.",
+      "initial": "Replay frozen target pretrained starts and inverse teachers on identical test rows; source accuracy per length and subgroup is reported."
+    }
+  }
+}

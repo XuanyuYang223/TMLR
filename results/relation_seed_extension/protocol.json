@@ -1,0 +1,111 @@
+{
+  "registered_utc": "2026-10-06T12:59:40.053780+00:00",
+  "signature": {
+    "config_sha256": "7efbe8f8d13f9b79d04f032c7abca9ace294536bb830348cf6abc47c593b1193",
+    "code_sha256": "e5d94dfa1205d2d6c5ff7d28f6f2721078bc050413ce68f6ca93f81a5d55a582",
+    "original_train_code_sha256": "43115c61592d34ac7a53cb2c4a4ccaad83d97c21b893ec2d87824867123a9cf3",
+    "parent_protocol_sha256": "1063d1b102558ee19d30d1f1ad3fa467875f980009ddaa3c2a320d143a468b70",
+    "source_data_sha256": "7764f8b056459a51b21996493d34eb52e75d7d448eafcab8128a73c7c9d67132",
+    "probe_data_sha256": "b5f8f7d288bf9dc2c807f36952dc5af96c3470568b547cdf8993c8d1bb6a911c",
+    "plan": {
+      "output": "results/relation_seed_extension",
+      "base_config": "configs/permworld_combinations.json",
+      "previous_replication": "results/algebra_structure_replication",
+      "architecture": {
+        "id": "d256_l4",
+        "d_model": 256,
+        "layers": 4,
+        "heads": 8
+      },
+      "source_seeds": [
+        8111,
+        9127,
+        10141,
+        11159,
+        12163,
+        13171
+      ],
+      "conditions": [
+        "ordinary",
+        "correct_relations",
+        "shuffled_relations"
+      ],
+      "data_seed": 2026100661,
+      "lengths": [
+        10,
+        30
+      ],
+      "training_orbits_per_length": 256,
+      "probe_orbits_per_length": {
+        "fit": 16,
+        "validation": 4,
+        "iid_test": 8
+      },
+      "collision_pairs_per_length": 64,
+      "source_task": "left_to_right_maxima",
+      "observed_actions": [
+        0,
+        1,
+        4
+      ],
+      "known_edges": [
+        [
+          0,
+          1,
+          "c"
+        ],
+        [
+          1,
+          0,
+          "c"
+        ],
+        [
+          0,
+          4,
+          "i"
+        ],
+        [
+          4,
+          0,
+          "i"
+        ]
+      ],
+      "heldout_primary_words": [
+        "ci",
+        "ici"
+      ],
+      "wrong_order_word": "ic",
+      "source_steps": 20000,
+      "anchors_per_update": 32,
+      "record_every": 1000,
+      "source_learning_rate": 0.0003,
+      "warmup_steps": 500,
+      "minimum_learning_rate_ratio": 0.1,
+      "weight_decay": 0.01,
+      "relation_loss_weight": 0.25,
+      "relation_loss_ramp_steps": 500,
+      "batch_size": 128,
+      "ridge_grid": [
+        1e-06,
+        0.0001,
+        0.01,
+        1.0
+      ],
+      "answer_baseline_seeds": [
+        10017,
+        10042,
+        10101
+      ],
+      "fixed_predictions": [
+        "Answer plus task codes can reproduce the previous four-record group geometry; those probes alone cannot exclude answer coding.",
+        "On collision pairs, correct-relation models predict CI and ICI above the answer-only accuracy ceiling of 0.5 across new source seeds.",
+        "Correct-relation CI predictions include pairs with both different hidden answers correct; any deterministic predictor using only the three observed answers, length and task has pair success zero.",
+        "Correct-relation composition has higher mean hidden-answer accuracy than shuffled-relation and ordinary identity-operator controls; source learning grades are reported alongside all outcomes."
+      ],
+      "scope": "New relation-supervised assay, distinct from spontaneous geometry in ordinary multitask training. All source labels are LR-max counts at e/C/I states. Other orbit states and edges are withheld. Predictions compose learned affine operators on base hidden states and use the frozen numeric readout without forwarding the hidden transformed input. Ordinary models additionally receive generator-only posthoc affine probes, separately labeled. Collision selection defines a conditional test, not an iid population estimate."
+    },
+    "scope": "Fixed additional initializations of the same source training world and same held-out test. Same paired training policy as the parent. All seeds and negative outcomes will be reported; this is source-initialization replication, not independent-world confirmation.",
+    "deadline_policy": "SIGALRM stops current work at requested deadline; original trainer saves every 1000 steps and verifies RNG/sampler replay on resume. Interrupted jobs are partial, never counted as 20000-step results."
+  },
+  "new_models": 0
+}

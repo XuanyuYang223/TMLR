@@ -1,0 +1,35 @@
+\section{Supporting evidence and boundaries}
+\subsection{Permutation correspondence and intermediate-state sufficiency}
+The permutation task predicts the number of left-to-right maxima. Complement acts by $C(\pi)_j=n+1-\pi_j$ and inversion by $I(\pi)=\pi^{-1}$.
+The main missing word is complement followed by inverse, with target readout at $I(C(\pi))$.
+These experiments use a four-layer transformer and bidirectional involution supervision, rather than the matrix study's scalar encoder and forward-only operators.
+Four correctness conditions and a matched 20-epoch no-geometry comparator are evaluated on the same collision test.
+Six fitting repeats reuse three source initializations; they are not six independent source replications.
+
+\input{sections/supporting_tables.tex}
+
+Correct complement correspondence explains most of the factorial advantage; the extra inverse-correspondence increment is small and uncertain. The experiment does not support a required ordering of double-correct, either single-correct arm, and double-incorrect.
+The 20-epoch fits continue 10-epoch optimizer states. The matched 20-epoch no-geometry comparator was added after observing the other 20-epoch outcomes, using the existing zero geometry weight without outcome-based tuning. This timing limits its confirmatory status.
+
+The correct arm predicts the composition at 36.20\%, versus 93.35\% when the second operator receives the true intermediate. Repairing first-step readout-null error reaches 93.15\%, while repairing readout-row error reaches 59.09\%. These repairs require true intermediate states and are explanatory diagnostics. They are not deployable inference results. They motivated the final predicted-component transfers, which use no true intermediate.
+
+\subsection{Initial affine cross-domain experiments}
+Initial matrix and polynomial experiments use three ordinary sources, six adaptations per condition, and 900 fixed joint epochs in six conditions: the four correctness combinations, no geometry, and an output-space diagnostic.
+All conditions keep correct native and generator-output supervision; output-space operators have fewer parameters and are not capacity-matched causal controls.
+Matrix correct and incorrect composition scores are 9.44\% and 8.92\%, with a correct-minus-incorrect source-plus-whole-pair interval of $[-1.56,2.73]$ pp. True-intermediate composition reaches 99.22\%. Thus primitive answers and oracle composition can be reliable while a predicted intermediate is unusable.
+
+For exact cubic polynomials over $\F_{13}$, translation $Tf(x)=f(x+1)$ and differentiation $Df=f'$ give visible answers $f(0),f(1),f'(0)$ and missing answer $f'(1)$. Here $DT=TD$; the task cannot establish order discrimination.
+Correct and incorrect all-source accuracies are 8.27\% and 8.20\%.
+Two of three sources miss the predefined 90\% translation threshold, so this failure cannot be cleanly attributed to composition alone.
+The 128 pairs connect 39 derivative blocks into one component; they are not 128 independent block-level repetitions.
+These studies provide boundaries, not a confirmed universal positive effect or a refutation of all irreversible relation learning.
+
+\subsection{Why null information matters but null-only loss can fail}
+A separate prospective intervention crosses full-space versus null-only loss with correct versus matched-incorrect targets, using three new source initializations in each domain.
+The null-only objective is normalized in its own subspace and \emph{replaces} the full-space penalty.
+It does not retain a full-space term and add null weighting.
+The predeclared matrix interaction is $-1.30$ pp $[-5.08,2.60]$; the permutation interaction is $-5.57$ pp $[-10.31,-1.46]$.
+This proposed loss replacement did not pass its confirmation.
+Readout-null information can be important downstream while a null-only learning objective permits damaging row-space state error.
+
+Finally, an earlier parameter-matched three-new-source matrix confirmation yielded a 14.71 pp $[9.51,20.05]$ interaction. Predicted-null transfers and affine convergence on those same sources were exploratory mechanisms, even when evaluated on fresh inputs. The five-new-source final study independently confirms the fixed hypotheses; these sources and outcomes are not pooled.

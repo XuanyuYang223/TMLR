@@ -1,0 +1,143 @@
+{
+  "registered_utc": "2026-10-06T08:34:54.665314+00:00",
+  "signature": {
+    "plan": {
+      "output": "results/algebra_structure_replication",
+      "source_data": "results/native_confirmation/dataset/data.npz",
+      "source_reference": "results/native_ablation/source",
+      "base_config": "configs/permworld_combinations.json",
+      "source_seeds": [
+        2027,
+        3037,
+        4051
+      ],
+      "pilot_seed": 1009,
+      "architecture": {
+        "id": "d256_l4",
+        "d_model": 256,
+        "layers": 4,
+        "heads": 8
+      },
+      "source_steps": 20000,
+      "record_every": 1000,
+      "source_learning_rate": 0.0003,
+      "warmup_steps": 500,
+      "minimum_learning_rate_ratio": 0.1,
+      "groups": [
+        {
+          "id": "novel_records",
+          "tasks": [
+            "left_to_right_maxima",
+            "right_to_left_maxima",
+            "left_to_right_minima",
+            "right_to_left_minima"
+          ]
+        },
+        {
+          "id": "novel_minima_pair",
+          "tasks": [
+            "peaks",
+            "valleys",
+            "left_to_right_minima",
+            "right_to_left_minima"
+          ]
+        },
+        {
+          "id": "novel_peak_mixed",
+          "tasks": [
+            "peaks",
+            "left_to_right_maxima",
+            "left_to_right_minima",
+            "right_to_left_maxima"
+          ]
+        }
+      ],
+      "examples_per_task_per_step": 32,
+      "probe_data_seed": 2026100641,
+      "lengths": [
+        10,
+        30
+      ],
+      "orbits_per_length": {
+        "fit": 16,
+        "validation": 4,
+        "test": 8
+      },
+      "excluded_datasets": [
+        "results/six_hour_session/dataset/data.npz",
+        "results/native_target_repeat/dataset/data.npz",
+        "results/permworld_combinations/data.npz",
+        "results/native_confirmation/dataset/data.npz",
+        "results/native_ablation/dataset/data.npz",
+        "results/algebra_structure/native/dataset.npz"
+      ],
+      "probe_dimension": 64,
+      "ridge_grid": [
+        1e-06,
+        0.0001,
+        0.01,
+        1.0
+      ],
+      "batch_size": 96,
+      "primary_landmark": "source_query_concat",
+      "views": [
+        "ONE_END",
+        "source_query_concat",
+        "source_query_numeric_contrast",
+        "source_query_numeric_null",
+        "source_query_numeric_logits"
+      ],
+      "full_width_sensitivity": [
+        "ONE_END",
+        "source_query_concat"
+      ],
+      "primary_endpoints": [
+        "raw-h full-space generator displacement NMSE",
+        "unfitted composite displacement NMSE",
+        "wrong-order minus correct-order gap"
+      ],
+      "fixed_predictions": [
+        "Across the three new source seeds, records has lower mean generator displacement NMSE than each control group.",
+        "Across the three new source seeds, records has lower mean unfitted-composite displacement NMSE than each control group.",
+        "Records has lower generator and composite displacement NMSE than identity (1), shuffled-pair fits, and matched random initialization.",
+        "Records has positive wrong-order minus correct-order gap for CI versus IC."
+      ],
+      "scope": "Three independently initialized new source seeds, conditional on one reused source-training world and one fresh orbit probe world. Pilot seed is separately reported, not counted as blind replication.",
+      "interpretation": "Generators fitted separately with no group laws enforced. Row vectors: first C then I is z rho_C rho_I. Only FIT-derived length means and PCA. Query, numeric readout contrast, numeric null, logits and task-free prefix reported separately. No target adaptation."
+    },
+    "config_sha256": "e8ba1d88d7fe84300e977e8fa4a451b108cff0c4fd51edbe1ddd72e99677e426",
+    "replication_code_sha256": "07c35cc0ff53212836f29569c6b94fd28a07cdb32413c59d09961e2d170becbd",
+    "core_sha256": {
+      "experiments/native_ablation.py": "a44633e6dff24d42e5d732c7ed0a99c9b6c3fef395d281a21a177bfa072a761e",
+      "experiments/longrun_engine.py": "c40cede331cb3a92e61a3a501421c067db2ce862ad1a5934dd31ec28b6802bca",
+      "experiments/longrun_transfer.py": "e3fcc098e21ca9c7566b97fcdcc277200ba6a774627ab46f1a314b8e671fa8c2",
+      "experiments/longrun_attention.py": "5035f58453ddee5c5d5b05878491dfcc81764e172f2ebada437dc9e325048918",
+      "experiments/algebra_structure_direct.py": "23556f70cd5727bb76d6a34d1048fd642345fa504edc5ec301837ce3937e26cb",
+      "experiments/representation_algebra.py": "0f520644029ffc2b3bd32ddbea1f3d522f6335dee9ea4b2ae72ca4bdd96a7eae",
+      "experiments/native_algebra_structure.py": "cdf20ab31ad0f5cb44a43bbd8c6fbd2e1719b8a1ee5a7a78fcf3a490d3a78ce6",
+      "experiments/native_source_subspace.py": "d543e25d6cd31d4da43e545c57944644cc55cd5e5d31ff1a5a20a8519a091a60",
+      "experiments/permworld_combinations.py": "b14ac19b0be4c5695998d04782f43220f4b05a4634435f1715d6d1cdf3b0cdc0"
+    },
+    "source_data_sha256": "59c7dfcee14926ae002853f8c69cd113cb4be8564a813ad38f0e0289a4f234f5",
+    "excluded_data_sha256": {
+      "results/six_hour_session/dataset/data.npz": "ea63f0bb7dd843c40217574755e30f3f65a476b68bd8cf1d90fedc1791d47535",
+      "results/native_target_repeat/dataset/data.npz": "c1a3be77c71f72e5d8f2e6ee4feb8ba2615bbd691f8e696daa8f59653a4cfa59",
+      "results/permworld_combinations/data.npz": "964581706a8261c9abbd100b0c06b6c2c6f562e181cddbef672efa106dc88a3b",
+      "results/native_confirmation/dataset/data.npz": "59c7dfcee14926ae002853f8c69cd113cb4be8564a813ad38f0e0289a4f234f5",
+      "results/native_ablation/dataset/data.npz": "8dc94e74db5c9084015f64217eb17b30df962838de5e3774c5e0cfb7c5717242",
+      "results/algebra_structure/native/dataset.npz": "7a2b45ca674ac09435694a3776afff6821eb391ce51634fe68363712cee51d1d"
+    },
+    "pilot_sources": {
+      "novel_records": "ba7812cdf12498dd6a09cce535c240c9dbfb738eb3e1449a707357e744363122",
+      "novel_minima_pair": "13e99a4a99ba83f01accd3f52a02e4996d270c125f9f2f865ae1bd2c46a3f29c",
+      "novel_peak_mixed": "6e58ffca7ede108c8dfdbc04acdeb358e5a02850938e117c15cafa1370507614"
+    },
+    "upstream_sha256": {
+      "models.py": "286a01f794f627c1f0db5dd6dd31adbdb7f58f235e47203163eda6fc8a8baab6",
+      "math_ops.py": "968e7580c01289e5ffeab9f07c52beb334be40d95c0e61d7a7f9e2cab694c62c",
+      "passage.py": "d200ffe6f5f6cff717c1b6ed6698a5a6af42bb6580fa4e8729a2fd84b79babd6"
+    }
+  },
+  "new_source_models": 0,
+  "new_geometry_results": 0
+}

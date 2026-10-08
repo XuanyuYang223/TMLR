@@ -1,0 +1,127 @@
+{
+  "registered_utc": "2026-10-06T06:36:42.407038+00:00",
+  "signature": {
+    "code_sha256": "23556f70cd5727bb76d6a34d1048fd642345fa504edc5ec301837ce3937e26cb",
+    "config": {
+      "output": "results/algebra_structure",
+      "native_source": "results/native_confirmation",
+      "native_base_config": "configs/permworld_combinations.json",
+      "native_seeds": [
+        1009,
+        2027,
+        3037
+      ],
+      "data_seed": 2026100623,
+      "lengths": [
+        10,
+        30
+      ],
+      "orbits_per_length": {
+        "fit": 16,
+        "validation": 4,
+        "test": 8
+      },
+      "excluded_datasets": [
+        "results/six_hour_session/dataset/data.npz",
+        "results/native_target_repeat/dataset/data.npz",
+        "results/native_confirmation/dataset/data.npz",
+        "results/native_ablation/dataset/data.npz"
+      ],
+      "pca_dimension": 64,
+      "ridge_grid": [
+        1e-06,
+        0.0001,
+        0.01,
+        1.0
+      ],
+      "batch_size": 96,
+      "native_landmarks": [
+        "ONE_END",
+        "source_query_concat"
+      ],
+      "native_layers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "native_generators": [
+        "complement",
+        "reverse",
+        "inverse"
+      ],
+      "primary_endpoint": "Final-layer orbit-centered generator and unfitted-composition prediction errors, with trained versus matched random initialization; both landmarks reported.",
+      "primary_scope": "Prospective structural assay of previously trained ordinary models; fresh complete orbits withheld from all recorded source/target data. No new architecture or equivariance training.",
+      "secondary_native_views": [
+        "final_numeric_contrast",
+        "final_numeric_null",
+        "exact_source_numeric",
+        "exact_source_onehot"
+      ],
+      "field_source": "results/field_matched_support",
+      "field_config": "configs/field_matched_support.json",
+      "field_split_seed": 2026100624,
+      "field_fit_fraction": 0.6,
+      "field_validation_fraction": 0.2,
+      "field_probe_dimension": 32,
+      "field_scope": "C4 rotations, D4 rotations/reflections, and irreversible idempotent projection on F5^4; probe-held-out inputs only, because source models previously saw all 625 inputs.",
+      "interpretation": "Fit generators independently. No group laws or projection idempotence enforced during fitting. Orbit residuals remove invariant energy. Consistency alone is insufficient without held-out prediction and controls. Repeats are source seeds/worlds, not activation rows or action pairs."
+    },
+    "data_sha256": "7a2b45ca674ac09435694a3776afff6821eb391ce51634fe68363712cee51d1d",
+    "field_protocol_sha256": "34c3370c78cfb77939182bffec2cc2a50450108879a2f1b39377c40924825715",
+    "core_code_sha256": "0f520644029ffc2b3bd32ddbea1f3d522f6335dee9ea4b2ae72ca4bdd96a7eae",
+    "scope": "follow-up registered after orbit-centered endpoints; direct endpoints not inspected before registration",
+    "reason": "orbit centering can construct sign changes from raw invariant task codes; direct displacement is required for h(Tx)~rho h(x)",
+    "native_sources": {
+      "cycle_four_s1009_random.npz": "a2e91a72364f9cd1fd3b40f0fcbb39f59a3ec8c6a8a93ef4dcc93d41f596d17d",
+      "cycle_four_s1009_trained.npz": "9f9428ae545bd08564ea1d5cbf9aeae43ae5e2408660cbf301855870cf7a3a7d",
+      "cycle_four_s2027_random.npz": "5274d608376b4077fb8cdd22c32dfd37912a03b45f1c8c4861b22ee4a296e6be",
+      "cycle_four_s2027_trained.npz": "1eeb36d812354fb58f8cf5c79c433f2add940385f849224bab6a1bec29bfcbf6",
+      "cycle_four_s3037_random.npz": "87b9e2628490e87785b4bd09b77619a77140b23af6daad6efe50784976848756",
+      "cycle_four_s3037_trained.npz": "92bb75bc9f71a214fef9a1a0169e2903c6429180ceab4071d8e52d6bfe7b0003",
+      "cycle_none_s1009_random.npz": "cd6d86094f5824c18af979dd20f998f8c9038bd006567e150d178e24a3d9744e",
+      "cycle_none_s1009_trained.npz": "0606b0be94c322264b724004ea657d825b5f116ebcf59a9a9dabc158964eae9c",
+      "cycle_none_s2027_random.npz": "3fbff9bec760638854fc3ef5ca75a8710c0ecce15fbdf16ea2bd7ba668807ac5",
+      "cycle_none_s2027_trained.npz": "6472c012885a5eaf6c0c53bc1337adfede73673398c250c7d51750a9ac0c9931",
+      "cycle_none_s3037_random.npz": "7721391e638e06767eafcb63d4521ea5c83aa67079e655ad7f014e29cf847822",
+      "cycle_none_s3037_trained.npz": "d5b77d329a33d7dc6e51376ae016dac55ec03bd7f8efe93bd5cee4cd198f88a0",
+      "cycle_three_s1009_random.npz": "6fb35d1aa93c54b5f86a6b9e4dc4d1201f66a7d2afafa11682185ab8f6e296ce",
+      "cycle_three_s1009_trained.npz": "48d90fc0655e024dc4ebe3193fbbe0d30c0a7f4cf7e2049575e628529dad8a73",
+      "cycle_three_s2027_random.npz": "185fb7beee9af01f197fc0e14800d76761a39b42a22ab0f06380c000f91736ff",
+      "cycle_three_s2027_trained.npz": "fa2f344a3ad4e1eec4acedec5caf099364f3e6b28d3132bdf906e4647bb6f293",
+      "cycle_three_s3037_random.npz": "537c46856f13d18a132ef2e47c0037024251e16ff56b54accc1a9af3265ac293",
+      "cycle_three_s3037_trained.npz": "8f7b9119f5a15efa44bf738022fbb17e6644d50652667039603ccfb78a5b6212",
+      "interior_four_s1009_random.npz": "8db6f7a43af63cb86dc8563c2639679e926bc57ff97342388f0281d7c6c04339",
+      "interior_four_s1009_trained.npz": "618dd1526df5dad8b231449c531915ab7d3a44b3ca998a97f60c1036584ae703",
+      "interior_four_s2027_random.npz": "74127a3dbf113a2270cdce5a1752c75e395183180567ff2d3d7eb4c91b90ce79",
+      "interior_four_s2027_trained.npz": "9277f88f9774096ad9c74528c6465103f5e8e4854ca687787aee1a04344356ea",
+      "interior_four_s3037_random.npz": "ea0752e67b3d1d9ff31bfb70dfb243d50cbfe420256c23529657ccd2ac3ec1fa",
+      "interior_four_s3037_trained.npz": "5ab640cd55cb0f7dce9aa21d8fd6611e238fac8fa641ed7e352a61ef9d851343",
+      "interior_none_s1009_random.npz": "c8de6885099d918ae1653fdfcc7ca78f4653ae774c55c8e35ba22ad5d9c8337e",
+      "interior_none_s1009_trained.npz": "a56f99142cc2cb16d8c8997641def583abf261f7eb0dc0b0fec2c55e029d70a5",
+      "interior_none_s2027_random.npz": "594c7b2ce89d7bcbecf08eed5ddc16cb2eeabe618e944e7e13cfb8901d8d0d4b",
+      "interior_none_s2027_trained.npz": "76f919c08ea94f04cef8de0a9da2080e1bd92449893600ccf4250ab2701d0ecd",
+      "interior_none_s3037_random.npz": "07c6557fa92c0adbac1b5a3233797852dfe06dd8f8ee51cf95a6d9d744fe8902",
+      "interior_none_s3037_trained.npz": "30ec6e63530c841b5decac29883663a18a86584e08a98fcbca16691197cac51e",
+      "position_four_s1009_random.npz": "025e1a6a55d0d5667a077c33b6e373d688fb14c7b3687ad93ece4c665f9cf186",
+      "position_four_s1009_trained.npz": "15ba3437b460f264782a9b6045b69e3147a39fb3e45aae362686c36d0bb50440",
+      "position_four_s2027_random.npz": "f75ef9d9625444b518efaae5f3865243f3d353e92143065c7ca0590076895f2d",
+      "position_four_s2027_trained.npz": "90ea4d0a653d6ba82e13054ff042172e037f02cea19f06efe0ebf64c2ac1ceb0",
+      "position_four_s3037_random.npz": "b292c064d8d90d373c549b91dc55c32435dd0e202bf6dd5610fdd1e5530f173e",
+      "position_four_s3037_trained.npz": "b0fe6b19c8fc9e586d4dbfe5ff68383050691c4c136e9babbf445576c8f2c1a9",
+      "position_none_s1009_random.npz": "c367df76ff936201ed0ccb388c68b8a2ef355949e1bebca6b862a422c98565db",
+      "position_none_s1009_trained.npz": "9aea2d72f18b9fec96a25ae4ce7c2c78c03ee97fa1260ae15bb68cbbff8e3738",
+      "position_none_s2027_random.npz": "694f33f894b69ca1b0dafd171c5e81fb01f65454da5a186567cc4feff3116a23",
+      "position_none_s2027_trained.npz": "342786c6e15b37e30d66b59912e8b36552f9588ad30346eb7f8b7ad3750dcfd4",
+      "position_none_s3037_random.npz": "6b4b285866635863d5fab2306125de2258762294a60629b0313c31b030eb4077",
+      "position_none_s3037_trained.npz": "021b8255b8600a3833879924a1e1525a367fc19f283ac98c94b2c16e0e65e811",
+      "position_three_s1009_random.npz": "5130b8d4265c761780d8964ee296d0e188f97a3a7a662647d6e5f136654c8e60",
+      "position_three_s1009_trained.npz": "f990ce3ef57bf5bb698573afcbff8a2fe92d54b2e8f03980f6a5957f7058a305",
+      "position_three_s2027_random.npz": "4506ff31fe1e497d902c54a586b814bd675d10f12ae2a08c4c605d436d578721",
+      "position_three_s2027_trained.npz": "fbbef27d997a05f6e916c36e5b39570f099c58773c69a33bf2b237a25b25138b",
+      "position_three_s3037_random.npz": "9fc34f31f8dc5c4ce34d6193db58d4430aa289f23b4dad7a52bed3f5352cf37c",
+      "position_three_s3037_trained.npz": "095caa48085efe0fd40703e7e094951c6bbadfb4ed81b53e883b5c490124bfad"
+    },
+    "evaluation": "full hidden-space action-displacement NMSE; identity baseline exactly one for noninvariant actions; no test centering or target inputs in predictor"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "registered_utc": "2026-10-07T13:38:19.581230+00:00",
+  "new_outcomes_observed": false,
+  "signature": {
+    "code_sha256": "7c94bed401f09f0ae7c934c35a66102e00e636c82008287982020fc1be3fac18",
+    "base_protocol_sha256": "a33569b17cc978df271f84d66a821721651db467811abf81570c54add212bc4b",
+    "source_initializations": [
+      {
+        "seed": 5081,
+        "checkpoint": "results/algebra_hidden_relations/checkpoints/ordinary_s5081.pt",
+        "sha256": "bc90859da5ad087f862304c9bf93e6f9220ec27a2abf3250e8aad82cbb6b6d8a"
+      },
+      {
+        "seed": 6091,
+        "checkpoint": "results/algebra_hidden_relations/checkpoints/ordinary_s6091.pt",
+        "sha256": "0ed388c242caa89ec94aabcc8e6a339396be475303c8bd1143d2442cdccc655e"
+      },
+      {
+        "seed": 7103,
+        "checkpoint": "results/algebra_hidden_relations/checkpoints/ordinary_s7103.pt",
+        "sha256": "dcc2d064c223b10cf60b4a15b5679ef35833fd46bd4efd5d8925c64d461cc330"
+      }
+    ],
+    "plan": {
+      "output": "results/two_step_relation_coverage_pilot",
+      "parent": "results/algebra_hidden_relations",
+      "source_condition": "ordinary",
+      "source_seeds": [
+        5081,
+        6091,
+        7103
+      ],
+      "support_seeds": [
+        261072101
+      ],
+      "test_seed": 261072201,
+      "lengths": [
+        12,
+        15,
+        20,
+        25,
+        30
+      ],
+      "fit_per_length": 8192,
+      "validation_per_length": 512,
+      "iid_per_length": 16,
+      "collision_pairs_per_length": 8,
+      "conditions": [
+        "both_correct"
+      ],
+      "views": [
+        "hidden"
+      ],
+      "epochs": 10,
+      "checkpoint_epochs": [
+        5,
+        10
+      ],
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "warmup_updates": 100,
+      "minimum_learning_rate_ratio": 0.2,
+      "weight_decay": 0.0001,
+      "geometry_weight": 0.25,
+      "distillation_temperature": 2.0,
+      "minimum_pairing_stratum": 3,
+      "primary_word": "ci",
+      "words": [
+        "c",
+        "i",
+        "ci",
+        "ic",
+        "cc",
+        "ii"
+      ],
+      "primary_epoch": 10,
+      "fixed_predictions": [
+        "Both-correct hidden operators have higher heldout-ci accuracy than each of the other three conditions; compare paired outcomes without imposing a single-correct ordering.",
+        "Both-correct collision-ci accuracy exceeds the visible-answer-only0.5 ceiling in each of the three frozen-source means.",
+        "Both-correct collision-ci pair-both-correct is positive in each source mean.",
+        "Output-space operators, true-intermediate diagnostics, all single-step scores and all failures are reported; none are used to select fitting settings."
+      ],
+      "deadline_utc": "2026-10-07T17:00:00+00:00",
+      "scope": "Fresh visible-only coverage feasibility: one source and one condition,16 times as many unique known-state anchors, fixed10 complete epochs. This pilot uses only e/C/I predictions. The generated small unused test archive is checked for mathematical and orbit integrity but compound predictions are never generated or used for selection. Fit/validation full orbits exclude all previously registered local input archives. The source learning rate was chosen from previously completed known-only pilot grades, not compound outcomes.",
+      "source_learning_rate": 0.0003,
+      "operator_learning_rate": 0.001,
+      "native_ce_weight": 1.0,
+      "native_distillation_weight": 1.0,
+      "operator_distillation_weight": 1.0,
+      "interpretation_gate": "Before interpreting hidden-composition failure, both correct single-generator validation accuracies must exceed0.90 in each of the three source means; report failure if unmet. Source native observed-state accuracy and each control operator accuracy are reported separately."
+    }
+  }
+}

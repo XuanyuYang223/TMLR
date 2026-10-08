@@ -1,0 +1,393 @@
+{
+  "registered_utc": "2026-10-06T04:47:11.679869+00:00",
+  "signature": {
+    "plan_sha256": "49a6dba5b8056608da4a86b011987b19902b909e912fbabbdd2f518e57e7b6db",
+    "effective_base_config": {
+      "repository": "external/neurips",
+      "candidate_table": "results/permutation_audit/candidate_bundles.csv",
+      "data_seed": 20261005,
+      "lengths": [
+        10,
+        30
+      ],
+      "examples_per_length": {
+        "train": 200,
+        "validation": 30,
+        "representation": 20,
+        "support_pool": 50,
+        "target_test": 30
+      },
+      "model_seeds": [
+        17,
+        42,
+        101
+      ],
+      "d_model": 96,
+      "layers": 2,
+      "heads": 4,
+      "ff_multiplier": 4,
+      "dropout": 0.0,
+      "pretrain_steps": 1200,
+      "examples_per_task_per_step": 32,
+      "learning_rate": 0.0005,
+      "weight_decay": 0.01,
+      "record_every": 300,
+      "target_tasks": [
+        "descents",
+        "recoils",
+        "lis_length",
+        "longest_increasing_run"
+      ],
+      "target_budgets": [
+        64,
+        256
+      ],
+      "adapt_steps": 100,
+      "adapt_batch_size": 32,
+      "adapt_learning_rate": 0.0005,
+      "probe_steps": 200,
+      "probe_learning_rate": 0.01,
+      "primary_budget": 256,
+      "primary_mode": "finetune",
+      "status": "exploratory small-model new-combination pilot; not the original full-scale training protocol",
+      "selection_policy": "fixed known circuits; null controls minimize source-label-statistic distance with equal expanded affine pair count; no neural outcomes used",
+      "evaluation_policy": "all source training, validation, representation, target support and target test inputs are globally disjoint; no target-test tuning",
+      "limitations": [
+        "Source label marginals and task difficulty are not exactly matched.",
+        "No separately trained single-task controls in this pilot.",
+        "Null means no proved rational linear identity of the audited form, not absence of all mathematical relationships.",
+        "Two layers and answer-token-only loss differ from the original full-scale protocol."
+      ]
+    },
+    "core_sha256": {
+      "experiments/native_confirmation.py": "8de4f779865bbb6907e27b31824f3fe63d5d917840583292d0bff37b8dbfbf87",
+      "experiments/longrun_engine.py": "c40cede331cb3a92e61a3a501421c067db2ce862ad1a5934dd31ec28b6802bca",
+      "experiments/native_confirmation_analysis.py": "452e271748bbbd78b11cdd467fbd7ad7352645bac3f9e7204b514d3139a3703b",
+      "experiments/longrun_transfer.py": "e3fcc098e21ca9c7566b97fcdcc277200ba6a774627ab46f1a314b8e671fa8c2",
+      "experiments/longrun_attention.py": "5035f58453ddee5c5d5b05878491dfcc81764e172f2ebada437dc9e325048918",
+      "experiments/permworld_combinations.py": "b14ac19b0be4c5695998d04782f43220f4b05a4634435f1715d6d1cdf3b0cdc0",
+      "experiments/native_target_repeat.py": "7c18ee82bab500418a96f1bea0d9178294e3727e9f901464289b4cbbe4a04a1d",
+      "experiments/native_transfer_prediction.py": "862e0ed54e86c5e6ece7341b47a830dc277e359c7904dfdd594777c53c03ae2a",
+      "experiments/native_transform_audit.py": "0111120bdc032cbd0701f4a827a70f06db749aa2c9975c5a618ad0bcd8c9bab6",
+      "experiments/native_prediction_sensitivity.py": "cde0c5362e532ee03333c55a33163cb7914379adacd035465a1f06a988641184",
+      "experiments/native_length_baseline.py": "818e69666f2150fb86db7e9870c17872bce19b4c5d3ba18db4147df64f69da55",
+      "experiments/native_ablation.py": "a44633e6dff24d42e5d732c7ed0a99c9b6c3fef395d281a21a177bfa072a761e",
+      "experiments/native_ablation_analysis.py": "966d76fa2a4c8e613f7c01e14253324e71751bae1f40ee344730e700c7d1b6dc",
+      "experiments/native_ablation_math.py": "11a1e236cbb3dcb269d009281e43ba864d26a984e208ddb52c0d0f626ac11941",
+      "experiments/permutation_audit.py": "d02b667d8d1951c547ad4a4a6a84875535f6ee59255db96bb6abef241b5b267e",
+      "experiments/analysis.py": "19e8a60044b0901c4836c6a44b1193420fe7052c276fd51396dfba9e1d77abb1",
+      "experiments/permworld_combinations_report.py": "16375f0432f4b00a6e83242b4089747636cb81d500732bbd99ab7383cd9c0d85"
+    },
+    "sources": [
+      {
+        "id": "full_b128",
+        "seed": 1009,
+        "kind": "reused",
+        "tasks": [
+          "peaks",
+          "valleys",
+          "left_to_right_maxima",
+          "right_to_left_maxima"
+        ],
+        "batch": 32,
+        "record": "results/native_confirmation/multi/d256_l4_interior_none_s1009.json",
+        "checkpoint": "results/native_confirmation/multi/checkpoints/d256_l4_interior_none_s1009.pt",
+        "record_sha256": "c3b6d3b6a22a41647bd4136f003f1bfee50b63df6a1d9630d447187ad47eecbb",
+        "checkpoint_sha256": "fe28e77b4b124d7a57f6b3d604229ec1b1edb7cbb4f441e1b8bf433cfa84efe8"
+      },
+      {
+        "id": "single_peaks_b32",
+        "seed": 1009,
+        "kind": "reused",
+        "tasks": [
+          "peaks"
+        ],
+        "batch": 32,
+        "record": "results/native_confirmation/single/d256_l4_peaks_s1009.json",
+        "checkpoint": "results/native_confirmation/single/checkpoints/d256_l4_peaks_s1009.pt",
+        "record_sha256": "0efd7d2893845d29e491b6c46a5a0885b0cc7d9db869ede6f10358cb21fe1f5b",
+        "checkpoint_sha256": "b4ab14a350b5548791a0c266b748c26d4a91428db5ee39e9633d697d2de8e305"
+      },
+      {
+        "id": "single_valleys_b32",
+        "seed": 1009,
+        "kind": "reused",
+        "tasks": [
+          "valleys"
+        ],
+        "batch": 32,
+        "record": "results/native_confirmation/single/d256_l4_valleys_s1009.json",
+        "checkpoint": "results/native_confirmation/single/checkpoints/d256_l4_valleys_s1009.pt",
+        "record_sha256": "92e1019537f1717261ca42f76adaba3138c4e9722eb567f08bb920732140c1c9",
+        "checkpoint_sha256": "a600baa75f2ed7e7c75cb44feba5317236b31d670d17f764f1ca53242496853d"
+      },
+      {
+        "id": "single_left_to_right_maxima_b32",
+        "seed": 1009,
+        "kind": "reused",
+        "tasks": [
+          "left_to_right_maxima"
+        ],
+        "batch": 32,
+        "record": "results/native_confirmation/single/d256_l4_left_to_right_maxima_s1009.json",
+        "checkpoint": "results/native_confirmation/single/checkpoints/d256_l4_left_to_right_maxima_s1009.pt",
+        "record_sha256": "73aa7c2d8bafec0be057c41b4af52edf8db12ff318c1d6f2b35605651a0ca106",
+        "checkpoint_sha256": "4851fde8220da606cc6f535b25b8e1003e91214df710f48890726572af4f3fd2"
+      },
+      {
+        "id": "single_right_to_left_maxima_b32",
+        "seed": 1009,
+        "kind": "reused",
+        "tasks": [
+          "right_to_left_maxima"
+        ],
+        "batch": 32,
+        "record": "results/native_confirmation/single/d256_l4_right_to_left_maxima_s1009.json",
+        "checkpoint": "results/native_confirmation/single/checkpoints/d256_l4_right_to_left_maxima_s1009.pt",
+        "record_sha256": "2270e2a1850429eea4c77628570cb47d2084fcfdb4eae9bfeefbbc7735bf4df1",
+        "checkpoint_sha256": "de2b6dad4a1a31d8d9d437e27b588054c6ceffe57e7c0dc289bcf04a23c961ac"
+      },
+      {
+        "id": "full_b128",
+        "seed": 2027,
+        "kind": "reused",
+        "tasks": [
+          "peaks",
+          "valleys",
+          "left_to_right_maxima",
+          "right_to_left_maxima"
+        ],
+        "batch": 32,
+        "record": "results/native_confirmation/multi/d256_l4_interior_none_s2027.json",
+        "checkpoint": "results/native_confirmation/multi/checkpoints/d256_l4_interior_none_s2027.pt",
+        "record_sha256": "691b2c4dedf0042024715ee0cb1d39a5f3ac483632ae199062d160a2c38ba01b",
+        "checkpoint_sha256": "70d3c2714a7c59b5d90e85646bf4c1a9d334adaca667bbfcaa7db0cbe39cc0ee"
+      },
+      {
+        "id": "single_peaks_b32",
+        "seed": 2027,
+        "kind": "reused",
+        "tasks": [
+          "peaks"
+        ],
+        "batch": 32,
+        "record": "results/native_confirmation/single/d256_l4_peaks_s2027.json",
+        "checkpoint": "results/native_confirmation/single/checkpoints/d256_l4_peaks_s2027.pt",
+        "record_sha256": "15d692238228689e34468f2dff561c1b14f30f2742ce1d222cca56ecfaa70bc3",
+        "checkpoint_sha256": "f1278bb9f44529cdac2436f6e6ab016813cc33fbf4f7e385f6708f05c2e372a7"
+      },
+      {
+        "id": "single_valleys_b32",
+        "seed": 2027,
+        "kind": "reused",
+        "tasks": [
+          "valleys"
+        ],
+        "batch": 32,
+        "record": "results/native_confirmation/single/d256_l4_valleys_s2027.json",
+        "checkpoint": "results/native_confirmation/single/checkpoints/d256_l4_valleys_s2027.pt",
+        "record_sha256": "9fdd4a230ff806688e4c1ef633ea4a030e90f69995a7a106e6d055ec87e90df1",
+        "checkpoint_sha256": "2a68f9e7222518bad25ce79c60a4a163e64b89a88ea575b3c12c2e452be8698f"
+      },
+      {
+        "id": "single_left_to_right_maxima_b32",
+        "seed": 2027,
+        "kind": "reused",
+        "tasks": [
+          "left_to_right_maxima"
+        ],
+        "batch": 32,
+        "record": "results/native_confirmation/single/d256_l4_left_to_right_maxima_s2027.json",
+        "checkpoint": "results/native_confirmation/single/checkpoints/d256_l4_left_to_right_maxima_s2027.pt",
+        "record_sha256": "e594565d4944256545bf716f8d1c1dcfb384be8195490358b7e9b4a5cda8c2ce",
+        "checkpoint_sha256": "70afd8961fa9d43d884d33893b9352299ad76d4d09124545e457d92b8f88eb64"
+      },
+      {
+        "id": "single_right_to_left_maxima_b32",
+        "seed": 2027,
+        "kind": "reused",
+        "tasks": [
+          "right_to_left_maxima"
+        ],
+        "batch": 32,
+        "record": "results/native_confirmation/single/d256_l4_right_to_left_maxima_s2027.json",
+        "checkpoint": "results/native_confirmation/single/checkpoints/d256_l4_right_to_left_maxima_s2027.pt",
+        "record_sha256": "14d329baa727b0e83eda9b41806a2cdb44d8c6bbe735728e1bb57a7ba97c5163",
+        "checkpoint_sha256": "82ba195c00f5b3a430c01cb19fd9f7b6a4aa38f7e02a6a4303f1bd95b87eab7b"
+      },
+      {
+        "id": "full_b128",
+        "seed": 3037,
+        "kind": "reused",
+        "tasks": [
+          "peaks",
+          "valleys",
+          "left_to_right_maxima",
+          "right_to_left_maxima"
+        ],
+        "batch": 32,
+        "record": "results/native_confirmation/multi/d256_l4_interior_none_s3037.json",
+        "checkpoint": "results/native_confirmation/multi/checkpoints/d256_l4_interior_none_s3037.pt",
+        "record_sha256": "b81f2a1a40d84e7f53b1ff60e450eff54e2c2f29cce0a3abc30320536d1a7b8f",
+        "checkpoint_sha256": "9888199d0fcc7297de6f2bbbab4131b86eb823fa8d3cc21aa23d35638e4f5d07"
+      },
+      {
+        "id": "single_peaks_b32",
+        "seed": 3037,
+        "kind": "reused",
+        "tasks": [
+          "peaks"
+        ],
+        "batch": 32,
+        "record": "results/native_confirmation/single/d256_l4_peaks_s3037.json",
+        "checkpoint": "results/native_confirmation/single/checkpoints/d256_l4_peaks_s3037.pt",
+        "record_sha256": "64c1bfe1f1a17da97c22ba4d033e43be65c03092e5ebd49f0d1882379deb722f",
+        "checkpoint_sha256": "e37f67da126644ddfa23c0977a104fe0318872f200264e510333b933df0e0019"
+      },
+      {
+        "id": "single_valleys_b32",
+        "seed": 3037,
+        "kind": "reused",
+        "tasks": [
+          "valleys"
+        ],
+        "batch": 32,
+        "record": "results/native_confirmation/single/d256_l4_valleys_s3037.json",
+        "checkpoint": "results/native_confirmation/single/checkpoints/d256_l4_valleys_s3037.pt",
+        "record_sha256": "2e9b3b34024b1f6166d8601dac22ebd60ffb87fb70b67cc86de481d73c91fa4b",
+        "checkpoint_sha256": "c8588f71aa762fbe90d046325e8f30c0c71d6ec8d7e637e619aa99d930591a3e"
+      },
+      {
+        "id": "single_left_to_right_maxima_b32",
+        "seed": 3037,
+        "kind": "reused",
+        "tasks": [
+          "left_to_right_maxima"
+        ],
+        "batch": 32,
+        "record": "results/native_confirmation/single/d256_l4_left_to_right_maxima_s3037.json",
+        "checkpoint": "results/native_confirmation/single/checkpoints/d256_l4_left_to_right_maxima_s3037.pt",
+        "record_sha256": "df4bca4ede2ede7e915d25938ce1975e4d015e26b1426a344dce619829d4d1ec",
+        "checkpoint_sha256": "9fb3c299d409d88a1eb78585c27e3bbfd2f0251fc95e52db0fd1d4136c3d90a0"
+      },
+      {
+        "id": "single_right_to_left_maxima_b32",
+        "seed": 3037,
+        "kind": "reused",
+        "tasks": [
+          "right_to_left_maxima"
+        ],
+        "batch": 32,
+        "record": "results/native_confirmation/single/d256_l4_right_to_left_maxima_s3037.json",
+        "checkpoint": "results/native_confirmation/single/checkpoints/d256_l4_right_to_left_maxima_s3037.pt",
+        "record_sha256": "1c368ac1f673eee91388e476d8063fe5efd1335869105107fc3294078f4851dc",
+        "checkpoint_sha256": "bfa2ca77209914d5daa26ded1546784941595e5c61dea59c08f97aa6ba5cf720"
+      }
+    ],
+    "upstream_sha256": {
+      "external/neurips/src/neurips_permutations/models.py": "286a01f794f627c1f0db5dd6dd31adbdb7f58f235e47203163eda6fc8a8baab6",
+      "external/neurips/src/neurips_permutations/math_ops.py": "968e7580c01289e5ffeab9f07c52beb334be40d95c0e61d7a7f9e2cab694c62c",
+      "external/neurips/src/neurips_permutations/passage.py": "d200ffe6f5f6cff717c1b6ed6698a5a6af42bb6580fa4e8729a2fd84b79babd6"
+    },
+    "source_data_sha256": "59c7dfcee14926ae002853f8c69cd113cb4be8564a813ad38f0e0289a4f234f5",
+    "old_weights_sha256": "1a0eca8801b7687e4e51358c67430ff6b32ef39a5261ac3301c60d52696e8375"
+  },
+  "new_source_records": 0,
+  "new_transfer_records": 0,
+  "plan": {
+    "output": "results/native_ablation",
+    "source_root": "results/native_confirmation",
+    "base_config": "configs/permworld_combinations.json",
+    "seeds": [
+      1009,
+      2027,
+      3037
+    ],
+    "target_data_seed": 202610061,
+    "source_steps": 20000,
+    "record_every": 1000,
+    "architecture": {
+      "id": "d256_l4",
+      "d_model": 256,
+      "layers": 4,
+      "heads": 8
+    },
+    "source_learning_rate": 0.0003,
+    "warmup_steps": 500,
+    "minimum_learning_rate_ratio": 0.1,
+    "candidate_tasks": [
+      "peaks",
+      "valleys",
+      "left_to_right_maxima",
+      "right_to_left_maxima"
+    ],
+    "novel_groups": [
+      {
+        "id": "novel_records",
+        "tasks": [
+          "left_to_right_maxima",
+          "right_to_left_maxima",
+          "left_to_right_minima",
+          "right_to_left_minima"
+        ]
+      },
+      {
+        "id": "novel_minima_pair",
+        "tasks": [
+          "peaks",
+          "valleys",
+          "left_to_right_minima",
+          "right_to_left_minima"
+        ]
+      },
+      {
+        "id": "novel_peak_mixed",
+        "tasks": [
+          "peaks",
+          "left_to_right_maxima",
+          "left_to_right_minima",
+          "right_to_left_maxima"
+        ]
+      },
+      {
+        "id": "novel_valley_mixed",
+        "tasks": [
+          "valleys",
+          "left_to_right_maxima",
+          "right_to_left_maxima",
+          "right_to_left_minima"
+        ]
+      }
+    ],
+    "budgets": [
+      64,
+      256
+    ],
+    "adaptation": {
+      "candidate_shared": {
+        "learning_rate": 0.0003,
+        "steps": 100
+      },
+      "shared": {
+        "learning_rate": 0.0001,
+        "steps": 100
+      }
+    },
+    "length_bandwidth": 2.0,
+    "bootstrap_repetitions": 20000,
+    "inference_seed": 202610062,
+    "primary_ablation": "LIS/256, candidate_shared; full_b96 minus each drop-one_b96; three paired source seeds",
+    "primary_supervision_control": "full_b96 minus each single_b96; secondary full_b32 minus single_b32; same total labels and optimizer updates",
+    "secondary_removal_control": "full_b128 minus drop-one_b96 retains per-task exposure but changes total labels",
+    "primary_novel_prediction": "LIS/256 shared; four frozen variants from native_confirmation weights; all four previously untrained task sets retained",
+    "qualitative_novel_hypothesis": "mean paired-random gain of novel_records and novel_minima_pair exceeds novel_peak_mixed and novel_valley_mixed; exploratory, fixed before new training",
+    "sampling": "every step advances the previous 32-index sampler; smaller batches use its prefix; larger batches append draws from a separate RNG; same length sequence and core indices across all conditions",
+    "limitations": [
+      "Three paired seeds conditional on the same source-data world; exploratory follow-up selected using earlier outcomes.",
+      "Total labels and optimizer updates are matched, but tasks allocate these labels across different numbers of permutation inputs per update.",
+      "The source pool is reused for causal-comparison control; the common support and target-test pools are globally new.",
+      "Four novel task sets do not establish cross-domain or broad task-set generalization; unknown audited actions are not proof of absent relations."
+    ]
+  },
+  "scope": "selected from earlier outcomes, frozen before new source training and new target generation"
+}

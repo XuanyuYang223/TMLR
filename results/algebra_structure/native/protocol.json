@@ -1,0 +1,197 @@
+{
+  "registered_utc": "2026-10-06T06:28:28.709919+00:00",
+  "signature": {
+    "config": {
+      "output": "results/algebra_structure",
+      "native_source": "results/native_confirmation",
+      "native_base_config": "configs/permworld_combinations.json",
+      "native_seeds": [
+        1009,
+        2027,
+        3037
+      ],
+      "data_seed": 2026100623,
+      "lengths": [
+        10,
+        30
+      ],
+      "orbits_per_length": {
+        "fit": 16,
+        "validation": 4,
+        "test": 8
+      },
+      "excluded_datasets": [
+        "results/six_hour_session/dataset/data.npz",
+        "results/native_target_repeat/dataset/data.npz",
+        "results/native_confirmation/dataset/data.npz",
+        "results/native_ablation/dataset/data.npz"
+      ],
+      "pca_dimension": 64,
+      "ridge_grid": [
+        1e-06,
+        0.0001,
+        0.01,
+        1.0
+      ],
+      "batch_size": 96,
+      "native_landmarks": [
+        "ONE_END",
+        "source_query_concat"
+      ],
+      "native_layers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "native_generators": [
+        "complement",
+        "reverse",
+        "inverse"
+      ],
+      "primary_endpoint": "Final-layer orbit-centered generator and unfitted-composition prediction errors, with trained versus matched random initialization; both landmarks reported.",
+      "primary_scope": "Prospective structural assay of previously trained ordinary models; fresh complete orbits withheld from all recorded source/target data. No new architecture or equivariance training.",
+      "secondary_native_views": [
+        "final_numeric_contrast",
+        "final_numeric_null",
+        "exact_source_numeric",
+        "exact_source_onehot"
+      ],
+      "field_source": "results/field_matched_support",
+      "field_config": "configs/field_matched_support.json",
+      "field_split_seed": 2026100624,
+      "field_fit_fraction": 0.6,
+      "field_validation_fraction": 0.2,
+      "field_probe_dimension": 32,
+      "field_scope": "C4 rotations, D4 rotations/reflections, and irreversible idempotent projection on F5^4; probe-held-out inputs only, because source models previously saw all 625 inputs.",
+      "interpretation": "Fit generators independently. No group laws or projection idempotence enforced during fitting. Orbit residuals remove invariant energy. Consistency alone is insufficient without held-out prediction and controls. Repeats are source seeds/worlds, not activation rows or action pairs."
+    },
+    "code": {
+      "experiments/native_algebra_structure.py": "cdf20ab31ad0f5cb44a43bbd8c6fbd2e1719b8a1ee5a7a78fcf3a490d3a78ce6",
+      "experiments/representation_algebra.py": "0f520644029ffc2b3bd32ddbea1f3d522f6335dee9ea4b2ae72ca4bdd96a7eae",
+      "experiments/field_algebra_structure.py": "abd25f465658013b387e89c55b8c78ab0a8adbbf73933a37d1fb18d01fe8cb3c"
+    },
+    "source_models": {
+      "d256_l4_cycle_none_s1009": "e9e7c2f611e8cfaeb7e0a02ebaf3ece115e65a7ae808a8cae7a0e8359671a23f",
+      "d256_l4_cycle_none_s2027": "3f464a2ed0c5c8db94e5af87c7173dfdbdc9a207327c82950f71398f1e639c1e",
+      "d256_l4_cycle_none_s3037": "db888229334495ab4ab31fac2ebf53cdf6a7512ad6358b4fe9538751d75fb3b2",
+      "d256_l4_cycle_three_s1009": "3007d3aa50a3ee5dc2004bc9f5b25ca7c2373d63e8e853284257f221947a1669",
+      "d256_l4_cycle_three_s2027": "9001d53b6d451ce3436e4ae8cb3cb94c966333bb1b94cf9e129cceddd7071a73",
+      "d256_l4_cycle_three_s3037": "55dca3802f8f2c5590dc7b167b4fa7a94ae4d475b70cbb5759e19000106febc7",
+      "d256_l4_cycle_four_s1009": "cd4ac00b56349801acd37c37a1f3a92b9be96363e21f05888c486a25622ea31d",
+      "d256_l4_cycle_four_s2027": "22c394cfd29f5e6dd3983ee00c2042b3bab4144f7417c06960ffe1673eb04d33",
+      "d256_l4_cycle_four_s3037": "87891c04cbc5d3bef07e19cdd97e897a22b9c7e73c7c12e92c6080669880fbb3",
+      "d256_l4_interior_none_s1009": "fe28e77b4b124d7a57f6b3d604229ec1b1edb7cbb4f441e1b8bf433cfa84efe8",
+      "d256_l4_interior_none_s2027": "70d3c2714a7c59b5d90e85646bf4c1a9d334adaca667bbfcaa7db0cbe39cc0ee",
+      "d256_l4_interior_none_s3037": "9888199d0fcc7297de6f2bbbab4131b86eb823fa8d3cc21aa23d35638e4f5d07",
+      "d256_l4_interior_four_s1009": "1603ee919aedb66f6b42ed23e00d49c1be518d6902234387323b77ac4d6cdb9d",
+      "d256_l4_interior_four_s2027": "1ac1013207fce64f3978be8f321f9b7631c6f1736489347284a09f22cd47d8c0",
+      "d256_l4_interior_four_s3037": "a8c326718128a63cb7f0ebb5ce3435dfbe735ce6d39b53002ec068bccca82c5b",
+      "d256_l4_position_none_s1009": "47a2f9b3027c2115c1b8df4e8c255ce25c66c466102722c230feef9eb5c9e620",
+      "d256_l4_position_none_s2027": "65c2cc56403a1b7f98d9b6ec846d5c910b9ba28e01fdf0b3b27eabedfde66f66",
+      "d256_l4_position_none_s3037": "e1e7110d34972ee73cb774ae537c12af70baf28f6912e4a77f503f76310d555d",
+      "d256_l4_position_three_s1009": "52c7733c0dac241a5ec5447a89e45698d1ca1a2126ab072f303b9cd5c0b869a2",
+      "d256_l4_position_three_s2027": "821137527b6958e7169d15400283512489cb854fbee458aa770fa1ce397a205b",
+      "d256_l4_position_three_s3037": "0e65ff93c33efeff443956a13c9feb3798aaea4146c3cf5451f8fae97d5dd4d3",
+      "d256_l4_position_four_s1009": "bd7e387883cbf66433ae961d55ba7a8537e6c80518e384d9aaa66f9f2f16eeba",
+      "d256_l4_position_four_s2027": "8f7622a247dcdcb5a917a168d64f0d161ae67b294aa64df339a4de71876c8c32",
+      "d256_l4_position_four_s3037": "c151974996d2711ff7d03e2a098b659ceba00796335dd0a2373e1417ce36e90f"
+    },
+    "algebra_table": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      [
+        1,
+        0,
+        3,
+        2,
+        5,
+        4,
+        7,
+        6
+      ],
+      [
+        2,
+        3,
+        0,
+        1,
+        6,
+        7,
+        4,
+        5
+      ],
+      [
+        3,
+        2,
+        1,
+        0,
+        7,
+        6,
+        5,
+        4
+      ],
+      [
+        4,
+        6,
+        5,
+        7,
+        0,
+        2,
+        1,
+        3
+      ],
+      [
+        5,
+        7,
+        4,
+        6,
+        1,
+        3,
+        0,
+        2
+      ],
+      [
+        6,
+        4,
+        7,
+        5,
+        2,
+        0,
+        3,
+        1
+      ],
+      [
+        7,
+        5,
+        6,
+        4,
+        3,
+        1,
+        2,
+        0
+      ]
+    ],
+    "action_names": [
+      "identity",
+      "complement",
+      "reverse",
+      "reverse_complement",
+      "inverse",
+      "inverse_after_complement",
+      "inverse_after_reverse",
+      "inverse_after_reverse_complement"
+    ],
+    "convention": "row features; table[a,b] and W_a W_b both mean first a then b",
+    "scope": "Prospective structural assay of previously trained ordinary models; fresh complete orbits withheld from all recorded source/target data. No new architecture or equivariance training.",
+    "training_policy": "all eight four-task groups, fixed 20k checkpoint, three new source seeds"
+  },
+  "new_probe_results_at_registration": 0
+}

@@ -1,0 +1,46 @@
+{
+  "status": "candidate_design_not_launched",
+  "selection": "best label-only match for each four-task circuit; no CKA used for selection",
+  "source_commit": "74f0de2017115f06f11b7285366b66e7e8431d30",
+  "comparisons": [
+    {
+      "score": 0.029297136748194584,
+      "three_task_constraint_bundle": "fixed_points|exceedances|deficiencies|right_to_left_minima",
+      "four_task_constraint_bundle": "exceedances|deficiencies|cycle_count|nontrivial_cycle_count",
+      "expanded_affine_pair_count": 1,
+      "mean_correlation_gap": 0.003481496677533058,
+      "max_correlation_gap": 0.01969399910618297,
+      "mean_entropy_gap": 0.030608204822392793
+    },
+    {
+      "score": 0.06518043615550563,
+      "three_task_constraint_bundle": "fixed_points|cycle_count|nontrivial_cycle_count|components",
+      "four_task_constraint_bundle": "fixed_points|even_cycle_count|odd_cycle_count|nontrivial_cycle_count",
+      "expanded_affine_pair_count": 0,
+      "mean_correlation_gap": 0.0012086880648053966,
+      "max_correlation_gap": 0.05192780247026252,
+      "mean_entropy_gap": 0.06021972810218856
+    },
+    {
+      "score": 0.3335673002893764,
+      "three_task_constraint_bundle": "fixed_points|anti_fixed_points|exceedances|deficiencies",
+      "four_task_constraint_bundle": "peaks|valleys|double_ascents|double_descents",
+      "expanded_affine_pair_count": 2,
+      "mean_correlation_gap": 0.27369268864700474,
+      "max_correlation_gap": 0.040871794795449556,
+      "mean_entropy_gap": 0.09501408423461055
+    }
+  ],
+  "required_controls_before_formal_training": [
+    "single-task learning curves",
+    "per-task exposure",
+    "source validation accuracy",
+    "target exclusion from both source sets",
+    "matched random initialization"
+  ],
+  "known_limitations": [
+    "Source output marginals and joint entropy are approximately matched, not identical.",
+    "Candidate labels are sampled at lengths 10-30; these statistics must be rechecked for a changed length regime.",
+    "Circuit presence alone does not imply favorable transfer."
+  ]
+}

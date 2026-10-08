@@ -1,0 +1,167 @@
+{
+  "status": "complete",
+  "group": "M1",
+  "world_seed": 314,
+  "seed": 42,
+  "model_status": "random",
+  "results": {
+    "hidden_dihedral": {
+      "status": "complete",
+      "probe_dimension": 32,
+      "orbit_sensitive_energy_fraction": 0.7307261382747868,
+      "generators": [
+        {
+          "generator": "a",
+          "action": 1,
+          "alpha": 1.0,
+          "validation_nmse": 0.8808101270540915,
+          "test_nmse": 0.8775425267671889,
+          "identity_nmse": 2.579866313417825,
+          "shuffled_fit_nmse": 1.007971510345813,
+          "full_space_nmse": 0.8790151877048691,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "s",
+          "action": 4,
+          "alpha": 1.0,
+          "validation_nmse": 0.8775952975276294,
+          "test_nmse": 0.8849334307554012,
+          "identity_nmse": 2.5907338461925122,
+          "shuffled_fit_nmse": 1.014896281581816,
+          "full_space_nmse": 0.8863172094443282,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "aa",
+          "action": 2,
+          "test_nmse": 0.9035669088796993,
+          "identity_nmse": 2.344424811932699,
+          "shuffled_fit_nmse": 1.002312569586463,
+          "full_space_nmse": 0.9047266032833443
+        },
+        {
+          "word": "aaa",
+          "action": 3,
+          "test_nmse": 0.9344931336402583,
+          "identity_nmse": 2.579866313417825,
+          "shuffled_fit_nmse": 0.9999840408602545,
+          "full_space_nmse": 0.9352809124559652
+        },
+        {
+          "word": "as",
+          "action": 5,
+          "test_nmse": 0.8957299144215204,
+          "identity_nmse": 1.1646649303819008,
+          "shuffled_fit_nmse": 1.0003356681871485,
+          "full_space_nmse": 0.8969838557118824
+        },
+        {
+          "word": "aas",
+          "action": 6,
+          "test_nmse": 0.9355186393819804,
+          "identity_nmse": 2.5180675878527374,
+          "shuffled_fit_nmse": 0.9999823251571226,
+          "full_space_nmse": 0.9362940855714516
+        },
+        {
+          "word": "aaas",
+          "action": 7,
+          "test_nmse": 0.9623724175776436,
+          "identity_nmse": 2.222376196804501,
+          "shuffled_fit_nmse": 1.0000211818543432,
+          "full_space_nmse": 0.9628249230013624
+        }
+      ],
+      "laws": [
+        {
+          "name": "rotation order four",
+          "left": "aaaa",
+          "right": "",
+          "consistency_nmse": 0.9541516472789447,
+          "left_prediction_nmse": 0.9541516472789447,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "reflection involution",
+          "left": "ss",
+          "right": "",
+          "consistency_nmse": 0.8424539090954006,
+          "left_prediction_nmse": 0.8424539090954006,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "reflection conjugates rotation to inverse",
+          "left": "sas",
+          "right": "aaa",
+          "consistency_nmse": 0.0001487976703217822,
+          "left_prediction_nmse": 0.934737769581577,
+          "right_prediction_nmse": 0.9344931336402583
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "as",
+          "wrong_word": "sa",
+          "correct_nmse": 0.8957299144215204,
+          "wrong_nmse": 0.9180296498582281,
+          "gap_wrong_minus_correct": 0.022299735436707713,
+          "target_separation_nmse": 2.3444248119326985
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 0.08303964031749068
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 0.49950868620794947
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 0.08303964031749068
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 0.08482053202010817
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 0.538472219380826
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 0.08482461095684597
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 0.48638344179951004
+        }
+      ],
+      "test_pca_energy_fraction": 0.9879741031820853
+    },
+    "hidden_projection": {
+      "status": "complete",
+      "probe_dimension": 32,
+      "alpha": 1.0,
+      "test_nmse": 1.0031783836369192,
+      "identity_nmse": 1.938618824233333,
+      "shuffled_fit_nmse": 1.0155006380284561,
+      "double_prediction_nmse": 1.000133143893307,
+      "idempotence_consistency_nmse": 0.0002915255498916575,
+      "correct_versus_identity_gap": -0.030756881983951878,
+      "full_space_nmse": 1.0030522355963585,
+      "test_target_pca_energy_fraction": 0.9880884540391813,
+      "fit_rows": 375,
+      "validation_rows": 125,
+      "test_rows": 125
+    }
+  },
+  "array_sha256": {
+    "M1_w314_s42_random_hidden_dihedral.npz": "aac0f789a800da4cf68983174bb826732455372f294b393a2f696d49bbae9ad5",
+    "M1_w314_s42_random_hidden_projection.npz": "6db4a95ab0e294ae8fd96f8c5a3d8ce3349735c0b5dbca6eaf07b546b3ba6c04"
+  }
+}

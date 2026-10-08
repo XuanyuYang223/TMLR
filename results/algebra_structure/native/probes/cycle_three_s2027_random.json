@@ -1,0 +1,1922 @@
+{
+  "status": "complete",
+  "group": "cycle_three",
+  "tasks": [
+    "fixed_points",
+    "cycle_count",
+    "nontrivial_cycle_count",
+    "components"
+  ],
+  "seed": 2027,
+  "model_status": "random",
+  "dataset_sha256": "7a2b45ca674ac09435694a3776afff6821eb391ce51634fe68363712cee51d1d",
+  "feature_sha256": "185fb7beee9af01f197fc0e14800d76761a39b42a22ab0f06380c000f91736ff",
+  "array_sha256": {
+    "cycle_three_s2027_random_ONE_END_layer1.npz": "3e93b3cc7596af075fe15d15f4b41fee2e7383d7cb27bab6e157cbd399b2e1a0",
+    "cycle_three_s2027_random_ONE_END_layer2.npz": "6599895e6eb43e0db9a2f3537deb72b812e2465ff96a01ccbd3c4692a25866ec",
+    "cycle_three_s2027_random_ONE_END_layer3.npz": "8f729a82965f0509abd4f891effef9848efa8996732f8ced6370983894e83c99",
+    "cycle_three_s2027_random_ONE_END_layer4.npz": "de490f0fa5480eb47cfce2c6cdf5228b41010ab686a3c3b89e12bafee1384f71",
+    "cycle_three_s2027_random_ONE_END_numeric_contrast.npz": "58b18bc870c6a15037e56aff387de3fb02aa0603c302c8e2bba7fee81085f54a",
+    "cycle_three_s2027_random_ONE_END_numeric_null.npz": "131b23a6e232660926b1758c4e81dd401925901274ef348454a82e1cdcc1065b",
+    "cycle_three_s2027_random_source_query_concat_layer1.npz": "e23ebb9566518d6fb90edbc7060e68583997f997c8603062788ab817b240df1f",
+    "cycle_three_s2027_random_source_query_concat_layer2.npz": "b6242cc1f85536f122a2f545a3257d5893e9f49e1a6e2ee863a8514b64880779",
+    "cycle_three_s2027_random_source_query_concat_layer3.npz": "946aa8b5f5631064e5a4c6a3ee40673365f5529754295d2d29a6e9939cd6e851",
+    "cycle_three_s2027_random_source_query_concat_layer4.npz": "e0b26e3d914b38897b35c9fbb0d31860731e9505e422176d6a85ebc10a5ef9ef",
+    "cycle_three_s2027_random_source_query_concat_numeric_contrast.npz": "c8702b497664042e7192d3f1f7e26f79e7e2d789bd2dc7bab176149d173b29ae",
+    "cycle_three_s2027_random_source_query_concat_numeric_null.npz": "125e5afc60cc785605aa44eafa4567924c0d137e0a942cc52398a59ffdfc9d10"
+  },
+  "source_checkpoint_sha256": null,
+  "source_audit_accuracy": null,
+  "results": {
+    "ONE_END_layer1": {
+      "status": "complete",
+      "probe_dimension": 64,
+      "orbit_sensitive_energy_fraction": 0.8761090886121392,
+      "generators": [
+        {
+          "generator": "c",
+          "action": 1,
+          "alpha": 1.0,
+          "validation_nmse": 0.9526253020976754,
+          "test_nmse": 0.9579835200832693,
+          "identity_nmse": 2.405651122967913,
+          "shuffled_fit_nmse": 1.0055203843699196,
+          "full_space_nmse": 0.9638675980419461,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "r",
+          "action": 2,
+          "alpha": 1.0,
+          "validation_nmse": 0.957187876963271,
+          "test_nmse": 0.9570904823744412,
+          "identity_nmse": 2.394440703768855,
+          "shuffled_fit_nmse": 1.007203191900221,
+          "full_space_nmse": 0.9630996232491263,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "i",
+          "action": 4,
+          "alpha": 0.01,
+          "validation_nmse": 0.9470561302492025,
+          "test_nmse": 0.9423834816049543,
+          "identity_nmse": 2.1594844241962776,
+          "shuffled_fit_nmse": 1.0066679650923898,
+          "full_space_nmse": 0.9504522224089401,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "rc",
+          "action": 3,
+          "test_nmse": 1.002304315970421,
+          "identity_nmse": 2.3293124266773373,
+          "shuffled_fit_nmse": 0.9999645890004712,
+          "full_space_nmse": 1.0019816146199452
+        },
+        {
+          "word": "ci",
+          "action": 5,
+          "test_nmse": 0.9938241635577673,
+          "identity_nmse": 2.2746210756844607,
+          "shuffled_fit_nmse": 1.0000169360639037,
+          "full_space_nmse": 0.994689040938218
+        },
+        {
+          "word": "ri",
+          "action": 6,
+          "test_nmse": 0.994307075857231,
+          "identity_nmse": 2.2746210756844607,
+          "shuffled_fit_nmse": 0.9999886361039777,
+          "full_space_nmse": 0.9951043251635814
+        },
+        {
+          "word": "rci",
+          "action": 7,
+          "test_nmse": 1.0000730699142988,
+          "identity_nmse": 2.161869171020695,
+          "shuffled_fit_nmse": 1.0000012946336798,
+          "full_space_nmse": 1.00006283704679
+        }
+      ],
+      "laws": [
+        {
+          "name": "c involution",
+          "left": "cc",
+          "right": "",
+          "consistency_nmse": 0.9455617013942679,
+          "left_prediction_nmse": 0.9455617013942679,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "r involution",
+          "left": "rr",
+          "right": "",
+          "consistency_nmse": 0.948283805805138,
+          "left_prediction_nmse": 0.948283805805138,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "i involution",
+          "left": "ii",
+          "right": "",
+          "consistency_nmse": 0.8052465152290315,
+          "left_prediction_nmse": 0.8052465152290315,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "commuting c and r",
+          "left": "cr",
+          "right": "rc",
+          "consistency_nmse": 0.0003006312747304201,
+          "left_prediction_nmse": 1.0023994664574287,
+          "right_prediction_nmse": 1.002304315970421
+        },
+        {
+          "name": "conjugating c by i",
+          "left": "ici",
+          "right": "r",
+          "consistency_nmse": 0.022717085294672167,
+          "left_prediction_nmse": 0.9952334985934109,
+          "right_prediction_nmse": 0.9570904823744412
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "ci",
+          "wrong_word": "ic",
+          "correct_nmse": 0.9938241635577673,
+          "wrong_nmse": 0.9980455119687064,
+          "gap_wrong_minus_correct": 0.00422134841093913,
+          "target_separation_nmse": 2.329312426677337
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 0.07105995461694221
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 0.06789114102123216
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 0.06418081938888331
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 0.1130772369294741
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 0.05976463182469603
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 0.05976463182469603
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 0.059237010091131366
+        }
+      ],
+      "test_pca_energy_fraction": 0.8599578553382391
+    },
+    "ONE_END_layer2": {
+      "status": "complete",
+      "probe_dimension": 64,
+      "orbit_sensitive_energy_fraction": 0.9753251697733569,
+      "generators": [
+        {
+          "generator": "c",
+          "action": 1,
+          "alpha": 0.01,
+          "validation_nmse": 0.9466097290358332,
+          "test_nmse": 0.9592906982367674,
+          "identity_nmse": 2.1248255514146823,
+          "shuffled_fit_nmse": 1.004577725278235,
+          "full_space_nmse": 0.9603847390721317,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "r",
+          "action": 2,
+          "alpha": 0.01,
+          "validation_nmse": 0.21981770019183214,
+          "test_nmse": 0.22050737544691093,
+          "identity_nmse": 3.734544064369013,
+          "shuffled_fit_nmse": 1.007147696875147,
+          "full_space_nmse": 0.2414558251915486,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "i",
+          "action": 4,
+          "alpha": 0.01,
+          "validation_nmse": 0.9076663629046806,
+          "test_nmse": 0.9195212750828401,
+          "identity_nmse": 1.9884145694056041,
+          "shuffled_fit_nmse": 1.0030042611536085,
+          "full_space_nmse": 0.9216840980157782,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "rc",
+          "action": 3,
+          "test_nmse": 0.9721696349733432,
+          "identity_nmse": 1.987174649790225,
+          "shuffled_fit_nmse": 1.000048754991551,
+          "full_space_nmse": 0.9729175612330305
+        },
+        {
+          "word": "ci",
+          "action": 5,
+          "test_nmse": 0.9534798401526832,
+          "identity_nmse": 2.0838800777598268,
+          "shuffled_fit_nmse": 0.9998664151718629,
+          "full_space_nmse": 0.9547300447087979
+        },
+        {
+          "word": "ri",
+          "action": 6,
+          "test_nmse": 0.9843082915031427,
+          "identity_nmse": 2.0838800777598268,
+          "shuffled_fit_nmse": 1.0001347300517311,
+          "full_space_nmse": 0.9847299978240234
+        },
+        {
+          "word": "rci",
+          "action": 7,
+          "test_nmse": 0.984008565160405,
+          "identity_nmse": 1.9972810095008222,
+          "shuffled_fit_nmse": 1.000001977106456,
+          "full_space_nmse": 0.9844383264673501
+        }
+      ],
+      "laws": [
+        {
+          "name": "c involution",
+          "left": "cc",
+          "right": "",
+          "consistency_nmse": 0.8427830946879176,
+          "left_prediction_nmse": 0.8427830946879176,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "r involution",
+          "left": "rr",
+          "right": "",
+          "consistency_nmse": 0.09641934388484935,
+          "left_prediction_nmse": 0.09641934388484935,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "i involution",
+          "left": "ii",
+          "right": "",
+          "consistency_nmse": 0.8087227461058676,
+          "left_prediction_nmse": 0.8087227461058676,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "commuting c and r",
+          "left": "cr",
+          "right": "rc",
+          "consistency_nmse": 0.01425060096739354,
+          "left_prediction_nmse": 0.9712393587101938,
+          "right_prediction_nmse": 0.9721696349733432
+        },
+        {
+          "name": "conjugating c by i",
+          "left": "ici",
+          "right": "r",
+          "consistency_nmse": 0.6977129129735757,
+          "left_prediction_nmse": 0.9376808181914692,
+          "right_prediction_nmse": 0.22050737544691093
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "ci",
+          "wrong_word": "ic",
+          "correct_nmse": 0.9534798401526832,
+          "wrong_nmse": 0.9944941969895918,
+          "gap_wrong_minus_correct": 0.04101435683690868,
+          "target_separation_nmse": 1.987174649790225
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 0.03580679021472722
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 0.7679743902992826
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 0.031634630599191964
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 0.044415657762078634
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 0.03408033329790942
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 0.03408033329790942
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 0.02757901555390172
+        }
+      ],
+      "test_pca_energy_fraction": 0.9731255318077597
+    },
+    "ONE_END_layer3": {
+      "status": "complete",
+      "probe_dimension": 64,
+      "orbit_sensitive_energy_fraction": 0.9693848760796991,
+      "generators": [
+        {
+          "generator": "c",
+          "action": 1,
+          "alpha": 0.01,
+          "validation_nmse": 0.925244891470051,
+          "test_nmse": 0.9403257668547295,
+          "identity_nmse": 2.1478593171403344,
+          "shuffled_fit_nmse": 1.0048064539914559,
+          "full_space_nmse": 0.9418088012767032,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "r",
+          "action": 2,
+          "alpha": 0.0001,
+          "validation_nmse": 0.21512735605086328,
+          "test_nmse": 0.22020808285574456,
+          "identity_nmse": 3.6512703493245677,
+          "shuffled_fit_nmse": 1.0021868324647532,
+          "full_space_nmse": 0.23958760721907318,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "i",
+          "action": 4,
+          "alpha": 0.01,
+          "validation_nmse": 0.8914789771841981,
+          "test_nmse": 0.9155822527854546,
+          "identity_nmse": 1.9999734955473623,
+          "shuffled_fit_nmse": 1.0036977600433041,
+          "full_space_nmse": 0.917680217323011,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "rc",
+          "action": 3,
+          "test_nmse": 0.9600426038364492,
+          "identity_nmse": 2.000575192973741,
+          "shuffled_fit_nmse": 1.000070635758982,
+          "full_space_nmse": 0.9610356319961699
+        },
+        {
+          "word": "ci",
+          "action": 5,
+          "test_nmse": 0.9483326547909047,
+          "identity_nmse": 2.0937353867962685,
+          "shuffled_fit_nmse": 0.9999296582634368,
+          "full_space_nmse": 0.9496167006411557
+        },
+        {
+          "word": "ri",
+          "action": 6,
+          "test_nmse": 0.9771971714783978,
+          "identity_nmse": 2.0937353867962685,
+          "shuffled_fit_nmse": 1.000089386475978,
+          "full_space_nmse": 0.9777638713391834
+        },
+        {
+          "word": "rci",
+          "action": 7,
+          "test_nmse": 0.9759298306525372,
+          "identity_nmse": 2.0128508714214566,
+          "shuffled_fit_nmse": 1.0000024298263113,
+          "full_space_nmse": 0.9765280266879709
+        }
+      ],
+      "laws": [
+        {
+          "name": "c involution",
+          "left": "cc",
+          "right": "",
+          "consistency_nmse": 0.8253894314706023,
+          "left_prediction_nmse": 0.8253894314706023,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "r involution",
+          "left": "rr",
+          "right": "",
+          "consistency_nmse": 0.1296586266406955,
+          "left_prediction_nmse": 0.1296586266406955,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "i involution",
+          "left": "ii",
+          "right": "",
+          "consistency_nmse": 0.8121056070502823,
+          "left_prediction_nmse": 0.8121056070502823,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "commuting c and r",
+          "left": "cr",
+          "right": "rc",
+          "consistency_nmse": 0.015779724917234273,
+          "left_prediction_nmse": 0.9595435890455375,
+          "right_prediction_nmse": 0.9600426038364492
+        },
+        {
+          "name": "conjugating c by i",
+          "left": "ici",
+          "right": "r",
+          "consistency_nmse": 0.7057155368952897,
+          "left_prediction_nmse": 0.9308014145817328,
+          "right_prediction_nmse": 0.22020808285574456
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "ci",
+          "wrong_word": "ic",
+          "correct_nmse": 0.9483326547909047,
+          "wrong_nmse": 0.9959498811157289,
+          "gap_wrong_minus_correct": 0.047617226324824236,
+          "target_separation_nmse": 2.000575192973741
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 0.03467624661971921
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 0.6787947821132768
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 0.029027348015425055
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 0.04646335637755267
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 0.035702042713416524
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 0.035702042713416524
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 0.02763488177565201
+        }
+      ],
+      "test_pca_energy_fraction": 0.9751478260581361
+    },
+    "ONE_END_layer4": {
+      "status": "complete",
+      "probe_dimension": 64,
+      "orbit_sensitive_energy_fraction": 0.966429877380895,
+      "generators": [
+        {
+          "generator": "c",
+          "action": 1,
+          "alpha": 0.01,
+          "validation_nmse": 0.9185172296224688,
+          "test_nmse": 0.93457646021109,
+          "identity_nmse": 2.151436297384584,
+          "shuffled_fit_nmse": 1.0040175435826653,
+          "full_space_nmse": 0.9362156791055567,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "r",
+          "action": 2,
+          "alpha": 0.0001,
+          "validation_nmse": 0.23130182918135767,
+          "test_nmse": 0.2334890385447773,
+          "identity_nmse": 3.6081347838279254,
+          "shuffled_fit_nmse": 1.0010966715801513,
+          "full_space_nmse": 0.2526943468311723,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "i",
+          "action": 4,
+          "alpha": 0.01,
+          "validation_nmse": 0.8932727679630322,
+          "test_nmse": 0.9167210284727176,
+          "identity_nmse": 2.021018082675719,
+          "shuffled_fit_nmse": 1.003934194543205,
+          "full_space_nmse": 0.9188076239715203,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "rc",
+          "action": 3,
+          "test_nmse": 0.9569146876648056,
+          "identity_nmse": 2.013625740878611,
+          "shuffled_fit_nmse": 1.000067347737441,
+          "full_space_nmse": 0.9579942113084625
+        },
+        {
+          "word": "ci",
+          "action": 5,
+          "test_nmse": 0.9487004008673211,
+          "identity_nmse": 2.0928986380931964,
+          "shuffled_fit_nmse": 0.9999913355217985,
+          "full_space_nmse": 0.9499857374976559
+        },
+        {
+          "word": "ri",
+          "action": 6,
+          "test_nmse": 0.970912005547491,
+          "identity_nmse": 2.0928986380931964,
+          "shuffled_fit_nmse": 1.000107759505771,
+          "full_space_nmse": 0.9716408195227443
+        },
+        {
+          "word": "rci",
+          "action": 7,
+          "test_nmse": 0.9739824515121356,
+          "identity_nmse": 2.0199878190467686,
+          "shuffled_fit_nmse": 1.000008248572494,
+          "full_space_nmse": 0.974634333956996
+        }
+      ],
+      "laws": [
+        {
+          "name": "c involution",
+          "left": "cc",
+          "right": "",
+          "consistency_nmse": 0.8187637015648759,
+          "left_prediction_nmse": 0.8187637015648759,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "r involution",
+          "left": "rr",
+          "right": "",
+          "consistency_nmse": 0.14373103741950316,
+          "left_prediction_nmse": 0.14373103741950316,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "i involution",
+          "left": "ii",
+          "right": "",
+          "consistency_nmse": 0.8227083579460336,
+          "left_prediction_nmse": 0.8227083579460336,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "commuting c and r",
+          "left": "cr",
+          "right": "rc",
+          "consistency_nmse": 0.015423560655342465,
+          "left_prediction_nmse": 0.9529113666992687,
+          "right_prediction_nmse": 0.9569146876648056
+        },
+        {
+          "name": "conjugating c by i",
+          "left": "ici",
+          "right": "r",
+          "consistency_nmse": 0.7000635479629699,
+          "left_prediction_nmse": 0.9341911706480766,
+          "right_prediction_nmse": 0.2334890385447773
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "ci",
+          "wrong_word": "ic",
+          "correct_nmse": 0.9487004008673211,
+          "wrong_nmse": 0.9981010832513616,
+          "gap_wrong_minus_correct": 0.049400682384040495,
+          "target_separation_nmse": 2.0136257408786116
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 0.03865337077894952
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 0.6466293861842992
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 0.03136502405942421
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 0.047526792317489415
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 0.03769704370203719
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 0.03769704370203719
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 0.0298717563338904
+        }
+      ],
+      "test_pca_energy_fraction": 0.9749445092736396
+    },
+    "ONE_END_numeric_contrast": {
+      "status": "complete",
+      "probe_dimension": 30,
+      "orbit_sensitive_energy_fraction": 0.9666938791550784,
+      "generators": [
+        {
+          "generator": "c",
+          "action": 1,
+          "alpha": 0.01,
+          "validation_nmse": 0.9561192844786938,
+          "test_nmse": 0.9712293115452536,
+          "identity_nmse": 2.152393972724257,
+          "shuffled_fit_nmse": 1.0015499674736352,
+          "full_space_nmse": 0.9712293115452536,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "r",
+          "action": 2,
+          "alpha": 0.0001,
+          "validation_nmse": 0.3277524959135755,
+          "test_nmse": 0.33735738069518345,
+          "identity_nmse": 3.5878847016836244,
+          "shuffled_fit_nmse": 0.9972998931959062,
+          "full_space_nmse": 0.3373573806951835,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "i",
+          "action": 4,
+          "alpha": 0.01,
+          "validation_nmse": 0.9342859096506462,
+          "test_nmse": 0.9585094450867457,
+          "identity_nmse": 2.0075609710108058,
+          "shuffled_fit_nmse": 1.0034540396196985,
+          "full_space_nmse": 0.9585094450867457,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "rc",
+          "action": 3,
+          "test_nmse": 0.985800410094872,
+          "identity_nmse": 2.0276507789591753,
+          "shuffled_fit_nmse": 1.0000811271382972,
+          "full_space_nmse": 0.9858004100948716
+        },
+        {
+          "word": "ci",
+          "action": 5,
+          "test_nmse": 0.9749220782283162,
+          "identity_nmse": 2.097617438125901,
+          "shuffled_fit_nmse": 1.0000525927352473,
+          "full_space_nmse": 0.9749220782283164
+        },
+        {
+          "word": "ri",
+          "action": 6,
+          "test_nmse": 0.9832239845716616,
+          "identity_nmse": 2.0976174381259014,
+          "shuffled_fit_nmse": 0.9999861876929128,
+          "full_space_nmse": 0.9832239845716616
+        },
+        {
+          "word": "rci",
+          "action": 7,
+          "test_nmse": 0.9891995717266687,
+          "identity_nmse": 2.029274699370336,
+          "shuffled_fit_nmse": 1.0000010527717238,
+          "full_space_nmse": 0.9891995717266687
+        }
+      ],
+      "laws": [
+        {
+          "name": "c involution",
+          "left": "cc",
+          "right": "",
+          "consistency_nmse": 0.8862206667318061,
+          "left_prediction_nmse": 0.8862206667318061,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "r involution",
+          "left": "rr",
+          "right": "",
+          "consistency_nmse": 0.17120895298827007,
+          "left_prediction_nmse": 0.17120895298827007,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "i involution",
+          "left": "ii",
+          "right": "",
+          "consistency_nmse": 0.9004812715142535,
+          "left_prediction_nmse": 0.9004812715142535,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "commuting c and r",
+          "left": "cr",
+          "right": "rc",
+          "consistency_nmse": 0.0048377434825204015,
+          "left_prediction_nmse": 0.9870651833379254,
+          "right_prediction_nmse": 0.985800410094872
+        },
+        {
+          "name": "conjugating c by i",
+          "left": "ici",
+          "right": "r",
+          "consistency_nmse": 0.6295210301363672,
+          "left_prediction_nmse": 0.9684751650112469,
+          "right_prediction_nmse": 0.33735738069518345
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "ci",
+          "wrong_word": "ic",
+          "correct_nmse": 0.9749220782283162,
+          "wrong_nmse": 0.9901792606612033,
+          "gap_wrong_minus_correct": 0.015257182432887095,
+          "target_separation_nmse": 2.027650778959176
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 0.022672324834245344
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 0.6260447108204537
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 0.01798970471021698
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 0.03208903565169137
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 0.022604611770844208
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 0.022604611770844208
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 0.014742540494579758
+        }
+      ],
+      "test_pca_energy_fraction": 1.0000000000000002,
+      "variance_fraction_of_orbit_residual": 0.12645435125254553
+    },
+    "ONE_END_numeric_null": {
+      "status": "complete",
+      "probe_dimension": 64,
+      "orbit_sensitive_energy_fraction": 0.9663916724666912,
+      "generators": [
+        {
+          "generator": "c",
+          "action": 1,
+          "alpha": 0.01,
+          "validation_nmse": 0.9196294995011999,
+          "test_nmse": 0.935214639529262,
+          "identity_nmse": 2.1518506765920438,
+          "shuffled_fit_nmse": 1.0041078633822904,
+          "full_space_nmse": 0.936762874701039,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "r",
+          "action": 2,
+          "alpha": 0.0001,
+          "validation_nmse": 0.23347485414216188,
+          "test_nmse": 0.2358019708106054,
+          "identity_nmse": 3.6075849660838597,
+          "shuffled_fit_nmse": 1.0016707271402545,
+          "full_space_nmse": 0.2540647119360198,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "i",
+          "action": 4,
+          "alpha": 0.01,
+          "validation_nmse": 0.8951295832761081,
+          "test_nmse": 0.9162648730796872,
+          "identity_nmse": 2.023367143566312,
+          "shuffled_fit_nmse": 1.0039482254195986,
+          "full_space_nmse": 0.9182659681985421,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "rc",
+          "action": 3,
+          "test_nmse": 0.9561521264071043,
+          "identity_nmse": 2.012402915293574,
+          "shuffled_fit_nmse": 1.0000593443916501,
+          "full_space_nmse": 0.9571999992538536
+        },
+        {
+          "word": "ci",
+          "action": 5,
+          "test_nmse": 0.9487802046712507,
+          "identity_nmse": 2.0929006084177697,
+          "shuffled_fit_nmse": 0.9999766651671009,
+          "full_space_nmse": 0.9500042510922784
+        },
+        {
+          "word": "ri",
+          "action": 6,
+          "test_nmse": 0.9708339222648679,
+          "identity_nmse": 2.0929006084177697,
+          "shuffled_fit_nmse": 1.0001141780659284,
+          "full_space_nmse": 0.9715309307717931
+        },
+        {
+          "word": "rci",
+          "action": 7,
+          "test_nmse": 0.9742876301985268,
+          "identity_nmse": 2.0189930816286714,
+          "shuffled_fit_nmse": 1.0000083987695572,
+          "full_space_nmse": 0.9749021022796749
+        }
+      ],
+      "laws": [
+        {
+          "name": "c involution",
+          "left": "cc",
+          "right": "",
+          "consistency_nmse": 0.8208659359460388,
+          "left_prediction_nmse": 0.8208659359460388,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "r involution",
+          "left": "rr",
+          "right": "",
+          "consistency_nmse": 0.14596262279394337,
+          "left_prediction_nmse": 0.14596262279394337,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "i involution",
+          "left": "ii",
+          "right": "",
+          "consistency_nmse": 0.8235441055563228,
+          "left_prediction_nmse": 0.8235441055563228,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "commuting c and r",
+          "left": "cr",
+          "right": "rc",
+          "consistency_nmse": 0.015472431577259992,
+          "left_prediction_nmse": 0.953320603403066,
+          "right_prediction_nmse": 0.9561521264071043
+        },
+        {
+          "name": "conjugating c by i",
+          "left": "ici",
+          "right": "r",
+          "consistency_nmse": 0.697466207884452,
+          "left_prediction_nmse": 0.9348763270095529,
+          "right_prediction_nmse": 0.2358019708106054
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "ci",
+          "wrong_word": "ic",
+          "correct_nmse": 0.9487802046712507,
+          "wrong_nmse": 0.998433857811347,
+          "gap_wrong_minus_correct": 0.04965365314009629,
+          "target_separation_nmse": 2.012402915293574
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 0.039539307154701914
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 0.6445909026842823
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 0.03202040916244181
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 0.047191311658448865
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 0.03814311667950712
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 0.03814311667950712
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 0.031072441232107305
+        }
+      ],
+      "test_pca_energy_fraction": 0.9761020829315845,
+      "variance_fraction_of_orbit_residual": 0.8735456487474546
+    },
+    "source_query_concat_layer1": {
+      "status": "complete",
+      "probe_dimension": 64,
+      "orbit_sensitive_energy_fraction": 0.877923638393583,
+      "generators": [
+        {
+          "generator": "c",
+          "action": 1,
+          "alpha": 1.0,
+          "validation_nmse": 0.9556487389668133,
+          "test_nmse": 0.9542618560195362,
+          "identity_nmse": 2.4294429631509353,
+          "shuffled_fit_nmse": 1.0055731674417512,
+          "full_space_nmse": 0.9605966391532533,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "r",
+          "action": 2,
+          "alpha": 1.0,
+          "validation_nmse": 0.9647266180704572,
+          "test_nmse": 0.9665482053348199,
+          "identity_nmse": 2.364833182544343,
+          "shuffled_fit_nmse": 1.0074533727897883,
+          "full_space_nmse": 0.9711813156054963,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "i",
+          "action": 4,
+          "alpha": 1.0,
+          "validation_nmse": 0.9528524189861817,
+          "test_nmse": 0.9445861748691534,
+          "identity_nmse": 2.1478161829433797,
+          "shuffled_fit_nmse": 1.0065606997643306,
+          "full_space_nmse": 0.952261050460161,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "rc",
+          "action": 3,
+          "test_nmse": 1.0029234953552175,
+          "identity_nmse": 2.330515913033901,
+          "shuffled_fit_nmse": 1.0000607678287357,
+          "full_space_nmse": 1.0025185880403156
+        },
+        {
+          "word": "ci",
+          "action": 5,
+          "test_nmse": 0.9981265449763859,
+          "identity_nmse": 2.280312370677661,
+          "shuffled_fit_nmse": 0.9999678794001836,
+          "full_space_nmse": 0.9983860205530609
+        },
+        {
+          "word": "ri",
+          "action": 6,
+          "test_nmse": 0.9980261788963266,
+          "identity_nmse": 2.280312370677661,
+          "shuffled_fit_nmse": 1.0000436287132939,
+          "full_space_nmse": 0.9982995552852302
+        },
+        {
+          "word": "rci",
+          "action": 7,
+          "test_nmse": 1.0001692914027132,
+          "identity_nmse": 2.166767016972119,
+          "shuffled_fit_nmse": 1.0000069446680293,
+          "full_space_nmse": 1.0001458443576594
+        }
+      ],
+      "laws": [
+        {
+          "name": "c involution",
+          "left": "cc",
+          "right": "",
+          "consistency_nmse": 0.9468065917382156,
+          "left_prediction_nmse": 0.9468065917382156,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "r involution",
+          "left": "rr",
+          "right": "",
+          "consistency_nmse": 0.9531275357682298,
+          "left_prediction_nmse": 0.9531275357682298,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "i involution",
+          "left": "ii",
+          "right": "",
+          "consistency_nmse": 0.9395912182169822,
+          "left_prediction_nmse": 0.9395912182169822,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "commuting c and r",
+          "left": "cr",
+          "right": "rc",
+          "consistency_nmse": 0.00029149764189130095,
+          "left_prediction_nmse": 1.0029421625784722,
+          "right_prediction_nmse": 1.0029234953552175
+        },
+        {
+          "name": "conjugating c by i",
+          "left": "ici",
+          "right": "r",
+          "consistency_nmse": 0.022067250390972275,
+          "left_prediction_nmse": 0.9988748013023016,
+          "right_prediction_nmse": 0.9665482053348199
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "ci",
+          "wrong_word": "ic",
+          "correct_nmse": 0.9981265449763859,
+          "wrong_nmse": 1.0000597521484647,
+          "gap_wrong_minus_correct": 0.001933207172078788,
+          "target_separation_nmse": 2.330515913033901
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 0.06933744372922093
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 0.06225718628798294
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 0.06189098267208648
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 0.1087206700997249
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 0.056846203327436125
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 0.056846203327436125
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 0.060416820935394966
+        }
+      ],
+      "test_pca_energy_fraction": 0.861498902613469
+    },
+    "source_query_concat_layer2": {
+      "status": "complete",
+      "probe_dimension": 64,
+      "orbit_sensitive_energy_fraction": 0.9750007745954417,
+      "generators": [
+        {
+          "generator": "c",
+          "action": 1,
+          "alpha": 0.01,
+          "validation_nmse": 0.9538279838481795,
+          "test_nmse": 0.9581699432924451,
+          "identity_nmse": 2.127722232874884,
+          "shuffled_fit_nmse": 1.0036963888994914,
+          "full_space_nmse": 0.9592605251346894,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "r",
+          "action": 2,
+          "alpha": 0.01,
+          "validation_nmse": 0.22257742375460235,
+          "test_nmse": 0.22340404775521858,
+          "identity_nmse": 3.7286612806635198,
+          "shuffled_fit_nmse": 1.0081543123160424,
+          "full_space_nmse": 0.2436512458453313,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "i",
+          "action": 4,
+          "alpha": 0.01,
+          "validation_nmse": 0.913253235704131,
+          "test_nmse": 0.9209775362471947,
+          "identity_nmse": 1.9813431930513221,
+          "shuffled_fit_nmse": 1.0040259418039648,
+          "full_space_nmse": 0.923037788393175,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "rc",
+          "action": 3,
+          "test_nmse": 0.9709289525114271,
+          "identity_nmse": 1.9859139363711573,
+          "shuffled_fit_nmse": 1.000038538552904,
+          "full_space_nmse": 0.9716868849413952
+        },
+        {
+          "word": "ci",
+          "action": 5,
+          "test_nmse": 0.9555368931460283,
+          "identity_nmse": 2.0924875912384326,
+          "shuffled_fit_nmse": 0.9998664904506785,
+          "full_space_nmse": 0.9566961231543382
+        },
+        {
+          "word": "ri",
+          "action": 6,
+          "test_nmse": 0.9814719547810609,
+          "identity_nmse": 2.0924875912384326,
+          "shuffled_fit_nmse": 1.0001314976247038,
+          "full_space_nmse": 0.9819550129282042
+        },
+        {
+          "word": "rci",
+          "action": 7,
+          "test_nmse": 0.9849359571282255,
+          "identity_nmse": 1.991384174562252,
+          "shuffled_fit_nmse": 0.9999982267247635,
+          "full_space_nmse": 0.9853287027499107
+        }
+      ],
+      "laws": [
+        {
+          "name": "c involution",
+          "left": "cc",
+          "right": "",
+          "consistency_nmse": 0.8538658262289017,
+          "left_prediction_nmse": 0.8538658262289017,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "r involution",
+          "left": "rr",
+          "right": "",
+          "consistency_nmse": 0.09786233305551775,
+          "left_prediction_nmse": 0.09786233305551775,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "i involution",
+          "left": "ii",
+          "right": "",
+          "consistency_nmse": 0.8230840122642705,
+          "left_prediction_nmse": 0.8230840122642705,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "commuting c and r",
+          "left": "cr",
+          "right": "rc",
+          "consistency_nmse": 0.012971182618137534,
+          "left_prediction_nmse": 0.9690094199541862,
+          "right_prediction_nmse": 0.9709289525114271
+        },
+        {
+          "name": "conjugating c by i",
+          "left": "ici",
+          "right": "r",
+          "consistency_nmse": 0.7004332135260464,
+          "left_prediction_nmse": 0.941793602864327,
+          "right_prediction_nmse": 0.22340404775521858
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "ci",
+          "wrong_word": "ic",
+          "correct_nmse": 0.9555368931460283,
+          "wrong_nmse": 0.9943621509822645,
+          "gap_wrong_minus_correct": 0.03882525783623625,
+          "target_separation_nmse": 1.9859139363711573
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 0.03737688797281066
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 0.7635091430077822
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 0.033409422753090987
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 0.04479118970623707
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 0.03420552312881019
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 0.03420552312881019
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 0.027416828652631824
+        }
+      ],
+      "test_pca_energy_fraction": 0.9739282724413026
+    },
+    "source_query_concat_layer3": {
+      "status": "complete",
+      "probe_dimension": 64,
+      "orbit_sensitive_energy_fraction": 0.9688741880038125,
+      "generators": [
+        {
+          "generator": "c",
+          "action": 1,
+          "alpha": 0.01,
+          "validation_nmse": 0.9386512710595614,
+          "test_nmse": 0.9471357512484085,
+          "identity_nmse": 2.1435817221324576,
+          "shuffled_fit_nmse": 1.0039445266838583,
+          "full_space_nmse": 0.9483841461414287,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "r",
+          "action": 2,
+          "alpha": 0.0001,
+          "validation_nmse": 0.21826731771378663,
+          "test_nmse": 0.22228458038078075,
+          "identity_nmse": 3.6443204579538144,
+          "shuffled_fit_nmse": 1.003806750171231,
+          "full_space_nmse": 0.24065041326413067,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "i",
+          "action": 4,
+          "alpha": 0.01,
+          "validation_nmse": 0.9110205755247962,
+          "test_nmse": 0.9206837821379832,
+          "identity_nmse": 2.0056549849105854,
+          "shuffled_fit_nmse": 1.0041377417742987,
+          "full_space_nmse": 0.922556843113046,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "rc",
+          "action": 3,
+          "test_nmse": 0.9644562937624499,
+          "identity_nmse": 2.0065387485660855,
+          "shuffled_fit_nmse": 1.0000241763624167,
+          "full_space_nmse": 0.965295662189957
+        },
+        {
+          "word": "ci",
+          "action": 5,
+          "test_nmse": 0.9510525330055147,
+          "identity_nmse": 2.0948317298335826,
+          "shuffled_fit_nmse": 0.9999351903529529,
+          "full_space_nmse": 0.9522084326780765
+        },
+        {
+          "word": "ri",
+          "action": 6,
+          "test_nmse": 0.9759152331138111,
+          "identity_nmse": 2.0948317298335826,
+          "shuffled_fit_nmse": 1.0001150886235608,
+          "full_space_nmse": 0.9764839974619356
+        },
+        {
+          "word": "rci",
+          "action": 7,
+          "test_nmse": 0.9775898055337368,
+          "identity_nmse": 2.0102406267698902,
+          "shuffled_fit_nmse": 0.9999996343405806,
+          "full_space_nmse": 0.9781190246749134
+        }
+      ],
+      "laws": [
+        {
+          "name": "c involution",
+          "left": "cc",
+          "right": "",
+          "consistency_nmse": 0.8430745292970757,
+          "left_prediction_nmse": 0.8430745292970757,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "r involution",
+          "left": "rr",
+          "right": "",
+          "consistency_nmse": 0.1291429556836067,
+          "left_prediction_nmse": 0.1291429556836067,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "i involution",
+          "left": "ii",
+          "right": "",
+          "consistency_nmse": 0.8301779438218961,
+          "left_prediction_nmse": 0.8301779438218961,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "commuting c and r",
+          "left": "cr",
+          "right": "rc",
+          "consistency_nmse": 0.015788646877565555,
+          "left_prediction_nmse": 0.9633453519961798,
+          "right_prediction_nmse": 0.9644562937624499
+        },
+        {
+          "name": "conjugating c by i",
+          "left": "ici",
+          "right": "r",
+          "consistency_nmse": 0.7147523327495279,
+          "left_prediction_nmse": 0.9382931736699628,
+          "right_prediction_nmse": 0.22228458038078075
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "ci",
+          "wrong_word": "ic",
+          "correct_nmse": 0.9510525330055147,
+          "wrong_nmse": 0.9976901929183686,
+          "gap_wrong_minus_correct": 0.046637659912853846,
+          "target_separation_nmse": 2.006538748566086
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 0.03453450993031762
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 0.6711256003955548
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 0.02894705712053537
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 0.04439674327691548
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 0.034282784570932014
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 0.034282784570932014
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 0.026758339958870246
+        }
+      ],
+      "test_pca_energy_fraction": 0.9763848929569353
+    },
+    "source_query_concat_layer4": {
+      "status": "complete",
+      "probe_dimension": 64,
+      "orbit_sensitive_energy_fraction": 0.9659037841937979,
+      "generators": [
+        {
+          "generator": "c",
+          "action": 1,
+          "alpha": 0.01,
+          "validation_nmse": 0.9260715999355201,
+          "test_nmse": 0.9369618055000881,
+          "identity_nmse": 2.1530156273570795,
+          "shuffled_fit_nmse": 1.0036418247650571,
+          "full_space_nmse": 0.9384455710955473,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "r",
+          "action": 2,
+          "alpha": 0.0001,
+          "validation_nmse": 0.23189836237615552,
+          "test_nmse": 0.2363659677214429,
+          "identity_nmse": 3.6011188716648714,
+          "shuffled_fit_nmse": 1.0013699455562475,
+          "full_space_nmse": 0.25434005333105597,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "i",
+          "action": 4,
+          "alpha": 0.01,
+          "validation_nmse": 0.9037883775712338,
+          "test_nmse": 0.9183648666546783,
+          "identity_nmse": 2.0252489114748684,
+          "shuffled_fit_nmse": 1.0050256272007223,
+          "full_space_nmse": 0.9202863589055184,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "rc",
+          "action": 3,
+          "test_nmse": 0.956652717760485,
+          "identity_nmse": 2.014456324370365,
+          "shuffled_fit_nmse": 1.0000396957901163,
+          "full_space_nmse": 0.9576730072302879
+        },
+        {
+          "word": "ci",
+          "action": 5,
+          "test_nmse": 0.9492748070765575,
+          "identity_nmse": 2.0936470182502163,
+          "shuffled_fit_nmse": 1.0000284845448613,
+          "full_space_nmse": 0.9504687545980548
+        },
+        {
+          "word": "ri",
+          "action": 6,
+          "test_nmse": 0.9703012201480122,
+          "identity_nmse": 2.0936470182502163,
+          "shuffled_fit_nmse": 1.000105925373745,
+          "full_space_nmse": 0.9710002571068128
+        },
+        {
+          "word": "rci",
+          "action": 7,
+          "test_nmse": 0.9736669280292626,
+          "identity_nmse": 2.018866228632385,
+          "shuffled_fit_nmse": 1.0000074219965487,
+          "full_space_nmse": 0.9742867444203075
+        }
+      ],
+      "laws": [
+        {
+          "name": "c involution",
+          "left": "cc",
+          "right": "",
+          "consistency_nmse": 0.8246234374196916,
+          "left_prediction_nmse": 0.8246234374196916,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "r involution",
+          "left": "rr",
+          "right": "",
+          "consistency_nmse": 0.145868418239022,
+          "left_prediction_nmse": 0.145868418239022,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "i involution",
+          "left": "ii",
+          "right": "",
+          "consistency_nmse": 0.8361417018781335,
+          "left_prediction_nmse": 0.8361417018781335,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "commuting c and r",
+          "left": "cr",
+          "right": "rc",
+          "consistency_nmse": 0.016064774461461918,
+          "left_prediction_nmse": 0.9556805825874383,
+          "right_prediction_nmse": 0.956652717760485
+        },
+        {
+          "name": "conjugating c by i",
+          "left": "ici",
+          "right": "r",
+          "consistency_nmse": 0.7012769212332677,
+          "left_prediction_nmse": 0.9392137164596698,
+          "right_prediction_nmse": 0.2363659677214429
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "ci",
+          "wrong_word": "ic",
+          "correct_nmse": 0.9492748070765575,
+          "wrong_nmse": 0.9996904369346912,
+          "gap_wrong_minus_correct": 0.05041562985813364,
+          "target_separation_nmse": 2.0144563243703653
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 0.03966565941335438
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 0.6368864219654929
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 0.032093377688910796
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 0.04879327217922311
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 0.03828259963073631
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 0.038282599630736304
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 0.029960717844169565
+        }
+      ],
+      "test_pca_energy_fraction": 0.9764624350803469
+    },
+    "source_query_concat_numeric_contrast": {
+      "status": "complete",
+      "probe_dimension": 64,
+      "orbit_sensitive_energy_fraction": 0.9660168891205416,
+      "generators": [
+        {
+          "generator": "c",
+          "action": 1,
+          "alpha": 1e-06,
+          "validation_nmse": 0.9199756028228593,
+          "test_nmse": 0.9284911999198414,
+          "identity_nmse": 2.1521980350163874,
+          "shuffled_fit_nmse": 1.0031211140289902,
+          "full_space_nmse": 0.9284919392907449,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "r",
+          "action": 2,
+          "alpha": 1e-06,
+          "validation_nmse": 0.3048465766958726,
+          "test_nmse": 0.3128378956267828,
+          "identity_nmse": 3.588907028812423,
+          "shuffled_fit_nmse": 0.9992199929779556,
+          "full_space_nmse": 0.31284500059379855,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "i",
+          "action": 4,
+          "alpha": 1e-06,
+          "validation_nmse": 0.8994165332837127,
+          "test_nmse": 0.9277910425816219,
+          "identity_nmse": 2.009541845463881,
+          "shuffled_fit_nmse": 1.006273487933339,
+          "full_space_nmse": 0.9277917891918577,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "rc",
+          "action": 3,
+          "test_nmse": 0.9493325492003262,
+          "identity_nmse": 2.022701249765665,
+          "shuffled_fit_nmse": 1.0000887448523461,
+          "full_space_nmse": 0.9493330730804475
+        },
+        {
+          "word": "ci",
+          "action": 5,
+          "test_nmse": 0.9591489013438406,
+          "identity_nmse": 2.0991378085297114,
+          "shuffled_fit_nmse": 1.0000252459048264,
+          "full_space_nmse": 0.9591493237270112
+        },
+        {
+          "word": "ri",
+          "action": 6,
+          "test_nmse": 0.9879060471734522,
+          "identity_nmse": 2.0991378085297114,
+          "shuffled_fit_nmse": 0.9999768916578143,
+          "full_space_nmse": 0.9879061722198357
+        },
+        {
+          "word": "rci",
+          "action": 7,
+          "test_nmse": 0.9889416652445542,
+          "identity_nmse": 2.02837622388222,
+          "shuffled_fit_nmse": 1.0000044117589355,
+          "full_space_nmse": 0.9889417795830824
+        }
+      ],
+      "laws": [
+        {
+          "name": "c involution",
+          "left": "cc",
+          "right": "",
+          "consistency_nmse": 0.7893552413327033,
+          "left_prediction_nmse": 0.7893552413327033,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "r involution",
+          "left": "rr",
+          "right": "",
+          "consistency_nmse": 0.18118530935921523,
+          "left_prediction_nmse": 0.18118530935921523,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "i involution",
+          "left": "ii",
+          "right": "",
+          "consistency_nmse": 0.8144556360544765,
+          "left_prediction_nmse": 0.8144556360544765,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "commuting c and r",
+          "left": "cr",
+          "right": "rc",
+          "consistency_nmse": 0.017850186274130132,
+          "left_prediction_nmse": 0.9485161443479778,
+          "right_prediction_nmse": 0.9493325492003262
+        },
+        {
+          "name": "conjugating c by i",
+          "left": "ici",
+          "right": "r",
+          "consistency_nmse": 0.6143738494728466,
+          "left_prediction_nmse": 0.9383698976115291,
+          "right_prediction_nmse": 0.3128378956267828
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "ci",
+          "wrong_word": "ic",
+          "correct_nmse": 0.9591489013438406,
+          "wrong_nmse": 1.0092318003836795,
+          "gap_wrong_minus_correct": 0.05008289903983898,
+          "target_separation_nmse": 2.022701249765665
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 0.023776244806922624
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 0.6173945441849372
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 0.01914787435477705
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 0.03324419118894828
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 0.023505011399999567
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 0.02350501139999957
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 0.015550034628403544
+        }
+      ],
+      "test_pca_energy_fraction": 0.9999896604207792,
+      "variance_fraction_of_orbit_residual": 0.12788436007858134
+    },
+    "source_query_concat_numeric_null": {
+      "status": "complete",
+      "probe_dimension": 64,
+      "orbit_sensitive_energy_fraction": 0.9658872010611574,
+      "generators": [
+        {
+          "generator": "c",
+          "action": 1,
+          "alpha": 0.01,
+          "validation_nmse": 0.9249973399445139,
+          "test_nmse": 0.9366065390502638,
+          "identity_nmse": 2.153783149509127,
+          "shuffled_fit_nmse": 1.003503434631947,
+          "full_space_nmse": 0.938040617519787,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "r",
+          "action": 2,
+          "alpha": 0.0001,
+          "validation_nmse": 0.23303148704330587,
+          "test_nmse": 0.2381695613044469,
+          "identity_nmse": 3.5994041657028375,
+          "shuffled_fit_nmse": 1.001510804311314,
+          "full_space_nmse": 0.2554035884926235,
+          "shuffled_alpha": 1.0
+        },
+        {
+          "generator": "i",
+          "action": 4,
+          "alpha": 0.01,
+          "validation_nmse": 0.9093422769396303,
+          "test_nmse": 0.9206825670101816,
+          "identity_nmse": 2.0282148819899337,
+          "shuffled_fit_nmse": 1.005086189321102,
+          "full_space_nmse": 0.9224768754641514,
+          "shuffled_alpha": 1.0
+        }
+      ],
+      "composites": [
+        {
+          "word": "rc",
+          "action": 3,
+          "test_nmse": 0.9563164266529459,
+          "identity_nmse": 2.0139893006537255,
+          "shuffled_fit_nmse": 1.0000246201322485,
+          "full_space_nmse": 0.9573046306580641
+        },
+        {
+          "word": "ci",
+          "action": 5,
+          "test_nmse": 0.9509214923674076,
+          "identity_nmse": 2.093331457689079,
+          "shuffled_fit_nmse": 1.0000256723954826,
+          "full_space_nmse": 0.9520317398607258
+        },
+        {
+          "word": "ri",
+          "action": 6,
+          "test_nmse": 0.9701784103461428,
+          "identity_nmse": 2.0933314576890796,
+          "shuffled_fit_nmse": 1.0001046103135118,
+          "full_space_nmse": 0.9708530303938389
+        },
+        {
+          "word": "rci",
+          "action": 7,
+          "test_nmse": 0.9741409951100722,
+          "identity_nmse": 2.017945586766218,
+          "shuffled_fit_nmse": 1.0000064249711471,
+          "full_space_nmse": 0.9747259740905592
+        }
+      ],
+      "laws": [
+        {
+          "name": "c involution",
+          "left": "cc",
+          "right": "",
+          "consistency_nmse": 0.825520593032975,
+          "left_prediction_nmse": 0.825520593032975,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "r involution",
+          "left": "rr",
+          "right": "",
+          "consistency_nmse": 0.14816108888040738,
+          "left_prediction_nmse": 0.14816108888040738,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "i involution",
+          "left": "ii",
+          "right": "",
+          "consistency_nmse": 0.8360532378627419,
+          "left_prediction_nmse": 0.8360532378627419,
+          "right_prediction_nmse": 0.0
+        },
+        {
+          "name": "commuting c and r",
+          "left": "cr",
+          "right": "rc",
+          "consistency_nmse": 0.01541550095877923,
+          "left_prediction_nmse": 0.9545901653383118,
+          "right_prediction_nmse": 0.9563164266529459
+        },
+        {
+          "name": "conjugating c by i",
+          "left": "ici",
+          "right": "r",
+          "consistency_nmse": 0.7016862252149153,
+          "left_prediction_nmse": 0.9410257665617558,
+          "right_prediction_nmse": 0.2381695613044469
+        }
+      ],
+      "wrong_order": [
+        {
+          "correct_word": "ci",
+          "wrong_word": "ic",
+          "correct_nmse": 0.9509214923674076,
+          "wrong_nmse": 0.9991188851901451,
+          "gap_wrong_minus_correct": 0.048197392822737495,
+          "target_separation_nmse": 2.013989300653726
+        }
+      ],
+      "cka": [
+        {
+          "action": 1,
+          "within_stratum_cka": 0.040395270410385
+        },
+        {
+          "action": 2,
+          "within_stratum_cka": 0.6345680152601434
+        },
+        {
+          "action": 3,
+          "within_stratum_cka": 0.03265066445147995
+        },
+        {
+          "action": 4,
+          "within_stratum_cka": 0.048414351359323406
+        },
+        {
+          "action": 5,
+          "within_stratum_cka": 0.038726334033994884
+        },
+        {
+          "action": 6,
+          "within_stratum_cka": 0.03872633403399488
+        },
+        {
+          "action": 7,
+          "within_stratum_cka": 0.031186155722177523
+        }
+      ],
+      "test_pca_energy_fraction": 0.9773781325701746,
+      "variance_fraction_of_orbit_residual": 0.8721156399214189
+    }
+  },
+  "seconds": 7.961638494161889,
+  "completed_utc": "2026-10-06T06:29:41.759854+00:00"
+}

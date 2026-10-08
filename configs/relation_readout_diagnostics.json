@@ -1,0 +1,13 @@
+{
+  "output": "results/relation_readout_diagnostics",
+  "parent": "results/algebra_hidden_relations",
+  "extension": "results/relation_seed_extension",
+  "world_confirmation": "results/relation_world_confirmation",
+  "source_seeds": [5081, 6091, 7103, 8111, 9127, 10141, 11159, 12163, 13171],
+  "worlds": ["world0", "world1", "world2"],
+  "conditions": ["ordinary", "correct_relations", "shuffled_relations"],
+  "readouts": ["original_lm_head", "known_onehot_ridge", "known_prototype_validation_selected"],
+  "ridge_grid": [0.000001, 0.0001, 0.01, 1.0],
+  "deadline_utc": "2026-10-06T17:00:00+00:00",
+  "scope": "Exploratory readout diagnosis with fixed native operators and backbone. Fit replacement readouts only from known source e/C/I hidden states and their existing scalar labels. Ridge and prototype choices use known-state validation only. No hidden labels or transformed hidden states in readout fitting or selection. Report every readout, not a hidden-test-selected winner; these external calibrators do not establish unassisted network reasoning."
+}

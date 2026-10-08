@@ -1,0 +1,63 @@
+{
+  "base_config_sha256": "dc5539f0d750989af10c7219da0005ca9ce23362c71519ccb140395579e06453",
+  "effective_base_config": {
+    "repository": "external/neurips",
+    "candidate_table": "results/permutation_audit/candidate_bundles.csv",
+    "data_seed": 20261005,
+    "lengths": [
+      10,
+      30
+    ],
+    "examples_per_length": {
+      "train": 200,
+      "validation": 30,
+      "representation": 20,
+      "support_pool": 50,
+      "target_test": 30
+    },
+    "model_seeds": [
+      17,
+      42,
+      101
+    ],
+    "d_model": 96,
+    "layers": 2,
+    "heads": 4,
+    "ff_multiplier": 4,
+    "dropout": 0.0,
+    "pretrain_steps": 1200,
+    "examples_per_task_per_step": 32,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.01,
+    "record_every": 300,
+    "target_tasks": [
+      "descents",
+      "recoils",
+      "lis_length",
+      "longest_increasing_run"
+    ],
+    "target_budgets": [
+      64,
+      256
+    ],
+    "adapt_steps": 100,
+    "adapt_batch_size": 32,
+    "adapt_learning_rate": 0.0005,
+    "probe_steps": 200,
+    "probe_learning_rate": 0.01,
+    "primary_budget": 256,
+    "primary_mode": "finetune",
+    "status": "exploratory small-model new-combination pilot; not the original full-scale training protocol",
+    "selection_policy": "fixed known circuits; null controls minimize source-label-statistic distance with equal expanded affine pair count; no neural outcomes used",
+    "evaluation_policy": "all source training, validation, representation, target support and target test inputs are globally disjoint; no target-test tuning",
+    "limitations": [
+      "Source label marginals and task difficulty are not exactly matched.",
+      "No separately trained single-task controls in this pilot.",
+      "Null means no proved rational linear identity of the audited form, not absence of all mathematical relationships.",
+      "Two layers and answer-token-only loss differ from the original full-scale protocol."
+    ]
+  },
+  "torch": "2.11.0+cu128",
+  "source_precision": "BF16 autocast, FP32 parameters",
+  "source_labels_only_observed_states": true
+}

@@ -1,0 +1,77 @@
+{
+  "output": "results/two_step_joint_visible_lr1e4",
+  "parent": "results/algebra_hidden_relations",
+  "source_condition": "ordinary",
+  "source_seeds": [
+    5081,
+    6091,
+    7103
+  ],
+  "support_seeds": [
+    261071101,
+    261071103,
+    261071107,
+    261071109,
+    261071113,
+    261071127
+  ],
+  "test_seed": 261071201,
+  "lengths": [
+    12,
+    15,
+    20,
+    25,
+    30
+  ],
+  "fit_per_length": 512,
+  "validation_per_length": 64,
+  "iid_per_length": 256,
+  "collision_pairs_per_length": 128,
+  "conditions": [
+    "both_correct",
+    "c_correct_i_wrong",
+    "c_wrong_i_correct",
+    "both_wrong"
+  ],
+  "views": [
+    "hidden"
+  ],
+  "epochs": 100,
+  "checkpoint_epochs": [
+    25,
+    50,
+    100
+  ],
+  "batch_size": 32,
+  "learning_rate": 0.001,
+  "warmup_updates": 100,
+  "minimum_learning_rate_ratio": 0.2,
+  "weight_decay": 0.0001,
+  "geometry_weight": 0.25,
+  "distillation_temperature": 2.0,
+  "minimum_pairing_stratum": 3,
+  "primary_word": "ci",
+  "words": [
+    "c",
+    "i",
+    "ci",
+    "ic",
+    "cc",
+    "ii"
+  ],
+  "primary_epoch": 100,
+  "fixed_predictions": [
+    "Both-correct hidden operators have higher heldout-ci accuracy than each of the other three conditions; compare paired outcomes without imposing a single-correct ordering.",
+    "Both-correct collision-ci accuracy exceeds the visible-answer-only0.5 ceiling in each of the three frozen-source means.",
+    "Both-correct collision-ci pair-both-correct is positive in each source mean.",
+    "Output-space operators, true-intermediate diagnostics, all single-step scores and all failures are reported; none are used to select fitting settings."
+  ],
+  "deadline_utc": "2026-10-07T17:00:00+00:00",
+  "scope": "Visible-only feasibility pilot after the frozen assay and early joint visible grades; no new compound evaluation. Same n0 source/data across two registered rates.",
+  "source_learning_rate": 0.0001,
+  "operator_learning_rate": 0.001,
+  "native_ce_weight": 1.0,
+  "native_distillation_weight": 1.0,
+  "operator_distillation_weight": 1.0,
+  "interpretation_gate": "Before interpreting hidden-composition failure, both correct single-generator validation accuracies must exceed0.90 in each of the three source means; report failure if unmet. Source native observed-state accuracy and each control operator accuracy are reported separately."
+}

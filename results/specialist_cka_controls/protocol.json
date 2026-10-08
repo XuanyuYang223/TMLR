@@ -1,0 +1,589 @@
+{
+  "registered_utc": "2026-10-06T23:20:30.428585+00:00",
+  "new_cka_scores": 0,
+  "signature": {
+    "plan": {
+      "output": "results/specialist_cka_controls",
+      "repository": "/home/yangx/neurips",
+      "upstream_python": "external/neurips/src",
+      "model_seeds": [
+        17,
+        42,
+        101
+      ],
+      "independent_random_seed_offset": 104729,
+      "data_seed": 2026100701,
+      "lengths": [
+        10,
+        30
+      ],
+      "candidates_per_length": 4096,
+      "examples_per_length": {
+        "fit": 32,
+        "validation": 16,
+        "test": 128
+      },
+      "transforms": [
+        "identity",
+        "complement",
+        "inverse"
+      ],
+      "minimum_stratum_size": 3,
+      "conditional_permutations": 32,
+      "conditional_permutation_seed": 2026100702,
+      "confidence_ridge": 0.01,
+      "batch_size": 128,
+      "primary": "final_norm at task-free ONE_END; correct-minus-original-wrong contrast, length-centered and common answer strata, with matched initialization contrasts",
+      "secondary": "final_norm at task-specific equals position; all prefix layers; independent random initialization; confidence residualization",
+      "answer_strata": "common key (length, left answer on identity, right answers on identity/complement/inverse); retain strata >=3; subtract each stratum mean separately in every branch using the same retained anchors",
+      "input_control": "Report same-seed and independent random networks, positional permutation-matrix and normalized numeric-input CKA, and within-answer-stratum row permutations. These controls do not remove every possible input confounder and are not the PSD dCKA algorithm.",
+      "confidence_control": "Fit ridge on FIT only, fixed alpha; nuisance is length onehot plus max numeric probability, entropy, probability of true answer and top-two logit margin. Evaluate on TEST; supplemental and does not prove causal mediation.",
+      "inference_scope": "Fresh permutations conditional on the original eight relations, three source seeds and one existing source data world. Relation-seed cells share data/tasks and are not independent trials. No result-dependent task/model/transform/stratum selection. Higher hidden CKA than output CKA alone is not independent-mechanism evidence."
+    },
+    "code_sha256": "ecae66ac70ea20b1b274775712bd35e1305fbeadaf8ce522d8af79f3f0213b14",
+    "config_sha256": "bbc06a515c864778428d9985243526670c7a03bc628f54791c768388cbd34b83",
+    "upstream_geometry_config_sha256": "8a3b21366ca344c0cb50f5a26108375b96eceb3ca49720ff001749ef09155e88",
+    "upstream_code_sha256": {
+      "models.py": "286a01f794f627c1f0db5dd6dd31adbdb7f58f235e47203163eda6fc8a8baab6",
+      "training.py": "b09bdd90a349e18cbf71d1345a05a1e075de945956d30d4940806fd3d8712183",
+      "passage.py": "d200ffe6f5f6cff717c1b6ed6698a5a6af42bb6580fa4e8729a2fd84b79babd6",
+      "math_ops.py": "968e7580c01289e5ffeab9f07c52beb334be40d95c0e61d7a7f9e2cab694c62c"
+    },
+    "local_dependencies_sha256": {
+      "experiments/longrun_attention.py": "5035f58453ddee5c5d5b05878491dfcc81764e172f2ebada437dc9e325048918",
+      "experiments/permutation_audit.py": "d02b667d8d1951c547ad4a4a6a84875535f6ee59255db96bb6abef241b5b267e"
+    },
+    "sources": [
+      {
+        "task": "anti_fixed_points",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-anti_fixed_points-transformer-seed17/checkpoint.pt",
+        "checkpoint_sha256": "21b357419e5532b6490c07f95b7acbd4d47b4f7dc549d0d0a15e3778f8b5053f",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-anti_fixed_points-transformer-seed17/completed.json",
+        "marker_sha256": "76e58ed8263317b804523e704707f3cbaac2a9bd27396c653688dfa854abb72e"
+      },
+      {
+        "task": "anti_fixed_points",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-anti_fixed_points-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "982cb273da99cea99b167b5ce857810ccf08b89fe72b09f8395211c0170935a3",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-anti_fixed_points-transformer-seed42/completed.json",
+        "marker_sha256": "053ffe9504fda9cf78b806c3834ca302bb0da366f2c0e334013804b2cfa3718e"
+      },
+      {
+        "task": "anti_fixed_points",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-anti_fixed_points-transformer-seed101/checkpoint.pt",
+        "checkpoint_sha256": "df8df450d90238a40e3ac1a70af06fddcaf6d940ec80dccd5f7b12065d6bacb3",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-anti_fixed_points-transformer-seed101/completed.json",
+        "marker_sha256": "fa38e09fee21561b2d874c4101c1acc44c634cffabc4916b01eb0f65a1922f5e"
+      },
+      {
+        "task": "components",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-components-transformer-seed17/checkpoint.pt",
+        "checkpoint_sha256": "86166d750c9de837114fa236dfbb855d10bb111675ccdd7b2085df9f3ec24567",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-components-transformer-seed17/completed.json",
+        "marker_sha256": "26613d7e95e8a7ddac4ae9281422431eee62a3c13f484378d9c8009145a1faec"
+      },
+      {
+        "task": "components",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-components-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "da3b2c13ced08863fa069e097fa368ed724037320c88868adab9f5df8ded999a",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-components-transformer-seed42/completed.json",
+        "marker_sha256": "217d91592dfb1d15ce6cc57a806edf11046c8203b9be7e8f7fc3ac84209df977"
+      },
+      {
+        "task": "components",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-components-transformer-seed101/checkpoint.pt",
+        "checkpoint_sha256": "9a112c7af2aa1b9e5d727a0a6ad4b09858a7aa30d0643bc86fe133ca6df206a6",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-components-transformer-seed101/completed.json",
+        "marker_sha256": "c422a7a39be722712626b9b4e75de7d55290d73434e016dd59d0817afd0521b1"
+      },
+      {
+        "task": "deficiencies",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-deficiencies-transformer-seed17/checkpoint.pt",
+        "checkpoint_sha256": "e1cfa96120ebfe35b7a6b09735c32c69ef64d1238e50f6e1e279d5f2dff7096e",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-deficiencies-transformer-seed17/completed.json",
+        "marker_sha256": "169f79a5930dd19c076b81958d573cba887b4000955aaa3fb92dc3de53d539d6"
+      },
+      {
+        "task": "deficiencies",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-deficiencies-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "54070fceb08b7a062dc2ff1dd370b18f2ffbb7a985f9ba3d3508e29a1c7ba53f",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-deficiencies-transformer-seed42/completed.json",
+        "marker_sha256": "20752fab47c4712fe4e616ff217c0e9b8ee64fd6269a196c643e89f7e8eee09d"
+      },
+      {
+        "task": "deficiencies",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-deficiencies-transformer-seed101/checkpoint.pt",
+        "checkpoint_sha256": "267899524eb2c881d01193aa603d6edb61293f3049f4cce1892251b1d54e02b4",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-deficiencies-transformer-seed101/completed.json",
+        "marker_sha256": "c60d7d8fc2dc3f6a6433c4d635798ca0e04bbc115a3959e43fcbaa9cd530e491"
+      },
+      {
+        "task": "descents",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property32-zero-overlap-pilot/property-a-transformer-tasks01-seed17/checkpoint.pt",
+        "checkpoint_sha256": "96cb96d163fb751d5c321c52b770b46a7918c1be275fc5eb0f3fae78a241e17a",
+        "marker": "/home/yangx/neurips/runs/property32-zero-overlap-pilot/property-a-transformer-tasks01-seed17/completed.json",
+        "marker_sha256": "2228208777af6ae0946939ad4beef290ced080f8d13092e7dc76e4b0a6b9eada"
+      },
+      {
+        "task": "descents",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-descents-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "b3a0de80a387a8022a4cb79c7b142efc0a27c819efce4b80bd83eda85003664e",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-descents-transformer-seed42/completed.json",
+        "marker_sha256": "6bd7e0f472001e37cde87dfc5f30cf8c34311698ea0ea6c05cd8dc322c06e23d"
+      },
+      {
+        "task": "descents",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property32-zero-overlap-replicates/r2/property-b-transformer-tasks01-seed101/checkpoint.pt",
+        "checkpoint_sha256": "e734bca31bb18bb64f0b688699e0d95611bd601921a8145fcd01c2824f71d509",
+        "marker": "/home/yangx/neurips/runs/property32-zero-overlap-replicates/r2/property-b-transformer-tasks01-seed101/completed.json",
+        "marker_sha256": "a0b45935b157add83f03d7c709c41f1cb51a92f846ce08a0e934e3692f3a7f20"
+      },
+      {
+        "task": "exceedances",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-exceedances-transformer-seed17/checkpoint.pt",
+        "checkpoint_sha256": "4e34744464757d63e95d27454a1c97a2600e516faae3cab5b5d8443180f2b883",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-exceedances-transformer-seed17/completed.json",
+        "marker_sha256": "35972c86174274d2735b8ee80f461f6ea12b6faf44999c60fb9ea38ca7ed7bcb"
+      },
+      {
+        "task": "exceedances",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-exceedances-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "5f29b63e613df533a447caedfb3128c35f655756a9c03f7a8ead210c98dd44de",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-exceedances-transformer-seed42/completed.json",
+        "marker_sha256": "220e8257cddf1a2343dfb40e32821e3e7eb5a501b54ef807a2d5add2698ca048"
+      },
+      {
+        "task": "exceedances",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-exceedances-transformer-seed101/checkpoint.pt",
+        "checkpoint_sha256": "1276b0ef0fe622c93ffdd52935e49605a5af18ded77f0f923086d06bae92c672",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-exceedances-transformer-seed101/completed.json",
+        "marker_sha256": "4112c647f8b4289e99b435482e9b50ef63d9efb6261961e0ec792bebb2c89e2c"
+      },
+      {
+        "task": "fixed_points",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-fixed_points-transformer-seed17/checkpoint.pt",
+        "checkpoint_sha256": "c59d28030f3e0790f157c240a72672aa08d1c435d70c5a246aa139d343f7ac08",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-fixed_points-transformer-seed17/completed.json",
+        "marker_sha256": "a21ff7754e9e20070dd4c4f4a750d98c26f377fddb2c61d8675557be3a0870aa"
+      },
+      {
+        "task": "fixed_points",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-fixed_points-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "27f1225c4514346cd6efdd9e6c6decd60d93e40b39bbe1ff174bbf9064bfa475",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-fixed_points-transformer-seed42/completed.json",
+        "marker_sha256": "8555c373b01476027e92f7a0c67aa0c610b5abbf12a1dfca28d6706f8fd352b1"
+      },
+      {
+        "task": "fixed_points",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-fixed_points-transformer-seed101/checkpoint.pt",
+        "checkpoint_sha256": "d5976575d62e41c1351a2b42b5daaacbe649082e200d7cdce97cbcabfbe4af17",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-fixed_points-transformer-seed101/completed.json",
+        "marker_sha256": "a4cf171d2f1e428b558d4944c49f5c203bd587f8bf4bbc2203c9d68a8cf51689"
+      },
+      {
+        "task": "global_descents",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-global_descents-transformer-seed17/checkpoint.pt",
+        "checkpoint_sha256": "a8dd1ee38c2f54bd5572d72da498705774b653778fcc372c2e06fc91f92b7afe",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-global_descents-transformer-seed17/completed.json",
+        "marker_sha256": "d5814605c61acaca1db41254ca3b5edf5d8ebe775f7106237beb0d4ef447cda4"
+      },
+      {
+        "task": "global_descents",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-global_descents-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "41d5162e57f94be3757a6b16500d2e458064b200d637cd772902b9117dd68547",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-global_descents-transformer-seed42/completed.json",
+        "marker_sha256": "44e0c37a8711ef4bae4cbe4bf28ff8ba2dec8ec107b246500cafc5140675222b"
+      },
+      {
+        "task": "global_descents",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-global_descents-transformer-seed101/checkpoint.pt",
+        "checkpoint_sha256": "c1ddb5985bcf76eafc953cdb49eb7b2f81300d68058fb9eef14e7c7ad5771c5c",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-global_descents-transformer-seed101/completed.json",
+        "marker_sha256": "6d51fdd5e81f5d7a4235bb6551565be2adeb449b0bd69f8af4ba645914ea94b9"
+      },
+      {
+        "task": "lds_length",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-lds_length-transformer-seed17/checkpoint.pt",
+        "checkpoint_sha256": "c8fc54124bcfe56b458cbc3adf494cdb4948087ae1740ea7da0c4a25ebe50af0",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-lds_length-transformer-seed17/completed.json",
+        "marker_sha256": "996edbbcfd4ba09eaa5fdb69ae9081022866fa15ea7f5f9acdead71c641670fd"
+      },
+      {
+        "task": "lds_length",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-lds_length-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "4a8731d08dec8280034faf371ddfae85e793f995b00965d2ee5b0033afca1d08",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-lds_length-transformer-seed42/completed.json",
+        "marker_sha256": "0d1e94576c2830fb009ba493c816625aadcd0d6359f74fd92533c32aa87f7bca"
+      },
+      {
+        "task": "lds_length",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-lds_length-transformer-seed101/checkpoint.pt",
+        "checkpoint_sha256": "854056a90e8cd8b8d72070e9d1d20c69c3c7e9ff57fdda54b161cabb53509eeb",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-lds_length-transformer-seed101/completed.json",
+        "marker_sha256": "dc39bdf31e34b23628a72a4f5be0bb7f2bd4c7535bc0d57b450834e23544fb45"
+      },
+      {
+        "task": "left_to_right_maxima",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-left_to_right_maxima-transformer-seed17/checkpoint.pt",
+        "checkpoint_sha256": "d98793edd6f50563b7a5f07df4890e531346bbead9a08015fbbf57b6941338d9",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-left_to_right_maxima-transformer-seed17/completed.json",
+        "marker_sha256": "39108d25b8592cd7887217c48c50e73cdb2e6afc704ea8b8e4bbd3cf0b5013c3"
+      },
+      {
+        "task": "left_to_right_maxima",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-left_to_right_maxima-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "0f914a99b38c5874b2bf42404fd97ec6a05f65a9c2777ea82fa4bddffb12c931",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-left_to_right_maxima-transformer-seed42/completed.json",
+        "marker_sha256": "a19813bade6061cdc32a82bf259352c80a0cfd527191c6fe42772760cd9d0378"
+      },
+      {
+        "task": "left_to_right_maxima",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-left_to_right_maxima-transformer-seed101/checkpoint.pt",
+        "checkpoint_sha256": "7ae4795c6868e383593811c9562e9db8d5be707a393a2e020a04c5884752cc7d",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-left_to_right_maxima-transformer-seed101/completed.json",
+        "marker_sha256": "6ca9e6ac3e3383aa1e98ba27c80768bbcf40fadff12b62f344d32aaabb2e24b4"
+      },
+      {
+        "task": "left_to_right_minima",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-left_to_right_minima-transformer-seed17/checkpoint.pt",
+        "checkpoint_sha256": "65d4326d12f9e49257d48630d069b813ac9422a04998040a58cf0c62dd9e84f1",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-left_to_right_minima-transformer-seed17/completed.json",
+        "marker_sha256": "7ec9572c6477f2bb4d05f5e4ed7acb8bca62f4c500c9d52f8c672bb4366763dd"
+      },
+      {
+        "task": "left_to_right_minima",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-left_to_right_minima-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "999eec399c54d9364d14d47d3e92289ea42385c4098dd48ebf5a213991c1f4b3",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-left_to_right_minima-transformer-seed42/completed.json",
+        "marker_sha256": "a12a19fc362f645ca786d1e2c4244c0112e4be96636275d55f98217411684812"
+      },
+      {
+        "task": "left_to_right_minima",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-left_to_right_minima-transformer-seed101/checkpoint.pt",
+        "checkpoint_sha256": "f3068ca45aaf4c4f80367c5aa2c3d79dcb33f27122f2591d8ef259c2c4ca882c",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-left_to_right_minima-transformer-seed101/completed.json",
+        "marker_sha256": "7d95282bfd89a7dd86dd7425d87f5edd6c3f5a5622fb8aa7d03b4864ec8d3052"
+      },
+      {
+        "task": "lis_length",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-lis_length-transformer-seed17/checkpoint.pt",
+        "checkpoint_sha256": "6683e4545baaa207d34844e952fc201adc0de80cc48f4d6b59583a189be956be",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-lis_length-transformer-seed17/completed.json",
+        "marker_sha256": "7d1d8ed76e782568d84f63dfa006a1a99cac497e7c9428bc73254f1991798c59"
+      },
+      {
+        "task": "lis_length",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-lis_length-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "7c7d4f7ed322ed17202ab07e19bb420f8b34f6374a1a610defc274fdcd3139ad",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-lis_length-transformer-seed42/completed.json",
+        "marker_sha256": "275bafad1e0ea0edafe924cab9870e9c099482e8e05ca188dfa01e2e40a92bf2"
+      },
+      {
+        "task": "lis_length",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-lis_length-transformer-seed101/checkpoint.pt",
+        "checkpoint_sha256": "a188321509532a2fac65f8d23e5edd3727c76017d5e8d8a3f8bae5e19ff80d89",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-lis_length-transformer-seed101/completed.json",
+        "marker_sha256": "706bf5dcb5108cdf1b1b5a41119cecb8287842fd667c942a1850b481d1f354a3"
+      },
+      {
+        "task": "longest_decreasing_run",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-longest_decreasing_run-transformer-seed17/checkpoint.pt",
+        "checkpoint_sha256": "ada74fbb6d8a04780b91c29636799b1e39a410f83e920deec1e657ee3e843773",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-longest_decreasing_run-transformer-seed17/completed.json",
+        "marker_sha256": "1d8fc9276f2eb3d5bd846cc6257cbb7e3f4548fa8b943bf4f2ea45e665c0267e"
+      },
+      {
+        "task": "longest_decreasing_run",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-longest_decreasing_run-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "39742cc17cab2410109511170d74c65506c24657dc084f5a39815c93416fe8dd",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-longest_decreasing_run-transformer-seed42/completed.json",
+        "marker_sha256": "99df560044863b1f68def6e90dcf786325119449d020940e071e7c8bd42a2f0a"
+      },
+      {
+        "task": "longest_decreasing_run",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-longest_decreasing_run-transformer-seed101/checkpoint.pt",
+        "checkpoint_sha256": "a02ec15708af6e129f783f44da86a438d34a3222ac6fe377809ddcf87c1b8b35",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-longest_decreasing_run-transformer-seed101/completed.json",
+        "marker_sha256": "3c7d2cd0f4fb45905734160195e55cc767e90e8935716abda93bda4fd9660c04"
+      },
+      {
+        "task": "longest_increasing_run",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-longest_increasing_run-transformer-seed17/checkpoint.pt",
+        "checkpoint_sha256": "91d1bc7e3c30604f79c3f8c0123836df6c3b0d7080cd3a7ce72d185f1c374d24",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-longest_increasing_run-transformer-seed17/completed.json",
+        "marker_sha256": "4ec8bf7c72dd18e893a97af633f46d51cd3a09b5bbda5218388008d1752d2127"
+      },
+      {
+        "task": "longest_increasing_run",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-longest_increasing_run-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "c2173d5b795e8944c39887469ba7f16ef2396c8166fb57257b01868128398d70",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-longest_increasing_run-transformer-seed42/completed.json",
+        "marker_sha256": "35b25e6ffec1f84e8a9fcf778bf4ad468ae36ec288ba60cf7da8c3949ca6bcf9"
+      },
+      {
+        "task": "longest_increasing_run",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-longest_increasing_run-transformer-seed101/checkpoint.pt",
+        "checkpoint_sha256": "65d50305862c875f6846bdeb6b955816daccb0641c59af850badf74d4595484e",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-longest_increasing_run-transformer-seed101/completed.json",
+        "marker_sha256": "d3a32d05b92479255adad55badaf53eb7cd0af8326ce626a33bff7614c3d798a"
+      },
+      {
+        "task": "peaks",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property32-relation-controlled/s2-seed17/relation-s2-a-transformer-tasks01-seed17/checkpoint.pt",
+        "checkpoint_sha256": "de9477f85a68b326fbac94cd211e3508b10bab3aa0144144cdc5861607cc195e",
+        "marker": "/home/yangx/neurips/runs/property32-relation-controlled/s2-seed17/relation-s2-a-transformer-tasks01-seed17/completed.json",
+        "marker_sha256": "c064ee2831a2fcbbf704c119e253a9dc13ab58deabb4e5ab4c5ecdc9333508aa"
+      },
+      {
+        "task": "peaks",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property32-zero-overlap-replicates/r1/property-a-transformer-tasks01-seed42/checkpoint.pt",
+        "checkpoint_sha256": "884340fa708a647b170f90f3f66a33fd903498cf5542624921d7c9800f32df94",
+        "marker": "/home/yangx/neurips/runs/property32-zero-overlap-replicates/r1/property-a-transformer-tasks01-seed42/completed.json",
+        "marker_sha256": "20eb5a5070902588703f39ca36205892db81e5a4233a7b9d42dae64b1ec97ae4"
+      },
+      {
+        "task": "peaks",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property32-relation-controlled/s2-seed101/relation-s2-a-transformer-tasks01-seed101/checkpoint.pt",
+        "checkpoint_sha256": "ad7d8f1a32b65c691aafc96179d22b4209ddd3ae24e531f4f1be025a86bdea8e",
+        "marker": "/home/yangx/neurips/runs/property32-relation-controlled/s2-seed101/relation-s2-a-transformer-tasks01-seed101/completed.json",
+        "marker_sha256": "e40e0d8c08c299589e243612f9d1a3b32a7502de0a007d3f84ae26a3af103612"
+      },
+      {
+        "task": "recoils",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property32-zero-overlap-pilot/property-b-transformer-tasks01-seed17/checkpoint.pt",
+        "checkpoint_sha256": "f9e4e8a56304d039a581514e0b55c324e7139f45f6a087096bfe469e9213ed11",
+        "marker": "/home/yangx/neurips/runs/property32-zero-overlap-pilot/property-b-transformer-tasks01-seed17/completed.json",
+        "marker_sha256": "25dae15191c9c4baf433b806cd8cd76122ac8b00ff7063825c686159d3221c1f"
+      },
+      {
+        "task": "recoils",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property32-relation-controlled/s0-seed42/relation-s0-a-transformer-tasks01-seed42/checkpoint.pt",
+        "checkpoint_sha256": "1a871155189aebe8db652e834b9b4e14ad3e4ca8f02e8f9c6df2d1927ea80c34",
+        "marker": "/home/yangx/neurips/runs/property32-relation-controlled/s0-seed42/relation-s0-a-transformer-tasks01-seed42/completed.json",
+        "marker_sha256": "ecae4c80ee1147d45444b76ae89e39ddc65adb50ebdd3c694b9d827e089217eb"
+      },
+      {
+        "task": "recoils",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property32-relation-controlled/s0-seed101/relation-s0-a-transformer-tasks01-seed101/checkpoint.pt",
+        "checkpoint_sha256": "764c1b1f280157a5654d9134e4449b4a495a2d4d609297516eb44384c4a11a1f",
+        "marker": "/home/yangx/neurips/runs/property32-relation-controlled/s0-seed101/relation-s0-a-transformer-tasks01-seed101/completed.json",
+        "marker_sha256": "137fcbcded97065644c02a999eac59fd0d3604de07642b9725380a44b82a0115"
+      },
+      {
+        "task": "valleys",
+        "seed": 17,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-valleys-transformer-seed17/checkpoint.pt",
+        "checkpoint_sha256": "371418b9e55001c55ac77b4cebcf53d645437d54e7085950c016b048defef66e",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-valleys-transformer-seed17/completed.json",
+        "marker_sha256": "d303610547e5c72d0654309ae3cde05dfbc154f08b265858afdb4c74d91240ac"
+      },
+      {
+        "task": "valleys",
+        "seed": 42,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-valleys-transformer-seed42/checkpoint.pt",
+        "checkpoint_sha256": "8cab46d56842d5db10fe18e803c1111fd47da7968e38fc575e4b69b2ea99eae2",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-valleys-transformer-seed42/completed.json",
+        "marker_sha256": "7670c0cef2a083fb4b7fccdba5f5a3b26c600f86e4ce2b46a3816b507463c01e"
+      },
+      {
+        "task": "valleys",
+        "seed": 101,
+        "checkpoint": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-valleys-transformer-seed101/checkpoint.pt",
+        "checkpoint_sha256": "60847050ba65959a0060cf379b410288edf40c0f7f60a2429c7a9bf3168cfbfc",
+        "marker": "/home/yangx/neurips/runs/property-task-geometry/specialists/geometry-specialist-valleys-transformer-seed101/completed.json",
+        "marker_sha256": "af4064efbc148dc02b5cdd2361b617b97410a9e94e0a751502e09f355885ae7a"
+      }
+    ],
+    "relations": [
+      {
+        "pair_id": "descent_inverse",
+        "left": "descents",
+        "right": "recoils",
+        "input_transform": "inverse",
+        "right_label_offset": 0
+      },
+      {
+        "pair_id": "peak_complement",
+        "left": "peaks",
+        "right": "valleys",
+        "input_transform": "complement",
+        "right_label_offset": 0
+      },
+      {
+        "pair_id": "fixed_complement",
+        "left": "fixed_points",
+        "right": "anti_fixed_points",
+        "input_transform": "complement",
+        "right_label_offset": 0
+      },
+      {
+        "pair_id": "exceedance_inverse",
+        "left": "exceedances",
+        "right": "deficiencies",
+        "input_transform": "inverse",
+        "right_label_offset": 0
+      },
+      {
+        "pair_id": "subsequence_complement",
+        "left": "lis_length",
+        "right": "lds_length",
+        "input_transform": "complement",
+        "right_label_offset": 0
+      },
+      {
+        "pair_id": "run_complement",
+        "left": "longest_increasing_run",
+        "right": "longest_decreasing_run",
+        "input_transform": "complement",
+        "right_label_offset": 0
+      },
+      {
+        "pair_id": "record_complement",
+        "left": "left_to_right_maxima",
+        "right": "left_to_right_minima",
+        "input_transform": "complement",
+        "right_label_offset": 0
+      },
+      {
+        "pair_id": "decomposition_complement",
+        "left": "global_descents",
+        "right": "components",
+        "input_transform": "complement",
+        "right_label_offset": 1
+      }
+    ],
+    "excluded_archives": [
+      {
+        "path": "results/algebra_hidden_relations/probe_dataset.npz",
+        "sha256": "b5f8f7d288bf9dc2c807f36952dc5af96c3470568b547cdf8993c8d1bb6a911c"
+      },
+      {
+        "path": "results/algebra_hidden_relations/source_data.npz",
+        "sha256": "7764f8b056459a51b21996493d34eb52e75d7d448eafcab8128a73c7c9d67132"
+      },
+      {
+        "path": "results/algebra_hidden_relations/training_orbit_audit.npz",
+        "sha256": "f68508629a08fdf6bcd7146907d07556ab08f7f750080f5853907f0a9ea6fd8d"
+      },
+      {
+        "path": "results/algebra_structure/native/dataset.npz",
+        "sha256": "7a2b45ca674ac09435694a3776afff6821eb391ce51634fe68363712cee51d1d"
+      },
+      {
+        "path": "results/algebra_structure_replication/dataset/data.npz",
+        "sha256": "59c7dfcee14926ae002853f8c69cd113cb4be8564a813ad38f0e0289a4f234f5"
+      },
+      {
+        "path": "results/algebra_structure_replication/probe_dataset.npz",
+        "sha256": "5c9539adc5b76b732740d673789abef0e6b96eeb1f12950a90f55c752d19a35e"
+      },
+      {
+        "path": "results/answer_matched_geometry/dataset.npz",
+        "sha256": "f662c12fe77401b41bb5a04177b8ea4a0089d756eadba69620b645857ee15d56"
+      },
+      {
+        "path": "results/joint_answer_matched_geometry/dataset.npz",
+        "sha256": "f8d34caa858183360a383ad9abab6913330c3abe6050fc66d39386cdbfe402d9"
+      },
+      {
+        "path": "results/native_ablation/dataset/data.npz",
+        "sha256": "8dc94e74db5c9084015f64217eb17b30df962838de5e3774c5e0cfb7c5717242"
+      },
+      {
+        "path": "results/native_target_repeat/dataset/data.npz",
+        "sha256": "c1a3be77c71f72e5d8f2e6ee4feb8ba2615bbd691f8e696daa8f59653a4cfa59"
+      },
+      {
+        "path": "results/permworld_combinations/data.npz",
+        "sha256": "964581706a8261c9abbd100b0c06b6c2c6f562e181cddbef672efa106dc88a3b"
+      },
+      {
+        "path": "results/relation_world_confirmation/world0/probe_dataset.npz",
+        "sha256": "5abb123b59507a613375ad870d24df13bf101e4f8b334452ab3c793870476597"
+      },
+      {
+        "path": "results/relation_world_confirmation/world0/source_data.npz",
+        "sha256": "e3b32aaa4d4775afc1e5b5696771368526e80d54167533661cd0be243a31b1c4"
+      },
+      {
+        "path": "results/relation_world_confirmation/world0/training_orbit_audit.npz",
+        "sha256": "9fd421df0790aa72da1c0ceb5a6ab5748296dff05d064191225f6348b604d398"
+      },
+      {
+        "path": "results/relation_world_confirmation/world1/probe_dataset.npz",
+        "sha256": "42a6ef6fd319fdc0ad631c72380c5414da0c801b216eaf67f7cd383f56c518e5"
+      },
+      {
+        "path": "results/relation_world_confirmation/world1/source_data.npz",
+        "sha256": "b30375ca77cdbf251cd1aa792a868d018910112c442d817644f1b761e8d63385"
+      },
+      {
+        "path": "results/relation_world_confirmation/world1/training_orbit_audit.npz",
+        "sha256": "9c8601f932c5c9dcb2e82499ec6ca2ade762b0133ac67bcacfefccdae82153d1"
+      },
+      {
+        "path": "results/relation_world_confirmation/world2/probe_dataset.npz",
+        "sha256": "2ee969bd6d2915438c514e2c1040e7ba9e4615daf96d27045806ab6ce58af9eb"
+      },
+      {
+        "path": "results/relation_world_confirmation/world2/source_data.npz",
+        "sha256": "b91c88f044b352458194257f4686d7aab3608fedc46e49ce6f2a0165b6a0f0c4"
+      },
+      {
+        "path": "results/relation_world_confirmation/world2/training_orbit_audit.npz",
+        "sha256": "ce57d7ba3871c725bc1375abebefba5ee97f5560890605539198b766a42e662e"
+      },
+      {
+        "path": "results/six_hour_session/dataset/data.npz",
+        "sha256": "ea63f0bb7dd843c40217574755e30f3f65a476b68bd8cf1d90fedc1791d47535"
+      }
+    ],
+    "original_parent_manifest_sha256": "2b6e92965f2070684dbc660087ad5aaa078c91f0c2aecac72a9c05b1999ca31d",
+    "prior_completed_study_sha256": "1560ed5a8ec021eab6196f59eff396432757d97502ad5572f1e8dc41ff20edcb"
+  }
+}

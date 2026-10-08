@@ -1,0 +1,618 @@
+{
+  "job": {
+    "phase": "multi",
+    "id": "position_four",
+    "seed": 101,
+    "tasks": [
+      "exceedances",
+      "deficiencies",
+      "cycle_count",
+      "nontrivial_cycle_count"
+    ],
+    "steps": 20000
+  },
+  "architecture": {
+    "id": "d256_l4",
+    "d_model": 256,
+    "layers": 4,
+    "heads": 8
+  },
+  "training_policy": {
+    "source_learning_rate": 0.0003,
+    "warmup_steps": 500,
+    "minimum_learning_rate_ratio": 0.1,
+    "examples_per_task_per_step": 32,
+    "record_every": 1000,
+    "precision": "bf16"
+  },
+  "data_sha256": "ea63f0bb7dd843c40217574755e30f3f65a476b68bd8cf1d90fedc1791d47535",
+  "source_hashes": {
+    "experiments/longrun_engine.py": "c40cede331cb3a92e61a3a501421c067db2ce862ad1a5934dd31ec28b6802bca",
+    "experiments/longrun_attention.py": "5035f58453ddee5c5d5b05878491dfcc81764e172f2ebada437dc9e325048918",
+    "experiments/permworld_combinations.py": "b14ac19b0be4c5695998d04782f43220f4b05a4634435f1715d6d1cdf3b0cdc0"
+  },
+  "upstream_hashes": {
+    "models.py": "286a01f794f627c1f0db5dd6dd31adbdb7f58f235e47203163eda6fc8a8baab6",
+    "math_ops.py": "968e7580c01289e5ffeab9f07c52beb334be40d95c0e61d7a7f9e2cab694c62c",
+    "passage.py": "d200ffe6f5f6cff717c1b6ed6698a5a6af42bb6580fa4e8729a2fd84b79babd6"
+  },
+  "fingerprint": "b2dfe52de5f24e642d031c86d4be47aaa7eccbfe513bbd6c613f7f72184f013c",
+  "job_id": "d256_l4_position_four_s101",
+  "status": "complete",
+  "step": 20000,
+  "exposures_per_task": 640000,
+  "elapsed_seconds": 264.8233406362124,
+  "checkpoint_sha256": "4b2d6fd7dedf4dfbd9c3ca82691497c9576f30f073b3fc50ed25052e44a5f37c",
+  "curve": [
+    {
+      "step": 0,
+      "task": "exceedances",
+      "accuracy": 0.0,
+      "cross_entropy": 5.253293195452009
+    },
+    {
+      "step": 0,
+      "task": "deficiencies",
+      "accuracy": 0.0,
+      "cross_entropy": 5.248378136044457
+    },
+    {
+      "step": 0,
+      "task": "cycle_count",
+      "accuracy": 0.0,
+      "cross_entropy": 5.384352286202567
+    },
+    {
+      "step": 0,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.0,
+      "cross_entropy": 5.348403087797619
+    },
+    {
+      "step": 1000,
+      "task": "exceedances",
+      "accuracy": 0.2876190476190476,
+      "cross_entropy": 1.731621300833566
+    },
+    {
+      "step": 1000,
+      "task": "deficiencies",
+      "accuracy": 0.2895238095238095,
+      "cross_entropy": 1.7024449484688895
+    },
+    {
+      "step": 1000,
+      "task": "cycle_count",
+      "accuracy": 0.24571428571428572,
+      "cross_entropy": 1.7640564546130952
+    },
+    {
+      "step": 1000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.3519047619047619,
+      "cross_entropy": 1.4765396081833613
+    },
+    {
+      "step": 2000,
+      "task": "exceedances",
+      "accuracy": 0.2752380952380952,
+      "cross_entropy": 1.7014344714936755
+    },
+    {
+      "step": 2000,
+      "task": "deficiencies",
+      "accuracy": 0.34523809523809523,
+      "cross_entropy": 1.59883664449056
+    },
+    {
+      "step": 2000,
+      "task": "cycle_count",
+      "accuracy": 0.3028571428571429,
+      "cross_entropy": 1.6618671199253627
+    },
+    {
+      "step": 2000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.35619047619047617,
+      "cross_entropy": 1.4471012115478517
+    },
+    {
+      "step": 3000,
+      "task": "exceedances",
+      "accuracy": 0.5533333333333333,
+      "cross_entropy": 1.0896412004743303
+    },
+    {
+      "step": 3000,
+      "task": "deficiencies",
+      "accuracy": 0.48904761904761906,
+      "cross_entropy": 1.1927729034423828
+    },
+    {
+      "step": 3000,
+      "task": "cycle_count",
+      "accuracy": 0.3157142857142857,
+      "cross_entropy": 1.61967892238072
+    },
+    {
+      "step": 3000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.3523809523809524,
+      "cross_entropy": 1.459066917782738
+    },
+    {
+      "step": 4000,
+      "task": "exceedances",
+      "accuracy": 0.6028571428571429,
+      "cross_entropy": 0.9299351755777995
+    },
+    {
+      "step": 4000,
+      "task": "deficiencies",
+      "accuracy": 0.5352380952380953,
+      "cross_entropy": 1.070714022318522
+    },
+    {
+      "step": 4000,
+      "task": "cycle_count",
+      "accuracy": 0.3047619047619048,
+      "cross_entropy": 1.62524169195266
+    },
+    {
+      "step": 4000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.3566666666666667,
+      "cross_entropy": 1.4431756991431826
+    },
+    {
+      "step": 5000,
+      "task": "exceedances",
+      "accuracy": 0.6471428571428571,
+      "cross_entropy": 0.8455090150378999
+    },
+    {
+      "step": 5000,
+      "task": "deficiencies",
+      "accuracy": 0.5619047619047619,
+      "cross_entropy": 0.9873283822195871
+    },
+    {
+      "step": 5000,
+      "task": "cycle_count",
+      "accuracy": 0.3271428571428571,
+      "cross_entropy": 1.5755007898239863
+    },
+    {
+      "step": 5000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.3538095238095238,
+      "cross_entropy": 1.4450056366693407
+    },
+    {
+      "step": 6000,
+      "task": "exceedances",
+      "accuracy": 0.6661904761904762,
+      "cross_entropy": 0.6866979535420735
+    },
+    {
+      "step": 6000,
+      "task": "deficiencies",
+      "accuracy": 0.7571428571428571,
+      "cross_entropy": 0.59604171253386
+    },
+    {
+      "step": 6000,
+      "task": "cycle_count",
+      "accuracy": 0.30238095238095236,
+      "cross_entropy": 1.5829261525472005
+    },
+    {
+      "step": 6000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.35714285714285715,
+      "cross_entropy": 1.447419459025065
+    },
+    {
+      "step": 7000,
+      "task": "exceedances",
+      "accuracy": 0.8304761904761905,
+      "cross_entropy": 0.4509044893582662
+    },
+    {
+      "step": 7000,
+      "task": "deficiencies",
+      "accuracy": 0.7080952380952381,
+      "cross_entropy": 0.6726793175651914
+    },
+    {
+      "step": 7000,
+      "task": "cycle_count",
+      "accuracy": 0.32857142857142857,
+      "cross_entropy": 1.5654627155122303
+    },
+    {
+      "step": 7000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.35714285714285715,
+      "cross_entropy": 1.449495588030134
+    },
+    {
+      "step": 8000,
+      "task": "exceedances",
+      "accuracy": 0.6447619047619048,
+      "cross_entropy": 0.936404166278385
+    },
+    {
+      "step": 8000,
+      "task": "deficiencies",
+      "accuracy": 0.6633333333333333,
+      "cross_entropy": 0.9953460204033625
+    },
+    {
+      "step": 8000,
+      "task": "cycle_count",
+      "accuracy": 0.3376190476190476,
+      "cross_entropy": 1.5286900583902996
+    },
+    {
+      "step": 8000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.3514285714285714,
+      "cross_entropy": 1.4485802314394995
+    },
+    {
+      "step": 9000,
+      "task": "exceedances",
+      "accuracy": 0.7947619047619048,
+      "cross_entropy": 0.49566516850675857
+    },
+    {
+      "step": 9000,
+      "task": "deficiencies",
+      "accuracy": 0.8357142857142857,
+      "cross_entropy": 0.3956050864287785
+    },
+    {
+      "step": 9000,
+      "task": "cycle_count",
+      "accuracy": 0.3361904761904762,
+      "cross_entropy": 1.5141418965657552
+    },
+    {
+      "step": 9000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.3514285714285714,
+      "cross_entropy": 1.4430728185744512
+    },
+    {
+      "step": 10000,
+      "task": "exceedances",
+      "accuracy": 0.8990476190476191,
+      "cross_entropy": 0.25548765801248097
+    },
+    {
+      "step": 10000,
+      "task": "deficiencies",
+      "accuracy": 0.9261904761904762,
+      "cross_entropy": 0.21945226118678138
+    },
+    {
+      "step": 10000,
+      "task": "cycle_count",
+      "accuracy": 0.3357142857142857,
+      "cross_entropy": 1.5200743139357793
+    },
+    {
+      "step": 10000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.3485714285714286,
+      "cross_entropy": 1.4387999144054595
+    },
+    {
+      "step": 11000,
+      "task": "exceedances",
+      "accuracy": 0.8571428571428571,
+      "cross_entropy": 0.3595611190795898
+    },
+    {
+      "step": 11000,
+      "task": "deficiencies",
+      "accuracy": 0.9423809523809524,
+      "cross_entropy": 0.1629325081337066
+    },
+    {
+      "step": 11000,
+      "task": "cycle_count",
+      "accuracy": 0.3466666666666667,
+      "cross_entropy": 1.5082833716982886
+    },
+    {
+      "step": 11000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.3504761904761905,
+      "cross_entropy": 1.4526835214524043
+    },
+    {
+      "step": 12000,
+      "task": "exceedances",
+      "accuracy": 0.9171428571428571,
+      "cross_entropy": 0.21400359526986168
+    },
+    {
+      "step": 12000,
+      "task": "deficiencies",
+      "accuracy": 0.9580952380952381,
+      "cross_entropy": 0.12067107194945925
+    },
+    {
+      "step": 12000,
+      "task": "cycle_count",
+      "accuracy": 0.3376190476190476,
+      "cross_entropy": 1.4882493336995444
+    },
+    {
+      "step": 12000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.3557142857142857,
+      "cross_entropy": 1.438777810959589
+    },
+    {
+      "step": 13000,
+      "task": "exceedances",
+      "accuracy": 0.9566666666666667,
+      "cross_entropy": 0.11215030187652225
+    },
+    {
+      "step": 13000,
+      "task": "deficiencies",
+      "accuracy": 0.9728571428571429,
+      "cross_entropy": 0.07896658161566371
+    },
+    {
+      "step": 13000,
+      "task": "cycle_count",
+      "accuracy": 0.3461904761904762,
+      "cross_entropy": 1.4820264979771205
+    },
+    {
+      "step": 13000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.3476190476190476,
+      "cross_entropy": 1.437657252720424
+    },
+    {
+      "step": 14000,
+      "task": "exceedances",
+      "accuracy": 0.9752380952380952,
+      "cross_entropy": 0.08282204509845802
+    },
+    {
+      "step": 14000,
+      "task": "deficiencies",
+      "accuracy": 0.9780952380952381,
+      "cross_entropy": 0.07440600243707497
+    },
+    {
+      "step": 14000,
+      "task": "cycle_count",
+      "accuracy": 0.3476190476190476,
+      "cross_entropy": 1.5096270860944476
+    },
+    {
+      "step": 14000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.3557142857142857,
+      "cross_entropy": 1.4545466995239258
+    },
+    {
+      "step": 15000,
+      "task": "exceedances",
+      "accuracy": 0.97,
+      "cross_entropy": 0.07866873804834627
+    },
+    {
+      "step": 15000,
+      "task": "deficiencies",
+      "accuracy": 0.9828571428571429,
+      "cross_entropy": 0.05831058992516427
+    },
+    {
+      "step": 15000,
+      "task": "cycle_count",
+      "accuracy": 0.33904761904761904,
+      "cross_entropy": 1.4811567833310082
+    },
+    {
+      "step": 15000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.35904761904761906,
+      "cross_entropy": 1.4393314579554966
+    },
+    {
+      "step": 16000,
+      "task": "exceedances",
+      "accuracy": 0.9757142857142858,
+      "cross_entropy": 0.06779740433607782
+    },
+    {
+      "step": 16000,
+      "task": "deficiencies",
+      "accuracy": 0.9842857142857143,
+      "cross_entropy": 0.05480403906177907
+    },
+    {
+      "step": 16000,
+      "task": "cycle_count",
+      "accuracy": 0.34476190476190477,
+      "cross_entropy": 1.4710345023018974
+    },
+    {
+      "step": 16000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.35285714285714287,
+      "cross_entropy": 1.4365316481817336
+    },
+    {
+      "step": 17000,
+      "task": "exceedances",
+      "accuracy": 0.9904761904761905,
+      "cross_entropy": 0.03216753646376587
+    },
+    {
+      "step": 17000,
+      "task": "deficiencies",
+      "accuracy": 0.9890476190476191,
+      "cross_entropy": 0.04020430871773334
+    },
+    {
+      "step": 17000,
+      "task": "cycle_count",
+      "accuracy": 0.3576190476190476,
+      "cross_entropy": 1.4638727242606027
+    },
+    {
+      "step": 17000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.3580952380952381,
+      "cross_entropy": 1.4362543523879279
+    },
+    {
+      "step": 18000,
+      "task": "exceedances",
+      "accuracy": 0.9885714285714285,
+      "cross_entropy": 0.03621981073880479
+    },
+    {
+      "step": 18000,
+      "task": "deficiencies",
+      "accuracy": 0.9928571428571429,
+      "cross_entropy": 0.026055383478246985
+    },
+    {
+      "step": 18000,
+      "task": "cycle_count",
+      "accuracy": 0.3557142857142857,
+      "cross_entropy": 1.4609452311197917
+    },
+    {
+      "step": 18000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.35619047619047617,
+      "cross_entropy": 1.4355906604585194
+    },
+    {
+      "step": 19000,
+      "task": "exceedances",
+      "accuracy": 0.9942857142857143,
+      "cross_entropy": 0.02245394076087645
+    },
+    {
+      "step": 19000,
+      "task": "deficiencies",
+      "accuracy": 0.9938095238095238,
+      "cross_entropy": 0.024215271100401878
+    },
+    {
+      "step": 19000,
+      "task": "cycle_count",
+      "accuracy": 0.34714285714285714,
+      "cross_entropy": 1.4642760903494698
+    },
+    {
+      "step": 19000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.36142857142857143,
+      "cross_entropy": 1.436059820992606
+    },
+    {
+      "step": 20000,
+      "task": "exceedances",
+      "accuracy": 0.9923809523809524,
+      "cross_entropy": 0.028285391272178717
+    },
+    {
+      "step": 20000,
+      "task": "deficiencies",
+      "accuracy": 0.9947619047619047,
+      "cross_entropy": 0.02281697363193546
+    },
+    {
+      "step": 20000,
+      "task": "cycle_count",
+      "accuracy": 0.35095238095238096,
+      "cross_entropy": 1.4588545336042131
+    },
+    {
+      "step": 20000,
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.35714285714285715,
+      "cross_entropy": 1.437489360627674
+    }
+  ],
+  "source_validation": [
+    {
+      "task": "exceedances",
+      "accuracy": 0.9923809523809524,
+      "cross_entropy": 0.028285391272178717
+    },
+    {
+      "task": "deficiencies",
+      "accuracy": 0.9947619047619047,
+      "cross_entropy": 0.02281697363193546
+    },
+    {
+      "task": "cycle_count",
+      "accuracy": 0.35095238095238096,
+      "cross_entropy": 1.4588545336042131
+    },
+    {
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.35714285714285715,
+      "cross_entropy": 1.437489360627674
+    }
+  ],
+  "source_train": [
+    {
+      "task": "exceedances",
+      "accuracy": 0.9968333333333333,
+      "cross_entropy": 0.012020978686444106
+    },
+    {
+      "task": "deficiencies",
+      "accuracy": 0.9971190476190476,
+      "cross_entropy": 0.011711940776113244
+    },
+    {
+      "task": "cycle_count",
+      "accuracy": 0.3770952380952381,
+      "cross_entropy": 1.4060717772075109
+    },
+    {
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.37164285714285716,
+      "cross_entropy": 1.40886247580392
+    }
+  ],
+  "source_audit": [
+    {
+      "task": "exceedances",
+      "accuracy": 0.9938095238095238,
+      "cross_entropy": 0.01994964300699177
+    },
+    {
+      "task": "deficiencies",
+      "accuracy": 0.9952380952380953,
+      "cross_entropy": 0.015338060811516785
+    },
+    {
+      "task": "cycle_count",
+      "accuracy": 0.3619047619047619,
+      "cross_entropy": 1.4214949289957681
+    },
+    {
+      "task": "nontrivial_cycle_count",
+      "accuracy": 0.38333333333333336,
+      "cross_entropy": 1.3994157990955172
+    }
+  ]
+}

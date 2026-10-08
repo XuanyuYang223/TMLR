@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>表征位置与数学变换核</title>
+<style>body{max-width:1200px;margin:40px auto;padding:0 20px;font:16px/1.7 system-ui;color:#18202b}img{max-width:100%}table{border-collapse:collapse;width:100%}td,th{padding:8px;border-bottom:1px solid #ddd;text-align:left}aside{background:#f2f4f7;padding:16px}</style>
+<h1>CKA 对表征提取位置和任务变换结构的敏感性</h1>
+<p>这是在初步 ONE_END 跨种子结果之后追加的探索性分析，所有位置、组合、输入算子与种子均保留。ONE_END 沿用原仓库的任务无关前缀测量；另加入前缀有效 token 均值、共同未见任务 descents 的查询位置，以及四个已训练任务查询位置的拼接。</p>
+<p>已训练查询拼接只在同一组的不同种子间，或同一模型的原始/变换输入间比较；没有将不同查询任务集直接当作相同输入做跨组比较。特征提取不接收任何答案标签。</p>
+<img src="landmarks.png"><p>图中为训练后减初始化的跨种子 CKA。三个种子形成的三个配对并不独立；这些变化也不是原论文正确变换对照的同一端点。</p>
+<h2>由任务答案得到的数学参照</h2><img src="transformation_prediction.png">
+<p>对每组任务，在 complement、reverse、reverse-complement、inverse 下比较隐藏表征，并计算源任务答案独热编码的精确 CKA。独热核只是指定输出编码下的数学参照；它的排序不保证训练后隐藏几何相同。13 个情况有明确的任务向量线性变换公式；19 个情况在 n=10 找到原答案相同、变换答案不同的反例。无同输入线性恒等式的组仍可具有输入变换闭合关系。</p>
+<h2>整组留出的条件预测</h2>
+<p>每折排除某一源组合的全部种子与算子，用其他组合预测该组的变换后隐藏 CKA。基线控制初始化 CKA、源最终成绩和学习 AUC、源标签条件熵/联合熵/相关性，以及算子、初始化固定效应；增加源答案变换核作为结构参照。岭惩罚固定为 1，特征标准化只使用训练折。</p>
+<table><tr><th>位置与长度处理</th><th>基线 R²</th><th>加入答案核 R²</th><th>MAE 降低</th></tr><tr><td>ONE_END_raw</td><td>-0.173</td><td>-0.120</td><td>+0.0149</td></tr><tr><td>ONE_END_within_length</td><td>-0.004</td><td>0.268</td><td>+0.0329</td></tr><tr><td>heldout_query_raw</td><td>-1.872</td><td>-1.373</td><td>+0.0507</td></tr><tr><td>heldout_query_within_length</td><td>-0.339</td><td>0.022</td><td>+0.0468</td></tr><tr><td>prefix_mean_raw</td><td>-1.916</td><td>-1.899</td><td>+0.0087</td></tr><tr><td>prefix_mean_within_length</td><td>0.001</td><td>0.179</td><td>+0.0183</td></tr><tr><td>source_query_concat_raw</td><td>-0.337</td><td>0.225</td><td>+0.0523</td></tr><tr><td>source_query_concat_within_length</td><td>0.182</td><td>0.773</td><td>+0.1317</td></tr></table>
+<aside>只有八个源组合折，仍共享一个排列数据世界。源拟合及完整标签统计未严格匹配，数学参照也利用已知的任务定义。这是几何指标的条件预测，不是迁移收益的证明，不能选择其中最好的位置并称其为预先指定主端点。</aside>
+<p><a href="../native_transform_audit/audit.json">变换公式和反例</a> · <a href="../native_transform_audit/categorical_kernel.csv">答案核</a> · <a href="cross_seed.csv">跨种子完整测量</a> · <a href="transformed_cka.csv">全部变换 CKA</a> · <a href="prediction_scores.json">逐折预测</a> · <a href="../native_kernel_prediction_preregistration.json">分析登记</a> · <a href="metadata.json">提取代码与数据指纹</a></p></html>

@@ -1,0 +1,15 @@
+{
+  "output": "results/relation_observed_start",
+  "parent": "results/algebra_hidden_relations",
+  "extension": "results/relation_seed_extension",
+  "deadline_utc": "2026-10-06T17:00:00+00:00",
+  "original_seeds_exploratory": [5081, 6091, 7103],
+  "additional_seeds_prospective_endpoint": [8111, 9127, 10141, 11159, 12163, 13171],
+  "conditions": ["ordinary", "correct_relations", "shuffled_relations"],
+  "fixed_secondary_predictions": [
+    "Correct native I applied to a true observed C-state hidden vector exceeds the scalar-answer-only ceiling 0.5 on each additional source seed.",
+    "Correct native observed-C-start prediction is more accurate than base-only CI composition on source-seed average.",
+    "Correct versus shuffled full-source I fits on the identical relation-trained backbone differ in unseen C-to-CI prediction, with identical visible-task grades."
+  ],
+  "scope": "Secondary hypothesis motivated by original-seed teacher-forcing diagnosis, before inspecting the additional-seed observed-start endpoint. The predictor forwards a C-transformed input, which is an observed state type; it never forwards the withheld CI input. This tests unseen-edge generalization with an observed input state, not autonomous base-only composite inference. I-start CI uses observed I as input but remains a two-step chain. All cases are reported separately."
+}

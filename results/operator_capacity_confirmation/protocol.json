@@ -1,0 +1,162 @@
+{
+  "registered_utc": "2026-10-08T00:21:38.808139+00:00",
+  "new_compound_outcomes_observed": false,
+  "signature": {
+    "config": {
+      "output": "results/operator_capacity_confirmation",
+      "domain": "matrix",
+      "source_seeds": [
+        11261,
+        12373,
+        13487
+      ],
+      "data_seed": 261082001,
+      "pairing_seed": 261082501,
+      "predictor_seed": 261082701,
+      "schedule_seed": 261082801,
+      "bootstrap_seed": 261082901,
+      "bootstrap_samples": 10000,
+      "excluded_test_datasets": [
+        "results/algebra_relation_v3/matrix/dataset/test.npz",
+        "results/readout_null_confirmation/matrix/dataset/test.npz"
+      ],
+      "conditions": [
+        "linear_correct",
+        "linear_wrong",
+        "nonlinear_correct",
+        "nonlinear_wrong"
+      ],
+      "source_preparation": "Three new ordinary source initializations, 500 epochs; then one 900-epoch full-correct single-generator preparation per source using the existing forward-only v3 protocol. All four predictor arms freeze and share that prepared encoder, both original affine maps, and readout. This tests capacity conditional on a relation-trained encoder, not spontaneous discovery.",
+      "source_anchors": 512,
+      "fit_anchors": 1024,
+      "validation_anchors": 128,
+      "pilot_validation_anchors": 64,
+      "iid_examples": 256,
+      "collision_pairs": 128,
+      "hidden_width": 128,
+      "predictor_hidden_width": 256,
+      "predictor_parameters": 65920,
+      "predictor": "Frozen original affine first map plus two-layer residual. Identity versus GELU between identically sized Linear(128,256), Linear(256,128); identical initial weights and zero final layer. Both have exactly 65920 trainable parameters. Second operator is unchanged and never refitted.",
+      "steps": 2000,
+      "batch_size": 128,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "output_kd_weight": 1.0,
+      "geometry_weight": 0.25,
+      "temperature": 2.0,
+      "loss": "Correct frozen first-state output-distribution KD in all four arms, plus full-space first-state MSE divided by fixed correct-target per-coordinate variance. Wrong geometry uses a complete derangement preserving all three gold visible answers. No composite labels, states, losses, checkpoint selection, or early stopping in fitting.",
+      "primary_prediction": "The nonlinear correct-minus-wrong collision AB accuracy advantage exceeds the corresponding linear advantage.",
+      "primary_endpoint": "100*((Acc_nonlinear_correct-Acc_nonlinear_wrong)-(Acc_linear_correct-Acc_linear_wrong)) on collision examples",
+      "secondary_endpoints": [
+        "collision_pair_both_correct",
+        "iid_compound_accuracy",
+        "heldout_first_state_nmse",
+        "heldout_compound_state_nmse",
+        "first_generator_accuracy",
+        "cka"
+      ],
+      "uncertainty": "Paired two-way bootstrap of three source clusters and 128 shared collision pairs, 10000 draws. Per-source contrasts reported; only three independent source initializations, so intervals are descriptive and limited.",
+      "test_policy": "All twelve fixed-budget predictor fits and all three frozen-source preparations must finish before any new compound test inference. Known-only validation curves do not select checkpoints. A failed known-only source gate is reported without dropping or replacing its seed.",
+      "source_gate": {
+        "native": 0.95,
+        "generators": 0.9
+      },
+      "novelty": "Exclude both previously examined matrix test orbit sets from the entire new study. New train/validation/test whole-group orbits are disjoint. Historical training orbits can recur under newly initialized models; no global never-seen-input claim.",
+      "scope": "Prospective matched-parameter first-operator capacity-by-correspondence intervention; single-step supervision only. Correct/wrong teacher outputs, starts, exposures, initialization, fixed second operator, encoder, readout and update schedules are identical within a source. Supports can overlap across sources. No claim that a three-gold-answer collision ceiling limits access to full logits or hidden states."
+    },
+    "source_plan": {
+      "version": 3,
+      "field_prime": 13,
+      "domains": [
+        "matrix",
+        "polynomial"
+      ],
+      "input_width": 4,
+      "hidden_width": 128,
+      "source_seeds": [
+        11261,
+        12373,
+        13487
+      ],
+      "fit_repeats": 3,
+      "fit_anchors": 1024,
+      "source_anchors": 512,
+      "validation_anchors": 128,
+      "iid_examples": 256,
+      "collision_pairs": 128,
+      "source_epochs": 500,
+      "joint_epochs": 900,
+      "batch_size": 64,
+      "source_batch_size": 128,
+      "source_pretrain_lr": 0.003,
+      "source_learning_rate": 0.0008,
+      "operator_learning_rate": 0.002,
+      "geometry_weight": 0.25,
+      "native_ce_weight": 1.0,
+      "native_kd_weight": 1.0,
+      "operator_kd_weight": 1.0,
+      "temperature": 2.0,
+      "conditions": [
+        "both_correct",
+        "a_correct_b_wrong",
+        "a_wrong_b_correct",
+        "both_wrong",
+        "no_geometry",
+        "output_space"
+      ],
+      "pilot_known_gate": {
+        "native": 0.95,
+        "generators": 0.9
+      },
+      "primary_word": "ab",
+      "primary_metrics": [
+        "compound_accuracy",
+        "collision_pair_both_correct",
+        "hidden_prediction_nmse"
+      ],
+      "auxiliary_metrics": [
+        "cka",
+        "true_intermediate_accuracy",
+        "same_target_wrong_order_accuracy"
+      ],
+      "words": [
+        "",
+        "a",
+        "b",
+        "ab",
+        "ba",
+        "aa",
+        "bb",
+        "bbb",
+        "aba",
+        "bbbb"
+      ],
+      "supervision": "Common forward-only e\u2192a/e\u2192b supervision; no inverse assumption for irreversible differentiation. All conditions share correct native CE/KD and generator-output KD, exact1024 anchors each epoch, and five native state queries. Only geometric pairing or geometry-space choice differs.",
+      "output_space_scope": "Information diagnostic; same encoder/native supervision/input exposures/epochs, smaller operators on full logits; operator parameter counts differ. It is not a capacity-matched causal control.",
+      "legacy_permworld_scope": "Completed PermWorld studies use bidirectional involution supervision and a transformer. They are version1, preserved as-is; not described as identical architecture/loss to new forward-only noninvertible-compatible version3.",
+      "test_opening": "After fixed900-epoch pilot passes known native/gen thresholds, finish all36 formal fits before evaluating compound test. No use of compound results for tuning or early stopping. Fixed900 epoch shared across both new domains.",
+      "matrix_actions": "A=[[0,1],[1,0]], B=[[0,-1],[1,-1]] inGL(2,F13); generated group has6 elements, A\u00b2=B\u00b3=e andABA=B\u00b2. Ordinary task trace.",
+      "polynomial_actions": "Exact degree3 polynomials overF13; A translates by+1, B differentiates. AB=BA. Base/readout f(0), observed f(0),f(1),f\u2032(0), missing f\u2032(1).",
+      "polynomial_splitting": "Blocks by(c3, derivative discriminant) retain translation closure and one derivative. Audit all actually observed known paths against all test paths. Full semigroup-closure disjointness is impossible because D\u2074 sends all cubics tozero. Collision/uncertainty block dependence must be reported.",
+      "source_replication": "Three independently pretrained sources per domain, reused in six adaptation repeats. Supports may overlap; source/train/validation/test path separation is audited.",
+      "registered_before_new_domain_models": false,
+      "scope": "Intervention study of specified mathematical relations; not spontaneous discovery, full group representation proof, or established output-independent mechanism.",
+      "encoding": "numeric_gelu: four centered/scaled scalar field coordinates, generic GELU MLP; no one-hot features and no group operations in the model.",
+      "known_only_selection": "Version2 one-hot/numeric encoding failed generator generalization (train99.8%, heldout7.8%). Scalar GELU selected before compound tests using separately reserved known pilot64 and confirmation128. No compound outcomes used for architecture selection. Polynomial shares matrix-selected architecture.",
+      "execution": "Two independent seeded fit processes; every36 fixed900-epoch fit completes before compound test opens.",
+      "registration_scope": "Registered after known-only source0/pilot architecture feasibility, before every new compound test and before all36 formal intervention fits. Source0/pilot reused exactly; three ordinary source seeds, six adaptations."
+    },
+    "source_code_sha256": {
+      "/home/yangx/ICML/experiments/operator_capacity_confirmation.py": "5161e4e74846a81738435909dd4833b48af059085502043533b32f8b9071f65b",
+      "configs/operator_capacity_confirmation.json": "e4a097507a936031693a547235004a66a6dbd795e431384c75b46d5182546493",
+      "/home/yangx/ICML/experiments/algebra_relation_campaign.py": "d995d2b663f815b2a38ecde7239585b82a64792f47a1f70c06c99b5aa7824644",
+      "/home/yangx/ICML/experiments/algebra_relation_worlds.py": "8be5b9a76648ae94528de00a4ff78a76af25d312e801c3ce0f39957c68a48eb0",
+      "experiments/algebra_relation_feasibility.py": "57b36fc55d36670adabfa43e9e49819d66d020dcdc93ad6eff05b5ad0121471d",
+      "experiments/two_step_relation_factorial.py": "3579578ed29649fd2be314e3e73eb6fbb258335202b00aa9bb8bcda323520ecc"
+    },
+    "excluded_data_sha256": {
+      "results/algebra_relation_v3/matrix/dataset/test.npz": "7cb6e636a92bc8f9106eb424703bcab7f75bd7a4f90fd5016a5bebc5d32bf6b1",
+      "results/readout_null_confirmation/matrix/dataset/test.npz": "b4b11b3916e57993af0108f3f2068e3b956b13e6fe0aec251ed043c8d5cc0623"
+    }
+  }
+}
