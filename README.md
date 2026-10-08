@@ -51,16 +51,25 @@ To restore the archived groups and independently replay the final confirmation:
 gh release download experiment-snapshot-2026-10-07 --repo XuanyuYang223/ICML --dir downloads
 python -m experiments.restore_public_artifacts --directory downloads
 python -m experiments.public_reproduction --replay-final
+python -m experiments.null_space_review_verify
 ```
 
 Restore verifies archive/file checksums and refuses to overwrite a differing local file. Replay runs in a temporary copy, preserving sealed timestamps and manifests. Historical absolute manifest paths are resolved relative to the checkout. Before downloading data, `python -m experiments.public_reproduction --allow-missing` explicitly inventories missing binaries.
 
-Fresh-training stages are implemented in `experiments/final_mechanism_train.py`: `prepare`, `sources`, `fits`, `evaluate`. They use the fixed config/output path and require the listed historical test shards. Run training in a separate fresh checkout/output workspace; preserve the sealed snapshot. Source preparation and fitting require CUDA in the archived driver. Evaluation follows completion of all registered fits.
+Fresh-training stages are implemented in `experiments/final_mechanism_train.py`: `prepare`, `sources`, `fits`, `evaluate`. Use the separate-output wrapper to preserve the sealed snapshot:
+
+```bash
+python -m experiments.retrain_final_confirmation --output results/my_reproduction --stage prepare
+python -m experiments.retrain_final_confirmation --output results/my_reproduction --stage run
+```
+
+Restore the historical test shards first. The wrapper keeps the archived configuration and seeds, changing only the output location. Source preparation and fitting require CUDA; evaluation follows completion of all registered fits.
 
 ## Rebuild the revised paper
 
 ```bash
 python -m experiments.manuscript_revision
+python -m experiments.null_space_review_report
 cd paper
 tectonic --untrusted --keep-logs manuscript.tex
 ```
@@ -71,4 +80,4 @@ Generated tables read immutable completed results. Editorial sections and the ne
 
 Five final sources are independent initializations with shared source corpus/test data. Supports and endpoints are not extra independent replications. Bootstrap intervals are descriptive; zero crossing does not establish equivalence. Predicted-null swaps preserve one fixed linear readout, not every possible answer code. True-state repairs are diagnostics. Polynomial results also have primitive-generalization failures. Protocol differences and exploratory versus confirmation status are documented in the manuscript.
 
-Original experiments are closed. This revision reorganizes existing evidence and expands the targeted literature comparison, without adding seeds, training interventions, or outcome-based selections.
+Original training experiments are closed. Reviewer controls add frozen-model interventions, independent label probes, and a small newly held-out test, without retraining encoders or relation operators. Their post-confirmation status and oracle information use are explicit.
