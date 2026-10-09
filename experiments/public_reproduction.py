@@ -64,7 +64,10 @@ def run():
     manifests = ['results/' + name + '/delivery.json' for name in [
         'algebra_relation_review', 'readout_null_confirmation',
         'operator_capacity_confirmation', 'operator_mechanism_diagnostic',
-        'final_mechanism_confirmation', 'null_space_review_controls']]
+        'final_mechanism_confirmation', 'null_space_review_controls',
+        'reviewer_revision_diagnostics_v2', 'reviewer_revision_reporting',
+        'reviewer_fresh_confirmation', 'reviewer_fresh_reporting',
+        'reviewer_fresh_reporting_v2']]
     audits = [check_manifest(p, args.allow_missing) for p in manifests]
     output = {'status': 'passed' if not any(a['missing_files'] for a in audits)
               else 'available_files_verified_with_explicit_missing_inventory',

@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><style>body{font:16px/1.7 system-ui;max-width:1100px;margin:30px auto}td,th{padding:8px;border:1px solid #ccc}</style>
+<h1>审稿修订：测试规模、自然交换、岭正则</h1><p>原始结果不覆盖；这份报告是事后诊断。每源完整枚举未用于该源训练/验证、也未在历史测试中查看的511–530个轨道，得到3066–3180个输入。六个轨道方向不是六次独立重复。</p>
+<h2>扩大的碰撞测试</h2><p>三个可见金答案完全相同、复合答案不同。每个输入仅出现一次，但轨道可以出现在多对中，来源不是新的数据世界。每源碰撞输入数：[2164, 2146, 2062, 2036, 2082]。</p><table><tr><th>条件</th><th>准确率</th><th>配对双正确</th></tr><tr><td>nonlinear_correct</td><td>17.94%</td><td>3.24%</td></tr><tr><td>nonlinear_wrong</td><td>7.46%</td><td>0.48%</td></tr><tr><td>linear_correct</td><td>8.53%</td><td>0.73%</td></tr><tr><td>linear_wrong</td><td>8.03%</td><td>0.40%</td></tr><tr><td>affine_correct_ols_initialization</td><td>17.86%</td><td>2.95%</td></tr><tr><td>affine_wrong_ols_initialization</td><td>7.44%</td><td>0.53%</td></tr><tr><td>validation_selected_ridge_correct</td><td>11.19%</td><td>1.19%</td></tr><tr><td>validation_selected_ridge_wrong</td><td>7.75%</td><td>0.38%</td></tr></table>
+<h2>解释发生了什么变化</h2><p>完整轨道枚举的未正则化仿射18.16%，GELU17.93%；初始化间配对差缩小。事后TOST通过±3pp，但不构成预注册的新世界等价性确认。主张继续保持“额外优势未获确认”。</p>
+<p>验证集选择的正则化仿射表现明显降低。岭正则改变了目标，并抑制小特征方向；它不能把原收敛证明推翻，却说明那个功能结果没有展示常规正则下的稳健性。小方向究竟是真实有效信息还是有限精度影响，仍未区分。</p>
+<p>自然零空间供体在第一步答案相同、第二步不同的交换中被跟随56.89%；但答案都相同的交换仍改变18.25%的预测。所有零空间交换保持完整第一步logits不变。自然分量不能保证混合状态在流形上，不能将其称为干净的数学关系机制。</p>
+<p>当前GELU正确配对只缩小约11.50%的oracle差距，组合准确率仍低。第一步输出高准确不等于状态足够准确供第二步使用。</p>
+<h2>新的确认实验</h2><p>协议在任何F17组合成绩之前固定：17个独立数据划分与初始化；512维编码器；每源2000对碰撞、512个IID样本；两个主对比与Holm校正；第二步噪声候选只由单步验证选择。40%性能及同答案交换改变率≤5%是报告门槛，不用于追逐测试成绩。训练接口计数遗漏已修复，原始协议与修订记录保留。</p>
+<p><a href="results.json">逐来源碰撞结果</a> · <a href="../reviewer_revision_diagnostics_v2/results.json">完整轨道、误差分解及正则路径</a> · <a href="../reviewer_fresh_confirmation/protocol.json">新确认协议</a></p></html>

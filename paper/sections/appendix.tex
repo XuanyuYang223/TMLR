@@ -13,6 +13,9 @@ Null-only replacement & 3 new sources per domain; 20 permutation or 900 matrix e
 Activation confirmation & 3 new matrix sources; 2,000 updates & Parameter-matched confirmation with $10^{-4}$ decay.\\
 Reused-source mechanisms & Same preceding 3 sources & Exploratory predicted-null and optimization diagnostics; not new-source replication.\\
 Final confirmation & 5 new matrix sources; 20 budget fits, 20 affine solves & Fixed hypotheses independently checked; zero decay for the shared loss.\\
+Frozen reviewer controls & Same 5 sources; new 128-orbit test & Post-confirmation state matching, answer probes and oracle-calibrated controls.\\
+Expanded reviewer census & Same 5 sources; 511--530 remaining orbits each & Posthoc collision enlargement, natural interchange and validation-selected ridge sensitivity.\\
+New-field confirmation & 17 new dataset/source units; 68 first fits, 51 second fits & Frozen two-contrast test in $\F_{17}$; both data and source initialization vary.\\
 \bottomrule
 \end{tabular}
 \caption{Evidence roles and differences that prevent indiscriminate pooling.}\label{tab:studies}
@@ -24,7 +27,7 @@ Source training has 512 anchors; known validation has 128 and pilot validation 6
 Numeric coordinates are centered at 6 and scaled by $2\pi/13$. The scalar encoder is Linear(4,128), GELU, Linear(128,128), and LayerNorm.
 Ordinary training uses 500 epochs, batch size 128 and learning rate 0.003. Correct source preparation uses 900 joint epochs, batch size 64, encoder learning rate 0.0008 and operator learning rate 0.002.
 The original readout is preserved during relation preparation. Native CE, native KD and generator-output KD have coefficient one; geometry has coefficient 0.25.
-The final first-operator stage is separately specified in Section~3 and freezes these prepared models.
+The original five-source first-operator stage is separately specified in Section~3 and freezes these prepared models. For the new $\F_{17}$ confirmation, coordinates are centered at 8 and scaled by $2\pi/17$, encoder width is 512, source/support/validation/pilot sizes are 1,024/4,096/512/128, and ordinary/joint minibatches are 256/128. Epoch counts remain 500/900. The residual width is 1,024, giving 1,050,112 trainable first-predictor parameters; four arms receive 4,000 updates with minibatch 256 and otherwise retain the listed KD/geometry weights, temperature and zero decay. Three affine second candidates, initialized from the same frozen original second map, receive 4,000 steps under noise levels 0, 0.05 and 0.15 times the square root of the fixed mean target-coordinate variance. Their single-step validation criterion averages the same three noise levels. No compound targets enter either operator fit.
 
 \subsection{State-error and null-transfer algebra}
 The reported final first-state NMSE is
@@ -32,7 +35,7 @@ $\|\hat H_A-H_A\|_F^2/(Nds^2)$ with the training variance $s^2$ fixed across the
 Initial cross-domain displacement NMSE uses actual displacement energy and is not numerically comparable to this variance normalization.
 CKA is computed as an auxiliary centered-Gram similarity and is not an accuracy surrogate.
 
-Let $P$ be the orthogonal projector onto the row span of $W$ and $Q=I-P$.
+Let $P=W^\top(WW^\top)^+W$ be the orthogonal projector onto the row span of the actual frozen readout $W$, and let $Q=I-P$. The superscript $+$ is the Moore--Penrose pseudoinverse; the implementation also checks the SVD construction and full first-step logits. The first readout is linear with fixed bias, with no additional hidden-dependent normalization after the intervention.
 Then $QW^\top=0$ and the predicted hybrid
 $\hat h_{L\leftarrow G}=\hat h_L+(\hat h_G-\hat h_L)Q$
 satisfies $z(\hat h_{L\leftarrow G})=z(\hat h_L)$.
@@ -80,8 +83,8 @@ The public repository contains the experiment implementations, fixed configurati
 Downloadable archives preserve the main experiment inputs, predictions and checkpoints; archive inventories and checksums identify exactly what is included.
 A portable verifier resolves recorded historical workspace paths and runs replay in a temporary copy, preserving the sealed artifacts.
 The numerical results in the revised tables are generated from completed JSON records, without retraining or selecting new outcomes.
-The prior 174-test run and independent final replay are distinct verification evidence; test counts do not constitute statistical replications.
+The current 181-test run and independent final replay are distinct verification evidence; test counts do not constitute statistical replications.
 
-The literature audit records twelve original studies with exact titles, venues, primary URLs, source locators, and claim-level relevance in \texttt{paper/literature\_review.csv}.
+The literature audit records thirteen original studies with exact titles, venues, primary URLs, source locators, and claim-level relevance in \texttt{paper/literature\_review.csv}.
 It is a targeted review of the closest mechanisms and controls, not an assertion that no other related study exists.
 No new priority or first-discovery claim is inferred from the search.

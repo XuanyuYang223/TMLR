@@ -1,0 +1,27 @@
+{
+  "user_decision": "Keep additional advantage unconfirmed; equivalence secondary. No equivalence claim from nonsignificance.",
+  "new_field": 17,
+  "source_data_units": 17,
+  "tests_per_unit": {
+    "collision_pairs": 2000,
+    "collision_inputs": 4000,
+    "iid_inputs": 512
+  },
+  "primary_contrasts": [
+    "correct_minus_wrong_GELU_compound_accuracy",
+    "natural_null_minus_natural_row_donor_target_accuracy"
+  ],
+  "multiple_testing": "Two-sided source/world paired t tests, Holm correction for exactly two primary contrasts. Report confidence intervals, every unit, and failure gates. Same-answer interchange invariance is a separate required diagnostic, not silently substituted into the primary contrast.",
+  "power_assumptions": {
+    "minimum_effect_pp": 5.0,
+    "assumed_source_world_sd_pp": 6.0,
+    "target": 0.8,
+    "worst_case_per_test_alpha": 0.025,
+    "computed_required_units": 17,
+    "scope": "Planning sensitivity under a normal source/world difference model, not a promise that the new world's variance matches old seeds."
+  },
+  "secondary_tost": "Old-world same-loss converged affine minus GELU. Posthoc expanded-census and collision subsets are explicitly secondary; F17 has no converged-affine diagnostic.",
+  "failed_gates": "Retain all fixed units and report the 40% compound performance and 5% same-answer interchange disturbance checks. Do not add candidates after test opening.",
+  "sources_of_independence": "Randomized data partitions and model initialization both vary in the new field. Data overlap across independently sampled units is permitted; shared legacy joint-fit batch schedule is disclosed.",
+  "scope": "One previously untrained mathematical system; field, width, coverage and second-step robustness change together. Swaps test downstream answer-information transport and do not alone identify mathematics-specific encoding."
+}

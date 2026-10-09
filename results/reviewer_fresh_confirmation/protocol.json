@@ -1,0 +1,89 @@
+{
+  "registered_utc": "2026-10-09T16:25:09.280269+00:00",
+  "new_F17_models_trained": true,
+  "new_composite_outcomes_seen": false,
+  "signature": {
+    "config": {
+      "output": "results/reviewer_fresh_confirmation",
+      "field_prime": 17,
+      "independent_units": 17,
+      "hidden_width": 512,
+      "predictor_hidden_width": 1024,
+      "predictor_parameters": 1050112,
+      "source_anchors": 1024,
+      "fit_anchors": 4096,
+      "validation_anchors": 512,
+      "pilot_validation_anchors": 128,
+      "iid_examples": 512,
+      "collision_pairs": 2000,
+      "source_seed_base": 301009101,
+      "data_seed_base": 301009501,
+      "steps": 4000,
+      "batch_size": 256,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "output_kd_weight": 1.0,
+      "geometry_weight": 0.25,
+      "temperature": 2.0,
+      "conditions": [
+        "linear_correct",
+        "linear_wrong",
+        "nonlinear_correct",
+        "nonlinear_wrong"
+      ],
+      "robust_second_noise": [
+        0.0,
+        0.05,
+        0.15
+      ],
+      "robust_second_steps": 4000,
+      "source_epochs": 500,
+      "joint_epochs": 900,
+      "primary_contrasts": [
+        "correct_minus_wrong_GELU_compound_accuracy",
+        "natural_null_minus_natural_row_donor_target_accuracy"
+      ],
+      "primary_alpha": 0.05,
+      "multiplicity": "Two-sided source/world paired t tests, Holm correction for exactly two primary contrasts. Report confidence intervals, every unit, and failure gates. Same-answer interchange invariance is a separate required diagnostic, not silently substituted into the primary contrast.",
+      "power": {
+        "minimum_effect_pp": 5.0,
+        "assumed_source_world_sd_pp": 6.0,
+        "target": 0.8,
+        "worst_case_per_test_alpha": 0.025,
+        "computed_required_units": 17,
+        "scope": "Planning sensitivity under a normal source/world difference model, not a promise that the new world's variance matches old seeds."
+      },
+      "secondary_equivalence_margin_pp": 3.0,
+      "equivalence_primary": false,
+      "compositional_floor_check": {
+        "threshold_accuracy": 0.4,
+        "role": "Report whether the fixed larger-model/noisy-second setting reaches this threshold. Do not tune or replace units based on compound outcomes."
+      },
+      "same_answer_prediction_change_threshold": 0.05,
+      "world_replication": "Each unit has its own corpus, support, validation, collision test, source initialization and fitting RNG. Independent random partitions of the previously untrained F17 system; overlaps across units are permitted, weights are never reused. This is replication across datasets in one new mathematical system, not 17 distinct algebraic systems.",
+      "test_policy": "Finish every source, every first-operator arm, and every single-step robust-second candidate before opening any composite prediction. Composite labels enter only exact test construction and final evaluation. Select second candidate using known-step states/logits averaged over fixed validation noise levels; never use composite performance.",
+      "ending_rule": "Run all 17 units and declared diagnostics regardless of results. Retain primitive failures. No new candidate, seed replacement, test-based hyperparameter tuning or early significant stopping. If the 40% floor check or same-answer stability check fails, report that requirement as unresolved.",
+      "scope": "Confirm correct-correspondence functionality in a previously unexplored finite field with a fourfold-width model. Interchange tests downstream answer-information transport, not natural mathematics-specific encoding. Width, data coverage and world change together, so this is not a causal estimate of width alone. No equivalence claim from nonsignificance."
+    },
+    "code_sha256": "ed4b0d262c8962942d2b0e677728ae969aeea2bc40191ff528d55e8bcc4b6550",
+    "config_sha256": "b39171f79390255f2b58886d51bc97cd9fd1300d8b5e634f15c468b635f1667a",
+    "dependencies_sha256": {
+      "experiments/algebra_relation_campaign.py": "d995d2b663f815b2a38ecde7239585b82a64792f47a1f70c06c99b5aa7824644",
+      "experiments/algebra_relation_worlds.py": "8be5b9a76648ae94528de00a4ff78a76af25d312e801c3ce0f39957c68a48eb0",
+      "experiments/operator_capacity_confirmation.py": "5161e4e74846a81738435909dd4833b48af059085502043533b32f8b9071f65b",
+      "experiments/reviewer_revision_diagnostics.py": "15288dd14a50c7c1b7efc87fde4a571ea6aac52e650b60126397042b3944147a",
+      "experiments/reviewer_revision_statistics.py": "6957b19152369a5bffa915dff34bb0de2d51dd48acc35f33cd6021da3b3b4411"
+    },
+    "preexisting_deliveries": {
+      "results/final_mechanism_confirmation/delivery.json": "29ea4ad7d22616c6d49b31de876ab7fca9bc7c188c6700c2766066fe0616a6bd",
+      "results/null_space_review_controls/delivery.json": "a5b83866fae35b5c27f74fb9a186028947d166e2568a385a26756760bd9555a4",
+      "results/reviewer_revision_diagnostics_v2/delivery.json": "d1b156357a7a0fb4a55c4359fd2d9858da930e43e69a6bd25688c0981cdb2fb3"
+    }
+  },
+  "initial_registration_utc": "2026-10-09T16:22:38.896821+00:00",
+  "amendment": {
+    "reason": "The reused first-operator fitter requires explicit predictor_parameters. Added the count implied by the already fixed 512/1024 dimensions (1050112), without changing models, seeds, data, losses, budgets or endpoints. Unit0 source preparation completed; no first-operator update or composite prediction occurred.",
+    "initial_protocol_sha256": "53cc75f96c4c913895075e7302aef540a4679c43f69b2e990d8a2c8d061592ec",
+    "no_scientific_setting_changed": true
+  }
+}
