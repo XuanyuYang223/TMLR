@@ -33,6 +33,8 @@ Implementations, fixed configurations, and tests are in `experiments/`, `configs
 
 Per-file SHA-256 inventories and [asset metadata](docs/artifact_inventory.json) specify all contents. Historical workspace aliases are dereferenced as regular files. Early exploratory bulk caches and legacy permutation transformer weights from the 133 GB local workspace are excluded; their code, protocols, and readable results remain available. Third-party full-text papers are excluded.
 
+[Publication verification](docs/reviewer_revision_publication_audit.json) records the clean GitHub checkout, seven-archive restore, 1,686 manifest entries, 181 passing tests, and independent replays. All five new public downloads and the public manuscript match their local SHA-256 checksums. New-world replay reconstructs 2,161,059 entries; expanded old-world replay reconstructs 468,150. These are computation checks, not independent statistical repetitions.
+
 ## Install and reproduce
 
 Use Python 3.11 or newer. Current runs use Python 3.13 and PyTorch 2.11; hardware/library changes can affect exact replay.
