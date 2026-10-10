@@ -1,0 +1,19 @@
+PermWorld 库存与已有模型探索评估（2026-10-09）
+本轮新增源模型训练0；无暂停任务续跑、无发布。624逻辑库存条目与582不同权重容器SHA不能解释为独立重复。
+原48单任务+50个k位置：98逻辑位置、94不同checkpoint，已逐文件SHA核对。
+k16为24端点，其中6重复使用旧v3权重、18新增历史训练。小PermWorld1200步pilot24、F5 rank3 72/rank4 45/matched27已分队列登记。
+本轮关系：19条数学证书，18条有匹配完成权重；min_record_reverse缺同批次Lmin/Rmin。62关系×源配对，82不同PermWorld源位置；F5仅统一rank4的45权重；k复用50位置。
+初始化：PermWorld参照C，构造器重建未证明原权重身份；F5 encoder可用真实历史step0激活B，仅限625保存输入和encoder位置，初始化输出读出仍C。未为清单加载所有state_dict；未测参数哈希显式空白。
+普通/答案分层、真实答案、条件数字输出概率都保留。主点是任务token前ONE_END；query分支单列。固定长度1/21；缺失不重加权。CKA、kNN(k10)、8维拟合PCA后正交Procrustes在看到新结果前冻结。
+F5全部625输入源训练见过；250/375划分仅用于分析映射拟合/测试。真实四答案唯一标识每个输入，严格答案控制无重复组，全部未定义；未放宽控制。域、架构与输入编码同时变化。
+统计：探索性，无确认性p值或等价性主张。源范围/标准差描述固定世界的初始化变化；关系共享任务和轨道，不新增独立关系数量。旧输入bootstrap仅条件于旧固定模型/CKA协议；未替新指标制造输入抽样区间。
+最小追加训练：当前交付0，additional_training_manifest只有表头。可选补缺1个Lmin旧协议seed17（非新世界确认）；若要真实step0与新数据确认，候选6任务×U×E，优先E1，U未冻结；U5=30只是成本情景。未来先独立开发预跑，不能按几何结果选择预算。
+编码768模型为未执行计划。现库存足以扩关系/换指标/第二实例；只有明确要估计编码干预，且现探索确定代表关系、精度与资源目标后才另冻结缩小方案。此次不调用编码prepare/train/evaluate。
+F17仅库存登记，本轮不改论文、结果或发布产物，不充当自然几何确认。完整保护哈希核验见audit.json。
+复现：inventory.py -> relations.py -> prepare_eval.py -> evaluate.py --stage features -> finalize_inventory.py -> evaluate.py --stage permutation-metrics/field-metrics；evaluate_k.py -> summarize.py -> verify_results.py。固定协议/输入已有文件不得在结果后覆盖。
+
+实测主结果：原两条取逆关系descents/recoils与exceedances/deficiencies，在答案控制后三种指标的Delta均为正、各三个源均同向。CKA Delta分别0.588965/0.641461，dc分别-0.033851/+0.020471、dw分别-0.622816/-0.620990，主要来自错误配对下降。六小时队列的Lmax/Rmin取逆仅一源正向，不能称为多源稳定复现。
+新增反转/补值关系的平均Bt多数正，但Delta为负，不能解释为没有学习；最大纪录反转的native seed1009/3037训练后CKA偏好略负，另外两指标略正。双升/双降的kNN在两长度样本不足，固定汇总未定义。
+两条旧取逆关系的3源×21长度中，三指标和debiased CKA的Delta均正，不由某单一长度驱动。最大纪录反转的native seed1009/3037在debiased CKA中Bt变正，说明弱训练后偏好依赖指标版本；Delta仍负。
+F5前两组关系CKA/Procrustes平均Delta正而kNN负；其他源也有符号变化。缺严格答案控制及源未见输入结果，第二实例不能支持统一机制结论。
+旧全缓存k系列中五条曲线k16的初始化保留都高于k1，R0/R2/R4单调，R1/R3不单调。新轨道指标完整29长度汇总未定义。
